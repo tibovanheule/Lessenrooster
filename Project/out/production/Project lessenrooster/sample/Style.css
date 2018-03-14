@@ -1,0 +1,17 @@
+.leftMenu{
+    -fx-background-color: #46529d;
+}
+.day{
+    -fx-font-family: Lato;
+    -fx-font-size: 32px;
+    -fx-fill: #8d93be;
+}
+.date{
+    -fx-font-family: Lato;
+    -fx-font-size: 32px;
+    -fx-fill: white;
+}
+.time{
+    -fx-font-family: Lato;
+    -fx-font-size: 48px;
+}

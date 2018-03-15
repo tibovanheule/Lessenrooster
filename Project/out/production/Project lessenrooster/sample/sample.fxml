@@ -7,25 +7,26 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+<Pane minHeight="600.0" minWidth="1000.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Pane prefHeight="600.0" prefWidth="200.0" styleClass="leftMenu" stylesheets="@Style.css">
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="leftMenu" >
          <children>
-            <Label fx:id="day" layoutX="21.0" layoutY="66.0" styleClass="day" text="Monday" />
-            <Label fx:id="time" layoutX="20.0" layoutY="17.0" styleClass="time" text="Label" />
-            <Label fx:id="date" layoutX="23.0" layoutY="99.0" styleClass="date" text="28 Sep" />
+            <Label fx:id="date" layoutX="23.0" layoutY="124.0" styleClass="date" text="28 Sep" />
+            <Label fx:id="day" layoutX="24.0" layoutY="85.0" styleClass="day" text="Monday" />
+            <Label fx:id="time" layoutX="23.0" layoutY="24.0" styleClass="time" text="17:45" />
          </children>
       </Pane>
-      <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" layoutX="892.0" layoutY="14.0" styleClass="menu" stylesheets="@Style.css">
+      <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" layoutX="889.0" layoutY="17.0" styleClass="menu">
         <items>
           <MenuItem onAction="#exit" text="_Close">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                </accelerator>
             </MenuItem>
-          <MenuItem text="_About" />
+          <MenuItem onAction="#about" text="_About" />
         </items>
       </MenuButton>
-      <ListView layoutX="792.0" layoutY="106.0" prefHeight="486.0" prefWidth="200.0" />
+      <ListView layoutX="789.0" layoutY="136.0" prefHeight="450.0" prefWidth="200.0" styleClass="list" />
    </children>
 </Pane>

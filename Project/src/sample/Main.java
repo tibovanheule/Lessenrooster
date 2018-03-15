@@ -15,8 +15,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.DECORATED);
+
         Scene scene = new Scene(root, 1000, 600);
-        scene.getStylesheets().add("Style.css");
+        scene.getStylesheets().add("sample/Style.css");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

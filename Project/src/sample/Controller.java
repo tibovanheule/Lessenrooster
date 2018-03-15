@@ -1,44 +1,1 @@
-//Tibo vanheule
-package sample;
-
-import javafx.application.Platform;
-import javafx.geometry.Side;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-public class Controller {
-    public Label day;
-    public Label date;
-    public Label time;
-    public MenuButton menu;
-    public void initialize(){
-        // TODO: 14/03/2018  
-        //zet deze tijden  om in in oproepbare methode
-        //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-        //de huidige datum
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
-        time.setText(now.format(formatTime));
-        //formatteer de datum (dag)
-        DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
-        //geef nieuwe waarde aan de label met id:day
-        day.setText(now.format(formatDay));
-        //formateer datum
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
-        //geef nieuwe waarde aan de label met id:date
-        date.setText(now.format(formatDate));
-    }
-    public void exit(){
-        Platform.exit();
-        System.exit(0);
-    }
-
-    public void about(){
-
-    }
-
-}
+//Tibo vanheulepackage sample;import javafx.application.Platform;import javafx.fxml.FXMLLoader;import javafx.geometry.Side;import javafx.scene.Node;import javafx.scene.Parent;import javafx.scene.Scene;import javafx.scene.control.Label;import javafx.scene.control.MenuButton;import javafx.scene.layout.Pane;import javafx.stage.Stage;import javafx.stage.StageStyle;import java.io.IOException;import java.time.LocalDateTime;import java.time.format.DateTimeFormatter;import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;import static javafx.application.Application.launch;public class Controller {    public Label day;    public Label date;    public Label time;    public MenuButton menu;    private ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();    public void initialize(){        // TODO: 14/03/2018        ses.scheduleAtFixedRate(new Runnable() {            @Override            public void run() {                //zet deze tijden  om in in oproepbare methode                //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html                //de huidige datum                LocalDateTime now = LocalDateTime.now();                DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");                //formatteer de datum (dag)                DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");                //geef nieuwe waarde aan de label met id:day                //formateer datum                DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");                //Controller.time(now.format(formatTime),now.format(formatDay),now.format(formatDate));                date.setText(now.format(formatDate));                //day.setText(strDay);                //time.setText(strTime);            }        }, 0, 1, TimeUnit.SECONDS);    }    public void exit(){        ses.shutdown();        Platform.exit();        System.exit(0);    }    private void time(String strTime, String strDay, String strDate){        //geef nieuwe waarde aan de label met id:date    }    public void about(){        Parent root;        try {            root = FXMLLoader.load(getClass().getResource("about/about.fxml"));            Stage stage = new Stage();            stage.initStyle(StageStyle.UNDECORATED);            Scene scene = new Scene(root, 450, 450);            scene.getStylesheets().add("sample/about/about.css");            stage.setScene(scene);            stage.show();        }        catch (IOException e) {            e.printStackTrace();        }    }}

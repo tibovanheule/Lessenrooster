@@ -1,0 +1,7 @@
+.body{
+    -fx-background-color: #4d59a1;
+}
+
+.cross{
+    -fx-background-image: url("../images/cross.png");
+}

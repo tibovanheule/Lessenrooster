@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.input.KeyCodeCombination?>
@@ -15,15 +16,16 @@
             <Label fx:id="date" layoutX="23.0" layoutY="99.0" styleClass="date" text="28 Sep" />
          </children>
       </Pane>
-      <MenuButton alignment="BOTTOM_RIGHT" layoutX="878.0" layoutY="14.0" mnemonicParsing="false" styleClass="menu" stylesheets="@Style.css">
+      <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" layoutX="892.0" layoutY="14.0" styleClass="menu" stylesheets="@Style.css">
         <items>
-          <MenuItem mnemonicParsing="false" onAction="#exit" text="Close">
+          <MenuItem onAction="#exit" text="_Close">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                </accelerator>
             </MenuItem>
-          <MenuItem mnemonicParsing="false" text="About" />
+          <MenuItem text="_About" />
         </items>
       </MenuButton>
+      <ListView layoutX="792.0" layoutY="106.0" prefHeight="486.0" prefWidth="200.0" />
    </children>
 </Pane>

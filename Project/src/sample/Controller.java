@@ -2,7 +2,10 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.geometry.Side;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +14,7 @@ public class Controller {
     public Label day;
     public Label date;
     public Label time;
+    public MenuButton menu;
     public void initialize(){
         // TODO: 14/03/2018  
         //zet deze tijden  om in in oproepbare methode
@@ -31,6 +35,10 @@ public class Controller {
     public void exit(){
         Platform.exit();
         System.exit(0);
+    }
+
+    public void about(){
+
     }
 
 }

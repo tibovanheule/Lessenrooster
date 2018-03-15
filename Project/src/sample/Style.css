@@ -1,5 +1,14 @@
+.body{
+    -fx-background-color: #efeeec;
+}
 .leftMenu{
     -fx-background-color: #46529d;
+    -webkit-fx-width: 20%;
+    -moz-fx-width: 20%;
+    -ms-fx-width: 20%;
+    -o-fx-width: 20%;
+    -khtml-fx-width: 20%;
+    fx-width: 20%;
 }
 .day{
     -fx-font-family: Lato;
@@ -14,4 +23,12 @@
 .time{
     -fx-font-family: Lato;
     -fx-font-size: 48px;
+}
+.menu{
+    -fx-graphic: url("dots.png");
+    -fx-background-color: #efeeec;
+}
+
+.menu MenuItem{
+    -fx-background-color: #efeeec;
 }

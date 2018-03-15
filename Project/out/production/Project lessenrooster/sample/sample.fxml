@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Pane prefHeight="600.0" prefWidth="200.0" styleClass="leftMenu" stylesheets="@Style.css">
          <children>
@@ -12,5 +15,15 @@
             <Label fx:id="date" layoutX="23.0" layoutY="99.0" styleClass="date" text="28 Sep" />
          </children>
       </Pane>
+      <MenuButton alignment="BOTTOM_RIGHT" layoutX="878.0" layoutY="14.0" mnemonicParsing="false" styleClass="menu" stylesheets="@Style.css">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#exit" text="Close">
+               <accelerator>
+                  <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+            </MenuItem>
+          <MenuItem mnemonicParsing="false" text="About" />
+        </items>
+      </MenuButton>
    </children>
 </Pane>

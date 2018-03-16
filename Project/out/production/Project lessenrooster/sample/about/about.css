@@ -3,5 +3,10 @@
 }
 
 .cross{
-    -fx-background-image: url("../images/cross.png");
+    -fx-background-color: #4d59a1;
+    -fx-graphic: url("../images/cross.png");
+}
+
+Label{
+    -fx-text-fill: white;
 }

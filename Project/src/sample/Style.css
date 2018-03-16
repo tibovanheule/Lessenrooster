@@ -20,11 +20,24 @@
     -fx-text-fill: white;
 }
 .menu{
-    -fx-graphic: url("dots.png");
+    -fx-graphic: url("images/dots.png");
     -fx-background-color: #efeeec;
 }
 
 .list{
     -fx-background-color: #efeeec;
 }
-
+.navItem{
+    -fx-background-color: #efeeec;
+    -fx-font-size: 24px;
+    -fx-font-family: Lato;
+    -fx-text-fill: #46529d;
+}
+.dayHolder{
+    -fx-background-color: white;
+}
+.dayLabel{
+    -fx-font-family: Lato;
+    -fx-text-fill: #94a8b7;
+    -fx-font-size: 16px;
+}

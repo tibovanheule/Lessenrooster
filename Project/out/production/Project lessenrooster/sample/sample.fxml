@@ -1,32 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.input.KeyCodeCombination?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-
-<Pane minHeight="600.0" minWidth="1000.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="NEVER" maxWidth="800.0" prefWidth="215.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="665.0" />
+      <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="NEVER" maxWidth="-Infinity" prefWidth="200.0" />
+   </columnConstraints>
    <children>
-      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="leftMenu" >
+      <VBox prefHeight="600.0" prefWidth="200.0" styleClass="leftMenu">
          <children>
-            <Label fx:id="date" layoutX="23.0" layoutY="124.0" styleClass="date" text="28 Sep" />
-            <Label fx:id="day" layoutX="24.0" layoutY="85.0" styleClass="day" text="Monday" />
-            <Label fx:id="time" layoutX="23.0" layoutY="24.0" styleClass="time" text="17:45" />
+            <Label fx:id="time" styleClass="time" text="17:45" />
+            <Label fx:id="day" styleClass="day" text="Monday" />
+            <Label fx:id="date" styleClass="date" text="28 Sep" />
          </children>
-      </Pane>
-      <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" layoutX="889.0" layoutY="17.0" styleClass="menu">
-        <items>
-          <MenuItem onAction="#exit" text="_Close">
-               <accelerator>
-                  <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-               </accelerator>
-            </MenuItem>
-          <MenuItem onAction="#about" text="_About" />
-        </items>
-      </MenuButton>
-      <ListView layoutX="789.0" layoutY="136.0" prefHeight="450.0" prefWidth="200.0" styleClass="list" />
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" GridPane.columnIndex="2">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" styleClass="menu">
+                    <items>
+                        <MenuItem onAction="#maximize" text="_Maximize" />
+                      <MenuItem onAction="#about" text="_About" />
+                      <MenuItem onAction="#exit" text="_Close">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <ListView prefHeight="450.0" prefWidth="200.0" styleClass="list" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox prefHeight="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button styleClass="navItem" text="_Students">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button styleClass="navItem" text="_Teachers" />
+                  <Button styleClass="navItem" text="_Location" />
+               </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </HBox>
+            <GridPane VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="dayHolder">
+                     <children>
+                        <Label styleClass="dayLabel" text="Monday" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="dayHolder" GridPane.columnIndex="1">
+                     <children>
+                        <Label styleClass="dayLabel" text="Tuesday" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="dayHolder" GridPane.columnIndex="2">
+                     <children>
+                        <Label styleClass="dayLabel" text="wendsday" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="dayHolder" GridPane.columnIndex="3">
+                     <children>
+                        <Label styleClass="dayLabel" text="thursday" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="dayHolder" GridPane.columnIndex="4">
+                     <children>
+                        <Label styleClass="dayLabel" text="friday" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
    </children>
-</Pane>
+</GridPane>

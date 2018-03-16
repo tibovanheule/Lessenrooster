@@ -13,14 +13,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
+        //vraag de controller op, zodat we de stage kunnen doorgeven
+        Controller controller = loader.getController();
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        //primaryStage.initStyle(StageStyle.DECORATED);
-
         Scene scene = new Scene(root, 1000, 600);
         scene.getStylesheets().add("sample/Style.css");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        //geef de stage door aan de Controller
+        controller.setStageAndSetupListeners(primaryStage);
         primaryStage.show();
     }
 
@@ -49,7 +51,6 @@ public class Main extends Application {
         }else if ( args.length > 3 ){
             // TODO: 14/03/2018
             // foutboodschap
-            // is dat op stderr??? of met een gui
             //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();
             //stuur code naar methode exit in Exit klasse

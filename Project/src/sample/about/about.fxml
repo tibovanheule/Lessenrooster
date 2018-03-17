@@ -7,18 +7,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="450" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.about.aboutController">
+
+<AnchorPane prefHeight="450.0" prefWidth="450" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.about.AboutController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="164.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/logo.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="411.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="23.0" prefWidth="25.0" styleClass="cross" />
-      <Label layoutX="173.0" layoutY="413.0" text="Copyright Tibo Vanheule" />
-      <Label layoutX="20.0" layoutY="245.0" text="De layout is gebasserd op het werk van Jakob antalik (kleurenpallet enz...)." />
-      <Hyperlink layoutX="20.0" layoutY="263.0" text="https://dribbble.com/shots/2182993-Social-calendar-app" />
-      <Label fx:id="version" layoutX="156.0" layoutY="154.0" text="version" />
-      <Label fx:id="mail" layoutX="105.0" layoutY="216.0" text="e-mail" />
+      <Hyperlink layoutX="17.0" layoutY="252.0" text="https://dribbble.com/shots/2182993-Social-calendar-app" />
+      <Label fx:id="text" layoutX="20.0" layoutY="198.0" text="version" />
+      <AnchorPane prefHeight="157.0" prefWidth="450.0" styleClass="blue">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="297.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="9.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ugent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button contentDisplay="CENTER" ellipsisString="" layoutX="196.0" layoutY="398.0" mnemonicParsing="false" onAction="#close" styleClass="cross" text="Close" textOverrun="CLIP" />
    </children>
 </AnchorPane>

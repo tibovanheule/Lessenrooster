@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.image.Image;
+
+import java.awt.*;
 
 public class Main extends Application {
 
@@ -20,6 +23,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root, 1000, 600);
         scene.getStylesheets().add("sample/Style.css");
+        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("images/icon.png")));
         primaryStage.setScene(scene);
         //geef de stage door aan de Controller
         controller.setStageAndSetupListeners(primaryStage);
@@ -36,8 +40,6 @@ public class Main extends Application {
             // TODO: 14/03/2018
             // Moet geschreven worden naar std out
             // dus vervangen door een writer
-            // system print is voor testing purposes
-            System.out.print("TEST");
             //Programma afsluiten na het uitschrijven van de lijst.
             Platform.exit();
             System.exit(0);
@@ -53,8 +55,7 @@ public class Main extends Application {
             // foutboodschap
             //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();
-            //stuur code naar methode exit in Exit klasse
-            //sluit Java Virtual Machine af met error code 1
+            //sluit Java Virtual Machine af met error code 2
             System.exit(1);
         }
 

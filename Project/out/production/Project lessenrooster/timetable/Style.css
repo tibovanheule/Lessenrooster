@@ -1,3 +1,7 @@
+/*
+Tibo Vanheule
+Main css
+ */
 .body{
     -fx-background-color: #efeeec;
 }
@@ -24,13 +28,18 @@
     -fx-background-color: #efeeec;
 }
 
+.context-menu {
+    -fx-background-color: #efeeec;
+}
+
 .list{
     -fx-background-color: #efeeec;
 }
 .list-cell{
     -fx-background-color: #efeeec;
     -fx-font-family: Lato;
-
+    -fx-font-weight: bold;
+    -fx-text-fill: #b3b0ac;
 }
 .list *:selected{
     -fx-text-fill: #46529d;
@@ -49,4 +58,15 @@
     -fx-font-family: Lato;
     -fx-text-fill: #94a8b7;
     -fx-font-size: 16px;
+}
+.searchText{
+    -fx-background-color: #efeeec;
+    -fx-border-color: #b3b0ac;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+.search{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("images/search.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
 }

@@ -1,8 +1,11 @@
+//tibo Vanheule
 package timetable.db;
+
+
+import java.sql.*;
 
 import timetable.Main;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -23,13 +26,38 @@ public class db {
 
     public static ArrayList<String> getList(String sort){
         ArrayList<String> students = new ArrayList<>();
-        //roep methode connect() op om een verbinding te maken
-        Connection conn = connect();
         // try met resources (automatische close)
-        String sql = "SELECT name FROM ?";
-        try(conn){
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, sort);
+        //men kan geen column names doorgeven aan een preparedStatement
+        //dus wordt het geconcatenate aan de query
+        String selection = "SELECT name FROM " + sort;
+        try(Connection conn = connect()){
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(selection);
+            while (resultSet.next()){
+                students.add(resultSet.getString("name"));
+            }
+
+            resultSet.close();
+            statement.close();
+        }catch (Exception e){
+            //foutmelding weergeven in de lijst.
+            students.add("We can't query the database, please check if the database is running!");
+            System.out.print(e);
+        }
+        return students;
+    }
+
+    public static ArrayList<String> getFilteredList(String filter){
+        ArrayList<String> students = new ArrayList<>();
+        String selection = "SELECT * FROM teacher WHERE name LIKE ?"
+                + " UNION SELECT * FROM students WHERE name LIKE ?"
+                + " UNION SELECT * FROM location WHERE name LIKE ?";
+        //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+        try(Connection conn = connect()){
+            PreparedStatement statement = conn.prepareStatement(selection);
+            statement.setString(1, "%" + filter + "%");
+            statement.setString(2, "%" + filter + "%");
+            statement.setString(3, "%" + filter + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 students.add(resultSet.getString("name"));
@@ -37,7 +65,7 @@ public class db {
             resultSet.close();
             statement.close();
         }catch (Exception e){
-            //fout weergeven in de lijst.
+            //foutmelding weergeven in de lijst.
             students.add("We can't query the database, please check if the database is running!");
             System.out.print(e);
         }

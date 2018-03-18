@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,9 +27,6 @@
             <Label fx:id="day" styleClass="day" text="Monday" />
             <Label fx:id="date" styleClass="date" text="28 Sep" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
          <padding>
             <Insets left="20.0" top="20.0" />
          </padding>
@@ -39,7 +37,7 @@
                <children>
                   <MenuButton fx:id="menu" alignment="BOTTOM_RIGHT" cache="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="menu">
                     <items>
-                        <MenuItem onAction="#maximize" text="_Maximize">
+                        <MenuItem fx:id="windowSizeText" onAction="#maximize" text="_Maximize">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
@@ -63,11 +61,17 @@
                   </MenuButton>
                </children>
             </HBox>
+            <HBox prefWidth="200.0" spacing="5.0">
+               <children>
+                  <TextField fx:id="searchText" prefHeight="26.0" prefWidth="129.0" styleClass="searchText" />
+                  <Button mnemonicParsing="false" onAction="#search" prefHeight="26.0" prefWidth="32.0" styleClass="search" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
             <ListView fx:id="list" prefHeight="450.0" prefWidth="200.0" styleClass="list" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
@@ -76,9 +80,9 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Button styleClass="navItem" text="_Students" />
-                  <Button styleClass="navItem" text="_Teachers" />
-                  <Button styleClass="navItem" text="_Location" />
+                  <Button onAction="#updateList" styleClass="navItem" text="_Students" userData="students" />
+                  <Button onAction="#updateList" styleClass="navItem" text="_Teachers" userData="teacher" />
+                  <Button onAction="#updateList" styleClass="navItem" text="_Location" userData="location" />
                </children>
                <padding>
                   <Insets left="30.0" right="30.0" />
@@ -100,9 +104,6 @@
                      <children>
                         <Label styleClass="dayLabel" text="Monday" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <padding>
                         <Insets top="30.0" />
                      </padding>
@@ -111,9 +112,6 @@
                      <children>
                         <Label styleClass="dayLabel" text="Tuesday" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <padding>
                         <Insets top="30.0" />
                      </padding>
@@ -122,9 +120,6 @@
                      <children>
                         <Label styleClass="dayLabel" text="wendsday" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <padding>
                         <Insets top="30.0" />
                      </padding>
@@ -133,9 +128,6 @@
                      <children>
                         <Label styleClass="dayLabel" text="thursday" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <padding>
                         <Insets top="30.0" />
                      </padding>

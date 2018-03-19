@@ -18,7 +18,7 @@
          </padding>
       </AnchorPane>
       <ComboBox fx:id="defaultStartup" layoutX="48.0" layoutY="187.0" prefWidth="150.0" />
-      <CheckBox fx:id="maximized" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" text="start program maximized?" />
+      <CheckBox fx:id="windowSize" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" text="start program maximized?" />
       <Button layoutX="274.0" layoutY="342.0" mnemonicParsing="false" onAction="#close" text="Close" />
    </children>
 </AnchorPane>

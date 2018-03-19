@@ -12,10 +12,14 @@ public class AboutController {
     private Stage stage;
 
     public void setStageAndSetupListeners(Stage stage){
+        //krijgen van de stage
         this.stage = stage;
     }
 
     public void initialize() throws IOException {
+
+        //inladen configuratie bestand
+        //properties variable kan lokaal zijn want wordt enkel hier gebruikt
         Properties properties = new Properties();
         properties.load(Main.class.getResourceAsStream("lessenrooster.properties"));
         //bewust alle tekst in 1 veld gestoken
@@ -32,6 +36,7 @@ public class AboutController {
     }
 
     public void close(){
+        //afsluiten stage
         stage.close();
     }
 }

@@ -21,7 +21,7 @@ public class AboutController {
         //inladen configuratie bestand
         //properties variable kan lokaal zijn want wordt enkel hier gebruikt
         Properties properties = new Properties();
-        properties.load(Main.class.getResourceAsStream("lessenrooster.properties"));
+        properties.load(Main.class.getResourceAsStream("schedule.properties"));
         //bewust alle tekst in 1 veld gestoken
         //kleinere fxml en tekst staat dan ook altijd mooi onder elkaar, dankzij de new-line
         text.setText ("Version: " + properties.getProperty("program.version")+
@@ -31,7 +31,9 @@ public class AboutController {
                 "\nWebsite: " + properties.getProperty("programmer.site") +
                 "\nProjects github: " + properties.getProperty("program.github") +
                 "\nPrivate repo, send an email with github username for access!" +
-                "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn")
+                "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn") +
+                "\nMysql Connection warning. The account has very little privileges and" +
+                "\nit can only connect to one DB. An audit log file is also in place :)"
         );
     }
 

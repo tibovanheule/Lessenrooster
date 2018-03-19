@@ -1,10 +1,10 @@
+//Tibo Vanheule
 package timetable.settings;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import timetable.Main;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -25,7 +25,7 @@ public class SettingsController {
     public void initialize() throws IOException {
 
         //Laad het configuratie bestand in
-        properties.load(Main.class.getResourceAsStream("lessenrooster.properties"));
+        properties.load(Main.class.getResourceAsStream("schedule.properties"));
 
         //Initialisatie van de velden
         //Toeveogen elementen voor keuze van de standaard lijst
@@ -68,7 +68,7 @@ public class SettingsController {
     public void close(){
         //Probeer property's op te slaan in nieuw bestand
         try{
-            properties.store(new FileOutputStream("lessenrooster.properties"), "Tibo Vanheule");
+            properties.store(new FileOutputStream("schedule.properties"), "Tibo Vanheule");
         }catch (IOException e){
             System.out.println(e);
         }

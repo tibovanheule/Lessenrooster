@@ -1,0 +1,37 @@
+//Tibo Vanheule
+package timetable.db;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import javafx.scene.control.Alert;
+import timetable.Main;
+
+import java.sql.Connection;
+import java.util.Properties;
+
+public class Mysql implements DbConnect{
+    /*
+    Ik had al een Mysql-server draaiende, ik vond het dan het dan ook eens leuk om een Mysql-implementatie te maken.
+    Deze is opgevuld met dezelfde data als de sqlite db(aan de hand van een aangepaste lectures.sql).
+    De sqlite en de mysql staan los van elkaar en worden niet gesynchroniseerd met elkaar.
+    De mysql verbinding gebreurd onder een acc met maar één privelege (SELECT) op één db (lessenrooster).
+    Er zijn ook maar 2 simultane verbindingen mogelijk. ( mss een belangrijk gegeven bij het testen :) )
+     */
+    @Override
+    public Connection connect() {
+        Connection conn = null;
+        Properties properties = new Properties();
+        try{
+            //properties in laden voor DB url op te halen
+            properties.load(Main.class.getResourceAsStream("schedule.properties"));
+            //open een verbinding
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser(properties.getProperty("DB.mysql.user"));
+            dataSource.setPassword(properties.getProperty("DB.mysql.password"));
+            dataSource.setURL(properties.getProperty("DB.mysql.url"));
+            conn = dataSource.getConnection();
+        }catch (Exception e){
+            System.out.print(e);
+        }
+        return conn;
+    }
+}

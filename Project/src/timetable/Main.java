@@ -18,7 +18,7 @@ public class Main extends Application {
 
         //laad configuratie bestand in
         Properties properties = new Properties();
-        properties.load(Main.class.getResourceAsStream("lessenrooster.properties"));
+        properties.load(Main.class.getResourceAsStream("schedule.properties"));
 
         //laad het fxml bestand in
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("main.fxml"));

@@ -1,6 +1,9 @@
 //tibo Vanheule
 package timetable.db;
 
+import timetable.Objects.Lecture;
+import timetable.Objects.Item;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +17,8 @@ public class Db {
         this.system = system;
     }
 
-    public ArrayList<String> getList(String sort){
-        ArrayList<String> students = new ArrayList<>();
+    public ArrayList<Item> getList(String sort){
+        ArrayList<Item> students = new ArrayList<>();
         // try met resources (automatische close)
         //men kan geen column names doorgeven aan een preparedStatement
         //dus wordt het geconcatenate aan de query
@@ -24,41 +27,62 @@ public class Db {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(selection);
             while (resultSet.next()){
-                students.add(resultSet.getString("name"));
+                students.add(new Item(sort ,resultSet.getString("name")));
             }
 
             resultSet.close();
             statement.close();
         }catch (Exception e){
             //foutmelding weergeven in de lijst.
-            students.add("We can't query the database, please check if the database is running!");
             System.out.print(e);
         }
         return students;
     }
 
-    public ArrayList<String> getFilteredList(String filter){
-        ArrayList<String> students = new ArrayList<>();
-        String selection = "SELECT * FROM teacher WHERE name LIKE ?"
-                + " UNION SELECT * FROM students WHERE name LIKE ?"
-                + " UNION SELECT * FROM location WHERE name LIKE ?";
+    public ArrayList<Item> getFilteredList(String filter){
+        ArrayList<Item> items = new ArrayList<>();
+        String[] tables = {"teacher","students","location"};
+        for (String table:tables) {
+            String selection = "SELECT * FROM "+ table +" WHERE name LIKE ?";
+            //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+            try (Connection conn = system.connect()) {
+                PreparedStatement statement = conn.prepareStatement(selection);
+                statement.setString(1, "%" + filter + "%");
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    items.add(new Item(table, resultSet.getString("name")));
+                }
+                resultSet.close();
+                statement.close();
+            } catch (Exception e) {
+                System.out.print(e);
+            }
+        }
+        return items;
+    }
+
+    public ArrayList<Lecture> getRooster(String sort, String filter){
+        ArrayList<Lecture> lectures = new ArrayList<>();
+        String selection = "SELECT * FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE "+sort+".name = ? ";
+        System.out.println(selection);
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
         try(Connection conn = system.connect()){
             PreparedStatement statement = conn.prepareStatement(selection);
-            statement.setString(1, "%" + filter + "%");
-            statement.setString(2, "%" + filter + "%");
-            statement.setString(3, "%" + filter + "%");
+            statement.setString(1, filter );
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-                students.add(resultSet.getString("name"));
+                Lecture test = new Lecture(resultSet.getString("name"), resultSet.getString("name"), resultSet.getString("name"),
+                        resultSet.getString("course"), resultSet.getInt("day"),resultSet.getInt("first_block"), resultSet.getInt("duration"));
+
+                lectures.add(test);
             }
             resultSet.close();
             statement.close();
         }catch (Exception e){
-            //foutmelding weergeven in de lijst.
-            students.add("We can't query the database, please check if the database is running!");
             System.out.print(e);
         }
-        return students;
+        return lectures;
     }
+
 }

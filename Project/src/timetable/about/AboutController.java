@@ -3,6 +3,7 @@ package timetable.about;
 
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import timetable.Config;
 import timetable.Main;
 import java.io.IOException;
 import java.util.Properties;
@@ -16,12 +17,12 @@ public class AboutController {
         this.stage = stage;
     }
 
-    public void initialize() throws IOException {
+    public void initialize(){
 
         //inladen configuratie bestand
-        //properties variable kan lokaal zijn want wordt enkel hier gebruikt
-        Properties properties = new Properties();
-        properties.load(Main.class.getResourceAsStream("schedule.properties"));
+        //Config variable kan lokaal zijn want wordt enkel hier gebruikt
+        Config config = new Config();
+        Properties properties =  config.getproperties();
         //bewust alle tekst in 1 veld gestoken
         //kleinere fxml en tekst staat dan ook altijd mooi onder elkaar, dankzij de new-line
         text.setText ("Version: " + properties.getProperty("program.version")+

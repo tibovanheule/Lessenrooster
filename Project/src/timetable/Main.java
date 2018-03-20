@@ -9,16 +9,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
+
 import java.util.Properties;
 
 public class Main extends Application {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         //laad configuratie bestand in
-        Properties properties = new Properties();
-        properties.load(Main.class.getResourceAsStream("schedule.properties"));
+        Config config = new Config();
+        Properties properties =  config.getproperties();
 
         //laad het fxml bestand in
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("main.fxml"));
@@ -31,11 +35,21 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root, 1000, 600);
 
+        //Volgende twee functie zorgen ervoor dat het programma verplaatsbaar is zonder boord
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+        root.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffset);
+            primaryStage.setY(event.getScreenY() - yOffset);
+        });
+
         //bind de css bestand eraan
         scene.getStylesheets().add("timetable/Style.css");
 
         //geef de stage een icon
-        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("images/icon.png")));
+        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("Resouces/images/icon.png")));
         primaryStage.setScene(scene);
 
         //titel komt niet in boord van het programma sinds het een undecorated window is ,

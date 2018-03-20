@@ -3,6 +3,7 @@ package timetable.db;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import javafx.scene.control.Alert;
+import timetable.Config;
 import timetable.Main;
 
 import java.sql.Connection;
@@ -19,10 +20,10 @@ public class Mysql implements DbConnect{
     @Override
     public Connection connect() {
         Connection conn = null;
-        Properties properties = new Properties();
+        //op halen config bestand
+        Config config = new Config();
+        Properties properties =  config.getproperties();
         try{
-            //properties in laden voor DB url op te halen
-            properties.load(Main.class.getResourceAsStream("schedule.properties"));
             //open een verbinding
             MysqlDataSource dataSource = new MysqlDataSource();
             dataSource.setUser(properties.getProperty("DB.mysql.user"));

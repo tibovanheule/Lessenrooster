@@ -2,6 +2,10 @@
 Tibo Vanheule
 Main css
  */
+@font-face {
+    font-family: 'lato';
+    src: url('Resouces/Lato-Regular.ttf');
+}
 .body{
     -fx-background-color: #efeeec;
 }
@@ -9,22 +13,22 @@ Main css
     -fx-background-color: #46529d;
 }
 .day{
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-font-size: 32px;
     -fx-text-fill: #8d93be;
 }
 .date{
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-font-size: 32px;
     -fx-text-fill: #8d93be;
 }
 .time{
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-font-size: 48px;
     -fx-text-fill: white;
 }
 .menu{
-    -fx-graphic: url("images/dots.png");
+    -fx-graphic: url("Resouces/images/dots.png");
     -fx-background-color: #efeeec;
 }
 
@@ -37,7 +41,7 @@ Main css
 }
 .list-cell{
     -fx-background-color: #efeeec;
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-font-weight: bold;
     -fx-text-fill: #b3b0ac;
 }
@@ -48,14 +52,14 @@ Main css
 .navItem{
     -fx-background-color: #efeeec;
     -fx-font-size: 24px;
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-text-fill: #46529d;
 }
 .dayHolder{
     -fx-background-color: white;
 }
 .dayLabel{
-    -fx-font-family: Lato;
+    -fx-font-family: lato;
     -fx-text-fill: #94a8b7;
     -fx-font-size: 16px;
 }
@@ -66,7 +70,16 @@ Main css
 }
 .search{
     -fx-background-color: #efeeec;
-    -fx-background-image: url("images/search.png");
+    -fx-background-image: url("Resouces/images/search.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
+}
+.next{
+    -fx-text-fill: #8d93be;
+    -fx-font-family: lato;
+}
+.nextItem{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: lato;
 }

@@ -6,8 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.image.ImageView;
+import timetable.Objects.Item;
+import timetable.Objects.Lecture;
 import timetable.about.AboutController;
 import timetable.db.Db;
 import timetable.db.Mysql;
@@ -16,6 +23,7 @@ import timetable.settings.SettingsController;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class Controller {
@@ -26,50 +34,72 @@ public class Controller {
     public ListView<String> list;
     public TextField searchText;
     public MenuItem windowSizeText;
+    public ListView<String> monday;
+    public ImageView dbLogo;
     private Stage stage;
     private String standardSchedule;
     private Db database;
+    private ArrayList<Item> listElements = new ArrayList<>();
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+
 
 
     public void setStageAndSetupListeners(Stage controller){
         this.stage = controller;
     }
 
-    public void initialize() throws IOException{
-        Properties properties = new Properties();
-        properties.load(getClass().getResourceAsStream("schedule.properties"));
+    public void initialize(){
+        Config config = new Config();
+        Properties properties =  config.getproperties();
 
-        //als de property gelijk is aan mysql gebruik dan mysql
-        if (properties.getProperty("DB.use").equals("Mysql")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Database");
-            alert.setHeaderText("Database info");
-            alert.setContentText("You are now using the Mysql database");
-            alert.showAndWait();
+        //als de property true is gebruik dan mysql
+        if (Boolean.parseBoolean(properties.getProperty("DB.use"))){
             database = new Db(new Mysql());
+            Image image = new Image(getClass().getResourceAsStream("Resouces/images/mysql.png"));
+            dbLogo.setImage(image);
         }else {
             //in elk ander geval, valt het terug op Sqlite
             database = new Db(new Sqlite());
+            Image image = new Image(getClass().getResourceAsStream("Resouces/images/sqlite.png"));
+            dbLogo.setImage(image);
         }
 
 
         //sla op in een veld zodat het in het verdere bestand gebruikt kan worden
         standardSchedule = properties.getProperty("standard.schedule");
-        list.getItems().addAll(database.getList(standardSchedule));
+
+
+
         // TODO: 14/03/2018
         //zet deze tijden  om in in oproepbare methode
         //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
         //de huidige datum
         LocalDateTime now = LocalDateTime.now();
+
+
         DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
+
         //formatteer de datum (dag)
         DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
+        DateTimeFormatter dayOfweek = DateTimeFormatter.ofPattern("E");
         //geef nieuwe waarde aan de label met id:day
         //formateer datum
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
+
+
+
+
         date.setText(now.format(formatDate));
         day.setText(now.format(formatDay));
         time.setText(now.format(formatTime));
+
+
+        listElements.addAll(database.getList(standardSchedule));
+        for (Item item :listElements  ) {
+            list.getItems().add(item.getName());
+        }
 
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster());
         searchText.textProperty().addListener(o -> search());
@@ -77,15 +107,28 @@ public class Controller {
 
         
     }
+
+
+
+
+
     public void search(){
         //als textfield leeg is keer dan terug naar de standaard lijst
         if (searchText.getText().isEmpty()){
             list.getItems().clear();
-            list.getItems().addAll(database.getList(standardSchedule));
+            listElements.clear();
+            listElements.addAll(database.getList(standardSchedule));
+            for (Item item :listElements  ) {
+                list.getItems().add(item.getName());
+            }
         } else{
             // zo niet haal de gefilterde lijst op
             list.getItems().clear();
-            list.getItems().addAll(database.getFilteredList(searchText.getText()));
+            listElements.clear();
+            listElements.addAll(database.getFilteredList(searchText.getText()));
+            for (Item item :listElements  ) {
+                list.getItems().add(item.getName());
+            }
         }
 
     }
@@ -97,8 +140,18 @@ public class Controller {
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
         if (list.getSelectionModel().getSelectedItem() != null){
-            // onderste lijn voor debugging
-            System.out.println(list.getSelectionModel().getSelectedItem());
+            Item selected = null;
+            for (Item item:listElements){
+                if (item.getName() == list.getSelectionModel().getSelectedItem()){
+                    selected = item;
+                }
+            }
+            monday.getItems().clear();
+            for(Lecture lecture:database.getRooster(selected.getSort(),selected.getName())){
+                if (lecture.getDay()==1){
+                    monday.getItems().add(lecture.getCourse());
+                }
+            }
         }
         
     }
@@ -121,7 +174,7 @@ public class Controller {
             controller.setStageAndSetupListeners(stage);
             stage.show();
         } catch (Exception e) {
-            list.getItems().add(e.toString());
+            //list.getItems().add(e.toString());
             e.printStackTrace();
         }
     }
@@ -150,7 +203,11 @@ public class Controller {
         //listview leeg maken voor nieuwe items
         list.getItems().clear();
         //toevoegen van nieuwe elementen
-        list.getItems().addAll(database.getList("students"));
+        listElements.clear();
+        listElements.addAll(database.getList("students"));
+        for (Item item :listElements  ) {
+            list.getItems().add(item.getName());
+        }
 
     }
 

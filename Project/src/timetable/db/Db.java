@@ -1,8 +1,8 @@
 //tibo Vanheule
 package timetable.db;
 
-import timetable.Objects.Lecture;
-import timetable.Objects.Item;
+import timetable.objects.Lecture;
+import timetable.objects.Item;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +19,7 @@ public class Db {
 
     public ArrayList<Item> getList(String sort){
         ArrayList<Item> students = new ArrayList<>();
-        // try met resources (automatische close)
+        // try met timetable.resources (automatische close)
         //men kan geen column names doorgeven aan een preparedStatement
         //dus wordt het geconcatenate aan de query
         String selection = "SELECT name FROM " + sort;

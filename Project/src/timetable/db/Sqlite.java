@@ -2,8 +2,8 @@ package timetable.db;
 
 
 import org.sqlite.SQLiteDataSource;
-import timetable.Config;
-import timetable.Main;
+import timetable.config.Config;
+
 import java.sql.*;
 import java.util.Properties;
 

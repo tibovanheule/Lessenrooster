@@ -13,13 +13,16 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.ImageView;
-import timetable.Objects.Item;
-import timetable.Objects.Lecture;
+import timetable.objects.Item;
+import timetable.objects.Lecture;
 import timetable.about.AboutController;
+import timetable.config.Config;
 import timetable.db.Db;
 import timetable.db.Mysql;
 import timetable.db.Sqlite;
 import timetable.settings.SettingsController;
+import timetable.weather.Weather;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -53,16 +56,16 @@ public class Controller {
     public void initialize(){
         Config config = new Config();
         Properties properties =  config.getproperties();
-
+        Weather weather = new Weather(); weather.getWeather();
         //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))){
             database = new Db(new Mysql());
-            Image image = new Image(getClass().getResourceAsStream("Resouces/images/mysql.png"));
+            Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
         }else {
             //in elk ander geval, valt het terug op Sqlite
             database = new Db(new Sqlite());
-            Image image = new Image(getClass().getResourceAsStream("Resouces/images/sqlite.png"));
+            Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
             dbLogo.setImage(image);
         }
 

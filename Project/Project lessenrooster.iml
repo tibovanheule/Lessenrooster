@@ -9,5 +9,6 @@
     <orderEntry type="library" exported="" name="sqlite-jdbc-3.21.0 (1)" level="project" />
     <orderEntry type="library" exported="" name="mysql-connector-java-5.1.46" level="project" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="json-20180130" level="project" />
   </component>
 </module>

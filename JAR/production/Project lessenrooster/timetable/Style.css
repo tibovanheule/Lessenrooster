@@ -4,7 +4,7 @@ Main css
  */
 @font-face {
     font-family: 'lato';
-    src: url('Resouces/Lato-Regular.ttf');
+    src: url('resources/Lato-Regular.ttf');
 }
 .body{
     -fx-background-color: #efeeec;
@@ -28,7 +28,7 @@ Main css
     -fx-text-fill: white;
 }
 .menu{
-    -fx-graphic: url("Resouces/images/dots.png");
+    -fx-graphic: url("resources/images/dots.png");
     -fx-background-color: #efeeec;
 }
 
@@ -70,7 +70,7 @@ Main css
 }
 .search{
     -fx-background-color: #efeeec;
-    -fx-background-image: url("Resouces/images/search.png");
+    -fx-background-image: url("resources/images/search.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
 }

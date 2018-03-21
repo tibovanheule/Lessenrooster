@@ -3,9 +3,8 @@ package timetable.about;
 
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import timetable.Config;
-import timetable.Main;
-import java.io.IOException;
+import timetable.config.Config;
+
 import java.util.Properties;
 
 public class AboutController {

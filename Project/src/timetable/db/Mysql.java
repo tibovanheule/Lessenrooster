@@ -2,9 +2,7 @@
 package timetable.db;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import javafx.scene.control.Alert;
-import timetable.Config;
-import timetable.Main;
+import timetable.config.Config;
 
 import java.sql.Connection;
 import java.util.Properties;

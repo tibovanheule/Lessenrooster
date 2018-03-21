@@ -4,9 +4,8 @@ package timetable.settings;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import timetable.Config;
-import timetable.Main;
-import java.io.FileOutputStream;
+import timetable.config.Config;
+
 import java.io.IOException;
 import java.util.Properties;
 

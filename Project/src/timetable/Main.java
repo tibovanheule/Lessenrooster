@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
+import timetable.config.Config;
 
 import java.util.Properties;
 
@@ -49,7 +50,7 @@ public class Main extends Application {
         scene.getStylesheets().add("timetable/Style.css");
 
         //geef de stage een icon
-        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("Resouces/images/icon.png")));
+        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
         primaryStage.setScene(scene);
 
         //titel komt niet in boord van het programma sinds het een undecorated window is ,

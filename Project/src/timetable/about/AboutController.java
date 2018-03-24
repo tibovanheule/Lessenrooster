@@ -1,8 +1,11 @@
 //Tibo Vanheule
 package timetable.about;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import javafx.stage.WindowEvent;
 import timetable.config.Config;
 
 import java.util.Properties;
@@ -35,6 +38,7 @@ public class AboutController {
                 "\nMysql Connection warning. The account has very little privileges and" +
                 "\nit can only connect to one DB. An audit log file is also in place :)"
         );
+
     }
 
     public void close(){

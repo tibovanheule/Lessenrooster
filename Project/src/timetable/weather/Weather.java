@@ -37,6 +37,8 @@ public class Weather {
         String jsonString = getData();
         JSONObject jsonObject = new JSONObject(jsonString);
         JSONObject weather = jsonObject.getJSONObject("main");
+        System.out.println(weather.get("temp"));
+        System.out.println();
         System.out.println(weather);
         //System.out.println(newJSON.toString());
         //jsonObject = new JSONObject(newJSON.toString());

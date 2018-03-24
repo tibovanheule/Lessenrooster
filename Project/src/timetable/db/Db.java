@@ -65,7 +65,6 @@ public class Db {
         ArrayList<Lecture> lectures = new ArrayList<>();
         String selection = "SELECT * FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
                 "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE "+sort+".name = ? ";
-        System.out.println(selection);
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
         try(Connection conn = system.connect()){
             PreparedStatement statement = conn.prepareStatement(selection);

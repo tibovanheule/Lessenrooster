@@ -3,14 +3,22 @@ package timetable;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 import timetable.config.Config;
 
+import javax.imageio.ImageIO;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class Main extends Application {
@@ -87,6 +95,15 @@ public class Main extends Application {
         }else if (args.length == 3 ){
             // TODO: 14/03/2018
             // nemen van een snapshot ???
+            //WritableImage image = root.snapshot(new SnapshotParameters(), null);
+
+            //File file = new File("chart.png");
+
+            //try {
+                //ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+            //} catch (IOException e) {
+                //System.out.println(e);
+            //}
         }else if ( args.length > 3 ){
             // TODO: 14/03/2018
             // foutboodschap
@@ -98,4 +115,5 @@ public class Main extends Application {
 
 
     }
+
 }

@@ -44,17 +44,6 @@ public class SettingsController {
         windowSize.selectedProperty().addListener(o -> startMaximized());
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         mysql.selectedProperty().addListener(o -> mysql());
-
-        //Probeersel
-        focus();
-    }
-    private void focus(){
-        try{
-            stage.focusedProperty().addListener(o -> close());
-        }
-        catch (Exception e){
-            System.out.print(e);
-        }
     }
 
     private void mysql(){

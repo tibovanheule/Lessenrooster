@@ -11,6 +11,7 @@ Main css
 }
 .leftMenu{
     -fx-background-color: #46529d;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
 }
 .day{
     -fx-font-family: lato;
@@ -27,19 +28,11 @@ Main css
     -fx-font-size: 48px;
     -fx-text-fill: white;
 }
-.menu{
-    -fx-graphic: url("resources/images/dots.png");
-    -fx-background-color: #efeeec;
-}
-
-.context-menu {
-    -fx-background-color: #efeeec;
-}
 
 .list{
     -fx-background-color: #efeeec;
 }
-.list-cell{
+.list list-cell{
     -fx-background-color: #efeeec;
     -fx-font-family: lato;
     -fx-font-weight: bold;
@@ -82,4 +75,44 @@ Main css
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-family: lato;
+}
+.drawer{
+    -fx-background-color: #efeeec;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.drawerOpen{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/drawerOpen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
+}
+.windowSize{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/windowSize.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
+}
+.settings{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
+}
+.close{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/close.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
+}
+
+.drawerClose{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/drawerClose.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
 }

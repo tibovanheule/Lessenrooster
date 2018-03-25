@@ -21,6 +21,7 @@ public class Weather {
         this.windDegree = windDegree;
         this.windSpeed = windSpeed;
         this.connection = connection;
+        this.icon = icon;
     }
 
     public Weather(Boolean connection){

@@ -41,7 +41,7 @@ public class Main extends Application {
         Controller controller = loader.getController();
 
         //verander de stijl van de stage (zonder boord)
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root, 1000, 600);
 
         //Volgende twee functie zorgen ervoor dat het programma verplaatsbaar is zonder boord

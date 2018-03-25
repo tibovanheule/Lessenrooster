@@ -1,29 +1,34 @@
 //Tibo vanheule
 package timetable;
 
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import timetable.objects.Item;
-import timetable.objects.Lecture;
+import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
 import timetable.db.Db;
 import timetable.db.Mysql;
 import timetable.db.Sqlite;
+import timetable.objects.Item;
+import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.weather.WeatherScraper;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,46 +42,40 @@ public class Controller {
     public Label date;
     public Label time;
     public ImageView weatherIcon;
-    public MenuButton menu;
     public ListView<String> list;
     public TextField searchText;
-    public MenuItem windowSizeText;
     public ListView<String> monday;
     public ImageView dbLogo;
     public Button students;
     public Button teachers;
     public Button loc;
+    public AnchorPane draw;
     private Stage stage;
     private String standardSchedule;
     private Db database;
     private ArrayList<Item> listElements = new ArrayList<>();
 
-    public void setStageAndSetupListeners(Stage controller){
+    public void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
     }
 
-    public void initialize(){
+    public void initialize() {
         Config config = new Config();
-        Properties properties =  config.getproperties();
+        Properties properties = config.getproperties();
 
         //sla op in een veld zodat het in het verdere bestand gebruikt kan worden
         standardSchedule = properties.getProperty("standard.schedule");
 
         //als de property true is gebruik dan mysql
-        if (Boolean.parseBoolean(properties.getProperty("DB.use"))){
+        if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             database = new Db(new Mysql());
             Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
-        }else {
+        } else {
             //in elk ander geval, valt het terug op Sqlite
             database = new Db(new Sqlite());
             Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
             dbLogo.setImage(image);
-        }
-
-        //De tekst in het menu item juist zetten aan de hand van de properties
-        if(Boolean.parseBoolean(properties.getProperty("startMaximized"))){
-            windowSizeText.setText("_Minimize");
         }
 
         Timer timer = new Timer();
@@ -103,7 +102,7 @@ public class Controller {
         }, 0, 1000);
 
         listElements.addAll(database.getList(standardSchedule));
-        for (Item item :listElements  ) {
+        for (Item item : listElements) {
             list.getItems().add(item.getName());
         }
 
@@ -112,53 +111,59 @@ public class Controller {
         students.setOnAction(o -> updateList(students.getUserData().toString()));
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
+        draw.focusTraversableProperty().addListener(o->drawerAction());
 
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
 
         if (weather.getConnection()){
-            //Image
-            //weatherIcon.setImage();
+            try {
+                Image image = new Image(getClass().getResourceAsStream("resources/images/weather/"+weather.getIcon()+".png"));
+                weatherIcon.setImage(image);
+            }catch (Exception e){
+
+            }
+
         }
 
     }
 
-    public void search(){
+    public void search() {
         //als textfield leeg is keer dan terug naar de standaard lijst
-        if (searchText.getText().isEmpty()){
+        if (searchText.getText().isEmpty()) {
             list.getItems().clear();
             listElements.clear();
             listElements.addAll(database.getList(standardSchedule));
-            for (Item item :listElements  ) {
+            for (Item item : listElements) {
                 list.getItems().add(item.getName());
             }
-        } else{
+        } else {
             // zo niet haal de gefilterde lijst op
             list.getItems().clear();
             listElements.clear();
             listElements.addAll(database.getFilteredList(searchText.getText()));
-            for (Item item :listElements  ) {
+            for (Item item : listElements) {
                 list.getItems().add(item.getName());
             }
         }
     }
 
-    public void getRooster(){
+    public void getRooster() {
         // TODO: 18/03/2018  
-        
+
         //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
-        if (list.getSelectionModel().getSelectedItem() != null){
+        if (list.getSelectionModel().getSelectedItem() != null) {
             Item selected = null;
-            for (Item item:listElements){
-                if (item.getName().equals(list.getSelectionModel().getSelectedItem())){
+            for (Item item : listElements) {
+                if (item.getName().equals(list.getSelectionModel().getSelectedItem())) {
                     selected = item;
                 }
             }
             monday.getItems().clear();
-            for(Lecture lecture:database.getRooster(selected.getSort(),selected.getName())){
-                if (lecture.getDay()==1){
+            for (Lecture lecture : database.getRooster(selected.getSort(), selected.getName())) {
+                if (lecture.getDay() == 1) {
                     monday.getItems().add(lecture.getCourse());
                 }
             }
@@ -182,7 +187,7 @@ public class Controller {
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
-            stage.focusedProperty().addListener(o->controller.close());
+            stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             //list.getItems().add(e.toString());
             e.printStackTrace();
@@ -201,13 +206,13 @@ public class Controller {
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
-            stage.focusedProperty().addListener(o->controller.close());
+            stage.focusedProperty().addListener(o -> controller.close());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateList(String whatList){
+    public void updateList(String whatList) {
 
         //textbox leeg maken
         searchText.setText("");
@@ -216,24 +221,39 @@ public class Controller {
         //toevoegen van nieuwe elementen
         listElements.clear();
         listElements.addAll(database.getList(whatList));
-        for (Item item :listElements  ) {
+        for (Item item : listElements) {
             list.getItems().add(item.getName());
         }
     }
 
     public void maximize() {
         //is de stage gemaximaliseerd?
-        if (stage.isMaximized()){
-            //Zet menuItem tekst naar maximize
-            // _ voor de mnemonic parsing
-            windowSizeText.setText("_Maximize");
+        if (stage.isMaximized()) {
             //minimaliseer
             stage.setMaximized(false);
-        }else{
-            //Zet menuItem tekst naar minimize
-            windowSizeText.setText("_Minimize");
+        } else {
             //maximaliseer
             stage.setMaximized(true);
+        }
+    }
+
+    public void drawerAction() {
+        if (draw.isVisible()) {
+            draw.getStyleClass().remove("drawer");
+            FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
+            ft.setFromValue(1.0);
+            ft.setToValue(0.0);
+            ft.setCycleCount(1);
+            ft.play();
+            ft.setOnFinished(o -> draw.setVisible(false));
+        } else {
+            draw.setVisible(true);
+            FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
+            ft.setFromValue(0.0);
+            ft.setToValue(1.0);
+            ft.setCycleCount(1);
+            ft.play();
+            draw.getStyleClass().add("drawer");
         }
     }
 }

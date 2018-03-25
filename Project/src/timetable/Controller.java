@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
@@ -23,7 +24,6 @@ import timetable.db.Sqlite;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.weather.WeatherScraper;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -43,16 +43,13 @@ public class Controller {
     public MenuItem windowSizeText;
     public ListView<String> monday;
     public ImageView dbLogo;
-
+    public Button students;
+    public Button teachers;
+    public Button loc;
     private Stage stage;
     private String standardSchedule;
     private Db database;
     private ArrayList<Item> listElements = new ArrayList<>();
-    private double xOffset = 0;
-    private double yOffset = 0;
-
-
-
 
     public void setStageAndSetupListeners(Stage controller){
         this.stage = controller;
@@ -112,6 +109,9 @@ public class Controller {
 
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster());
         searchText.textProperty().addListener(o -> search());
+        students.setOnAction(o -> updateList(students.getUserData().toString()));
+        teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
+        loc.setOnAction(o -> updateList(loc.getUserData().toString()));
 
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
@@ -122,10 +122,6 @@ public class Controller {
         }
 
     }
-
-
-
-
 
     public void search(){
         //als textfield leeg is keer dan terug naar de standaard lijst
@@ -145,7 +141,6 @@ public class Controller {
                 list.getItems().add(item.getName());
             }
         }
-
     }
 
     public void getRooster(){
@@ -157,7 +152,7 @@ public class Controller {
         if (list.getSelectionModel().getSelectedItem() != null){
             Item selected = null;
             for (Item item:listElements){
-                if (item.getName() == list.getSelectionModel().getSelectedItem()){
+                if (item.getName().equals(list.getSelectionModel().getSelectedItem())){
                     selected = item;
                 }
             }
@@ -168,7 +163,6 @@ public class Controller {
                 }
             }
         }
-        
     }
 
     public void exit() {
@@ -213,7 +207,7 @@ public class Controller {
         }
     }
 
-    public void updateList(){
+    public void updateList(String whatList){
 
         //textbox leeg maken
         searchText.setText("");
@@ -221,11 +215,10 @@ public class Controller {
         list.getItems().clear();
         //toevoegen van nieuwe elementen
         listElements.clear();
-        listElements.addAll(database.getList("students"));
+        listElements.addAll(database.getList(whatList));
         for (Item item :listElements  ) {
             list.getItems().add(item.getName());
         }
-
     }
 
     public void maximize() {

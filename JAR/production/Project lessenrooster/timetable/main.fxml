@@ -29,7 +29,7 @@
             <Label fx:id="date" styleClass="date" text="28 Sep" />
             <ImageView fx:id="weatherIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
-                  <Insets top="100.0" />
+                  <Insets />
                </VBox.margin>
             </ImageView>
          </children>
@@ -91,9 +91,9 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Button onAction="#updateList" styleClass="navItem" text="_Students" userData="students" />
-                  <Button onAction="#updateList" styleClass="navItem" text="_Teachers" userData="teacher" />
-                  <Button onAction="#updateList" styleClass="navItem" text="_Location" userData="location" />
+                  <Button fx:id="students" styleClass="navItem" text="_Students" userData="students" />
+                  <Button fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher" />
+                  <Button fx:id="loc" styleClass="navItem" text="_Location" userData="location" />
                </children>
                <padding>
                   <Insets left="30.0" right="30.0" />

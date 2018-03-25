@@ -1,3 +1,4 @@
+//Tibo Vanheule
 package timetable.config;
 
 import java.io.FileOutputStream;

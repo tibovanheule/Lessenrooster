@@ -20,9 +20,10 @@ import timetable.config.Config;
 import timetable.db.Db;
 import timetable.db.Mysql;
 import timetable.db.Sqlite;
+import timetable.objects.Weather;
 import timetable.settings.SettingsController;
+import timetable.weather.WeatherScraper;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,12 +36,14 @@ public class Controller {
     public Label day;
     public Label date;
     public Label time;
+    public ImageView weatherIcon;
     public MenuButton menu;
     public ListView<String> list;
     public TextField searchText;
     public MenuItem windowSizeText;
     public ListView<String> monday;
     public ImageView dbLogo;
+
     private Stage stage;
     private String standardSchedule;
     private Db database;
@@ -58,8 +61,9 @@ public class Controller {
     public void initialize(){
         Config config = new Config();
         Properties properties =  config.getproperties();
-        //Weather weather = new Weather();
-        //weather.getWeather();
+
+        //sla op in een veld zodat het in het verdere bestand gebruikt kan worden
+        standardSchedule = properties.getProperty("standard.schedule");
 
         //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))){
@@ -78,14 +82,7 @@ public class Controller {
             windowSizeText.setText("_Minimize");
         }
 
-
-        //sla op in een veld zodat het in het verdere bestand gebruikt kan worden
-        standardSchedule = properties.getProperty("standard.schedule");
-
-
-
-        Timer timer;
-        timer = new Timer();
+        Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -96,18 +93,9 @@ public class Controller {
                         //de huidige datum
                         LocalDateTime now = LocalDateTime.now();
 
-
                         DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
-
-                        //formatteer de datum (dag)
                         DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
-                        DateTimeFormatter dayOfweek = DateTimeFormatter.ofPattern("E");
-                        //geef nieuwe waarde aan de label met id:day
-                        //formateer datum
                         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
-
-
-
 
                         date.setText(now.format(formatDate));
                         day.setText(now.format(formatDay));
@@ -116,29 +104,6 @@ public class Controller {
                 });
             }
         }, 0, 1000);
-        // TODO: 14/03/2018
-        //zet deze tijden  om in in oproepbare methode
-        //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-        //de huidige datum
-        LocalDateTime now = LocalDateTime.now();
-
-
-        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
-
-        //formatteer de datum (dag)
-        DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
-        DateTimeFormatter dayOfweek = DateTimeFormatter.ofPattern("E");
-        //geef nieuwe waarde aan de label met id:day
-        //formateer datum
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
-
-
-
-
-        date.setText(now.format(formatDate));
-        day.setText(now.format(formatDay));
-        time.setText(now.format(formatTime));
-
 
         listElements.addAll(database.getList(standardSchedule));
         for (Item item :listElements  ) {
@@ -148,8 +113,14 @@ public class Controller {
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster());
         searchText.textProperty().addListener(o -> search());
 
+        WeatherScraper weatherscraper = new WeatherScraper();
+        Weather weather = weatherscraper.getWeather();
 
-        
+        if (weather.getConnection()){
+            //Image
+            //weatherIcon.setImage();
+        }
+
     }
 
 
@@ -267,7 +238,6 @@ public class Controller {
             stage.setMaximized(false);
         }else{
             //Zet menuItem tekst naar minimize
-            // _ voor de mnemonic parsing
             windowSizeText.setText("_Minimize");
             //maximaliseer
             stage.setMaximized(true);

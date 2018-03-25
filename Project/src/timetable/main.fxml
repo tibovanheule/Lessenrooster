@@ -27,6 +27,11 @@
             <Label fx:id="time" styleClass="time" text="17:45" />
             <Label fx:id="day" styleClass="day" text="Monday" />
             <Label fx:id="date" styleClass="date" text="28 Sep" />
+            <ImageView fx:id="weatherIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
          </children>
          <padding>
             <Insets left="20.0" top="20.0" />

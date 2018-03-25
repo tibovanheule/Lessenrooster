@@ -1,4 +1,4 @@
-//tibo Vanheule
+//Tibo Vanheule
 package timetable.db;
 
 import timetable.objects.Lecture;

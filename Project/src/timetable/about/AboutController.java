@@ -1,11 +1,8 @@
 //Tibo Vanheule
 package timetable.about;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import javafx.stage.WindowEvent;
+import javafx.stage.Stage;
 import timetable.config.Config;
 
 import java.util.Properties;

@@ -22,11 +22,14 @@
    <children>
       <VBox fx:id="drawer" prefHeight="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="534.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="534.0" spacing="10.0">
                <children>
                   <ImageView fx:id="dbLogo" fitHeight="31.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
                   <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerOpen" />
                </children>
+               <padding>
+                  <Insets right="20.0" top="10.0" />
+               </padding>
             </HBox>
             <GridPane>
               <columnConstraints>
@@ -52,7 +55,7 @@
                   </HBox>
                   <HBox alignment="CENTER" GridPane.columnIndex="2">
                      <children>
-                        <Label styleClass="dayLabel" text="wendsday" />
+                        <Label styleClass="dayLabel" text="wednesday" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" GridPane.columnIndex="3">
@@ -80,10 +83,10 @@
               </rowConstraints>
                <children>
                   <ListView fx:id="monday" prefHeight="486.0" prefWidth="134.0" styleClass="dayHolder" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="1" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="2" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="3" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="4" />
+                  <ListView fx:id="tuesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="1" />
+                  <ListView fx:id="wednesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="2" />
+                  <ListView fx:id="thursday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="3" />
+                  <ListView fx:id="friday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" GridPane.columnIndex="4" />
                </children>
             </GridPane>
          </children>
@@ -93,14 +96,14 @@
       </VBox>
       <VBox prefHeight="137.0" prefWidth="200.0" styleClass="leftMenu">
          <children>
-            <ImageView fx:id="weatherIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="time" styleClass="time" text="17:45" />
+            <Label fx:id="day" styleClass="day" text="Monday" />
+            <Label fx:id="date" styleClass="date" text="28 Sep" />
+            <ImageView fx:id="weatherIcon" fitHeight="45.0" fitWidth="45.0" onMouseClicked="#weather" pickOnBounds="true" preserveRatio="true" styleClass="weatherIcon">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="time" styleClass="time" text="17:45" />
-            <Label fx:id="day" styleClass="day" text="Monday" />
-            <Label fx:id="date" styleClass="date" text="28 Sep" />
          </children>
          <padding>
             <Insets left="20.0" top="20.0" />
@@ -118,6 +121,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#about" styleClass="about" />
                   <Button mnemonicParsing="false" onAction="#settings" styleClass="settings" />
                   <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize" />
                   <Button mnemonicParsing="false" onAction="#exit" styleClass="close" />
@@ -126,21 +130,21 @@
             </HBox>
             <HBox layoutX="10.399999618530273" layoutY="50.400001525878906" prefWidth="200.0" spacing="5.0">
                <children>
-                  <TextField fx:id="searchText" prefHeight="26.0" prefWidth="129.0" styleClass="searchText" />
-                  <Button mnemonicParsing="false" onAction="#search" prefHeight="26.0" prefWidth="32.0" styleClass="search" />
+                  <TextField fx:id="searchText" styleClass="searchText" />
+                  <Button mnemonicParsing="false" onAction="#search" styleClass="search" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </HBox>
-            <ListView fx:id="list" layoutX="5.0" layoutY="174.0" prefWidth="200.0" styleClass="list" />
-            <VBox alignment="CENTER" layoutX="6.0" layoutY="91.0" prefHeight="78.0" prefWidth="200.0">
+            <ListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="200.0" styleClass="listselect" />
+            <HBox layoutX="6.0" layoutY="91.0">
                <children>
                   <Button fx:id="students" styleClass="navItem" text="_Students" userData="students" />
                   <Button fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher" />
                   <Button fx:id="loc" styleClass="navItem" text="_Location" userData="location" />
                </children>
-            </VBox>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

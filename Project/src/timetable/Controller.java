@@ -27,6 +27,7 @@ import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
+import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
 import java.io.IOException;
@@ -45,6 +46,10 @@ public class Controller {
     public ListView<String> list;
     public TextField searchText;
     public ListView<String> monday;
+    public ListView<String> tuesday;
+    public ListView<String> wednesday;
+    public ListView<String> thursday;
+    public ListView<String> friday;
     public ImageView dbLogo;
     public Button students;
     public Button teachers;
@@ -63,7 +68,7 @@ public class Controller {
         Config config = new Config();
         Properties properties = config.getproperties();
 
-        //sla op in een veld zodat het in het verdere bestand gebruikt kan worden
+        //sla op in een veld zodat het in het verdere bestand opgevraagd kan worden
         standardSchedule = properties.getProperty("standard.schedule");
 
         //als de property true is gebruik dan mysql
@@ -162,9 +167,25 @@ public class Controller {
                 }
             }
             monday.getItems().clear();
+            tuesday.getItems().clear();
+            wednesday.getItems().clear();
+            thursday.getItems().clear();
+            friday.getItems().clear();
             for (Lecture lecture : database.getRooster(selected.getSort(), selected.getName())) {
                 if (lecture.getDay() == 1) {
                     monday.getItems().add(lecture.getCourse());
+                }
+                if (lecture.getDay() == 2) {
+                    tuesday.getItems().add(lecture.getCourse());
+                }
+                if (lecture.getDay() == 3) {
+                    wednesday.getItems().add(lecture.getCourse());
+                }
+                if (lecture.getDay() == 4) {
+                    thursday.getItems().add(lecture.getCourse());
+                }
+                if (lecture.getDay() == 5) {
+                    friday.getItems().add(lecture.getCourse());
                 }
             }
         }
@@ -184,6 +205,25 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             scene.getStylesheets().add("timetable/about/about.css");
+            stage.setScene(scene);
+            controller.setStageAndSetupListeners(stage);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
+        } catch (Exception e) {
+            //list.getItems().add(e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    public void weather() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
+            Parent root = loader.load();
+            WeatherController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(root, 450, 450);
+            scene.getStylesheets().add("timetable/weather/weather.css");
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
@@ -239,7 +279,6 @@ public class Controller {
 
     public void drawerAction() {
         if (draw.isVisible()) {
-            draw.getStyleClass().remove("drawer");
             FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
             ft.setFromValue(1.0);
             ft.setToValue(0.0);
@@ -253,7 +292,6 @@ public class Controller {
             ft.setToValue(1.0);
             ft.setCycleCount(1);
             ft.play();
-            draw.getStyleClass().add("drawer");
         }
     }
 }

@@ -29,22 +29,21 @@ Main css
     -fx-text-fill: white;
 }
 
-.list{
+.listselect{
     -fx-background-color: #efeeec;
 }
-.list list-cell{
+.listselect .list-cell{
     -fx-background-color: #efeeec;
     -fx-font-family: lato;
     -fx-font-weight: bold;
     -fx-text-fill: #b3b0ac;
 }
-.list *:selected{
+.listselect *:selected{
     -fx-text-fill: #46529d;
     -fx-font-weight: bold;
 }
 .navItem{
     -fx-background-color: #efeeec;
-    -fx-font-size: 24px;
     -fx-font-family: lato;
     -fx-text-fill: #46529d;
 }
@@ -65,7 +64,8 @@ Main css
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/search.png");
     -fx-background-repeat: no-repeat;
-    -fx-background-position: 90%;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
 }
 .next{
     -fx-text-fill: #8d93be;
@@ -112,6 +112,17 @@ Main css
 .drawerClose{
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/drawerClose.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% ;
+}
+.weatherIcon{
+    -fx-opacity: 50%;
+}
+
+.about{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/close.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: 100% ;

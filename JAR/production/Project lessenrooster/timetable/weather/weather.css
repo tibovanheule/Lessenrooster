@@ -1,8 +1,5 @@
-.blue{
-    -fx-background-color: #4d59a1;
-}
 .body{
-    -fx-background-color: #efeeec;
+    -fx-background-color: #4d59a1;
 }
 
 Button{
@@ -13,7 +10,9 @@ Button{
     -fx-text-fill: #b3b0ac;
     -fx-font-family: "Lato Semibold";
 }
+
 Label{
     -fx-font-family: Lato;
+    -fx-text-fill: white;
 }
 

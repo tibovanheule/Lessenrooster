@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Db {
     private DbConnect system;
@@ -61,27 +62,30 @@ public class Db {
         return items;
     }
 
-    public ArrayList<Lecture> getRooster(String sort, String filter){
-        ArrayList<Lecture> lectures = new ArrayList<>();
-        String selection = "SELECT * FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE "+sort+".name = ? ";
-        //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
-        try(Connection conn = system.connect()){
-            PreparedStatement statement = conn.prepareStatement(selection);
-            statement.setString(1, filter );
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
-                Lecture test = new Lecture(resultSet.getString("name"), resultSet.getString("name"), resultSet.getString("name"),
-                        resultSet.getString("course"), resultSet.getInt("day"),resultSet.getInt("first_block"), resultSet.getInt("duration"));
-
-                lectures.add(test);
+    public HashMap<Integer,ArrayList<Lecture>> getRooster(String sort, String filter){
+        HashMap<Integer,ArrayList<Lecture>> days = new HashMap<>();
+        for(int i = 1; i <6;i++) {
+            ArrayList<Lecture> lectures = new ArrayList<>();
+            String selection = "SELECT * FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                    "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + sort + ".name = ? AND day = ?";
+            //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+            try (Connection conn = system.connect()) {
+                PreparedStatement statement = conn.prepareStatement(selection);
+                statement.setString(1, filter);
+                statement.setInt(2, i);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    Lecture lecture = new Lecture(resultSet.getString("name"), resultSet.getString("name"), resultSet.getString("name"),
+                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"));
+                    lectures.add(lecture);
+                }
+                resultSet.close();
+                days.put(i, lectures);
+            } catch (Exception e) {
+                System.out.print(e);
             }
-            resultSet.close();
-            statement.close();
-        }catch (Exception e){
-            System.out.print(e);
         }
-        return lectures;
+        return days;
     }
 
 }

@@ -11,12 +11,11 @@ import java.util.Properties;
 
 public class SettingsController {
     private Stage stage;
-    public CheckBox windowSize;
-    public ComboBox<String> defaultStartup;
-    public CheckBox mysql;
+    public CheckBox windowSize, mysql;
+    public ComboBox<String> defaultStartup, weatherCity;
     private Properties properties = new Properties();
     //array met mogelijkheden voor de standaard lijsten uitbreiding mogelijk
-    private static final String[] defaultList = {"students", "teacher", "location"};
+    private static final String[] defaultList = {"students", "teacher", "location"}, cities = {"koksijde","oostende","gent", "brugge","brussel", "leuven", "Antwerpen"};
 
     public void setStageAndSetupListeners(Stage stage){
         //Krijg de stage
@@ -34,6 +33,9 @@ public class SettingsController {
         defaultStartup.getItems().addAll(defaultList);
         defaultStartup.setValue(properties.getProperty("standard.schedule"));
 
+        weatherCity.getItems().addAll(cities);
+        weatherCity.setValue(properties.getProperty("weather.city"));
+
         mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
 
         //veld true of vals
@@ -44,6 +46,7 @@ public class SettingsController {
         windowSize.selectedProperty().addListener(o -> startMaximized());
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         mysql.selectedProperty().addListener(o -> mysql());
+        weatherCity.getSelectionModel().selectedItemProperty().addListener(o -> city());
     }
 
     private void mysql(){
@@ -58,10 +61,13 @@ public class SettingsController {
     }
 
     public void startupSchedule(){
-
         //Selectie in property steken
         properties.setProperty("standard.schedule",defaultStartup.getSelectionModel().getSelectedItem().toString());
+    }
 
+    public void city(){
+        //Selectie in property steken
+        properties.setProperty("weather.city",weatherCity.getSelectionModel().getSelectedItem().toString());
     }
 
     public void close(){

@@ -9,8 +9,8 @@ import timetable.Main;
 import timetable.objects.Weather;
 
 public class WeatherController {
-    public Label text;
-    public ImageView weatherIcon;
+    public Label temp, humid, condition,windSpeed;
+    public ImageView weatherIcon, arrow, compass;
     private Stage stage;
 
     public void setStageAndSetupListeners(Stage stage){
@@ -19,12 +19,24 @@ public class WeatherController {
     }
 
     public void initialize(){
+
         Weather weather = new WeatherScraper().getWeather();
+        try {
+            Image icon = new Image(Main.class.getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
+            weatherIcon.setImage(icon);
+            arrow.setX(compass.getX() / 2);
+            arrow.setY(compass.getY() / 2);
+            arrow.setRotate(arrow.getRotate() + weather.getWindDegree());
+            condition.setText(weather.getCondition());
+            temp.setText(weather.getTemp() + "°");
+            humid.setText(weather.getHumidity());
+            windSpeed.setText(weather.getWindSpeed() + "kph");
 
-        Image icon = new Image(Main.class.getResourceAsStream("resources/images/weather/"+weather.getIcon()+".png"));
-        weatherIcon.setImage(icon);
+        }catch (Exception e){
+            System.out.println(e);
+            System.out.println(weather.getConnection());
+        }
 
-        text.setText(weather.getTemp() + weather.getWindSpeed() + weather.getWindDegree() + weather.getHumidity());
     }
 
     public void close(){

@@ -37,6 +37,7 @@ Main css
     -fx-font-family: lato;
     -fx-font-weight: bold;
     -fx-text-fill: #b3b0ac;
+    -fx-wrap-text: true;
 }
 .listselect *:selected{
     -fx-text-fill: #46529d;
@@ -122,7 +123,7 @@ Main css
 
 .about{
     -fx-background-color: #efeeec;
-    -fx-background-image: url("resources/images/close.png");
+    -fx-background-image: url("resources/images/about.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: 100% ;

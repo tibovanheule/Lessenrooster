@@ -5,15 +5,29 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.weather.WeatherController">
+<AnchorPane prefWidth="450.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.weather.WeatherController">
     <children>
-        <Label fx:id="text" layoutX="20.0" layoutY="198.0" text="version" />
-        <AnchorPane layoutX="-7.0" prefHeight="158.0" prefWidth="459.0" styleClass="blue">
-            <children>
-                <ImageView fx:id="weatherIcon" fitHeight="90.0" fitWidth="90.0" layoutX="355.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true"/>
-            </children>
-        </AnchorPane>
-        <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="398.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
+        <Label fx:id="temp" layoutX="172.0" layoutY="163.0" text="temp" />
+          <ImageView fx:id="weatherIcon" fitHeight="133.0" fitWidth="133.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="compass" fitHeight="104.0" fitWidth="104.0" layoutX="20.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/compass.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrow" fitHeight="62.0" fitWidth="66.0" layoutX="41.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+         <image>
+            <Image url="@../resources/images/arrow.png" />
+         </image>
+      </ImageView>
+        <Button contentDisplay="CENTER" ellipsisString="" layoutX="193.0" layoutY="294.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
+      <Label fx:id="condition" layoutX="163.0" layoutY="72.0" text="Condition">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="windSpeed" layoutX="43.0" layoutY="276.0" text="windspeed" />
+      <Label fx:id="humid" layoutX="172.0" layoutY="181.0" text="humid" />
     </children>
 </AnchorPane>

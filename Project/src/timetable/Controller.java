@@ -1,17 +1,12 @@
 //Tibo vanheule
 package timetable;
 
-import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,32 +24,20 @@ import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Controller {
-    public Label day;
-    public Label date;
-    public Label time;
-    public ImageView weatherIcon;
-    public ListView<String> list;
+
+    public Label day, date, time;
     public TextField searchText;
-    public ListView<String> monday;
-    public ListView<String> tuesday;
-    public ListView<String> wednesday;
-    public ListView<String> thursday;
-    public ListView<String> friday;
-    public ImageView dbLogo;
-    public Button students;
-    public Button teachers;
-    public Button loc;
+    public ListView<String> monday, tuesday, wednesday, thursday, friday, list;
+    public ImageView dbLogo, weatherIcon;
+    public Button students, teachers, loc;
     public AnchorPane draw;
+
     private Stage stage;
     private String standardSchedule;
     private Db database;
@@ -74,6 +57,7 @@ public class Controller {
         //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             database = new Db(new Mysql());
+            //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
             Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
         } else {
@@ -84,27 +68,25 @@ public class Controller {
         }
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-                        //de huidige datum
-                        LocalDateTime now = LocalDateTime.now();
+                Platform.runLater( () -> {
+                    //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+                    //de huidige datum
+                    LocalDateTime now = LocalDateTime.now();
 
-                        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
-                        DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
-                        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
+                    DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
+                    DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
+                    DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
 
-                        date.setText(now.format(formatDate));
-                        day.setText(now.format(formatDay));
-                        time.setText(now.format(formatTime));
-                    }
+                    date.setText(now.format(formatDate));
+                    day.setText(now.format(formatDay));
+                    time.setText(now.format(formatTime));
                 });
             }
-        }, 0, 1000);
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
 
         listElements.addAll(database.getList(standardSchedule));
         for (Item item : listElements) {
@@ -118,19 +100,21 @@ public class Controller {
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
         draw.focusTraversableProperty().addListener(o->drawerAction());
 
+        Platform.runLater(this::getWeather);
+    }
+
+    public void getWeather(){
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
 
-        if (weather.getConnection()){
+        if (weather.getConnection()) {
             try {
-                Image image = new Image(getClass().getResourceAsStream("resources/images/weather/"+weather.getIcon()+".png"));
+                Image image = new Image(getClass().getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
                 weatherIcon.setImage(image);
-            }catch (Exception e){
-
+            } catch (Exception e) {
+                System.out.println(weather.getIcon());
             }
-
         }
-
     }
 
     public void search() {
@@ -153,7 +137,7 @@ public class Controller {
         }
     }
 
-    public void getRooster() {
+    private void getRooster() {
         // TODO: 18/03/2018  
 
         //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
@@ -166,26 +150,24 @@ public class Controller {
                     selected = item;
                 }
             }
-            monday.getItems().clear();
-            tuesday.getItems().clear();
-            wednesday.getItems().clear();
-            thursday.getItems().clear();
-            friday.getItems().clear();
-            for (Lecture lecture : database.getRooster(selected.getSort(), selected.getName())) {
-                if (lecture.getDay() == 1) {
-                    monday.getItems().add(lecture.getCourse());
-                }
-                if (lecture.getDay() == 2) {
-                    tuesday.getItems().add(lecture.getCourse());
-                }
-                if (lecture.getDay() == 3) {
-                    wednesday.getItems().add(lecture.getCourse());
-                }
-                if (lecture.getDay() == 4) {
-                    thursday.getItems().add(lecture.getCourse());
-                }
-                if (lecture.getDay() == 5) {
-                    friday.getItems().add(lecture.getCourse());
+            //map maken om later iffen te vermijden :)
+            HashMap<Integer,ListView<String>> lists = new HashMap<>();
+            lists.put(1,monday);
+            lists.put(2,tuesday);
+            lists.put(3,wednesday);
+            lists.put(4,thursday);
+            lists.put(5,friday);
+            for (int i = 1; i < 6;i++){
+                lists.get(i).getItems().clear();
+            }
+            HashMap<Integer,ArrayList<Lecture>> days = database.getRooster(selected.getSort(), selected.getName());
+            for ( int i = 1; i < 6; i++ ){
+                ArrayList<Lecture> dayList = days.get(i);
+                for (Lecture lecture:dayList) {
+                    lists.get(i).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
+                    //if (lecture.getConflict()){
+                        //cell.getStyleClass().add("conflict");
+                    //}
                 }
             }
         }
@@ -222,7 +204,7 @@ public class Controller {
             WeatherController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 450);
+            Scene scene = new Scene(root, 450, 320);
             scene.getStylesheets().add("timetable/weather/weather.css");
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
@@ -252,7 +234,7 @@ public class Controller {
         }
     }
 
-    public void updateList(String whatList) {
+    private void updateList(String whatList) {
 
         //textbox leeg maken
         searchText.setText("");

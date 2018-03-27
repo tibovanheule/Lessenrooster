@@ -22,5 +22,7 @@
       <Button layoutX="203.0" layoutY="402.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <Label layoutX="189.0" layoutY="185.0" text="On startup wich list schould be opened?" />
       <CheckBox fx:id="mysql" layoutX="29.0" layoutY="217.0" mnemonicParsing="false" text="Use Mysql?" />
+      <ComboBox fx:id="weatherCity" layoutX="29.0" layoutY="250.0" prefWidth="150.0" />
+      <Label layoutX="189.0" layoutY="257.0" text="City for the weather updates?" />
    </children>
 </AnchorPane>

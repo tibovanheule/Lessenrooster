@@ -18,30 +18,25 @@ public class Db {
         this.system = system;
     }
 
-    public ArrayList<Item> getList(String sort){
-        ArrayList<Item> students = new ArrayList<>();
+    public HashMap<String,Item> getList(String sort){
+        HashMap<String, Item> items = new HashMap<>();
         // try met timetable.resources (automatische close)
         //men kan geen column names doorgeven aan een preparedStatement
         //dus wordt het geconcatenate aan de query
         String selection = "SELECT name FROM " + sort;
-        try(Connection conn = system.connect()){
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(selection);
+        try(Connection conn = system.connect();Statement statement = conn.createStatement();ResultSet resultSet = statement.executeQuery(selection)){
             while (resultSet.next()){
-                students.add(new Item(sort ,resultSet.getString("name")));
+                items.put(resultSet.getString("name"),new Item(sort ,resultSet.getString("name")));
             }
-
-            resultSet.close();
-            statement.close();
         }catch (Exception e){
             //foutmelding weergeven in de lijst.
             System.out.print(e);
         }
-        return students;
+        return items;
     }
 
-    public ArrayList<Item> getFilteredList(String filter){
-        ArrayList<Item> items = new ArrayList<>();
+    public HashMap<String, Item> getFilteredList(String filter){
+        HashMap<String,Item> items = new HashMap<>();
         String[] tables = {"teacher","students","location"};
         for (String table:tables) {
             String selection = "SELECT * FROM "+ table +" WHERE name LIKE ?";
@@ -51,7 +46,7 @@ public class Db {
                 statement.setString(1, "%" + filter + "%");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    items.add(new Item(table, resultSet.getString("name")));
+                    items.put(resultSet.getString("name"),new Item(table, resultSet.getString("name")));
                 }
                 resultSet.close();
                 statement.close();
@@ -82,7 +77,7 @@ public class Db {
                 resultSet.close();
                 days.put(i, lectures);
             } catch (Exception e) {
-                System.out.print(e);
+                System.out.println(e);
             }
         }
         return days;

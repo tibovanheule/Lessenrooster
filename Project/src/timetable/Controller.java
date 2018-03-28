@@ -22,6 +22,7 @@ import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
+import timetable.views.SortButtons;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 import java.io.IOException;
@@ -35,13 +36,13 @@ public class Controller {
     public TextField searchText;
     public ListView<String> monday, tuesday, wednesday, thursday, friday, list;
     public ImageView dbLogo, weatherIcon;
-    public Button students, teachers, loc;
+    public SortButtons students, teachers, loc;
     public AnchorPane draw;
 
     private Stage stage;
     private String standardSchedule;
     private Db database;
-    private ArrayList<Item> listElements = new ArrayList<>();
+    private HashMap<String,Item> listElements = new HashMap<>();
 
     public void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -88,9 +89,9 @@ public class Controller {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
 
-        listElements.addAll(database.getList(standardSchedule));
-        for (Item item : listElements) {
-            list.getItems().add(item.getName());
+        listElements = database.getList(standardSchedule);
+        for (Map.Entry<String,Item> entry: listElements.entrySet()) {
+            list.getItems().add(entry.getKey());
         }
 
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster());
@@ -98,12 +99,12 @@ public class Controller {
         students.setOnAction(o -> updateList(students.getUserData().toString()));
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
-        draw.focusTraversableProperty().addListener(o->drawerAction());
+
 
         Platform.runLater(this::getWeather);
     }
 
-    public void getWeather(){
+    private void getWeather(){
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
 
@@ -118,38 +119,27 @@ public class Controller {
     }
 
     public void search() {
-        //als textfield leeg is keer dan terug naar de standaard lijst
+        list.getItems().clear();
+        listElements.clear();
         if (searchText.getText().isEmpty()) {
-            list.getItems().clear();
-            listElements.clear();
-            listElements.addAll(database.getList(standardSchedule));
-            for (Item item : listElements) {
-                list.getItems().add(item.getName());
-            }
+            //als textfield leeg is keer dan terug naar de standaard lijst
+            listElements = database.getList(standardSchedule);
         } else {
             // zo niet haal de gefilterde lijst op
-            list.getItems().clear();
-            listElements.clear();
-            listElements.addAll(database.getFilteredList(searchText.getText()));
-            for (Item item : listElements) {
-                list.getItems().add(item.getName());
-            }
+            listElements = database.getFilteredList(searchText.getText());
+        }
+        for (Map.Entry<String,Item> entry: listElements.entrySet()) {
+            list.getItems().add(entry.getKey());
         }
     }
 
     private void getRooster() {
-        // TODO: 18/03/2018  
-
         //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
         if (list.getSelectionModel().getSelectedItem() != null) {
-            Item selected = null;
-            for (Item item : listElements) {
-                if (item.getName().equals(list.getSelectionModel().getSelectedItem())) {
-                    selected = item;
-                }
-            }
+            Item selected = listElements.get(list.getSelectionModel().getSelectedItem());
+
             //map maken om later iffen te vermijden :)
             HashMap<Integer,ListView<String>> lists = new HashMap<>();
             lists.put(1,monday);
@@ -157,18 +147,23 @@ public class Controller {
             lists.put(3,wednesday);
             lists.put(4,thursday);
             lists.put(5,friday);
-            for (int i = 1; i < 6;i++){
-                lists.get(i).getItems().clear();
+            for(Map.Entry<Integer, ListView<String>> entry:lists.entrySet()){
+                entry.getValue().getItems().clear();
             }
-            HashMap<Integer,ArrayList<Lecture>> days = database.getRooster(selected.getSort(), selected.getName());
-            for ( int i = 1; i < 6; i++ ){
-                ArrayList<Lecture> dayList = days.get(i);
-                for (Lecture lecture:dayList) {
-                    lists.get(i).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
-                    //if (lecture.getConflict()){
+            try {
+                HashMap<Integer, ArrayList<Lecture>> days = database.getRooster(selected.getSort(), selected.getName());
+                for (int i = 1; i < 6; i++) {
+                    ArrayList<Lecture> dayList = days.get(i);
+                    for (Lecture lecture : dayList) {
+                        lists.get(i).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
+                        // TODO: 27/03/2018
+                        //if (lecture.getConflict()){
                         //cell.getStyleClass().add("conflict");
-                    //}
+                        //}
+                    }
                 }
+            }catch (Exception e){
+                System.out.println(e);
             }
         }
     }
@@ -211,7 +206,6 @@ public class Controller {
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
-            //list.getItems().add(e.toString());
             e.printStackTrace();
         }
     }
@@ -242,9 +236,9 @@ public class Controller {
         list.getItems().clear();
         //toevoegen van nieuwe elementen
         listElements.clear();
-        listElements.addAll(database.getList(whatList));
-        for (Item item : listElements) {
-            list.getItems().add(item.getName());
+        listElements = database.getList(whatList);
+        for (Map.Entry<String,Item> item : listElements.entrySet()) {
+            list.getItems().add(item.getKey());
         }
     }
 
@@ -260,19 +254,17 @@ public class Controller {
     }
 
     public void drawerAction() {
+        FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
+        ft.setCycleCount(1);
         if (draw.isVisible()) {
-            FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
             ft.setFromValue(1.0);
             ft.setToValue(0.0);
-            ft.setCycleCount(1);
             ft.play();
             ft.setOnFinished(o -> draw.setVisible(false));
         } else {
             draw.setVisible(true);
-            FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
-            ft.setCycleCount(1);
             ft.play();
         }
     }

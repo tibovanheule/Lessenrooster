@@ -39,7 +39,7 @@ Main css
     -fx-text-fill: #b3b0ac;
     -fx-wrap-text: true;
 }
-.listselect *:selected{
+.listselect .list-cell:selected{
     -fx-text-fill: #46529d;
     -fx-font-weight: bold;
 }

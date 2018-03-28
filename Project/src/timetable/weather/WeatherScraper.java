@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.Properties;
 
 public class WeatherScraper {
+    private Weather weather = null;
     private String getData(){
         String data = "";
         try{
@@ -22,34 +23,36 @@ public class WeatherScraper {
             String inputLine;
             BufferedReader input = new BufferedReader(new InputStreamReader(weather.openStream()));
             while ((inputLine = input.readLine()) != null){
+                // TODO: 28/03/2018 vervang string concatenation door stringbuilder :)
                 data += inputLine;
             }
-        }catch (Exception e){
+        }catch(Exception e){
+            weather = new Weather(false);
             System.out.println(e);
         }
         return data;
     }
     public Weather getWeather(){
-        Weather weather = null;
-        try {
-            String jsonString = getData();
-            JSONObject jsonObject = new JSONObject(jsonString);
-            JSONObject observation = jsonObject.getJSONObject("current_observation");
-            Double degree = observation.getDouble("temp_c");
-            Double windDegree = observation.getDouble("wind_degrees");
-            Double windSpeed = observation.getDouble("wind_kph");
-            String humidity = observation.getString("relative_humidity");
-            String icon = observation.getString("icon");
-            String condition = observation.getString("weather");
-            JSONObject location = observation.getJSONObject("display_location");
-            String city = location.getString("city");
-
-            weather = new Weather(true,degree, windDegree, windSpeed, humidity, icon, condition, city);
-        } catch (Exception e) {
-            weather = new Weather(false);
-            System.out.println(e);
-            System.out.println();
-        }
+            try {
+                String jsonString = getData();
+                //deze if voor als het ophalen niet gelukt is dan wordt er geen extra error opgegooid
+                if (weather == null) {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    JSONObject observation = jsonObject.getJSONObject("current_observation");
+                    Double degree = observation.getDouble("temp_c");
+                    Double windDegree = observation.getDouble("wind_degrees");
+                    Double windSpeed = observation.getDouble("wind_kph");
+                    String humidity = observation.getString("relative_humidity");
+                    String icon = observation.getString("icon");
+                    String condition = observation.getString("weather");
+                    JSONObject location = observation.getJSONObject("display_location");
+                    String city = location.getString("city");
+                    weather = new Weather(true, degree, windDegree, windSpeed, humidity, icon, condition, city);
+                }
+            } catch (Exception e) {
+                weather = new Weather(false);
+                System.out.println(e);
+            }
         return weather;
     }
 }

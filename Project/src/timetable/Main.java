@@ -10,7 +10,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.config.Config;
+import timetable.stdout.StdoutList;
+import timetable.stdout.StdoutSchedule;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Properties;
 
 public class Main extends Application {
@@ -63,6 +68,21 @@ public class Main extends Application {
         //geef de stage door aan de Controller
         controller.setStageAndSetupListeners(primaryStage);
 
+
+        /*scene.focusOwnerProperty().addListener(o ->{
+                    try {
+                        System.out.println(scene.getFocusOwner().getId());
+                        System.out.println(scene.getFocusOwner().getParent().getId());
+                        if(!scene.getFocusOwner().getId().equals("list")){
+                                controller.drawerAction();
+                        }
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                });
+         */
+
+
         //toon eindelijk de stage :)
         primaryStage.show();
     }
@@ -74,16 +94,16 @@ public class Main extends Application {
             //Er zijn geen argumenten meegegeven, prog nrml opstarten
             launch(args);
         } else if (args.length == 1){
-            // TODO: 14/03/2018
-            // Moet geschreven worden naar std out
-            // dus vervangen door een writer
-            //Programma afsluiten na het uitschrijven van de lijst.
+            StdoutList getList = new StdoutList(args[0]);
             Platform.exit();
             System.exit(0);
         } else if (args.length == 2){
-            // TODO: 14/03/2018
-            //openen van prog in met gewenst rooster
-            //werken met een default rooster en die dan overschrijven of (twee methoden)
+            // TODO: 28/03/2018
+            //FOUT OPDRACHT VERKEERD BEGREPEN :( OPEN app niet op std schrijven
+            // openen van prog in met gewenst rooster
+            StdoutSchedule getschedule = new StdoutSchedule(args[0], args[1]);
+            Platform.exit();
+            System.exit(0);
         }else if (args.length == 3 ){
             // TODO: 14/03/2018
             // nemen van een snapshot ???
@@ -96,16 +116,18 @@ public class Main extends Application {
             //} catch (IOException e) {
                 //System.out.println(e);
             //}
-        }else if ( args.length > 3 ){
-            // TODO: 14/03/2018
-            // foutboodschap
+        }else if (args.length >= 4){
+            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))){
+                 error.write("Invalid! please don't give more than 3 arguments! :) \n");
+                 error.flush();
+            }catch (IOException e) {
+                System.out.println(e);
+            }
             //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();
             //sluit Java Virtual Machine af met error code 2
             System.exit(1);
         }
-
-
     }
 
 }

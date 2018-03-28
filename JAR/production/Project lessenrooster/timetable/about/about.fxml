@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.about.AboutController">
    <children>
-      <Label fx:id="text" layoutX="20.0" layoutY="198.0" text="version" />
+      <Label fx:id="text" layoutX="20.0" layoutY="164.0" text="version" />
       <AnchorPane layoutX="-7.0" prefHeight="158.0" prefWidth="459.0" styleClass="blue">
          <children>
             <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="355.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -21,6 +21,6 @@
                </image></ImageView>
          </children>
       </AnchorPane>
-      <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="398.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
+      <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="411.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
    </children>
 </AnchorPane>

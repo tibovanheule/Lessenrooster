@@ -13,7 +13,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import timetable.MainModel?>
+<?import timetable.views.SortButtons?>
 <GridPane styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
+   <fx:define>
+      <MainModel fx:id="model"/>
+   </fx:define>
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" maxWidth="800.0" prefWidth="215.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="665.0" />
@@ -140,9 +145,9 @@
             <ListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="200.0" styleClass="listselect" />
             <HBox layoutX="6.0" layoutY="91.0">
                <children>
-                  <Button fx:id="students" styleClass="navItem" text="_Students" userData="students" />
-                  <Button fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher" />
-                  <Button fx:id="loc" styleClass="navItem" text="_Location" userData="location" />
+                  <SortButtons fx:id="students" styleClass="navItem" text="_Students" userData="students" model="$model" />
+                  <SortButtons fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher" model="$model"/>
+                  <SortButtons fx:id="loc" styleClass="navItem" text="_Location" userData="location"  model="$model"/>
                </children>
             </HBox>
          </children>

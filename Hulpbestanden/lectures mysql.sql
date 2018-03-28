@@ -1,4 +1,8 @@
--- Complains, but that's OK
+DROP TABLE IF EXISTS period;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS teacher;
+DROP TABLE IF EXISTS location;
+DROP TABLE IF EXISTS lecture;
 
 create table period   (id INT NOT NULL AUTO_INCREMENT, hour INT, minute INT, PRIMARY KEY(id));
 create table students (id INT NOT NULL AUTO_INCREMENT, name TEXT, PRIMARY KEY(id));

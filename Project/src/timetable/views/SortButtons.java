@@ -29,7 +29,7 @@ public class SortButtons extends Button implements InvalidationListener, EventHa
     @Override
     public void handle(ActionEvent t) {
         // TODO: 28/03/2018 geef button click dooor met de userdata
-        getUserData();
-        model.getList();
+        model.getList(getUserData().toString());
+        System.out.println("buttonpress registered");
     }
 }

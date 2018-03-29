@@ -24,13 +24,11 @@ public class WeatherController {
         try {
             Image icon = new Image(Main.class.getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
             weatherIcon.setImage(icon);
-            arrow.setX(compass.getX() / 2);
-            arrow.setY(compass.getY() / 2);
             arrow.setRotate(arrow.getRotate() + weather.getWindDegree());
             condition.setText(weather.getCondition());
             temp.setText(weather.getTemp() + "°");
             humid.setText(weather.getHumidity());
-            windSpeed.setText(weather.getWindSpeed() + "kph");
+            windSpeed.setText("Windspeed: " + weather.getWindSpeed() + "kph");
 
         }catch (Exception e){
             System.out.println(e);

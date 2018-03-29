@@ -15,9 +15,9 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
-import timetable.db.Db;
-import timetable.db.Mysql;
-import timetable.db.Sqlite;
+import timetable.db.*;
+import timetable.db.mysql.MysqlDataAccessProvider;
+import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Weather;
@@ -42,7 +42,8 @@ public class Controller {
     private Stage stage;
     private String standardSchedule;
     private Db database;
-    private HashMap<String,Item> listElements = new HashMap<>();
+    private DataAccessProvider dataAccessProvider;
+    public HashMap<String,Item> listElements = new HashMap<>();
 
     public void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -58,12 +59,14 @@ public class Controller {
         //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             database = new Db(new Mysql());
+            dataAccessProvider = new MysqlDataAccessProvider();
             //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
             Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
         } else {
-            //in elk ander geval, valt het terug op Sqlite
+            //in elk ander geval, valt het terug op sqlite
             database = new Db(new Sqlite());
+            dataAccessProvider = new SqliteDataAccessProvider();
             Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
             dbLogo.setImage(image);
         }
@@ -94,12 +97,11 @@ public class Controller {
             list.getItems().add(entry.getKey());
         }
 
-        list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster());
+        list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(listElements.get(list.getSelectionModel().getSelectedItem())));
         searchText.textProperty().addListener(o -> search());
         students.setOnAction(o -> updateList(students.getUserData().toString()));
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
-
 
         Platform.runLater(this::getWeather);
     }
@@ -133,21 +135,19 @@ public class Controller {
         }
     }
 
-    private void getRooster() {
+    public void getRooster(Item selected) {
         //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
-        if (list.getSelectionModel().getSelectedItem() != null) {
-            Item selected = listElements.get(list.getSelectionModel().getSelectedItem());
-
+        try {
             //map maken om later iffen te vermijden :)
-            HashMap<Integer,ListView<String>> lists = new HashMap<>();
-            lists.put(1,monday);
-            lists.put(2,tuesday);
-            lists.put(3,wednesday);
-            lists.put(4,thursday);
-            lists.put(5,friday);
-            for(Map.Entry<Integer, ListView<String>> entry:lists.entrySet()){
+            HashMap<Integer, ListView<String>> lists = new HashMap<>();
+            lists.put(1, monday);
+            lists.put(2, tuesday);
+            lists.put(3, wednesday);
+            lists.put(4, thursday);
+            lists.put(5, friday);
+            for (Map.Entry<Integer, ListView<String>> entry : lists.entrySet()) {
                 entry.getValue().getItems().clear();
             }
             try {
@@ -162,9 +162,11 @@ public class Controller {
                         //}
                     }
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
             }
+        }catch (Exception e){
+            System.out.println(e);
         }
     }
 
@@ -199,8 +201,7 @@ public class Controller {
             WeatherController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 320);
-            scene.getStylesheets().add("timetable/weather/weather.css");
+            Scene scene = new Scene(root, 450, 220);
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
@@ -228,7 +229,7 @@ public class Controller {
         }
     }
 
-    private void updateList(String whatList) {
+    public void updateList(String whatList) {
 
         //textbox leeg maken
         searchText.setText("");
@@ -236,7 +237,18 @@ public class Controller {
         list.getItems().clear();
         //toevoegen van nieuwe elementen
         listElements.clear();
-        listElements = database.getList(whatList);
+        //listElements = database.getList(whatList);
+
+        HashMap<String, Item> items = new HashMap<>();
+        try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
+            ItemsDAO itemsDAO = dac.getItemDoa();
+            for(Item item: itemsDAO.findItem(whatList)){
+                listElements.put(item.getName(), item);
+            }
+        }catch (DataAccessException e){
+            System.out.println(e);
+        }
+
         for (Map.Entry<String,Item> item : listElements.entrySet()) {
             list.getItems().add(item.getKey());
         }

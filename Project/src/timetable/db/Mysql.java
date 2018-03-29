@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class Mysql implements DbConnect{
     /*
-    Ik had al een Mysql-server draaiende, ik vond het dan het dan ook eens leuk om een Mysql-implementatie te maken.
+    Ik had al een mysql-server draaiende, ik vond het dan het dan ook eens leuk om een mysql-implementatie te maken.
     Deze is opgevuld met dezelfde data als de sqlite db(aan de hand van een aangepaste lectures.sql).
     De sqlite en de mysql staan los van elkaar en worden niet gesynchroniseerd met elkaar.
     De mysql verbinding gebreurd onder een acc met maar één privelege (SELECT) op één db (lessenrooster).

@@ -23,7 +23,7 @@ public class StdoutSchedule {
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             database = new Db(new Mysql());
         } else {
-            //in elk ander geval, valt het terug op Sqlite
+            //in elk ander geval, valt het terug op sqlite
             database = new Db(new Sqlite());
         }
         HashMap<Integer, String> days = new HashMap<>();

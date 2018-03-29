@@ -3,17 +3,21 @@ package timetable;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.config.Config;
 import timetable.stdout.StdoutList;
-import timetable.stdout.StdoutSchedule;
 
+import javax.imageio.ImageIO;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Properties;
@@ -51,9 +55,6 @@ public class Main extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
 
-        //bind de css bestand eraan
-        scene.getStylesheets().add("timetable/Style.css");
-
         //geef de stage een icon
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
         primaryStage.setScene(scene);
@@ -67,7 +68,6 @@ public class Main extends Application {
 
         //geef de stage door aan de Controller
         controller.setStageAndSetupListeners(primaryStage);
-
 
         /*scene.focusOwnerProperty().addListener(o ->{
                     try {
@@ -83,39 +83,61 @@ public class Main extends Application {
          */
 
 
-        //toon eindelijk de stage :)
-        primaryStage.show();
+        if (getParameters().getRaw().size() == 0){
+            //toon eindelijk de stage :)
+            primaryStage.show();
+        }
+        else if (getParameters().getRaw().size() == 2){
+            try {
+                Runnable runnable = new Thread( () -> {
+                controller.updateList(getParameters().getRaw().get(0));
+                controller.getRooster(controller.listElements.get(getParameters().getRaw().get(1)));
+                controller.draw.setVisible(false);});
+                Platform.runLater(runnable);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            primaryStage.show();
+        }else if (getParameters().getRaw().size() == 3){
+            try{
+            Runnable runnable = new Thread( () -> {
+                controller.updateList(getParameters().getRaw().get(0));
+                controller.getRooster(controller.listElements.get(getParameters().getRaw().get(1)));
+                controller.draw.setVisible(false);});
+            Platform.runLater(runnable);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            primaryStage.setMaximized(false);
+            WritableImage image = root.snapshot(new SnapshotParameters(), null);
+
+            // TODO: 29/03/2018 kijken als dit niet zonder file kan :)
+            File file = new File(getParameters().getRaw().get(2));
+
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+            } catch (IOException e) {
+                System.out.println(e);
+                Platform.exit();
+                System.exit(2);
+            }
+            Platform.exit();
+            System.exit(0);
+        }
+
+
     }
 
 
     public static void main(String[] args) {
         //Controle lengte argumenten
-        if (args.length == 0){
-            //Er zijn geen argumenten meegegeven, prog nrml opstarten
+        if (args.length == 0 || args.length == 2 || args.length == 3){
+            //Start prog met argumenten -> normale start
             launch(args);
         } else if (args.length == 1){
             StdoutList getList = new StdoutList(args[0]);
             Platform.exit();
             System.exit(0);
-        } else if (args.length == 2){
-            // TODO: 28/03/2018
-            //FOUT OPDRACHT VERKEERD BEGREPEN :( OPEN app niet op std schrijven
-            // openen van prog in met gewenst rooster
-            StdoutSchedule getschedule = new StdoutSchedule(args[0], args[1]);
-            Platform.exit();
-            System.exit(0);
-        }else if (args.length == 3 ){
-            // TODO: 14/03/2018
-            // nemen van een snapshot ???
-            //WritableImage image = root.snapshot(new SnapshotParameters(), null);
-
-            //File file = new File("chart.png");
-
-            //try {
-                //ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-            //} catch (IOException e) {
-                //System.out.println(e);
-            //}
         }else if (args.length >= 4){
             try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))){
                  error.write("Invalid! please don't give more than 3 arguments! :) \n");

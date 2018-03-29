@@ -1,13 +1,13 @@
 //Tibo Vanheule
 package timetable.db;
 
+import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.objects.Lecture;
 import timetable.objects.Item;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,13 +24,13 @@ public class Db {
         //men kan geen column names doorgeven aan een preparedStatement
         //dus wordt het geconcatenate aan de query
         String selection = "SELECT name FROM " + sort;
-        try(Connection conn = system.connect();Statement statement = conn.createStatement();ResultSet resultSet = statement.executeQuery(selection)){
-            while (resultSet.next()){
-                items.put(resultSet.getString("name"),new Item(sort ,resultSet.getString("name")));
+        try(DataAccessContext dac = new MysqlDataAccessProvider().getDataAccessContext()){
+            ItemsDAO itemsDAO = dac.getItemDoa();
+            for(Item item: itemsDAO.findItem(sort)){
+                items.put(item.getName(), item);
             }
-        }catch (Exception e){
-            //foutmelding weergeven in de lijst.
-            System.out.print(e);
+        }catch (DataAccessException e){
+            System.out.println(e);
         }
         return items;
     }

@@ -1,18 +1,21 @@
+#deze check uitschakelen deze is toch niet nodig want we droppen ALLES!
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS period;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS lecture;
-
+#wel niet vergeten terug in te schakelen :)
+SET FOREIGN_KEY_CHECKS =1;
 create table period   (id INT NOT NULL AUTO_INCREMENT, hour INT, minute INT, PRIMARY KEY(id));
 create table students (id INT NOT NULL AUTO_INCREMENT, name TEXT, PRIMARY KEY(id));
 create table teacher  (id INT NOT NULL AUTO_INCREMENT, name TEXT, PRIMARY KEY(id));
 create table location (id INT NOT NULL AUTO_INCREMENT, name TEXT, PRIMARY KEY(id));
 create table lecture  (students_id INT, teacher_id INT, location_id INT, course TEXT, day INT, first_block INT, duration INT
-  , FOREIGN KEY(students_id) REFERENCES students(id)
-  , FOREIGN KEY (teacher_id) REFERENCES teacher(id)
-  , FOREIGN KEY (location_id) REFERENCES location(id)
-  , FOREIGN KEY (first_block) REFERENCES period(id)
+  , FOREIGN KEY(students_id) REFERENCES students(id) ON DELETE NO ACTION
+  , FOREIGN KEY (teacher_id) REFERENCES teacher(id) ON DELETE NO ACTION
+  , FOREIGN KEY (location_id) REFERENCES location(id) ON DELETE NO ACTION
+  , FOREIGN KEY (first_block) REFERENCES period(id) ON DELETE NO ACTION
 );
 
 insert into period values (1,  8, 30)

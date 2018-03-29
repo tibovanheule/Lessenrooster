@@ -13,12 +13,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import timetable.MainModel?>
+<?import timetable.*?>
 <?import timetable.views.SortButtons?>
-<GridPane styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
-   <fx:define>
-      <MainModel fx:id="model"/>
-   </fx:define>
+<GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
+    <fx:define>
+        <MainModel fx:id="model" />
+    </fx:define>
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" maxWidth="800.0" prefWidth="215.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="665.0" />
@@ -27,8 +27,9 @@
    <children>
       <VBox fx:id="drawer" prefHeight="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="534.0" spacing="10.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="268.0" spacing="10.0">
                <children>
+                  <Label fx:id="appname" styleClass="appName" text="Appname" />
                   <ImageView fx:id="dbLogo" fitHeight="31.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
                   <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerOpen" />
                </children>
@@ -145,9 +146,9 @@
             <ListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="200.0" styleClass="listselect" />
             <HBox layoutX="6.0" layoutY="91.0">
                <children>
-                  <SortButtons fx:id="students" styleClass="navItem" text="_Students" userData="students" model="$model" />
+                  <SortButtons fx:id="students" styleClass="navItem" text="_Students" userData="students" model="$model"/>
                   <SortButtons fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher" model="$model"/>
-                  <SortButtons fx:id="loc" styleClass="navItem" text="_Location" userData="location"  model="$model"/>
+                  <SortButtons fx:id="loc" styleClass="navItem" text="_Location" userData="location" model="$model"/>
                </children>
             </HBox>
          </children>

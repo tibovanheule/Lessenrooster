@@ -12,25 +12,24 @@ import java.util.Properties;
 public class WeatherScraper {
     private Weather weather = null;
     private String getData(){
-        String data = "";
+        //stringbuilder zodat we later de inputline er aan toe kunenn voegen (sneller dan string concatenatie += )
+        StringBuilder string = new StringBuilder();
         try{
             Config config = new Config();
             Properties properties =  config.getproperties();
             String key = properties.getProperty("weather.key");
             String city = properties.getProperty("weather.city");
             URL weather = new URL("http://api.wunderground.com/api/"+key+"/conditions/q/be/"+city+".json");
-            System.out.println(weather);
             String inputLine;
             BufferedReader input = new BufferedReader(new InputStreamReader(weather.openStream()));
             while ((inputLine = input.readLine()) != null){
-                // TODO: 28/03/2018 vervang string concatenation door stringbuilder :)
-                data += inputLine;
+                string.append(inputLine);
             }
         }catch(Exception e){
             weather = new Weather(false);
             System.out.println(e);
         }
-        return data;
+        return string.toString();
     }
     public Weather getWeather(){
             try {

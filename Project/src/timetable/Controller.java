@@ -2,11 +2,22 @@
 package timetable;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.Property;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +36,8 @@ import timetable.settings.SettingsController;
 import timetable.views.SortButtons;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
+
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -32,7 +45,7 @@ import java.util.*;
 
 public class Controller {
 
-    public Label day, date, time;
+    public Label day, date, time, appname;
     public TextField searchText;
     public ListView<String> monday, tuesday, wednesday, thursday, friday, list;
     public ImageView dbLogo, weatherIcon;
@@ -43,6 +56,7 @@ public class Controller {
     private String standardSchedule;
     private Db database;
     private DataAccessProvider dataAccessProvider;
+    private ListView[] days = {monday,tuesday,wednesday,thursday,friday};
     public HashMap<String,Item> listElements = new HashMap<>();
 
     public void setStageAndSetupListeners(Stage controller) {
@@ -53,6 +67,7 @@ public class Controller {
         Config config = new Config();
         Properties properties = config.getproperties();
 
+        appname.setText(properties.getProperty("program.name"));
         //sla op in een veld zodat het in het verdere bestand opgevraagd kan worden
         standardSchedule = properties.getProperty("standard.schedule");
 
@@ -104,6 +119,17 @@ public class Controller {
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
 
         Platform.runLater(this::getWeather);
+
+        //wanneer men op een andere lijst klikt de slectie wissen in de huidige lijst
+        try {
+            monday.focusedProperty().addListener(o -> monday.getSelectionModel().clearSelection());
+            tuesday.focusedProperty().addListener(o -> tuesday.getSelectionModel().clearSelection());
+            wednesday.focusedProperty().addListener(o -> wednesday.getSelectionModel().clearSelection());
+            thursday.focusedProperty().addListener(o -> thursday.getSelectionModel().clearSelection());
+            friday.focusedProperty().addListener(o -> friday.getSelectionModel().clearSelection());
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     private void getWeather(){
@@ -141,6 +167,8 @@ public class Controller {
         //list.getSelectionModel().getSelectedItem()
         try {
             //map maken om later iffen te vermijden :)
+            // TODO: 29/03/2018 zie beneden
+            //map naar lijst
             HashMap<Integer, ListView<String>> lists = new HashMap<>();
             lists.put(1, monday);
             lists.put(2, tuesday);
@@ -237,8 +265,6 @@ public class Controller {
         list.getItems().clear();
         //toevoegen van nieuwe elementen
         listElements.clear();
-        //listElements = database.getList(whatList);
-
         HashMap<String, Item> items = new HashMap<>();
         try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
             ItemsDAO itemsDAO = dac.getItemDoa();
@@ -268,16 +294,37 @@ public class Controller {
     public void drawerAction() {
         FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
         ft.setCycleCount(1);
+        TranslateTransition drawerOpen = new TranslateTransition(new Duration(300), draw);
+        drawerOpen.setToX(0);
+        TranslateTransition drawerClose = new TranslateTransition(new Duration(300), draw);
+
+        //alle children opacity property verbinden met die van de drawer
+        for (Node node:draw.getChildren()){
+            node.opacityProperty().bind(draw.opacityProperty());
+        }
+
         if (draw.isVisible()) {
+            //fadeout op einde onzichtbaar zetten
             ft.setFromValue(1.0);
             ft.setToValue(0.0);
-            ft.play();
             ft.setOnFinished(o -> draw.setVisible(false));
+            drawerClose.setToX(+(draw.getWidth()));
+            ParallelTransition parallelTransition = new ParallelTransition(ft,drawerClose);
+            parallelTransition.play();
         } else {
             draw.setVisible(true);
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
-            ft.play();
+            if (draw.getTranslateX() != 0) {
+                ParallelTransition parallelTransition = new ParallelTransition(ft,drawerOpen);
+                parallelTransition.play();
+            }
         }
+
+
+
+
+
+
     }
 }

@@ -61,7 +61,8 @@ public class Db {
         HashMap<Integer,ArrayList<Lecture>> days = new HashMap<>();
         for(int i = 1; i <6;i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
-            String selection = "SELECT * FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+            // TODO: 29/03/2018 prepared statement
+            String selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block  FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
                     "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + sort + ".name = ? AND day = ?";
             //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
             try (Connection conn = system.connect()) {
@@ -70,7 +71,7 @@ public class Db {
                 statement.setInt(2, i);
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    Lecture lecture = new Lecture(resultSet.getString("name"), resultSet.getString("name"), resultSet.getString("name"),
+                    Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"), resultSet.getString("location"),
                             resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"));
                     lectures.add(lecture);
                 }

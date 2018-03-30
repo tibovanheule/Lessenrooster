@@ -79,7 +79,8 @@ Main css
 }
 .drawer{
     -fx-background-color: #efeeec;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 0);
+    -fx-background-insets: 100%;
 }
 .drawerOpen{
     -fx-background-color: #efeeec;

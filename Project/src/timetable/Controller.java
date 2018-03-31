@@ -5,19 +5,13 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.beans.Observable;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.Property;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +23,7 @@ import timetable.config.Config;
 import timetable.db.*;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
+import timetable.lecture.LectureController;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Weather;
@@ -37,7 +32,6 @@ import timetable.views.SortButtons;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,8 +49,8 @@ public class Controller {
     private Stage stage;
     private String standardSchedule;
     private Db database;
-    private DataAccessProvider dataAccessProvider;
-    private ListView[] days = {monday,tuesday,wednesday,thursday,friday};
+    public DataAccessProvider dataAccessProvider;
+    private HashMap<Integer, ArrayList<Lecture>> schedule;
     public HashMap<String,Item> listElements = new HashMap<>();
 
     public void setStageAndSetupListeners(Stage controller) {
@@ -118,15 +112,24 @@ public class Controller {
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
 
+        //ophalen van het weerbericht gebeurd in een thread
+        //voordeel: programma moet niet wachten achter de ophaling
+        //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
         Platform.runLater(this::getWeather);
 
-        //wanneer men op een andere lijst klikt de slectie wissen in de huidige lijst
+        //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
         try {
             monday.focusedProperty().addListener(o -> monday.getSelectionModel().clearSelection());
             tuesday.focusedProperty().addListener(o -> tuesday.getSelectionModel().clearSelection());
             wednesday.focusedProperty().addListener(o -> wednesday.getSelectionModel().clearSelection());
             thursday.focusedProperty().addListener(o -> thursday.getSelectionModel().clearSelection());
             friday.focusedProperty().addListener(o -> friday.getSelectionModel().clearSelection());
+            monday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(1,monday.getSelectionModel().getSelectedItem()));
+            tuesday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(2,tuesday.getSelectionModel().getSelectedItem()));
+            wednesday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(3,wednesday.getSelectionModel().getSelectedItem()));
+            thursday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(4,thursday.getSelectionModel().getSelectedItem()));
+            friday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(5,friday.getSelectionModel().getSelectedItem()));
+
         }catch (Exception e){
             System.out.println(e);
         }
@@ -166,27 +169,20 @@ public class Controller {
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
         try {
-            //map maken om later iffen te vermijden :)
-            // TODO: 29/03/2018 zie beneden
-            //map naar lijst
-            HashMap<Integer, ListView<String>> lists = new HashMap<>();
-            lists.put(1, monday);
-            lists.put(2, tuesday);
-            lists.put(3, wednesday);
-            lists.put(4, thursday);
-            lists.put(5, friday);
-            for (Map.Entry<Integer, ListView<String>> entry : lists.entrySet()) {
-                entry.getValue().getItems().clear();
+            //array maken om later iffen te vermijden :)
+            ListView[] lists = {monday,tuesday,wednesday,thursday,friday};
+            for (ListView list : lists) {
+                list.getItems().clear();
             }
             try {
-                HashMap<Integer, ArrayList<Lecture>> days = database.getRooster(selected.getSort(), selected.getName());
-                for (int i = 1; i < 6; i++) {
-                    ArrayList<Lecture> dayList = days.get(i);
+                schedule = database.getRooster(selected.getSort(), selected.getName());
+                for (Map.Entry<Integer,ArrayList<Lecture>> entry:schedule.entrySet()) {
+                    ArrayList<Lecture> dayList = entry.getValue();
                     for (Lecture lecture : dayList) {
-                        lists.get(i).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
+                        lists[lecture.getDay()-1].getItems().add(lecture.getBlock() + " " + lecture.getCourse());
                         // TODO: 27/03/2018
                         //if (lecture.getConflict()){
-                        //cell.getStyleClass().add("conflict");
+                          //  lists[lecture.getDay()-1].getStyleClass().add("conflict");
                         //}
                     }
                 }
@@ -211,13 +207,31 @@ public class Controller {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
-            scene.getStylesheets().add("timetable/about/about.css");
+            scene.getStylesheets().add("about/about.css");
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             //list.getItems().add(e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    public void lecture(Integer day, String selected) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
+            Parent root = loader.load();
+            LectureController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(root, 450, 450);
+            stage.setScene(scene);
+            Lecture lecture = schedule.get(day).get(0);
+            controller.setStageAndSetupListeners(stage,lecture);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -247,9 +261,9 @@ public class Controller {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
-            scene.getStylesheets().add("timetable/settings/settings.css");
+            scene.getStylesheets().add("settings/settings.css");
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage);
+            controller.setStageAndSetupListeners(stage,this);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (IOException e) {
@@ -320,11 +334,5 @@ public class Controller {
                 parallelTransition.play();
             }
         }
-
-
-
-
-
-
     }
 }

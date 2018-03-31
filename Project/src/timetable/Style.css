@@ -51,6 +51,10 @@ Main css
 .dayHolder{
     -fx-background-color: white;
 }
+.dayHolder *{
+    -fx-wrap-text: true;
+    -fx-text-overrun: clip;
+}
 .dayLabel{
     -fx-font-family: lato;
     -fx-text-fill: #94a8b7;

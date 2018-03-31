@@ -13,6 +13,7 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.config.Config;
+import timetable.preloader.Preloader;
 import timetable.stdout.StdoutList;
 
 import javax.imageio.ImageIO;
@@ -32,7 +33,7 @@ public class Main extends Application {
 
         //laad configuratie bestand in
         Config config = new Config();
-        Properties properties =  config.getproperties();
+        Properties properties = config.getproperties();
 
         //laad het fxml bestand in
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("main.fxml"));

@@ -183,8 +183,10 @@ public class Controller {
             try {
                 schedule = database.getRooster(selected.getSort(), selected.getName());
                 for (Map.Entry<Integer,ArrayList<Lecture>> entry:schedule.entrySet()) {
-                    ArrayList<Lecture> dayList = entry.getValue();
-                    for (Lecture lecture : dayList) {
+                    List<Lecture> lectures = entry.getValue();
+                    // Sorteering
+                    Collections.sort(lectures,  (Lecture lecture1, Lecture lecture2)-> lecture1.getBlock().compareTo(lecture2.getBlock()));
+                    for (Lecture lecture : lectures) {
                         lists.get(lecture.getDay()-1).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
                         // TODO: 27/03/2018
                         //if (lecture.getConflict()){
@@ -279,7 +281,6 @@ public class Controller {
     }
 
     public void updateList(String whatList) {
-
         //textbox leeg maken
         searchText.setText("");
         //listview leeg maken voor nieuwe items

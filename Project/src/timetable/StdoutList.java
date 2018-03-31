@@ -16,11 +16,9 @@ public class StdoutList {
     public StdoutList(String sort){
         Config config = new Config();
         Properties properties = config.getproperties();
-        //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             dataAccessProvider = new MysqlDataAccessProvider();
         } else {
-            //in elk ander geval, valt het terug op sqlite
             dataAccessProvider = new SqliteDataAccessProvider();
         }
 

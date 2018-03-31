@@ -1,15 +1,11 @@
 package timetable.objects;
 
 public class Lecture {
-    private String student;
-    private String teacher;
-    private String location;
-    private String course;
-    private Integer day;
-    private Integer block;
-    private Integer duration;
+    private String student, teacher, location, course;
+    private Integer day, block, duration;
+    private Boolean conflict;
 
-    public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration){
+    public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration) {
         this.block = block;
         this.course = course;
         this.day = day;
@@ -17,9 +13,18 @@ public class Lecture {
         this.location = location;
         this.student = student;
         this.teacher = teacher;
+        this.conflict = false;
     }
 
-    public Integer getDay(){
+    public Boolean getConflict() {
+        return conflict;
+    }
+
+    public void setConflict(Boolean conflict) {
+        this.conflict = conflict;
+    }
+
+    public Integer getDay() {
         return day;
     }
 

@@ -93,7 +93,6 @@ public class Controller {
             public void run() {
                 Platform.runLater(() -> {
                     //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-                    //de huidige datum
                     LocalDateTime now = LocalDateTime.now();
 
                     DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
@@ -134,17 +133,12 @@ public class Controller {
                         } else {
                             setText(item.getName());
                         }
-                        setWrapText(true);
-                    }
-
-                };
-
+                        setWrapText(true); }};
                 return cell;
             }
         });
 
         try {
-
             for (ListView<Lecture> day : lists) {
                 //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
                 //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
@@ -163,14 +157,13 @@ public class Controller {
                                     setGraphic(null);
                                 } else {
                                     setText(lecture.getCourse());
-                                    //if(lecture.getConflict()){
-
-                                    //}
+                                    if(lecture.getConflict()){
+                                        getStyleClass().add("conflict");
+                                    }
                                 }
                                 setWrapText(true);
                             }
                         };
-
                         return cell;
                     }
                 });
@@ -215,7 +208,7 @@ public class Controller {
         }
     }
 
-    public void getRooster(Item selected) {
+    void getRooster(Item selected) {
         //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
@@ -246,8 +239,7 @@ public class Controller {
         Platform.exit();
         System.exit(0);
     }
-
-
+    
     public void about() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("about/about.fxml"));

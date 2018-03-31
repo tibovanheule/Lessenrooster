@@ -3,6 +3,8 @@ package timetable.db.sqlite;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.ItemsDAO;
+import timetable.db.LectureDAO;
+import timetable.db.mysql.MysqlLectureDAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,6 +20,11 @@ public class SqliteDataAccessContext implements DataAccessContext {
     @Override
     public ItemsDAO getItemDoa() {
         return new SqliteItemsDAO(connection);
+    }
+
+    @Override
+    public LectureDAO getLectureDoa() {
+        return new MysqlLectureDAO(connection);
     }
 
     @Override

@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.about.AboutController">
+<AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@about.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.about.AboutController">
    <children>
       <Label fx:id="text" layoutX="20.0" layoutY="164.0" text="version" />
       <AnchorPane layoutX="-7.0" prefHeight="158.0" prefWidth="459.0" styleClass="blue">

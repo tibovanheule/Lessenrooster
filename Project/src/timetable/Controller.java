@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -17,10 +18,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
-import timetable.db.*;
+import timetable.db.DataAccessContext;
+import timetable.db.DataAccessException;
+import timetable.db.DataAccessProvider;
+import timetable.db.ItemsDAO;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.lecture.LectureController;
@@ -41,18 +46,16 @@ public class Controller {
 
     public Label day, date, time, appname;
     public TextField searchText;
-    public ListView<String> monday, tuesday, wednesday, thursday, friday, list;
+    public ListView<Lecture> monday, tuesday, wednesday, thursday, friday;
+    public ListView<Item> list;
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc;
     public AnchorPane draw;
-
     private Stage stage;
     private String standardSchedule;
-    private Db database;
     public DataAccessProvider dataAccessProvider;
-    private HashMap<Integer, ArrayList<Lecture>> schedule;
-    public ArrayList<ListView<String>> lists = new ArrayList<>();
-    public HashMap<String,Item> listElements = new HashMap<>();
+    private Map<Integer,ArrayList<Lecture>> schedule;
+    public ArrayList<ListView<Lecture>> lists = new ArrayList<>();
 
     public void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -74,14 +77,12 @@ public class Controller {
 
         //als de property true is gebruik dan mysql
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            database = new Db(new Mysql());
             dataAccessProvider = new MysqlDataAccessProvider();
             //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
             Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
         } else {
             //in elk ander geval, valt het terug op sqlite
-            database = new Db(new Sqlite());
             dataAccessProvider = new SqliteDataAccessProvider();
             Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
             dbLogo.setImage(image);
@@ -110,7 +111,7 @@ public class Controller {
 
         updateList(standardSchedule);
 
-        list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(listElements.get(list.getSelectionModel().getSelectedItem())));
+        list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));
         searchText.textProperty().addListener(o -> search());
         students.setOnAction(o -> updateList(students.getUserData().toString()));
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
@@ -121,14 +122,59 @@ public class Controller {
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
         Platform.runLater(this::getWeather);
 
+        list.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<Item> call(ListView<Item> myObjectListView) {
+                ListCell<Item> cell = new ListCell<>(){
+                    @Override
+                    protected void updateItem(Item item, boolean b) {
+                        super.updateItem( item, b);
+                        if (b || item == null) {
+                            setText(null);
+                            setGraphic(null);
+                        } else {
+                            setText(item.getName());
+                        }
+                        setWrapText(true);
+                    }
+
+                };
+
+                return cell;
+            }
+        });
 
         try {
-            for (ListView<String> day:lists){
+
+            for (ListView<Lecture> day:lists){
                 //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
                 //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
                 day.focusedProperty().addListener(o->day.getSelectionModel().clearSelection());
                 //listeners opzetten
-                day.getSelectionModel().selectedItemProperty().addListener(o->lecture(lists.indexOf(day),day.getSelectionModel().getSelectedItem()));
+                day.getSelectionModel().selectedItemProperty().addListener(o->lecture(day.getSelectionModel().getSelectedItem()));
+                day.setCellFactory(new Callback<>() {
+                    @Override
+                    public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
+                        ListCell<Lecture> cell = new ListCell<>(){
+                            @Override
+                            protected void updateItem(Lecture lecture, boolean b) {
+                                super.updateItem( lecture, b);
+                                if (b || lecture == null) {
+                                    setText(null);
+                                    setGraphic(null);
+                                } else {
+                                    setText( lecture.getCourse());
+                                    //if(lecture.getConflict()){
+
+                                    //}
+                                }
+                                setWrapText(true);
+                            }
+                        };
+
+                        return cell;
+                    }
+                });
             }
         }catch (Exception e){
             System.out.println(e);
@@ -151,7 +197,6 @@ public class Controller {
 
     public void search() {
         list.getItems().clear();
-        listElements.clear();
         if (searchText.getText().isEmpty()) {
             //als textfield leeg is keer dan terug naar de standaard lijst
             updateList(standardSchedule);
@@ -160,14 +205,11 @@ public class Controller {
             try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
                 ItemsDAO itemsDAO = dac.getItemDoa();
                 for(Item item: itemsDAO.getFilterdList(searchText.getText())){
-                    listElements.put(item.getName(), item);
+                    list.getItems().add(item);
                 }
             }catch (DataAccessException e){
                 System.out.println(e);
             }
-        }
-        for (Map.Entry<String,Item> entry: listElements.entrySet()) {
-            list.getItems().add(entry.getKey());
         }
     }
 
@@ -177,17 +219,17 @@ public class Controller {
         //list.getSelectionModel().getSelectedItem()
         try {
             //array maken om later iffen te vermijden :)
-            for (ListView<String> list : lists) {
+            for (ListView<Lecture> list : lists) {
                 list.getItems().clear();
             }
-            try {
-                schedule = database.getRooster(selected.getSort(), selected.getName());
+            try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                schedule = dac.getLectureDoa().getWeek(selected);
                 for (Map.Entry<Integer,ArrayList<Lecture>> entry:schedule.entrySet()) {
                     List<Lecture> lectures = entry.getValue();
-                    // Sorteering
-                    Collections.sort(lectures,  (Lecture lecture1, Lecture lecture2)-> lecture1.getBlock().compareTo(lecture2.getBlock()));
+                    // Sortering (lessen in de juiste volgorde zetten)
+                    lectures.sort(Comparator.comparing(Lecture::getBlock));
                     for (Lecture lecture : lectures) {
-                        lists.get(lecture.getDay()-1).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
+                        lists.get(lecture.getDay()-1).getItems().add(lecture);
                         // TODO: 27/03/2018
                         //if (lecture.getConflict()){
                           //  lists[lecture.getDay()-1].getStyleClass().add("conflict");
@@ -207,6 +249,7 @@ public class Controller {
         System.exit(0);
     }
 
+
     public void about() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("about/about.fxml"));
@@ -215,20 +258,17 @@ public class Controller {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
-            scene.getStylesheets().add("about/about.css");
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
-            //list.getItems().add(e.toString());
             e.printStackTrace();
         }
     }
 
-    public void lecture(Integer day, String selected) {
+    public void lecture(Lecture selected) {
         try {
-            day++;
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();
             LectureController controller = loader.getController();
@@ -236,8 +276,7 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            Lecture lecture = schedule.get(day).get(0);
-            controller.setStageAndSetupListeners(stage,lecture);
+            controller.setStageAndSetupListeners(stage,selected);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
@@ -270,7 +309,6 @@ public class Controller {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
-            scene.getStylesheets().add("settings/settings.css");
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage,this);
             stage.show();
@@ -281,24 +319,15 @@ public class Controller {
     }
 
     public void updateList(String whatList) {
-        //textbox leeg maken
-        searchText.setText("");
         //listview leeg maken voor nieuwe items
         list.getItems().clear();
-        //toevoegen van nieuwe elementen
-        listElements.clear();
-        HashMap<String, Item> items = new HashMap<>();
         try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
             ItemsDAO itemsDAO = dac.getItemDoa();
             for(Item item: itemsDAO.getList(whatList)){
-                listElements.put(item.getName(), item);
+                list.getItems().add(item);
             }
         }catch (DataAccessException e){
             System.out.println(e);
-        }
-
-        for (Map.Entry<String,Item> item : listElements.entrySet()) {
-            list.getItems().add(item.getKey());
         }
     }
 

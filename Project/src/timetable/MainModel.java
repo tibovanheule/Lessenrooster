@@ -17,8 +17,8 @@ public class MainModel implements Observable {
         System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
     }
     public void getList(String userData){
-        //listElements = database.getList();
-        //for (Map.Entry<String,Item> entry: listElements.entrySet()) {
+        //items = database.getList();
+        //for (Map.Entry<String,Item> entry: items.entrySet()) {
             //list.getItems().add(entry.getKey());
         //}
         fireInvalidationEvent();

@@ -13,8 +13,7 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.config.Config;
-import timetable.preloader.Preloader;
-import timetable.stdout.StdoutList;
+import timetable.objects.Item;
 
 import javax.imageio.ImageIO;
 import java.io.BufferedWriter;
@@ -91,8 +90,8 @@ public class Main extends Application {
         else if (getParameters().getRaw().size() == 2){
             try {
                 Runnable runnable = new Thread( () -> {
-                controller.updateList(getParameters().getRaw().get(0));
-                controller.getRooster(controller.listElements.get(getParameters().getRaw().get(1)));
+                Item item = new Item(getParameters().getRaw().get(0),getParameters().getRaw().get(1));
+                controller.getRooster(item);
                 controller.draw.setVisible(false);});
                 Platform.runLater(runnable);
             }catch (Exception e){
@@ -102,8 +101,8 @@ public class Main extends Application {
         }else if (getParameters().getRaw().size() == 3){
             try{
             Runnable runnable = new Thread( () -> {
-                controller.updateList(getParameters().getRaw().get(0));
-                controller.getRooster(controller.listElements.get(getParameters().getRaw().get(1)));
+                Item item = new Item(getParameters().getRaw().get(0),getParameters().getRaw().get(1));
+                controller.getRooster(item);
                 controller.draw.setVisible(false);});
             Platform.runLater(runnable);
             }catch (Exception e){

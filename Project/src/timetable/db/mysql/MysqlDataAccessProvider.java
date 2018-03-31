@@ -13,9 +13,9 @@ import java.util.Properties;
 public class MysqlDataAccessProvider implements DataAccessProvider {
     /*
    Ik had al een mysql-server draaiende, ik vond het dan het dan ook eens leuk om een mysql-implementatie te maken.
-   Deze is opgevuld met dezelfde data als de sqlite db(aan de hand van een aangepaste lectures.sql).
+   Deze is opgevuld met dezelfde data als de sqlite db(aan de hand van een aangepaste lectures.sql bestand).
    De sqlite en de mysql staan los van elkaar en worden niet gesynchroniseerd met elkaar.
-   De mysql verbinding gebreurd onder een acc met maar één privelege (SELECT) op één db (Main).
+   De mysql verbinding gebeurd onder een account met maar één privelege (SELECT) op één db (Main).
    Er zijn ook maar 3 simultane verbindingen mogelijk. ( mss een belangrijk gegeven bij het testen :) )
     */
     public DataAccessContext getDataAccessContext() throws DataAccessException{

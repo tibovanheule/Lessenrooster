@@ -26,7 +26,7 @@ public class Db {
         String selection = "SELECT name FROM " + sort;
         try(DataAccessContext dac = new MysqlDataAccessProvider().getDataAccessContext()){
             ItemsDAO itemsDAO = dac.getItemDoa();
-            for(Item item: itemsDAO.findItem(sort)){
+            for(Item item: itemsDAO.getList(sort)){
                 items.put(item.getName(), item);
             }
         }catch (DataAccessException e){

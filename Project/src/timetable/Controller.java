@@ -51,6 +51,7 @@ public class Controller {
     private Db database;
     public DataAccessProvider dataAccessProvider;
     private HashMap<Integer, ArrayList<Lecture>> schedule;
+    public ArrayList<ListView<String>> lists = new ArrayList<>();
     public HashMap<String,Item> listElements = new HashMap<>();
 
     public void setStageAndSetupListeners(Stage controller) {
@@ -58,6 +59,12 @@ public class Controller {
     }
 
     public void initialize() {
+        lists.add(monday);
+        lists.add(tuesday);
+        lists.add(wednesday);
+        lists.add(thursday);
+        lists.add(friday);
+
         Config config = new Config();
         Properties properties = config.getproperties();
 
@@ -101,10 +108,7 @@ public class Controller {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
 
-        listElements = database.getList(standardSchedule);
-        for (Map.Entry<String,Item> entry: listElements.entrySet()) {
-            list.getItems().add(entry.getKey());
-        }
+        updateList(standardSchedule);
 
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(listElements.get(list.getSelectionModel().getSelectedItem())));
         searchText.textProperty().addListener(o -> search());
@@ -117,19 +121,15 @@ public class Controller {
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
         Platform.runLater(this::getWeather);
 
-        //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
-        try {
-            monday.focusedProperty().addListener(o -> monday.getSelectionModel().clearSelection());
-            tuesday.focusedProperty().addListener(o -> tuesday.getSelectionModel().clearSelection());
-            wednesday.focusedProperty().addListener(o -> wednesday.getSelectionModel().clearSelection());
-            thursday.focusedProperty().addListener(o -> thursday.getSelectionModel().clearSelection());
-            friday.focusedProperty().addListener(o -> friday.getSelectionModel().clearSelection());
-            monday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(1,monday.getSelectionModel().getSelectedItem()));
-            tuesday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(2,tuesday.getSelectionModel().getSelectedItem()));
-            wednesday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(3,wednesday.getSelectionModel().getSelectedItem()));
-            thursday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(4,thursday.getSelectionModel().getSelectedItem()));
-            friday.getSelectionModel().selectedItemProperty().addListener(o -> lecture(5,friday.getSelectionModel().getSelectedItem()));
 
+        try {
+            for (ListView<String> day:lists){
+                //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
+                //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
+                day.focusedProperty().addListener(o->day.getSelectionModel().clearSelection());
+                //listeners opzetten
+                day.getSelectionModel().selectedItemProperty().addListener(o->lecture(lists.indexOf(day),day.getSelectionModel().getSelectedItem()));
+            }
         }catch (Exception e){
             System.out.println(e);
         }
@@ -154,10 +154,17 @@ public class Controller {
         listElements.clear();
         if (searchText.getText().isEmpty()) {
             //als textfield leeg is keer dan terug naar de standaard lijst
-            listElements = database.getList(standardSchedule);
+            updateList(standardSchedule);
         } else {
             // zo niet haal de gefilterde lijst op
-            listElements = database.getFilteredList(searchText.getText());
+            try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
+                ItemsDAO itemsDAO = dac.getItemDoa();
+                for(Item item: itemsDAO.getFilterdList(searchText.getText())){
+                    listElements.put(item.getName(), item);
+                }
+            }catch (DataAccessException e){
+                System.out.println(e);
+            }
         }
         for (Map.Entry<String,Item> entry: listElements.entrySet()) {
             list.getItems().add(entry.getKey());
@@ -170,8 +177,7 @@ public class Controller {
         //list.getSelectionModel().getSelectedItem()
         try {
             //array maken om later iffen te vermijden :)
-            ListView[] lists = {monday,tuesday,wednesday,thursday,friday};
-            for (ListView list : lists) {
+            for (ListView<String> list : lists) {
                 list.getItems().clear();
             }
             try {
@@ -179,7 +185,7 @@ public class Controller {
                 for (Map.Entry<Integer,ArrayList<Lecture>> entry:schedule.entrySet()) {
                     ArrayList<Lecture> dayList = entry.getValue();
                     for (Lecture lecture : dayList) {
-                        lists[lecture.getDay()-1].getItems().add(lecture.getBlock() + " " + lecture.getCourse());
+                        lists.get(lecture.getDay()-1).getItems().add(lecture.getBlock() + " " + lecture.getCourse());
                         // TODO: 27/03/2018
                         //if (lecture.getConflict()){
                           //  lists[lecture.getDay()-1].getStyleClass().add("conflict");
@@ -220,6 +226,7 @@ public class Controller {
 
     public void lecture(Integer day, String selected) {
         try {
+            day++;
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();
             LectureController controller = loader.getController();
@@ -282,7 +289,7 @@ public class Controller {
         HashMap<String, Item> items = new HashMap<>();
         try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
             ItemsDAO itemsDAO = dac.getItemDoa();
-            for(Item item: itemsDAO.findItem(whatList)){
+            for(Item item: itemsDAO.getList(whatList)){
                 listElements.put(item.getName(), item);
             }
         }catch (DataAccessException e){

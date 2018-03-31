@@ -51,13 +51,12 @@ public class Controller {
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc;
     public AnchorPane draw;
+    public DataAccessProvider dataAccessProvider;
+    private ArrayList<ListView<Lecture>> lists = new ArrayList<>();
     private Stage stage;
     private String standardSchedule;
-    public DataAccessProvider dataAccessProvider;
-    private Map<Integer,ArrayList<Lecture>> schedule;
-    public ArrayList<ListView<Lecture>> lists = new ArrayList<>();
 
-    public void setStageAndSetupListeners(Stage controller) {
+    void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
     }
 
@@ -92,7 +91,7 @@ public class Controller {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater( () -> {
+                Platform.runLater(() -> {
                     //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
                     //de huidige datum
                     LocalDateTime now = LocalDateTime.now();
@@ -125,10 +124,10 @@ public class Controller {
         list.setCellFactory(new Callback<>() {
             @Override
             public ListCell<Item> call(ListView<Item> myObjectListView) {
-                ListCell<Item> cell = new ListCell<>(){
+                ListCell<Item> cell = new ListCell<>() {
                     @Override
                     protected void updateItem(Item item, boolean b) {
-                        super.updateItem( item, b);
+                        super.updateItem(item, b);
                         if (b || item == null) {
                             setText(null);
                             setGraphic(null);
@@ -146,24 +145,24 @@ public class Controller {
 
         try {
 
-            for (ListView<Lecture> day:lists){
+            for (ListView<Lecture> day : lists) {
                 //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
                 //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
-                day.focusedProperty().addListener(o->day.getSelectionModel().clearSelection());
+                day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
                 //listeners opzetten
-                day.getSelectionModel().selectedItemProperty().addListener(o->lecture(day.getSelectionModel().getSelectedItem()));
+                day.getSelectionModel().selectedItemProperty().addListener(o -> lecture(day.getSelectionModel().getSelectedItem()));
                 day.setCellFactory(new Callback<>() {
                     @Override
                     public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
-                        ListCell<Lecture> cell = new ListCell<>(){
+                        ListCell<Lecture> cell = new ListCell<>() {
                             @Override
                             protected void updateItem(Lecture lecture, boolean b) {
-                                super.updateItem( lecture, b);
+                                super.updateItem(lecture, b);
                                 if (b || lecture == null) {
                                     setText(null);
                                     setGraphic(null);
                                 } else {
-                                    setText( lecture.getCourse());
+                                    setText(lecture.getCourse());
                                     //if(lecture.getConflict()){
 
                                     //}
@@ -176,12 +175,12 @@ public class Controller {
                     }
                 });
             }
-        }catch (Exception e){
-            System.out.println(e);
+        } catch (Exception e) {
+           e.printStackTrace();
         }
     }
 
-    private void getWeather(){
+    private void getWeather() {
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
 
@@ -190,6 +189,9 @@ public class Controller {
                 Image image = new Image(getClass().getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
                 weatherIcon.setImage(image);
             } catch (Exception e) {
+                e.printStackTrace();
+                //omdat de fout meestal komt door een verkeerd getypt icon in de resources
+                // is het handig de icon name te printen ;)
                 System.out.println(weather.getIcon());
             }
         }
@@ -202,13 +204,13 @@ public class Controller {
             updateList(standardSchedule);
         } else {
             // zo niet haal de gefilterde lijst op
-            try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
+            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
                 ItemsDAO itemsDAO = dac.getItemDoa();
-                for(Item item: itemsDAO.getFilterdList(searchText.getText())){
+                for (Item item : itemsDAO.getFilterdList(searchText.getText())) {
                     list.getItems().add(item);
                 }
-            }catch (DataAccessException e){
-                System.out.println(e);
+            } catch (DataAccessException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -222,25 +224,21 @@ public class Controller {
             for (ListView<Lecture> list : lists) {
                 list.getItems().clear();
             }
-            try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                schedule = dac.getLectureDoa().getWeek(selected);
-                for (Map.Entry<Integer,ArrayList<Lecture>> entry:schedule.entrySet()) {
+            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
                     List<Lecture> lectures = entry.getValue();
                     // Sortering (lessen in de juiste volgorde zetten)
                     lectures.sort(Comparator.comparing(Lecture::getBlock));
                     for (Lecture lecture : lectures) {
-                        lists.get(lecture.getDay()-1).getItems().add(lecture);
+                        lists.get(lecture.getDay() - 1).getItems().add(lecture);
                         // TODO: 27/03/2018
-                        //if (lecture.getConflict()){
-                          //  lists[lecture.getDay()-1].getStyleClass().add("conflict");
-                        //}
                     }
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            System.out.println(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -267,7 +265,7 @@ public class Controller {
         }
     }
 
-    public void lecture(Lecture selected) {
+    private void lecture(Lecture selected) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();
@@ -276,7 +274,7 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage,selected);
+            controller.setStageAndSetupListeners(stage, selected);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
@@ -310,7 +308,7 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage,this);
+            controller.setStageAndSetupListeners(stage, this);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (IOException e) {
@@ -318,16 +316,16 @@ public class Controller {
         }
     }
 
-    public void updateList(String whatList) {
+    private void updateList(String whatList) {
         //listview leeg maken voor nieuwe items
         list.getItems().clear();
-        try(DataAccessContext dac = dataAccessProvider.getDataAccessContext()){
+        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
             ItemsDAO itemsDAO = dac.getItemDoa();
-            for(Item item: itemsDAO.getList(whatList)){
+            for (Item item : itemsDAO.getList(whatList)) {
                 list.getItems().add(item);
             }
-        }catch (DataAccessException e){
-            System.out.println(e);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
         }
     }
 
@@ -350,7 +348,7 @@ public class Controller {
         TranslateTransition drawerClose = new TranslateTransition(new Duration(300), draw);
 
         //alle children opacity property verbinden met die van de drawer
-        for (Node node:draw.getChildren()){
+        for (Node node : draw.getChildren()) {
             node.opacityProperty().bind(draw.opacityProperty());
         }
 
@@ -360,14 +358,14 @@ public class Controller {
             ft.setToValue(0.0);
             ft.setOnFinished(o -> draw.setVisible(false));
             drawerClose.setToX(+(draw.getWidth()));
-            ParallelTransition parallelTransition = new ParallelTransition(ft,drawerClose);
+            ParallelTransition parallelTransition = new ParallelTransition(ft, drawerClose);
             parallelTransition.play();
         } else {
             draw.setVisible(true);
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
             if (draw.getTranslateX() != 0) {
-                ParallelTransition parallelTransition = new ParallelTransition(ft,drawerOpen);
+                ParallelTransition parallelTransition = new ParallelTransition(ft, drawerOpen);
                 parallelTransition.play();
             }
         }

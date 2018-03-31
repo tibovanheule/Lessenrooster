@@ -20,6 +20,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 public class Main extends Application {
@@ -100,15 +102,26 @@ public class Main extends Application {
             primaryStage.show();
         }else if (getParameters().getRaw().size() == 3){
             try{
-            Runnable runnable = new Thread( () -> {
+                LocalDateTime now = LocalDateTime.now();
+
+                DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
+                DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
+                DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
+
+                controller.date.setText(now.format(formatDate));
+                controller.day.setText(now.format(formatDay));
+                controller.time.setText(now.format(formatTime));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            try{
                 Item item = new Item(getParameters().getRaw().get(0),getParameters().getRaw().get(1));
                 controller.getRooster(item);
-                controller.draw.setVisible(false);});
-            Platform.runLater(runnable);
+                controller.draw.setVisible(false);
             }catch (Exception e){
                 System.out.println(e);
             }
-            primaryStage.setMaximized(false);
+            primaryStage.setMaximized(true);
             WritableImage image = root.snapshot(new SnapshotParameters(), null);
 
             // TODO: 29/03/2018 kijken als dit niet zonder file kan :)

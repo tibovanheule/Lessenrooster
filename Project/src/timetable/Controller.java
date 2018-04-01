@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import timetable.about.AboutController;
@@ -142,7 +143,7 @@ public class Controller {
             for (ListView<Lecture> day : lists) {
                 //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
                 //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
-                day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
+                //day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
                 //listeners opzetten
                 day.getSelectionModel().selectedItemProperty().addListener(o -> lecture(day.getSelectionModel().getSelectedItem()));
                 day.setCellFactory(new Callback<>() {
@@ -155,6 +156,7 @@ public class Controller {
                                 if (b || lecture == null) {
                                     setText(null);
                                     setGraphic(null);
+                                    getStyleClass().remove("conflict");
                                 } else {
                                     setText(lecture.getCourse());
                                     if(lecture.getConflict()){
@@ -220,8 +222,6 @@ public class Controller {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
                 for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
                     List<Lecture> lectures = entry.getValue();
-                    // Sortering (lessen in de juiste volgorde zetten)
-                    lectures.sort(Comparator.comparing(Lecture::getBlock));
                     for (Lecture lecture : lectures) {
                         lists.get(lecture.getDay() - 1).getItems().add(lecture);
                         // TODO: 27/03/2018
@@ -262,11 +262,12 @@ public class Controller {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();
             LectureController controller = loader.getController();
+            controller.setLecture(selected);
             Stage stage = new Stage();
+            controller.setStageAndSetupListeners(stage);
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage, selected);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

@@ -30,6 +30,18 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                     lectures.add(lecture);
                 }
                 resultSet.close();
+                // Sortering (lessen in de juiste volgorde zetten) Dit is wel niet meer nodig omdat dit werk nu uitbesteed wordt aan de DB (zie sql query)
+                //lectures.sort(Comparator.comparing(Lecture::getBlock));
+                int j = 0;
+                while (j < lectures.size()-1){
+                    Lecture lecture1 = lectures.get(j);
+                    Lecture lecture2 = lectures.get(j+1);
+                    if(lecture1.getBlock().equals(lecture2.getBlock()) || lecture2.getBlock() < lecture1.getBlock()+lecture1.getDuration()){
+                        lecture1.setConflict(true);
+                        lecture2.setConflict(true);
+                    }
+                    j++;
+                }
                 days.put(i, lectures);
             } catch (Exception e) {
                 System.out.println(e);

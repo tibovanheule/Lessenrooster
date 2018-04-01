@@ -133,3 +133,7 @@ Main css
     -fx-background-position: center;
     -fx-background-size: 100% ;
 }
+.conflict{
+    -fx-text-fill: white;
+    -fx-background-color: #F65459;
+}

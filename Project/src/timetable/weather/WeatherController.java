@@ -9,16 +9,16 @@ import timetable.Main;
 import timetable.objects.Weather;
 
 public class WeatherController {
-    public Label temp, humid, condition,windSpeed;
+    public Label temp, humid, condition, windSpeed;
     public ImageView weatherIcon, arrow, compass;
     private Stage stage;
 
-    public void setStageAndSetupListeners(Stage stage){
+    public void setStageAndSetupListeners(Stage stage) {
         //krijgen van de stage
         this.stage = stage;
     }
 
-    public void initialize(){
+    public void initialize() {
 
         Weather weather = new WeatherScraper().getWeather();
         try {
@@ -30,14 +30,14 @@ public class WeatherController {
             humid.setText(weather.getHumidity());
             windSpeed.setText("Windspeed: " + weather.getWindSpeed() + "kph");
 
-        }catch (Exception e){
-            System.out.println(e);
+        } catch (Exception e) {
+            e.printStackTrace();
             System.out.println(weather.getConnection());
         }
 
     }
 
-    public void close(){
+    public void close() {
         //afsluiten stage
         stage.close();
     }

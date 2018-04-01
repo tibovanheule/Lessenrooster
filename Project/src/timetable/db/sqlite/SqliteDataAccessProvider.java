@@ -1,6 +1,5 @@
 package timetable.db.sqlite;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.sqlite.SQLiteDataSource;
 import timetable.config.Config;
 import timetable.db.DataAccessContext;
@@ -12,13 +11,14 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class SqliteDataAccessProvider implements DataAccessProvider {
-    public DataAccessContext getDataAccessContext() throws DataAccessException{
-        try{
+    public DataAccessContext getDataAccessContext() throws DataAccessException {
+        try {
             return new SqliteDataAccessContext(getConnection());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DataAccessException("Could not create DAC", e);
         }
     }
+
     public Connection getConnection() throws SQLException {
         Connection conn;
         Config config = new Config();

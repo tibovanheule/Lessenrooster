@@ -19,7 +19,6 @@ public class AboutController {
     public void initialize(){
 
         //inladen configuratie bestand
-        //Config variable kan lokaal zijn want wordt enkel hier gebruikt
         Config config = new Config();
         Properties properties =  config.getproperties();
         //bewust alle tekst in 1 veld gestoken

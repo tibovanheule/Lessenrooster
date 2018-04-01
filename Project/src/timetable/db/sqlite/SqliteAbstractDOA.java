@@ -5,22 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SqliteAbstractDOA {
+class SqliteAbstractDOA {
     private Connection connection;
 
-    public SqliteAbstractDOA(){
+    SqliteAbstractDOA() {
 
     }
 
-    public SqliteAbstractDOA(Connection connection){
+    SqliteAbstractDOA(Connection connection) {
         this.connection = connection;
     }
 
-    protected Statement create() throws SQLException{
+    Statement create() throws SQLException {
         return connection.createStatement();
     }
 
-    protected PreparedStatement prepare(String sql) throws SQLException{
+    PreparedStatement prepare(String sql) throws SQLException {
         return connection.prepareStatement(sql);
     }
 }

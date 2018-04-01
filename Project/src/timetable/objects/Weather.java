@@ -26,9 +26,9 @@ public class Weather {
     private Boolean connection;
 
 
-
     private String icon;
-    public Weather(Boolean connection, Double temp, Double windDegree, Double windSpeed, String humidity,String icon, String condition, String city){
+
+    public Weather(Boolean connection, Double temp, Double windDegree, Double windSpeed, String humidity, String icon, String condition, String city) {
         this.temp = temp;
         this.humidity = humidity;
         this.windDegree = windDegree;
@@ -39,7 +39,7 @@ public class Weather {
         this.city = city;
     }
 
-    public Weather(Boolean connection){
+    public Weather(Boolean connection) {
         this.connection = connection;
     }
 

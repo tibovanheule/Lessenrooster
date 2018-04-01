@@ -12,15 +12,15 @@ public class MysqlAbstractDOA {
 
     }
 
-    public MysqlAbstractDOA(Connection connection){
+    MysqlAbstractDOA(Connection connection){
         this.connection = connection;
     }
 
-    protected Statement create() throws SQLException{
+    Statement create() throws SQLException{
         return connection.createStatement();
     }
 
-    protected PreparedStatement prepare(String sql) throws SQLException{
+    PreparedStatement prepare(String sql) throws SQLException{
         return connection.prepareStatement(sql);
     }
 }

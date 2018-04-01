@@ -18,17 +18,18 @@ public class MysqlDataAccessProvider implements DataAccessProvider {
    De mysql verbinding gebeurd onder een account met maar één privelege (SELECT) op één db (Main).
    Er zijn ook maar 3 simultane verbindingen mogelijk. ( mss een belangrijk gegeven bij het testen :) )
     */
-    public DataAccessContext getDataAccessContext() throws DataAccessException{
-        try{
+    public DataAccessContext getDataAccessContext() throws DataAccessException {
+        try {
             return new MysqlDataAccessContext(getConnection());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DataAccessException("Could not create DAC", e);
         }
     }
+
     public Connection getConnection() throws SQLException {
         Connection conn;
         Config config = new Config();
-        Properties properties =  config.getproperties();
+        Properties properties = config.getproperties();
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(properties.getProperty("DB.mysql.user"));
         dataSource.setPassword(properties.getProperty("DB.mysql.password"));

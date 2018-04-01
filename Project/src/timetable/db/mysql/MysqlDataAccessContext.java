@@ -12,7 +12,7 @@ public class MysqlDataAccessContext implements DataAccessContext {
 
     private Connection connection;
 
-    public MysqlDataAccessContext(Connection connection) {
+    MysqlDataAccessContext(Connection connection) {
         this.connection = connection;
     }
 
@@ -29,8 +29,8 @@ public class MysqlDataAccessContext implements DataAccessContext {
     public void close() {
         try {
             connection.close();
-        }catch (SQLException e){
-            System.out.println(new DataAccessException("couldn't close the connection :o", e));
+        } catch (SQLException e) {
+            new DataAccessException("couldn't close the connection :o", e).printStackTrace();
         }
     }
 }

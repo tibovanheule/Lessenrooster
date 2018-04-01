@@ -31,8 +31,8 @@ public class SqliteDataAccessContext implements DataAccessContext {
     public void close() {
         try {
             connection.close();
-        }catch (SQLException e){
-            System.out.println(new DataAccessException("couldn't close the connection :o", e));
+        } catch (SQLException e) {
+            new DataAccessException("couldn't close the connection :o", e).printStackTrace();
         }
     }
 }

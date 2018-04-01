@@ -6,134 +6,156 @@ Main css
     font-family: 'lato';
     src: url('resources/Lato-Regular.ttf');
 }
-.body{
+
+.body {
     -fx-background-color: #efeeec;
 }
-.leftMenu{
+
+.leftMenu {
     -fx-background-color: #46529d;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 5, 0, 0, 0);
 }
-.day{
+
+.day {
     -fx-font-family: lato;
     -fx-font-size: 32px;
     -fx-text-fill: #8d93be;
 }
-.date{
+
+.date {
     -fx-font-family: lato;
     -fx-font-size: 32px;
     -fx-text-fill: #8d93be;
 }
-.time{
+
+.time {
     -fx-font-family: lato;
     -fx-font-size: 48px;
     -fx-text-fill: white;
 }
 
-.listselect{
+.listselect {
     -fx-background-color: #efeeec;
 }
-.listselect .list-cell{
+
+.listselect .list-cell {
     -fx-background-color: #efeeec;
     -fx-font-family: lato;
     -fx-font-weight: bold;
     -fx-text-fill: #b3b0ac;
     -fx-wrap-text: true;
 }
-.listselect .list-cell:selected{
+
+.listselect .list-cell:selected {
     -fx-text-fill: #46529d;
     -fx-font-weight: bold;
 }
-.navItem{
+
+.navItem {
     -fx-background-color: #efeeec;
     -fx-font-family: lato;
     -fx-text-fill: #46529d;
 }
-.dayHolder{
+
+.dayHolder {
     -fx-background-color: white;
 }
-.dayHolder *{
+
+.dayHolder * {
     -fx-wrap-text: true;
     -fx-text-overrun: clip;
 }
-.dayLabel{
+
+.dayLabel {
     -fx-font-family: lato;
     -fx-text-fill: #94a8b7;
     -fx-font-size: 16px;
 }
-.searchText{
+
+.searchText {
     -fx-background-color: #efeeec;
     -fx-border-color: #b3b0ac;
     -fx-border-width: 0px 0px 1px 0px;
 }
-.search{
+
+.search {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/search.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: 100%;
 }
-.next{
+
+.next {
     -fx-text-fill: #8d93be;
     -fx-font-family: lato;
 }
-.nextItem{
+
+.nextItem {
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-family: lato;
 }
-.drawer{
+
+.drawer {
     -fx-background-color: #efeeec;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 0);
     -fx-background-insets: 100%;
 }
-.drawerOpen{
+
+.drawerOpen {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/drawerOpen.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
-.windowSize{
+
+.windowSize {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/windowSize.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
-.settings{
+
+.settings {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/settings.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
-.close{
+
+.close {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/close.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
 
-.drawerClose{
+.drawerClose {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/drawerClose.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
-.weatherIcon{
+
+.weatherIcon {
     -fx-opacity: 50%;
 }
 
-.about{
+.about {
     -fx-background-color: #efeeec;
     -fx-background-image: url("resources/images/about.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 100% ;
+    -fx-background-size: 100%;
 }
-.conflict{
+
+.conflict {
     -fx-text-fill: white;
     -fx-background-color: #F65459;
 }

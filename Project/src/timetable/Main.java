@@ -30,7 +30,7 @@ public class Main extends Application {
     private double yOffset = 0;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         //laad configuratie bestand in
         Config config = new Config();
@@ -85,23 +85,23 @@ public class Main extends Application {
          */
 
 
-        if (getParameters().getRaw().size() == 0){
+        if (getParameters().getRaw().size() == 0) {
             //toon eindelijk de stage :)
             primaryStage.show();
-        }
-        else if (getParameters().getRaw().size() == 2){
+        } else if (getParameters().getRaw().size() == 2) {
             try {
-                Runnable runnable = new Thread( () -> {
-                Item item = new Item(getParameters().getRaw().get(0),getParameters().getRaw().get(1));
-                controller.getRooster(item);
-                controller.draw.setVisible(false);});
+                Runnable runnable = new Thread(() -> {
+                    Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
+                    controller.getRooster(item);
+                    controller.draw.setVisible(false);
+                });
                 Platform.runLater(runnable);
-            }catch (Exception e){
-                System.out.println(e);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
             primaryStage.show();
-        }else if (getParameters().getRaw().size() == 3){
-            try{
+        } else if (getParameters().getRaw().size() == 3) {
+            try {
                 LocalDateTime now = LocalDateTime.now();
 
                 DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("H:mm");
@@ -111,15 +111,15 @@ public class Main extends Application {
                 controller.date.setText(now.format(formatDate));
                 controller.day.setText(now.format(formatDay));
                 controller.time.setText(now.format(formatTime));
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            try{
-                Item item = new Item(getParameters().getRaw().get(0),getParameters().getRaw().get(1));
+            try {
+                Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
                 controller.getRooster(item);
                 controller.draw.setVisible(false);
-            }catch (Exception e){
-                System.out.println(e);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
             primaryStage.setMaximized(true);
             WritableImage image = root.snapshot(new SnapshotParameters(), null);
@@ -130,7 +130,7 @@ public class Main extends Application {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {
-                System.out.println(e);
+                e.printStackTrace();
                 Platform.exit();
                 System.exit(2);
             }
@@ -144,19 +144,19 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         //Controle lengte argumenten
-        if (args.length == 0 || args.length == 2 || args.length == 3){
+        if (args.length == 0 || args.length == 2 || args.length == 3) {
             //Start prog met argumenten -> normale start
             launch(args);
-        } else if (args.length == 1){
-            StdoutList getList = new StdoutList(args[0]);
+        } else if (args.length == 1) {
+            new StdoutList(args[0]);
             Platform.exit();
             System.exit(0);
-        }else if (args.length >= 4){
-            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))){
-                 error.write("Invalid! please don't give more than 3 arguments! :) \n");
-                 error.flush();
-            }catch (IOException e) {
-                System.out.println(e);
+        } else if (args.length >= 4) {
+            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
+                error.write("Invalid! please don't give more than 3 arguments! :) \n");
+                error.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();

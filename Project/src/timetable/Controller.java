@@ -18,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import timetable.about.AboutController;
@@ -134,7 +133,9 @@ public class Controller {
                         } else {
                             setText(item.getName());
                         }
-                        setWrapText(true); }};
+                        setWrapText(true);
+                    }
+                };
                 return cell;
             }
         });
@@ -159,7 +160,7 @@ public class Controller {
                                     getStyleClass().remove("conflict");
                                 } else {
                                     setText(lecture.getCourse());
-                                    if(lecture.getConflict()){
+                                    if (lecture.getConflict()) {
                                         getStyleClass().add("conflict");
                                     }
                                 }
@@ -171,7 +172,7 @@ public class Controller {
                 });
             }
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -239,7 +240,7 @@ public class Controller {
         Platform.exit();
         System.exit(0);
     }
-    
+
     public void about() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("about/about.fxml"));

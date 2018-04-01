@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@lecture.css"
+            xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="timetable.lecture.LectureController">
+    <AnchorPane prefHeight="110.0" prefWidth="600.0" styleClass="blue">
+        <Label fx:id="course" layoutX="41.0" layoutY="46.0" styleClass="blue" text="Course"/>
+    </AnchorPane>
+    <Label fx:id="day" layoutX="23.0" layoutY="183.0" text="Day"/>
+    <Label fx:id="hour" layoutX="54.0" layoutY="183.0" text="hour"/>
+    <Label fx:id="duration" layoutX="88.0" layoutY="183.0" text="duration"/>
+    <Label fx:id="teacher" layoutX="24.0" layoutY="135.0" text="teacher"/>
+    <ListView layoutX="172.0" layoutY="135.0" prefHeight="200.0" prefWidth="200.0"/>
+    <Label fx:id="student" layoutX="23.0" layoutY="160.0" text="Students"/>
+    <Button layoutX="28.0" layoutY="297.0" mnemonicParsing="false" onAction="#close" text="Button"/>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@lecture.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.lecture.LectureController">
-   <children>
-      <AnchorPane prefHeight="110.0" prefWidth="600.0" styleClass="blue">
-         <children>
-            <Label fx:id="course" layoutX="41.0" layoutY="46.0" styleClass="blue" text="Course" />
-         </children>
-      </AnchorPane>
-      <Label fx:id="day" layoutX="23.0" layoutY="183.0" text="Day" />
-      <Label fx:id="hour" layoutX="54.0" layoutY="183.0" text="hour" />
-      <Label fx:id="duration" layoutX="88.0" layoutY="183.0" text="duration" />
-      <Label fx:id="teacher" layoutX="24.0" layoutY="135.0" text="teacher" />
-      <ListView layoutX="172.0" layoutY="135.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label fx:id="student" layoutX="23.0" layoutY="160.0" text="Students" />
-      <Button layoutX="28.0" layoutY="297.0" mnemonicParsing="false" onAction="#close" text="Button" />
 
-   </children>
 </AnchorPane>

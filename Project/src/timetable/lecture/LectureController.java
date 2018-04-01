@@ -11,7 +11,7 @@ public class LectureController {
 
     public void setLecture(Lecture lecture) {
         String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
-        try{
+        try {
             duration.setText(lecture.getDuration() + "hours");
             hour.setText("block" + lecture.getBlock());
             //location.setText("test");
@@ -19,7 +19,7 @@ public class LectureController {
             teacher.setText(lecture.getTeacher());
             course.setText(lecture.getCourse());
             day.setText(days[lecture.getDay() - 1]);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

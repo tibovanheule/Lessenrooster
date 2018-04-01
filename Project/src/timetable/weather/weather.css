@@ -1,8 +1,8 @@
-.body{
+.body {
     -fx-background-color: #4d59a1;
 }
 
-Button{
+Button {
     -fx-background-color: #efeeec;
     -fx-border-width: 2px;
     -fx-border-color: #b3b0ac;
@@ -11,7 +11,7 @@ Button{
     -fx-font-family: "Lato Semibold";
 }
 
-Label{
+Label {
     -fx-font-family: Lato;
     -fx-text-fill: white;
 }

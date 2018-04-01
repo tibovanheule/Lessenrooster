@@ -71,7 +71,7 @@ public class SettingsController {
         properties.setProperty("weather.city", weatherCity.getSelectionModel().getSelectedItem());
     }
 
-    public void dbSettings(){
+    public void dbSettings() {
         try {
             canClose = false;
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/database/database.fxml"));
@@ -81,16 +81,16 @@ public class SettingsController {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage,mainController,this,properties);
+            controller.setStageAndSetupListeners(stage, mainController, this, properties);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public  void show(){
-     stage.requestFocus();
-     canClose = true;
+    public void show() {
+        stage.requestFocus();
+        canClose = true;
     }
 
     public void close() {

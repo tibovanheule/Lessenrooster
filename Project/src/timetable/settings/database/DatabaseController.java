@@ -20,30 +20,31 @@ public class DatabaseController {
     private boolean dbChange;
     private SettingsController settingsController;
     public CheckBox mysql;
-    public void initialize(){
-        mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
+
+    public void initialize() {
+
     }
 
 
-
-    public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController,Properties properties){
+    public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController, Properties properties) {
         this.stage = stage;
         this.mainController = controller;
         this.settingsController = settingsController;
         this.properties = properties;
+        mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
     }
 
-    public void mysql(){
+    public void mysql() {
 
-        properties.setProperty("DB.use",String.valueOf(mysql.isSelected()));
+        properties.setProperty("DB.use", String.valueOf(mysql.isSelected()));
         dbChange = true;
     }
 
-    public void dragOver(DragEvent event){
+    public void dragOver(DragEvent event) {
         event.acceptTransferModes(TransferMode.ANY);
     }
 
-    public void close(){
+    public void close() {
         //als de settings i.v.m de DB gewijzigd is, laat die metteen ook aan passen in de mainController
         //zodat een een herstart van programma niet nodig is.
         if (dbChange) {

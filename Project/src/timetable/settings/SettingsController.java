@@ -6,17 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Controller;
 import timetable.Main;
 import timetable.config.Config;
-import timetable.db.mysql.MysqlDataAccessProvider;
-import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.database.DatabaseController;
 
-import java.io.IOException;
 import java.util.Properties;
 
 public class SettingsController {
@@ -25,8 +21,8 @@ public class SettingsController {
     public CheckBox windowSize;
     public ComboBox<String> defaultStartup, weatherCity;
     private Stage stage;
-    public Boolean canClose = true, dbChange = false;
-    private Properties properties = new Properties();
+    private Boolean canClose = true;
+    public Properties properties = new Properties();
     private Controller mainController;
 
     public void setStageAndSetupListeners(Stage stage, Controller main) {
@@ -36,7 +32,7 @@ public class SettingsController {
         this.mainController = main;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         //Laad het configuratie bestand in
         Config config = new Config();
         properties = config.getproperties();
@@ -67,12 +63,12 @@ public class SettingsController {
 
     private void startupSchedule() {
         //Selectie in property steken
-        properties.setProperty("standard.schedule", defaultStartup.getSelectionModel().getSelectedItem().toString());
+        properties.setProperty("standard.schedule", defaultStartup.getSelectionModel().getSelectedItem());
     }
 
     private void city() {
         //Selectie in property steken
-        properties.setProperty("weather.city", weatherCity.getSelectionModel().getSelectedItem().toString());
+        properties.setProperty("weather.city", weatherCity.getSelectionModel().getSelectedItem());
     }
 
     public void dbSettings(){
@@ -85,7 +81,7 @@ public class SettingsController {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage,mainController,this);
+            controller.setStageAndSetupListeners(stage,mainController,this,properties);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

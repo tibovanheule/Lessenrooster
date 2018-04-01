@@ -7,7 +7,6 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 import timetable.Controller;
 import timetable.Main;
-import timetable.config.Config;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.SettingsController;
@@ -22,19 +21,16 @@ public class DatabaseController {
     private SettingsController settingsController;
     public CheckBox mysql;
     public void initialize(){
-        //Laad het configuratie bestand in
-        Config config = new Config();
-        properties = config.getproperties();
-
         mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
     }
 
 
 
-    public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController){
+    public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController,Properties properties){
         this.stage = stage;
         this.mainController = controller;
         this.settingsController = settingsController;
+        this.properties = properties;
     }
 
     public void mysql(){
@@ -64,6 +60,7 @@ public class DatabaseController {
                 mainController.dbLogo.setImage(image);
             }
         }
+        settingsController.properties = this.properties;
         settingsController.show();
         stage.close();
     }

@@ -64,6 +64,26 @@ public MainModel(){
         fireInvalidationEvent();
     }
 
+    public void filterItems(String searchText){
+        items.clear();
+        if (searchText.isEmpty()) {
+            //als textfield leeg is keer dan terug naar de standaard lijst
+            // TODO: 2/04/2018 standaard lijst terug implementeren
+            changeItems("students");
+        } else {
+            // zo niet haal de gefilterde lijst op
+            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                ItemsDAO itemsDAO = dac.getItemDoa();
+                for (Item item : itemsDAO.getFilterdList(searchText)){
+                    items.add(item);
+                }
+            } catch (DataAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        fireInvalidationEvent();
+    }
+
     @Override
     public void addListener(InvalidationListener listener) {
         listenerList.add(listener);

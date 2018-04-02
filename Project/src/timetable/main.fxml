@@ -7,6 +7,7 @@
 <?import timetable.MainModel?>
 <?import timetable.views.SortButtons?>
 <?import timetable.views.ItemsListView?>
+<?import timetable.views.SearchTextBox?>
 <GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
     <fx:define>
@@ -136,8 +137,8 @@
         </HBox>
         <HBox layoutX="10.399999618530273" layoutY="50.400001525878906" prefWidth="200.0" spacing="5.0">
 
-            <TextField fx:id="searchText" styleClass="searchText"/>
-            <Button mnemonicParsing="false" onAction="#search" styleClass="search"/>
+            <SearchTextBox fx:id="searchText" styleClass="searchText" model="$model"/>
+            <Button mnemonicParsing="false" onAction="#search" styleClass="search" />
 
             <padding>
                 <Insets bottom="10.0" top="10.0"/>

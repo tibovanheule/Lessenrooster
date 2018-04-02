@@ -109,15 +109,15 @@ public class Controller {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
 
-        Platform.runLater(() -> updateList(standardSchedule));
 
      /*   list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));*/
-        searchText.textProperty().addListener(o -> {if(!searchText.getText().equals("")){search();}});
+
 
         //ophalen van het weerbericht gebeurd in een thread
         //voordeel: programma moet niet wachten achter de ophaling
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
         Platform.runLater(this::getWeather);
+
 
         try {
             for (ListView<Lecture> day : lists) {
@@ -180,21 +180,7 @@ public class Controller {
     }
 
     public void search() {
-        list.getItems().clear();
-        if (searchText.getText().isEmpty()) {
-            //als textfield leeg is keer dan terug naar de standaard lijst
-            updateList(standardSchedule);
-        } else {
-            // zo niet haal de gefilterde lijst op
-            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                ItemsDAO itemsDAO = dac.getItemDoa();
-                for (Item item : itemsDAO.getFilterdList(searchText.getText())) {
-                    list.getItems().add(item);
-                }
-            } catch (DataAccessException e) {
-                e.printStackTrace();
-            }
-        }
+
     }
 
     void getRooster(Item selected) {

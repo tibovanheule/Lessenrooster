@@ -11,6 +11,8 @@ import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.SettingsController;
 
+import java.io.File;
+import java.util.List;
 import java.util.Properties;
 
 public class DatabaseController {
@@ -20,6 +22,7 @@ public class DatabaseController {
     private boolean dbChange;
     private SettingsController settingsController;
     public CheckBox mysql;
+    private String url;
 
     public void initialize() {
 
@@ -41,7 +44,21 @@ public class DatabaseController {
     }
 
     public void dragOver(DragEvent event) {
-        event.acceptTransferModes(TransferMode.ANY);
+        if (event.getDragboard().hasFiles()) {
+            event.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+
+    public void dragDropped(DragEvent event) {
+        dbChange = true;
+        mysql.setSelected(false);
+        properties.setProperty("DB.use","false");
+        List<File> files = event.getDragboard().getFiles();
+        url = "jdbc:sqlite:"+files.get(0).getPath();
+    }
+
+    public void chooseDB() {
+
     }
 
     public void close() {
@@ -53,6 +70,10 @@ public class DatabaseController {
                 mainController.dataAccessProvider = new MysqlDataAccessProvider();
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
+                mainController.dbLogo.setImage(image);
+            } else if (url != null) {
+                mainController.dataAccessProvider = new SqliteDataAccessProvider(url);
+                Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             } else {
                 //anders is het sqlite

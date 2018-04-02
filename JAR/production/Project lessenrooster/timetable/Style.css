@@ -58,23 +58,16 @@ Main css
 }
 
 .dayHolder {
-    -fx-background-color: white;
+    -fx-background-color: #f9f9f9;
 }
 
 .dayHolder * {
     -fx-wrap-text: true;
-    -fx-text-overrun: clip;
     -fx-border-width: 0px;
-    -fx-wrap-text: true;
-}
-.dayHolder .scroll-bar{
-    -fx-background-color: white;
+    -fx-background-color: #f9f9f9;
 }
 
-.notConflict {
-    -fx-background-color: white;
-}
-.dayHolder .list-cell:empty{
+.dayHolder .scroll-bar {
     -fx-background-color: white;
 }
 

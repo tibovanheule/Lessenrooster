@@ -9,6 +9,10 @@ import timetable.MainModel;
 
 public class SortButtons extends Button implements InvalidationListener, EventHandler<ActionEvent> {
 
+    public SortButtons(){
+        setOnAction(this);
+    }
+
     private MainModel model;
 
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
@@ -28,8 +32,6 @@ public class SortButtons extends Button implements InvalidationListener, EventHa
 
     @Override
     public void handle(ActionEvent t) {
-        // TODO: 28/03/2018 geef button click dooor met de userdata
-        model.getList(getUserData().toString());
-        System.out.println("buttonpress registered");
+        model.changeItems(getUserData().toString());
     }
 }

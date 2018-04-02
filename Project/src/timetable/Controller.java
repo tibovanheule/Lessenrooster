@@ -61,6 +61,8 @@ public class Controller {
     }
 
     public void initialize() {
+
+
         lists.add(monday);
         lists.add(tuesday);
         lists.add(wednesday);
@@ -107,43 +109,15 @@ public class Controller {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
 
-        updateList(standardSchedule);
+        Platform.runLater(() -> updateList(standardSchedule));
 
-        list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));
+     /*   list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));*/
         searchText.textProperty().addListener(o -> {if(!searchText.getText().equals("")){search();}});
-        students.setOnAction(o -> updateList(students.getUserData().toString()));
-        teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
-        loc.setOnAction(o -> updateList(loc.getUserData().toString()));
 
         //ophalen van het weerbericht gebeurd in een thread
         //voordeel: programma moet niet wachten achter de ophaling
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
         Platform.runLater(this::getWeather);
-
-        list.setCellFactory(new Callback<>() {
-            @Override
-            public ListCell<Item> call(ListView<Item> myObjectListView) {
-                ListCell<Item> cell = new ListCell<>() {
-                    {
-                        //gevonden fix voor de wrap text
-                        prefWidthProperty().bind(day.widthProperty().subtract(20));
-                    }
-
-                    @Override
-                    protected void updateItem(Item item, boolean b) {
-                        super.updateItem(item, b);
-                        if (b || item == null) {
-                            setText(null);
-                            setGraphic(null);
-                            this.setWrapText(true);
-                        } else {
-                            setText(item.getName());
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
 
         try {
             for (ListView<Lecture> day : lists) {

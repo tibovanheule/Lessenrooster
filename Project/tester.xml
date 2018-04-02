@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="all">
+  
+  
+  <property file="tester.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.json-20180130.classpath">
+    <pathelement location="${basedir}/src/json-20180130.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-5.1.46.classpath">
+    <pathelement location="${basedir}/src/mysql-connector-java-5.1.46.jar"/>
+  </path>
+  
+  <path id="library.sqlite-jdbc-3.21.0_(1).classpath">
+    <pathelement location="${basedir}/src/sqlite-jdbc-3.21.0.jar"/>
+  </path>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_project_lessenrooster.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.project_lessenrooster" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.project_lessenrooster" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.project_lessenrooster.jar" value="${basedir}/../JAR/artifacts/Project_lessenrooster_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.Project lessenrooster.jar" value="${artifacts.temp.dir}/Project lessenrooster.jar"/>
+  </target>
+  
+  <target name="artifact.project_lessenrooster.jar" depends="init.artifacts, compile.module.project_lessenrooster" description="Build &#39;Project lessenrooster.jar&#39; artifact">
+    <property name="artifact.temp.output.project_lessenrooster.jar" value="${artifacts.temp.dir}/Project_lessenrooster_jar"/>
+    <mkdir dir="${artifact.temp.output.project_lessenrooster.jar}"/>
+    <jar destfile="${temp.jar.path.Project lessenrooster.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${project_lessenrooster.output.dir}"/>
+      <zipfileset src="${basedir}/src/sqlite-jdbc-3.21.0.jar"/>
+      <zipfileset src="${basedir}/src/mysql-connector-java-5.1.46.jar"/>
+      <zipfileset src="${basedir}/src/json-20180130.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.Project lessenrooster.jar}" tofile="${artifact.temp.output.project_lessenrooster.jar}/Project lessenrooster.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.project_lessenrooster.jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.project_lessenrooster.jar}"/>
+    <copy todir="${artifact.output.project_lessenrooster.jar}">
+      <fileset dir="${artifact.temp.output.project_lessenrooster.jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

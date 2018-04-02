@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_project_lessenrooster" default="compile.module.project_lessenrooster">
+  <dirname property="module.project_lessenrooster.basedir" file="${ant.file.module_project_lessenrooster}"/>
+  
+  
+  <property name="compiler.args.project_lessenrooster" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="project_lessenrooster.output.dir" value="${module.project_lessenrooster.basedir}/../JAR/production/Project lessenrooster"/>
+  <property name="project_lessenrooster.testoutput.dir" value="${module.project_lessenrooster.basedir}/../JAR/test/Project lessenrooster"/>
+  
+  <path id="project_lessenrooster.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="project_lessenrooster.module.production.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="project_lessenrooster.runtime.production.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${project_lessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="project_lessenrooster.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${project_lessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="project_lessenrooster.runtime.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${project_lessenrooster.testoutput.dir}"/>
+    <pathelement location="${project_lessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.project_lessenrooster">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.project_lessenrooster">
+    <patternset refid="excluded.from.module.project_lessenrooster"/>
+  </patternset>
+  
+  <path id="project_lessenrooster.module.sourcepath">
+    <dirset dir="${module.project_lessenrooster.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.project_lessenrooster" depends="compile.module.project_lessenrooster.production,compile.module.project_lessenrooster.tests" description="Compile module Project lessenrooster"/>
+  
+  <target name="compile.module.project_lessenrooster.production" description="Compile module Project lessenrooster; production classes">
+    <mkdir dir="${project_lessenrooster.output.dir}"/>
+    <javac destdir="${project_lessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.project_lessenrooster}"/>
+      <bootclasspath refid="project_lessenrooster.module.bootclasspath"/>
+      <classpath refid="project_lessenrooster.module.production.classpath"/>
+      <src refid="project_lessenrooster.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.project_lessenrooster"/>
+    </javac>
+    
+    <copy todir="${project_lessenrooster.output.dir}">
+      <fileset dir="${module.project_lessenrooster.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.project_lessenrooster.tests" depends="compile.module.project_lessenrooster.production" description="compile module Project lessenrooster; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.project_lessenrooster" description="cleanup module">
+    <delete dir="${project_lessenrooster.output.dir}"/>
+    <delete dir="${project_lessenrooster.testoutput.dir}"/>
+  </target>
+</project>

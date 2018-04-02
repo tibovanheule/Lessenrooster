@@ -4,4 +4,3 @@ jdk:
   - oraclejdk9
 before_install:
   - cd Project
-script: ant build.xml

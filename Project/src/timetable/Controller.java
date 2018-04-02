@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -54,7 +51,7 @@ public class Controller {
     public DataAccessProvider dataAccessProvider;
     private ArrayList<ListView<Lecture>> lists = new ArrayList<>();
     private Stage stage;
-    private String standardSchedule;
+    public String standardSchedule;
 
     void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -124,16 +121,20 @@ public class Controller {
             @Override
             public ListCell<Item> call(ListView<Item> myObjectListView) {
                 ListCell<Item> cell = new ListCell<>() {
+                    {
+                        //gevonden fix voor de wrap text
+                        prefWidthProperty().bind(day.widthProperty().subtract(20));
+                    }
                     @Override
                     protected void updateItem(Item item, boolean b) {
                         super.updateItem(item, b);
                         if (b || item == null) {
                             setText(null);
                             setGraphic(null);
+                            this.setWrapText(true);
                         } else {
                             setText(item.getName());
                         }
-                        setWrapText(true);
                     }
                 };
                 return cell;
@@ -151,6 +152,10 @@ public class Controller {
                     @Override
                     public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
                         ListCell<Lecture> cell = new ListCell<>() {
+                            {
+                                //gevonden fix voor de wrap text
+                                prefWidthProperty().bind(day.widthProperty().subtract(20));
+                            }
                             @Override
                             protected void updateItem(Lecture lecture, boolean b) {
                                 super.updateItem(lecture, b);
@@ -158,13 +163,15 @@ public class Controller {
                                     setText(null);
                                     setGraphic(null);
                                     getStyleClass().remove("conflict");
+                                    this.setWrapText(true); // 3
                                 } else {
                                     setText(lecture.getCourse());
                                     if (lecture.getConflict()) {
                                         getStyleClass().add("conflict");
+                                    }else {
+                                        getStyleClass().add("notConflict");
                                     }
                                 }
-                                setWrapText(true);
                             }
                         };
                         return cell;
@@ -223,9 +230,10 @@ public class Controller {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
                 for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
                     List<Lecture> lectures = entry.getValue();
-                    for (Lecture lecture : lectures) {
-                        lists.get(lecture.getDay() - 1).getItems().add(lecture);
-                        // TODO: 27/03/2018
+                    if(lectures.size() > 0){
+                        for (Lecture lecture : lectures) {
+                            lists.get(lecture.getDay() - 1).getItems().add(lecture);
+                        }
                     }
                 }
             } catch (Exception e) {

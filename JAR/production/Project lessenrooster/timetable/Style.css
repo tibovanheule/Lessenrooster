@@ -64,6 +64,18 @@ Main css
 .dayHolder * {
     -fx-wrap-text: true;
     -fx-text-overrun: clip;
+    -fx-border-width: 0px;
+    -fx-wrap-text: true;
+}
+.dayHolder .scroll-bar{
+    -fx-background-color: white;
+}
+
+.notConflict {
+    -fx-background-color: white;
+}
+.dayHolder .list-cell:empty{
+    -fx-background-color: white;
 }
 
 .dayLabel {

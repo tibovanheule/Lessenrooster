@@ -6,5 +6,5 @@ before_install:
   - cd Project
   - ls
 script:
-  - ant test
-  - ant tester.xml
+  - ant build.modules
+  - ant build.all.artifacts

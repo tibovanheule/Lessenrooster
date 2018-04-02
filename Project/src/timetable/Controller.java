@@ -110,7 +110,7 @@ public class Controller {
         updateList(standardSchedule);
 
         list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));
-        searchText.textProperty().addListener(o -> search());
+        searchText.textProperty().addListener(o -> {if(!searchText.getText().equals("")){search();}});
         students.setOnAction(o -> updateList(students.getUserData().toString()));
         teachers.setOnAction(o -> updateList(teachers.getUserData().toString()));
         loc.setOnAction(o -> updateList(loc.getUserData().toString()));
@@ -325,6 +325,11 @@ public class Controller {
     }
 
     private void updateList(String whatList) {
+        try {
+            searchText.setText("");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         //listview leeg maken voor nieuwe items
         list.getItems().clear();
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {

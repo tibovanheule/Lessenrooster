@@ -2,5 +2,6 @@ language: java
 jdk:
   - oraclejdk8
   - oraclejdk9
-install: ant deps
-script: ant Project\build.xml
+before_install:
+  - cd Project
+script: ant build.xml

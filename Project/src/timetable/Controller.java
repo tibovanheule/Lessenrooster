@@ -9,7 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -125,6 +128,7 @@ public class Controller {
                         //gevonden fix voor de wrap text
                         prefWidthProperty().bind(day.widthProperty().subtract(20));
                     }
+
                     @Override
                     protected void updateItem(Item item, boolean b) {
                         super.updateItem(item, b);
@@ -156,6 +160,7 @@ public class Controller {
                                 //gevonden fix voor de wrap text
                                 prefWidthProperty().bind(day.widthProperty().subtract(20));
                             }
+
                             @Override
                             protected void updateItem(Lecture lecture, boolean b) {
                                 super.updateItem(lecture, b);
@@ -168,7 +173,7 @@ public class Controller {
                                     setText(lecture.getCourse());
                                     if (lecture.getConflict()) {
                                         getStyleClass().add("conflict");
-                                    }else {
+                                    } else {
                                         getStyleClass().add("notConflict");
                                     }
                                 }
@@ -223,21 +228,22 @@ public class Controller {
         //erwordt dan een null waarde geproduceerd door
         //list.getSelectionModel().getSelectedItem()
         try {
-            //array maken om later iffen te vermijden :)
-            for (ListView<Lecture> list : lists) {
-                list.getItems().clear();
-            }
-            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
-                    List<Lecture> lectures = entry.getValue();
-                    if(lectures.size() > 0){
-                        for (Lecture lecture : lectures) {
-                            lists.get(lecture.getDay() - 1).getItems().add(lecture);
+            if (selected != null) {
+                for (ListView<Lecture> list : lists) {
+                    list.getItems().clear();
+                }
+                try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                    for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
+                        List<Lecture> lectures = entry.getValue();
+                        if (lectures.size() > 0) {
+                            for (Lecture lecture : lectures) {
+                                lists.get(lecture.getDay() - 1).getItems().add(lecture);
+                            }
                         }
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } catch (Exception e) {
             e.printStackTrace();

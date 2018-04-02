@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../JAR/artifacts/Project_lessenrooster_jar/Project lessenrooster.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/artifacts/Project_lessenrooster_jar/Project lessenrooster.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Controller.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,7 +104,7 @@
       <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
+            <state relative-caret-position="17">
               <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
+            <state relative-caret-position="351">
+              <caret line="240" column="17" lean-forward="true" selection-start-line="240" selection-start-column="17" selection-end-line="240" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,28 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/timetable/Style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqliteDataAccessProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-              <folding>
-                <element signature="e#450#451#0" expanded="true" />
-                <element signature="e#480#481#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -247,9 +222,9 @@
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessProvider.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/SettingsController.java" />
-        <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
         <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
         <option value="$PROJECT_DIR$/src/timetable/Style.css" />
+        <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
       </list>
     </option>
   </component>
@@ -502,12 +477,12 @@
       <workItem from="1522583333254" duration="11832000" />
       <workItem from="1522616613503" duration="3028000" />
       <workItem from="1522619828813" duration="19000" />
-      <workItem from="1522673668013" duration="8811000" />
+      <workItem from="1522673668013" duration="9774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331020000" />
+    <option name="totallyTimeSpent" value="331983000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -909,16 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/settings/SettingsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -929,13 +894,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/timetable/Style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -946,10 +908,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/Style.css">
+    <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+        <state relative-caret-position="17">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="240" column="17" lean-forward="true" selection-start-line="240" selection-start-column="17" selection-end-line="240" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

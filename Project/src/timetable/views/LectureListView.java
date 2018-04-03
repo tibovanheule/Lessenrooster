@@ -29,13 +29,11 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                             setText(null);
                             setGraphic(null);
                             getStyleClass().remove("conflict");
-                            this.setWrapText(true); // 3
+                            this.setWrapText(true);
                         } else {
-                            setText(lecture.getCourse());
+                            setText(lecture.getCourse() + " Uur: " + lecture.getBlock());
                             if (lecture.getConflict()) {
                                 getStyleClass().add("conflict");
-                            } else {
-                                getStyleClass().add("notConflict");
                             }
                         }
                     }
@@ -62,9 +60,10 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
     @Override
     public void invalidated(Observable o) {
 
-        getItems().clear();
-        getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
-
+        if (model.lecturesChanged) {
+            getItems().clear();
+            getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
+        }
 
     }
 

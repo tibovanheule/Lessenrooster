@@ -50,7 +50,7 @@ public class MysqlLectureDAO extends MysqlAbstractDOA implements LectureDAO {
                 }
                 days.put(i, lectures);
             } catch (Exception e) {
-                e.printStackTrace();
+                /*e.printStackTrace();*/
             }
         }
         return days;

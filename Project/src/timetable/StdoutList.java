@@ -33,10 +33,22 @@ class StdoutList {
                     group.flush();
                 }
             } catch (DataAccessException e) {
-                e.printStackTrace();
+                /*e.printStackTrace();*/
+                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
+                    error.write("Invalid! Check you're arguments, sir! :( \n");
+                    error.flush();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            /*e.printStackTrace();*/
+            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
+                error.write("Error while trying to write down the result! :o \n");
+                error.flush();
+            } catch (IOException error) {
+                error.printStackTrace();
+            }
         }
     }
 }

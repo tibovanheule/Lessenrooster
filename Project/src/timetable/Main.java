@@ -83,7 +83,6 @@ public class Main extends Application {
 
 
         if (getParameters().getRaw().size() == 0) {
-            //toon eindelijk de stage :)
             primaryStage.show();
         } else if (getParameters().getRaw().size() == 2) {
             try {
@@ -94,7 +93,7 @@ public class Main extends Application {
                 });
                 Platform.runLater(runnable);
             } catch (Exception e) {
-                e.printStackTrace();
+                /*e.printStackTrace();*/
             }
             primaryStage.show();
         } else if (getParameters().getRaw().size() == 3) {
@@ -109,14 +108,20 @@ public class Main extends Application {
                 controller.day.setText(now.format(formatDay));
                 controller.time.setText(now.format(formatTime));
             } catch (Exception e) {
-                e.printStackTrace();
+                /*e.printStackTrace();*/
             }
             try {
                 Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
                 controller.model.setSchedule(item);
                 controller.draw.setVisible(false);
             } catch (Exception e) {
-                e.printStackTrace();
+                /*e.printStackTrace();*/
+                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
+                    error.write("Invalid! Please, check your arguments ,sir! They are trump-shit-arguments ;) \n");
+                    error.flush();
+                } catch (IOException errorWhileGivingAErrorLol) {
+                    errorWhileGivingAErrorLol.printStackTrace();
+                }
             }
             primaryStage.setMaximized(true);
             WritableImage image = root.snapshot(new SnapshotParameters(), null);

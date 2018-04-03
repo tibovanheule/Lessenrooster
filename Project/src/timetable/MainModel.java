@@ -26,26 +26,10 @@ public class MainModel implements Observable {
     public HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
     public Boolean clearText;
     public Boolean itemsChanged;
+    public Boolean lecturesChanged = false;
 
     public MainModel() {
-        Config config = new Config();
-        Properties properties = config.getproperties();
 
-
-        //als de property true is gebruik dan mysql
-        if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            dataAccessProvider = new MysqlDataAccessProvider();
-            //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
-            Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
-            /*dbLogo.setImage(image);*/
-        } else {
-            //in elk ander geval, valt het terug op sqlite
-            dataAccessProvider = new SqliteDataAccessProvider();
-            Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
-            /*dbLogo.setImage(image);*/
-        }
-        standardSchedule = properties.getProperty("standard.schedule");
-        changeItems(standardSchedule);
 
     }
 
@@ -58,6 +42,7 @@ public class MainModel implements Observable {
     }
 
     public void setSchedule(Item selected) {
+        lecturesChanged = true;
         try {
             if (selected != null) {
                 try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
@@ -67,13 +52,17 @@ public class MainModel implements Observable {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            /*e.printStackTrace();*/
         }
         fireInvalidationEvent();
     }
 
     public ArrayList<Lecture> getSchedule(Integer key) {
+        if(key.equals(5)){
+            lecturesChanged = false;
+        }
         return schedule.get(key);
+
     }
 
     public void changeItems(String whatList) {

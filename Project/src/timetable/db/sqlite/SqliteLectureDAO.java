@@ -44,7 +44,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 }
                 days.put(i, lectures);
             } catch (Exception e) {
-                System.out.println(e);
+                /*e.printStackTrace();*/
             }
         }
         return days;

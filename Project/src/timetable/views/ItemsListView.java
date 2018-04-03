@@ -2,15 +2,15 @@ package timetable.views;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import timetable.MainModel;
 import timetable.objects.Item;
 
-public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<ActionEvent> {
+public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
 
     public ItemsListView() {
         setCellFactory(new Callback<>() {
@@ -39,7 +39,8 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
                 return cell;
             }
         });
-        getSelectionModel().selectedItemProperty().addListener(o -> System.out.println(getSelectionModel().getSelectedItem()));
+
+        setOnMouseClicked(this::handle);
     }
 
     private MainModel model;
@@ -47,22 +48,27 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {
         return model;
+
     }
 
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
         getItems().addAll(model.items);
+        /*getSelectionModel().selectedItemProperty().addListener(o -> Platform.runLater(() ->model.getSchedule()));*/
     }
 
     @Override
     public void invalidated(Observable o) {
-        getItems().clear();
-        getItems().addAll(model.items);
+        if(model.itemsChanged) {
+            getItems().clear();
+            getItems().addAll(model.items);
+            model.itemsChanged = false;
+        }
     }
 
     @Override
-    public void handle(ActionEvent event) {
-
+    public void handle(MouseEvent event) {
+        model.getSchedule(getSelectionModel().getSelectedItem());
     }
 }

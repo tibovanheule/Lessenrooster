@@ -27,7 +27,13 @@ public class SearchTextBox extends TextField implements InvalidationListener, Ev
 
     @Override
     public void invalidated(Observable o) {
-
+        if(model.clearText){
+            try{
+                clear();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

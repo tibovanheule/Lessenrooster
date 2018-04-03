@@ -17,7 +17,7 @@ public class MysqlLectureDAO extends MysqlAbstractDOA implements LectureDAO {
         super(connection);
     }
 
-    public Map<Integer, ArrayList<Lecture>> getWeek(Item item) {
+    public HashMap<Integer, ArrayList<Lecture>> getWeek(Item item) {
         HashMap<Integer, ArrayList<Lecture>> days = new HashMap<>();
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();

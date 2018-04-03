@@ -53,6 +53,7 @@ public class Controller {
     private ArrayList<ListView<Lecture>> lists = new ArrayList<>();
     private Stage stage;
     public String standardSchedule;
+    public MainModel model;
 
     void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -73,19 +74,6 @@ public class Controller {
         appname.setText(properties.getProperty("program.name"));
         //sla op in een veld zodat het in het verdere bestand opgevraagd kan worden
         standardSchedule = properties.getProperty("standard.schedule");
-
-        //als de property true is gebruik dan mysql
-        if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            dataAccessProvider = new MysqlDataAccessProvider();
-            //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
-            Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
-            dbLogo.setImage(image);
-        } else {
-            //in elk ander geval, valt het terug op sqlite
-            dataAccessProvider = new SqliteDataAccessProvider();
-            Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
-            dbLogo.setImage(image);
-        }
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -173,42 +161,13 @@ public class Controller {
         }
     }
 
-    public void search() {
-
-    }
-
-    void getRooster(Item selected) {
-        //wanneer men klikt op de buttons students teachers wordt de listener ook getriggerd
-        //erwordt dan een null waarde geproduceerd door
-        //list.getSelectionModel().getSelectedItem()
-        try {
-            if (selected != null) {
-                for (ListView<Lecture> list : lists) {
-                    list.getItems().clear();
-                }
-                try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                    for (Map.Entry<Integer, ArrayList<Lecture>> entry : dac.getLectureDoa().getWeek(selected).entrySet()) {
-                        List<Lecture> lectures = entry.getValue();
-                        if (lectures.size() > 0) {
-                            for (Lecture lecture : lectures) {
-                                lists.get(lecture.getDay() - 1).getItems().add(lecture);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    /*wanneer er op het kruisje wordt gedrukt programma afsluiten en jvm afsluiten met foutcode (0 in dit geval)*/
     public void exit() {
         Platform.exit();
         System.exit(0);
     }
 
+    /*functie voor het about the program weer te geven*/
     public void about() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("about/about.fxml"));
@@ -225,6 +184,7 @@ public class Controller {
         }
     }
 
+    /*functie om de aangeklikte les weer te geven */
     private void lecture(Lecture selected) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
@@ -242,6 +202,7 @@ public class Controller {
         }
     }
 
+    /*functie om het weerbericht op te roepen*/
     public void weather() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
@@ -258,6 +219,7 @@ public class Controller {
         }
     }
 
+    /*functie om de settings scherm op te roepen*/
     public void settings() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/settings.fxml"));
@@ -274,17 +236,18 @@ public class Controller {
         }
     }
 
+    /*functie om de maximaliseer button te laten werken (maximaliseer als het klein is en omgekeerd)*/
     public void maximize() {
-        //is de stage gemaximaliseerd?
         if (stage.isMaximized()) {
-            //minimaliseer
             stage.setMaximized(false);
         } else {
-            //maximaliseer
             stage.setMaximized(true);
         }
     }
 
+    /*functie voor de drawer te laten verschijnen of verdwijnen. werkt met een fade en translate transition die
+    * tegelijker tijd wordt afgespeeld door de parallel transition.
+    */
     public void drawerAction() {
         FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
         ft.setCycleCount(1);
@@ -292,13 +255,12 @@ public class Controller {
         drawerOpen.setToX(0);
         TranslateTransition drawerClose = new TranslateTransition(new Duration(300), draw);
 
-        //alle children opacity property verbinden met die van de drawer
+        //alle children's opacity property verbinden met die van de drawer
         for (Node node : draw.getChildren()) {
             node.opacityProperty().bind(draw.opacityProperty());
         }
 
         if (draw.isVisible()) {
-            //fadeout op einde onzichtbaar zetten
             ft.setFromValue(1.0);
             ft.setToValue(0.0);
             ft.setOnFinished(o -> draw.setVisible(false));

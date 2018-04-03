@@ -69,17 +69,17 @@ public class DatabaseController {
         if (dbChange) {
             if (mysql.isSelected()) {
                 //nieuwe data provider
-                mainController.dataAccessProvider = new MysqlDataAccessProvider();
+                mainController.model.dataAccessProvider = new MysqlDataAccessProvider();
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
                 mainController.dbLogo.setImage(image);
             } else if (url != null) {
-                mainController.dataAccessProvider = new SqliteDataAccessProvider(url);
+                mainController.model.dataAccessProvider = new SqliteDataAccessProvider(url);
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             } else {
                 //anders is het sqlite
-                mainController.dataAccessProvider = new SqliteDataAccessProvider();
+                mainController.model.dataAccessProvider = new SqliteDataAccessProvider();
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             }

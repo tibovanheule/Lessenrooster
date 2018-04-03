@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
-    public Map<Integer, ArrayList<Lecture>> getWeek(Item item) throws DataAccessException {
+    public HashMap<Integer, ArrayList<Lecture>> getWeek(Item item) throws DataAccessException {
         HashMap<Integer, ArrayList<Lecture>> days = new HashMap<>();
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();

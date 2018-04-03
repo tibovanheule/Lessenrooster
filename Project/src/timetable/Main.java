@@ -57,7 +57,6 @@ public class Main extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
 
-        //geef de stage een icon
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
         primaryStage.setScene(scene);
 
@@ -67,8 +66,6 @@ public class Main extends Application {
 
         //start maximized of niet
         primaryStage.setMaximized(Boolean.parseBoolean(properties.getProperty("startMaximized")));
-
-        //geef de stage door aan de Controller
         controller.setStageAndSetupListeners(primaryStage);
 
         /*scene.focusOwnerProperty().addListener(o ->{
@@ -92,7 +89,7 @@ public class Main extends Application {
             try {
                 Runnable runnable = new Thread(() -> {
                     Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                    controller.getRooster(item);
+                    controller.model.getSchedule(item);
                     controller.draw.setVisible(false);
                 });
                 Platform.runLater(runnable);
@@ -116,7 +113,7 @@ public class Main extends Application {
             }
             try {
                 Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                controller.getRooster(item);
+                controller.model.getSchedule(item);
                 controller.draw.setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -124,9 +121,14 @@ public class Main extends Application {
             primaryStage.setMaximized(true);
             WritableImage image = root.snapshot(new SnapshotParameters(), null);
 
-            // TODO: 29/03/2018 kijken als dit niet zonder file kan :)
-            File file = new File(getParameters().getRaw().get(2));
+            File file;
 
+            // TODO: 29/03/2018 kijken als dit niet zonder file kan :)
+            if (getParameters().getRaw().get(2).endsWith(".png")) {
+                file = new File(getParameters().getRaw().get(2));
+            } else {
+                file = new File(getParameters().getRaw().get(2)+".png");
+            }
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {

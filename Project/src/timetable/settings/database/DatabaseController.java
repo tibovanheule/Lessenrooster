@@ -52,6 +52,8 @@ public class DatabaseController {
     public void dragDropped(DragEvent event) {
         dbChange = true;
         mysql.setSelected(false);
+        /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
+        * garantie is dat het programma altijd op dezelfde pc gaat draaien */
         properties.setProperty("DB.use","false");
         List<File> files = event.getDragboard().getFiles();
         url = "jdbc:sqlite:"+files.get(0).getPath();

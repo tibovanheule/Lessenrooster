@@ -27,7 +27,6 @@ public class SortButtons extends Button implements InvalidationListener, EventHa
 
     @Override
     public void invalidated(Observable o) {
-        setUnderline(true);
     }
 
     @Override

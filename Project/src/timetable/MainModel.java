@@ -20,6 +20,7 @@ public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();
     private DataAccessProvider dataAccessProvider;
+    private String standardSchedule;
 
 public MainModel(){
     Config config = new Config();
@@ -38,7 +39,9 @@ public MainModel(){
         Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
         /*dbLogo.setImage(image);*/
     }
-    fireInvalidationEvent();
+    standardSchedule = properties.getProperty("standard.schedule");
+    changeItems(standardSchedule);
+
 }
 
 
@@ -68,8 +71,7 @@ public MainModel(){
         items.clear();
         if (searchText.isEmpty()) {
             //als textfield leeg is keer dan terug naar de standaard lijst
-            // TODO: 2/04/2018 standaard lijst terug implementeren
-            changeItems("students");
+            changeItems(standardSchedule);
         } else {
             // zo niet haal de gefilterde lijst op
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {

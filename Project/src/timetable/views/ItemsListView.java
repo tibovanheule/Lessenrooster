@@ -19,7 +19,8 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
                 ListCell<Item> cell = new ListCell<>() {
                     {
                         //gevonden fix voor de wrap text
-                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround */
+                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
+                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
                         prefWidthProperty().bind(this.widthProperty().subtract(20));
                     }
 
@@ -38,6 +39,7 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
                 return cell;
             }
         });
+        getSelectionModel().selectedItemProperty().addListener(o -> System.out.println(getSelectionModel().getSelectedItem()));
     }
 
     private MainModel model;
@@ -50,6 +52,7 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
+        getItems().addAll(model.items);
     }
 
     @Override
@@ -60,6 +63,6 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
 
     @Override
     public void handle(ActionEvent event) {
-        System.out.println(getSelectionModel().getSelectedItem());
+
     }
 }

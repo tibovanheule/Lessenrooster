@@ -23,9 +23,7 @@ import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
 import timetable.db.DataAccessContext;
-import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
-import timetable.db.ItemsDAO;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.lecture.LectureController;
@@ -108,10 +106,6 @@ public class Controller {
             }
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
-
-
-     /*   list.getSelectionModel().selectedItemProperty().addListener(o -> getRooster(list.getSelectionModel().getSelectedItem()));*/
-
 
         //ophalen van het weerbericht gebeurd in een thread
         //voordeel: programma moet niet wachten achter de ophaling
@@ -222,8 +216,7 @@ public class Controller {
             AboutController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 450);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
@@ -241,8 +234,7 @@ public class Controller {
             Stage stage = new Stage();
             controller.setStageAndSetupListeners(stage);
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 450);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 450, 450));
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
@@ -257,8 +249,7 @@ public class Controller {
             WeatherController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 220);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 450, 220));
             controller.setStageAndSetupListeners(stage);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
@@ -274,30 +265,11 @@ public class Controller {
             SettingsController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 450);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, this);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void updateList(String whatList) {
-        try {
-            searchText.setText("");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        //listview leeg maken voor nieuwe items
-        list.getItems().clear();
-        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-            ItemsDAO itemsDAO = dac.getItemDoa();
-            for (Item item : itemsDAO.getList(whatList)) {
-                list.getItems().add(item);
-            }
-        } catch (DataAccessException e) {
             e.printStackTrace();
         }
     }

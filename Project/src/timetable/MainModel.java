@@ -2,22 +2,27 @@ package timetable;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import timetable.config.Config;
-import timetable.db.*;
+import timetable.db.DataAccessContext;
+import timetable.db.DataAccessException;
+import timetable.db.DataAccessProvider;
+import timetable.db.ItemsDAO;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
 
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();
     public DataAccessProvider dataAccessProvider;
-    private String standardSchedule;
+    public String standardSchedule;
     public HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
     public Boolean clearText;
     public Boolean itemsChanged;
@@ -52,7 +57,7 @@ public class MainModel implements Observable {
         System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
     }
 
-    public void getSchedule(Item selected) {
+    public void setSchedule(Item selected) {
         try {
             if (selected != null) {
                 try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
@@ -65,6 +70,10 @@ public class MainModel implements Observable {
             e.printStackTrace();
         }
         fireInvalidationEvent();
+    }
+
+    public ArrayList<Lecture> getSchedule(Integer key) {
+        return schedule.get(key);
     }
 
     public void changeItems(String whatList) {
@@ -103,7 +112,6 @@ public class MainModel implements Observable {
         }
         fireInvalidationEvent();
     }
-
 
 
     @Override

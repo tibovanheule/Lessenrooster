@@ -8,39 +8,41 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import timetable.MainModel;
-import timetable.objects.Item;
+import timetable.objects.Lecture;
 
-public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
-
-    public ItemsListView() {
+public class LectureListView extends ListView<Lecture> implements InvalidationListener, EventHandler<MouseEvent> {
+    public LectureListView() {
+        setOnMouseClicked(this::handle);
         setCellFactory(new Callback<>() {
             @Override
-            public ListCell<Item> call(ListView<Item> myObjectListView) {
-                ListCell<Item> cell = new ListCell<>() {
+            public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
+                ListCell<Lecture> cell = new ListCell<>() {
                     {
                         //gevonden fix voor de wrap text
-                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
-                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
                         prefWidthProperty().bind(this.widthProperty().subtract(20));
                     }
 
                     @Override
-                    protected void updateItem(Item item, boolean b) {
-                        super.updateItem(item, b);
-                        if (b || item == null) {
+                    protected void updateItem(Lecture lecture, boolean b) {
+                        super.updateItem(lecture, b);
+                        if (b || lecture == null) {
                             setText(null);
                             setGraphic(null);
-                            this.setWrapText(true);
+                            getStyleClass().remove("conflict");
+                            this.setWrapText(true); // 3
                         } else {
-                            setText(item.getName());
+                            setText(lecture.getCourse());
+                            if (lecture.getConflict()) {
+                                getStyleClass().add("conflict");
+                            } else {
+                                getStyleClass().add("notConflict");
+                            }
                         }
                     }
                 };
                 return cell;
             }
         });
-
-        setOnMouseClicked(this::handle);
     }
 
     private MainModel model;
@@ -54,21 +56,20 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
-        getItems().addAll(model.items);
         /*getSelectionModel().selectedItemProperty().addListener(o -> Platform.runLater(() ->model.setSchedule()));*/
     }
 
     @Override
     public void invalidated(Observable o) {
-        if (model.itemsChanged) {
-            getItems().clear();
-            getItems().addAll(model.items);
-            model.itemsChanged = false;
-        }
+
+        getItems().clear();
+        getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
+
+
     }
 
     @Override
     public void handle(MouseEvent event) {
-        model.setSchedule(getSelectionModel().getSelectedItem());
+
     }
 }

@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,14 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
-import timetable.db.DataAccessContext;
 import timetable.db.DataAccessProvider;
-import timetable.db.mysql.MysqlDataAccessProvider;
-import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.lecture.LectureController;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
@@ -38,21 +33,22 @@ import timetable.weather.WeatherScraper;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller {
 
     public Label day, date, time, appname;
     public TextField searchText;
-    public ListView<Lecture> monday, tuesday, wednesday, thursday, friday;
+/*    public ListView<Lecture> monday, tuesday, wednesday, thursday, friday;*/
     public ListView<Item> list;
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc;
     public AnchorPane draw;
     public DataAccessProvider dataAccessProvider;
-    private ArrayList<ListView<Lecture>> lists = new ArrayList<>();
     private Stage stage;
-    public String standardSchedule;
     public MainModel model;
 
     void setStageAndSetupListeners(Stage controller) {
@@ -62,18 +58,11 @@ public class Controller {
     public void initialize() {
 
 
-        lists.add(monday);
-        lists.add(tuesday);
-        lists.add(wednesday);
-        lists.add(thursday);
-        lists.add(friday);
-
         Config config = new Config();
         Properties properties = config.getproperties();
 
         appname.setText(properties.getProperty("program.name"));
-        //sla op in een veld zodat het in het verdere bestand opgevraagd kan worden
-        standardSchedule = properties.getProperty("standard.schedule");
+
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -101,47 +90,15 @@ public class Controller {
         Platform.runLater(this::getWeather);
 
 
-        try {
-            for (ListView<Lecture> day : lists) {
-                //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
-                //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
-                //day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
-                //listeners opzetten
-                day.getSelectionModel().selectedItemProperty().addListener(o -> lecture(day.getSelectionModel().getSelectedItem()));
-                day.setCellFactory(new Callback<>() {
-                    @Override
-                    public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
-                        ListCell<Lecture> cell = new ListCell<>() {
-                            {
-                                //gevonden fix voor de wrap text
-                                prefWidthProperty().bind(day.widthProperty().subtract(20));
-                            }
+        //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
+        //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
+        //day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
+        //listeners opzetten
 
-                            @Override
-                            protected void updateItem(Lecture lecture, boolean b) {
-                                super.updateItem(lecture, b);
-                                if (b || lecture == null) {
-                                    setText(null);
-                                    setGraphic(null);
-                                    getStyleClass().remove("conflict");
-                                    this.setWrapText(true); // 3
-                                } else {
-                                    setText(lecture.getCourse());
-                                    if (lecture.getConflict()) {
-                                        getStyleClass().add("conflict");
-                                    } else {
-                                        getStyleClass().add("notConflict");
-                                    }
-                                }
-                            }
-                        };
-                        return cell;
-                    }
-                });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        /*day.getSelectionModel().selectedItemProperty().addListener(o -> lecture(day.getSelectionModel().getSelectedItem()));
+         */
+
     }
 
     private void getWeather() {
@@ -246,8 +203,8 @@ public class Controller {
     }
 
     /*functie voor de drawer te laten verschijnen of verdwijnen. werkt met een fade en translate transition die
-    * tegelijker tijd wordt afgespeeld door de parallel transition.
-    */
+     * tegelijker tijd wordt afgespeeld door de parallel transition.
+     */
     public void drawerAction() {
         FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
         ft.setCycleCount(1);

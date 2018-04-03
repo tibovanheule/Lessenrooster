@@ -8,6 +8,7 @@
 <?import timetable.views.SortButtons?>
 <?import timetable.views.ItemsListView?>
 <?import timetable.views.SearchTextBox?>
+<?import timetable.views.LectureListView?>
 <GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
     <fx:define>
@@ -83,15 +84,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
 
-            <ListView fx:id="monday" prefHeight="486.0" prefWidth="134.0" styleClass="dayHolder"/>
-            <ListView fx:id="tuesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="1"/>
-            <ListView fx:id="wednesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="2"/>
-            <ListView fx:id="thursday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="3"/>
-            <ListView fx:id="friday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="4"/>
+            <LectureListView fx:id="monday" prefHeight="486.0" prefWidth="134.0" styleClass="dayHolder" model="$model" userData="1"/>
+            <LectureListView fx:id="tuesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
+                      GridPane.columnIndex="1" model="$model" userData="2"/>
+            <LectureListView fx:id="wednesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
+                      GridPane.columnIndex="2" model="$model" userData="3"/>
+            <LectureListView fx:id="thursday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
+                      GridPane.columnIndex="3" model="$model" userData="4"/>
+            <LectureListView fx:id="friday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
+                      GridPane.columnIndex="4" model="$model" userData="5"/>
 
         </GridPane>
 
@@ -145,7 +146,7 @@
             </padding>
         </HBox>
         <ItemsListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="200.0"
-                  styleClass="listselect" model="$model" />
+                       styleClass="listselect" model="$model" />
         <HBox layoutX="6.0" layoutY="91.0">
 
             <SortButtons fx:id="students" styleClass="navItem" text="_Students" userData="students"

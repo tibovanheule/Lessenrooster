@@ -89,7 +89,7 @@ public class Main extends Application {
             try {
                 Runnable runnable = new Thread(() -> {
                     Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                    controller.model.getSchedule(item);
+                    controller.model.setSchedule(item);
                     controller.draw.setVisible(false);
                 });
                 Platform.runLater(runnable);
@@ -113,7 +113,7 @@ public class Main extends Application {
             }
             try {
                 Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                controller.model.getSchedule(item);
+                controller.model.setSchedule(item);
                 controller.draw.setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();

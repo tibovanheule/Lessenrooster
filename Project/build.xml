@@ -51,6 +51,116 @@
     <exclude name="**/?*.clj"/>
   </patternset>
   
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.9" value="${jdk.home.9}/bin"/>
+  <path id="jdk.classpath.9">
+    <fileset dir="${jdk.home.9}">
+      <include name="../jdk-9!/java.activation"/>
+      <include name="../jdk-9!/java.base"/>
+      <include name="../jdk-9!/java.compiler"/>
+      <include name="../jdk-9!/java.corba"/>
+      <include name="../jdk-9!/java.datatransfer"/>
+      <include name="../jdk-9!/java.desktop"/>
+      <include name="../jdk-9!/java.instrument"/>
+      <include name="../jdk-9!/java.jnlp"/>
+      <include name="../jdk-9!/java.logging"/>
+      <include name="../jdk-9!/java.management"/>
+      <include name="../jdk-9!/java.management.rmi"/>
+      <include name="../jdk-9!/java.naming"/>
+      <include name="../jdk-9!/java.prefs"/>
+      <include name="../jdk-9!/java.rmi"/>
+      <include name="../jdk-9!/java.scripting"/>
+      <include name="../jdk-9!/java.se"/>
+      <include name="../jdk-9!/java.se.ee"/>
+      <include name="../jdk-9!/java.security.jgss"/>
+      <include name="../jdk-9!/java.security.sasl"/>
+      <include name="../jdk-9!/java.smartcardio"/>
+      <include name="../jdk-9!/java.sql"/>
+      <include name="../jdk-9!/java.sql.rowset"/>
+      <include name="../jdk-9!/java.transaction"/>
+      <include name="../jdk-9!/java.xml"/>
+      <include name="../jdk-9!/java.xml.bind"/>
+      <include name="../jdk-9!/java.xml.crypto"/>
+      <include name="../jdk-9!/java.xml.ws"/>
+      <include name="../jdk-9!/java.xml.ws.annotation"/>
+      <include name="../jdk-9!/javafx.base"/>
+      <include name="../jdk-9!/javafx.controls"/>
+      <include name="../jdk-9!/javafx.deploy"/>
+      <include name="../jdk-9!/javafx.fxml"/>
+      <include name="../jdk-9!/javafx.graphics"/>
+      <include name="../jdk-9!/javafx.media"/>
+      <include name="../jdk-9!/javafx.swing"/>
+      <include name="../jdk-9!/javafx.web"/>
+      <include name="../jdk-9!/jdk.accessibility"/>
+      <include name="../jdk-9!/jdk.attach"/>
+      <include name="../jdk-9!/jdk.charsets"/>
+      <include name="../jdk-9!/jdk.compiler"/>
+      <include name="../jdk-9!/jdk.crypto.cryptoki"/>
+      <include name="../jdk-9!/jdk.crypto.ec"/>
+      <include name="../jdk-9!/jdk.crypto.mscapi"/>
+      <include name="../jdk-9!/jdk.deploy"/>
+      <include name="../jdk-9!/jdk.deploy.controlpanel"/>
+      <include name="../jdk-9!/jdk.dynalink"/>
+      <include name="../jdk-9!/jdk.editpad"/>
+      <include name="../jdk-9!/jdk.hotspot.agent"/>
+      <include name="../jdk-9!/jdk.httpserver"/>
+      <include name="../jdk-9!/jdk.incubator.httpclient"/>
+      <include name="../jdk-9!/jdk.internal.ed"/>
+      <include name="../jdk-9!/jdk.internal.jvmstat"/>
+      <include name="../jdk-9!/jdk.internal.le"/>
+      <include name="../jdk-9!/jdk.internal.opt"/>
+      <include name="../jdk-9!/jdk.internal.vm.ci"/>
+      <include name="../jdk-9!/jdk.jartool"/>
+      <include name="../jdk-9!/jdk.javadoc"/>
+      <include name="../jdk-9!/jdk.javaws"/>
+      <include name="../jdk-9!/jdk.jcmd"/>
+      <include name="../jdk-9!/jdk.jconsole"/>
+      <include name="../jdk-9!/jdk.jdeps"/>
+      <include name="../jdk-9!/jdk.jdi"/>
+      <include name="../jdk-9!/jdk.jdwp.agent"/>
+      <include name="../jdk-9!/jdk.jfr"/>
+      <include name="../jdk-9!/jdk.jlink"/>
+      <include name="../jdk-9!/jdk.jshell"/>
+      <include name="../jdk-9!/jdk.jsobject"/>
+      <include name="../jdk-9!/jdk.jstatd"/>
+      <include name="../jdk-9!/jdk.localedata"/>
+      <include name="../jdk-9!/jdk.management"/>
+      <include name="../jdk-9!/jdk.management.agent"/>
+      <include name="../jdk-9!/jdk.management.cmm"/>
+      <include name="../jdk-9!/jdk.management.jfr"/>
+      <include name="../jdk-9!/jdk.management.resource"/>
+      <include name="../jdk-9!/jdk.naming.dns"/>
+      <include name="../jdk-9!/jdk.naming.rmi"/>
+      <include name="../jdk-9!/jdk.net"/>
+      <include name="../jdk-9!/jdk.pack"/>
+      <include name="../jdk-9!/jdk.packager"/>
+      <include name="../jdk-9!/jdk.packager.services"/>
+      <include name="../jdk-9!/jdk.plugin"/>
+      <include name="../jdk-9!/jdk.plugin.dom"/>
+      <include name="../jdk-9!/jdk.plugin.server"/>
+      <include name="../jdk-9!/jdk.policytool"/>
+      <include name="../jdk-9!/jdk.rmic"/>
+      <include name="../jdk-9!/jdk.scripting.nashorn"/>
+      <include name="../jdk-9!/jdk.scripting.nashorn.shell"/>
+      <include name="../jdk-9!/jdk.sctp"/>
+      <include name="../jdk-9!/jdk.security.auth"/>
+      <include name="../jdk-9!/jdk.security.jgss"/>
+      <include name="../jdk-9!/jdk.snmp"/>
+      <include name="../jdk-9!/jdk.unsupported"/>
+      <include name="../jdk-9!/jdk.xml.bind"/>
+      <include name="../jdk-9!/jdk.xml.dom"/>
+      <include name="../jdk-9!/jdk.xml.ws"/>
+      <include name="../jdk-9!/jdk.zipfs"/>
+      <include name="../jdk-9!/oracle.desktop"/>
+      <include name="../jdk-9!/oracle.net"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
   
   <!-- Project Libraries -->
   

@@ -2,6 +2,9 @@
 <project name="module_project_lessenrooster" default="compile.module.project_lessenrooster">
   <dirname property="module.project_lessenrooster.basedir" file="${ant.file.module_project_lessenrooster}"/>
   
+  <property name="module.jdk.home.project_lessenrooster" value="${jdk.home.9}"/>
+  <property name="module.jdk.bin.project_lessenrooster" value="${jdk.bin.9}"/>
+  <property name="module.jdk.classpath.project_lessenrooster" value="jdk.classpath.9"/>
   
   <property name="compiler.args.project_lessenrooster" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
   
@@ -13,6 +16,7 @@
   </path>
   
   <path id="project_lessenrooster.module.production.classpath">
+    <path refid="${module.jdk.classpath.project_lessenrooster}"/>
     <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
     <path refid="library.mysql-connector-java-5.1.46.classpath"/>
     <path refid="library.json-20180130.classpath"/>
@@ -26,6 +30,7 @@
   </path>
   
   <path id="project_lessenrooster.module.classpath">
+    <path refid="${module.jdk.classpath.project_lessenrooster}"/>
     <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
     <path refid="library.mysql-connector-java-5.1.46.classpath"/>
     <pathelement location="${project_lessenrooster.output.dir}"/>
@@ -60,7 +65,7 @@
   
   <target name="compile.module.project_lessenrooster.production" depends="register.custom.compilers" description="Compile module Project lessenrooster; production classes">
     <mkdir dir="${project_lessenrooster.output.dir}"/>
-    <javac2 destdir="${project_lessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+    <javac2 destdir="${project_lessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.project_lessenrooster}/javac">
       <compilerarg line="${compiler.args.project_lessenrooster}"/>
       <bootclasspath refid="project_lessenrooster.module.bootclasspath"/>
       <classpath refid="project_lessenrooster.module.production.classpath"/>

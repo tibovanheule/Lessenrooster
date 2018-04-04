@@ -13,10 +13,10 @@ import timetable.objects.Lecture;
 public class LectureListView extends ListView<Lecture> implements InvalidationListener, EventHandler<MouseEvent> {
     public LectureListView() {
         setOnMouseClicked(this::handle);
-        setCellFactory(new Callback<>() {
+        setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
             @Override
             public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
-                ListCell<Lecture> cell = new ListCell<>() {
+                ListCell<Lecture> cell = new ListCell<Lecture>() {
                     {
                         //gevonden fix voor de wrap text
                         prefWidthProperty().bind(this.widthProperty().subtract(20));

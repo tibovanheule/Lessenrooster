@@ -13,10 +13,10 @@ import timetable.objects.Item;
 public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
 
     public ItemsListView() {
-        setCellFactory(new Callback<>() {
+        setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {
             @Override
             public ListCell<Item> call(ListView<Item> myObjectListView) {
-                ListCell<Item> cell = new ListCell<>() {
+                ListCell<Item> cell = new ListCell<Item>() {
                     {
                         //gevonden fix voor de wrap text
                         /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround

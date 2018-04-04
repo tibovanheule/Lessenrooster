@@ -28,6 +28,7 @@ import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.views.SortButtons;
+import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
 import java.io.IOException;
@@ -98,7 +99,7 @@ public class Controller {
         //voordeel: programma moet niet wachten achter de ophaling
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
 
-        /*Platform.runLater(this::getWeather);*/
+        Platform.runLater(this::getWeather);
 
         //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
         //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
@@ -171,7 +172,7 @@ public class Controller {
 
     /*functie om het weerbericht op te roepen*/
     public void weather() {
-        /*try {
+        try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
             Parent root = loader.load();
             WeatherController controller = loader.getController();
@@ -183,7 +184,7 @@ public class Controller {
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     /*functie om de settings scherm op te roepen*/

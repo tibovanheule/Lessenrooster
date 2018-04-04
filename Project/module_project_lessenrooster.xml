@@ -58,15 +58,15 @@
   
   <target name="compile.module.project_lessenrooster" depends="compile.module.project_lessenrooster.production,compile.module.project_lessenrooster.tests" description="Compile module Project lessenrooster"/>
   
-  <target name="compile.module.project_lessenrooster.production" description="Compile module Project lessenrooster; production classes">
+  <target name="compile.module.project_lessenrooster.production" depends="register.custom.compilers" description="Compile module Project lessenrooster; production classes">
     <mkdir dir="${project_lessenrooster.output.dir}"/>
-    <javac destdir="${project_lessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+    <javac2 destdir="${project_lessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.project_lessenrooster}"/>
       <bootclasspath refid="project_lessenrooster.module.bootclasspath"/>
       <classpath refid="project_lessenrooster.module.production.classpath"/>
       <src refid="project_lessenrooster.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.project_lessenrooster"/>
-    </javac>
+    </javac2>
     
     <copy todir="${project_lessenrooster.output.dir}">
       <fileset dir="${module.project_lessenrooster.basedir}/src">
@@ -76,7 +76,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.project_lessenrooster.tests" depends="compile.module.project_lessenrooster.production" description="compile module Project lessenrooster; test classes" unless="skip.tests"/>
+  <target name="compile.module.project_lessenrooster.tests" depends="register.custom.compilers,compile.module.project_lessenrooster.production" description="compile module Project lessenrooster; test classes" unless="skip.tests"/>
   
   <target name="clean.module.project_lessenrooster" description="cleanup module">
     <delete dir="${project_lessenrooster.output.dir}"/>

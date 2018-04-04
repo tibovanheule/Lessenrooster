@@ -1,14 +1,11 @@
 package timetable.db.mysql;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import timetable.config.Config;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class MysqlDataAccessProvider implements DataAccessProvider {
     /*
@@ -27,14 +24,14 @@ public class MysqlDataAccessProvider implements DataAccessProvider {
     }
 
     public Connection getConnection() throws SQLException {
-        Connection conn;
-        Config config = new Config();
+        Connection conn = null;
+/*        Config config = new Config();
         Properties properties = config.getproperties();
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(properties.getProperty("DB.mysql.user"));
         dataSource.setPassword(properties.getProperty("DB.mysql.password"));
         dataSource.setURL(properties.getProperty("DB.mysql.url"));
-        conn = dataSource.getConnection();
+        conn = dataSource.getConnection();*/
         return conn;
     }
 }

@@ -20,7 +20,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import timetable.about.AboutController;
 import timetable.config.Config;
-import timetable.db.DataAccessProvider;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.lecture.LectureController;
@@ -29,13 +28,11 @@ import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.views.SortButtons;
-import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,12 +41,10 @@ public class Controller {
 
     public Label day, date, time, appname;
     public TextField searchText;
-/*    public ListView<Lecture> monday, tuesday, wednesday, thursday, friday;*/
     public ListView<Item> list;
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc;
     public AnchorPane draw;
-    public DataAccessProvider dataAccessProvider;
     private Stage stage;
     public MainModel model;
 
@@ -61,7 +56,7 @@ public class Controller {
         Config config = new Config();
         Properties properties = config.getproperties();
 
-        //als de property true is gebruik dan mysql
+        //als de property true is gebruik dan mysql (voorlopig constant false)
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             model.dataAccessProvider = new MysqlDataAccessProvider();
             //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
@@ -102,8 +97,8 @@ public class Controller {
         //ophalen van het weerbericht gebeurd in een thread
         //voordeel: programma moet niet wachten achter de ophaling
         //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
-        Platform.runLater(this::getWeather);
 
+        /*Platform.runLater(this::getWeather);*/
 
         //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
         //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
@@ -176,7 +171,7 @@ public class Controller {
 
     /*functie om het weerbericht op te roepen*/
     public void weather() {
-        try {
+        /*try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
             Parent root = loader.load();
             WeatherController controller = loader.getController();
@@ -188,7 +183,7 @@ public class Controller {
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /*functie om de settings scherm op te roepen*/

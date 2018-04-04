@@ -10,16 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.config.Config;
 import timetable.objects.Item;
 
 import javax.imageio.ImageIO;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -114,33 +113,31 @@ public class Main extends Application {
                 Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
                 controller.model.setSchedule(item);
                 controller.draw.setVisible(false);
+                SnapshotParameters snapshotParameters = new SnapshotParameters();
+                /*voor betere image kwaliteit */
+                snapshotParameters.setTransform(new Scale(2, 2));
+                WritableImage image = root.snapshot(snapshotParameters, null);
+
+                File file;
+
+                if (getParameters().getRaw().get(2).endsWith(".png")) {
+                    file = new File(getParameters().getRaw().get(2));
+                } else {
+                    file = new File(getParameters().getRaw().get(2) + ".png");
+                }
+                try {
+                    ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Platform.exit();
+                    System.exit(2);
+                }
             } catch (Exception e) {
                 /*e.printStackTrace();*/
-                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                    error.write("Invalid! Please, check your arguments ,sir! They are trump-shit-arguments ;) \n");
-                    error.flush();
-                } catch (IOException errorWhileGivingAErrorLol) {
-                    errorWhileGivingAErrorLol.printStackTrace();
-                }
+                new StdError("Invalid! Please, check your arguments ,sir! They are trump-shit-arguments ;) \n");
             }
             primaryStage.setMaximized(true);
-            WritableImage image = root.snapshot(new SnapshotParameters(), null);
 
-            File file;
-
-            // TODO: 29/03/2018 kijken als dit niet zonder file kan :)
-            if (getParameters().getRaw().get(2).endsWith(".png")) {
-                file = new File(getParameters().getRaw().get(2));
-            } else {
-                file = new File(getParameters().getRaw().get(2)+".png");
-            }
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-            } catch (IOException e) {
-                e.printStackTrace();
-                Platform.exit();
-                System.exit(2);
-            }
             Platform.exit();
             System.exit(0);
         }
@@ -159,12 +156,7 @@ public class Main extends Application {
             Platform.exit();
             System.exit(0);
         } else if (args.length >= 4) {
-            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                error.write("Invalid! please don't give more than 3 arguments! :) \n");
-                error.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            new StdError("Invalid! please don't give more than 3 arguments! :) \n");
             //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();
             //sluit Java Virtual Machine af met error code 2

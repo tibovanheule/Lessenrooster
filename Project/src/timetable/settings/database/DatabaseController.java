@@ -35,6 +35,8 @@ public class DatabaseController {
         this.settingsController = settingsController;
         this.properties = properties;
         mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
+        mysql.setDisable(true);
+        mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
     }
 
     public void mysql() {

@@ -38,7 +38,8 @@ public class MainModel implements Observable {
         for (InvalidationListener listener : listenerList) {
             listener.invalidated(this);
         }
-        System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
+        /*For debugging purposes (to know when everything is registered if at all)
+        System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
     }
 
     public void setSchedule(Item selected) {

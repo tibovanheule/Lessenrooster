@@ -7,27 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/timetable/StdError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/artifacts/Project_lessenrooster_jar/Project lessenrooster.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/artifacts/Project_lessenrooster_jar/Project lessenrooster.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/artifacts/Project_lessenrooster_jar/project.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/MainModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/MainModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/TaskCell.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/mysql/MysqlLectureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/mysql/MysqlLectureDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteLectureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteLectureDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/DataAccessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/DataAccessException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/settings/database/DatabaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/settings/database/DatabaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/weather/WeatherScraper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/weather/WeatherScraper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule.out.properties" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.out.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/MainModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/StdoutList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/StdoutList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/TaskCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/views/TaskCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/DataAccessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,8 +122,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+            <state relative-caret-position="197">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/timetable/Main.java">
+      <file leaf-file-name="StdError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="89" column="107" lean-forward="true" selection-start-line="89" selection-start-column="107" selection-end-line="89" selection-end-column="107" />
+            <state relative-caret-position="153">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,20 +143,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StdoutList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MysqlLectureDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MysqlLectureDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="918">
               <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,61 +165,20 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file leaf-file-name="LectureListView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/views/LectureListView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="schedule.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemsListView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/views/ItemsListView.java">
+      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2409#2410#0" expanded="true" />
-                <element signature="e#2481#2482#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
-              <folding>
-                <element signature="e#4269#4270#0" expanded="true" />
-                <element signature="e#4311#4312#0" expanded="true" />
-                <element signature="e#4390#4391#0" expanded="true" />
-                <element signature="e#4435#4436#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskCell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/views/TaskCell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="142">
+              <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -274,7 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/timetable/db/Sqlite/SqliteItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/Sqlite/SqliteAbstractDOA.java" />
         <option value="$PROJECT_DIR$/src/timetable/preloader/Preloader.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/ItemsDAO.java" />
@@ -288,12 +239,10 @@
         <option value="$PROJECT_DIR$/src/timetable/config/Config.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlAbstractDOA.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlItemsDAO.java" />
-        <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessContext.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteItemsDAO.java" />
-        <option value="$PROJECT_DIR$/src/timetable/db/DataAccessException.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/DataAccessProvider.java" />
         <option value="$PROJECT_DIR$/src/timetable/lecture/lecture.css" />
         <option value="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" />
@@ -306,25 +255,28 @@
         <option value="$PROJECT_DIR$/src/timetable/weather/weather.css" />
         <option value="$PROJECT_DIR$/src/timetable/weather/weather.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/weather/WeatherController.java" />
-        <option value="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessProvider.java" />
         <option value="$PROJECT_DIR$/src/timetable/Style.css" />
         <option value="$PROJECT_DIR$/src/timetable/views/SortButtons.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/SearchTextBox.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/LectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/TaskCell.java" />
-        <option value="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/SettingsController.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/ItemsListView.java" />
         <option value="$PROJECT_DIR$/src/timetable/main.fxml" />
-        <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
         <option value="$PROJECT_DIR$/src/timetable/views/LectureListView.java" />
-        <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
-        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/StdoutList.java" />
+        <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
         <option value="$PROJECT_DIR$/src/timetable/Main.java" />
+        <option value="$PROJECT_DIR$/src/timetable/db/DataAccessException.java" />
+        <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
+        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
+        <option value="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" />
+        <option value="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" />
+        <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
+        <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java" />
       </list>
     </option>
   </component>
@@ -335,7 +287,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -375,13 +327,6 @@
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="timetable" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -405,7 +350,15 @@
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
@@ -600,12 +553,12 @@
       <workItem from="1522616613503" duration="3028000" />
       <workItem from="1522619828813" duration="19000" />
       <workItem from="1522673668013" duration="15809000" />
-      <workItem from="1522748966607" duration="16128000" />
+      <workItem from="1522748966607" duration="20635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354146000" />
+    <option name="totallyTimeSpent" value="358653000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -630,7 +583,7 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4934896" visible="true" weight="0.32413793" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4934896" weight="0.32413793" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
@@ -712,13 +665,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/javafx.base/javafx/beans/property/ObjectPropertyBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -779,34 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlAbstractDOA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlItemsDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -832,13 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/DataAccessException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -923,13 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4947" />
@@ -988,16 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="56" lean-forward="true" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/views/ItemsListView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1007,13 +901,6 @@
             <element signature="e#2409#2410#0" expanded="true" />
             <element signature="e#2481#2482#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1037,16 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/views/TaskCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1057,15 +934,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="46" column="38" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="162" column="26" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding>
             <element signature="e#4269#4270#0" expanded="true" />
             <element signature="e#4311#4312#0" expanded="true" />
             <element signature="e#4390#4391#0" expanded="true" />
             <element signature="e#4435#4436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/DataAccessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1078,31 +996,87 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="40" />
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlAbstractDOA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlItemsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="918">
           <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="89" column="107" lean-forward="true" selection-start-line="89" selection-start-column="107" selection-end-line="89" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

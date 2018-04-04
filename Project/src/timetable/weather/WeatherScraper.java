@@ -1,7 +1,7 @@
 //Tibo Vanheule
 package timetable.weather;
 
-import org.json.JSONObject;
+import timetable.StdError;
 import timetable.config.Config;
 import timetable.objects.Weather;
 
@@ -29,7 +29,10 @@ public class WeatherScraper {
             }
         } catch (Exception e) {
             weather = new Weather(false);
-            e.printStackTrace();
+            /*e.printStackTrace();*/
+
+            new StdError("WARNING! couldn't get the weather! Do you have an internet connection?");
+
         }
         return string.toString();
     }
@@ -39,7 +42,7 @@ public class WeatherScraper {
             String jsonString = getData();
             //deze if voor als het ophalen niet gelukt is dan wordt er geen extra error opgegooid
             if (weather == null) {
-                JSONObject jsonObject = new JSONObject(jsonString);
+               /* JSONObject jsonObject = new JSONObject(jsonString);
                 JSONObject observation = jsonObject.getJSONObject("current_observation");
                 Double degree = observation.getDouble("temp_c");
                 Double windDegree = observation.getDouble("wind_degrees");
@@ -49,11 +52,11 @@ public class WeatherScraper {
                 String condition = observation.getString("weather");
                 JSONObject location = observation.getJSONObject("display_location");
                 String city = location.getString("city");
-                weather = new Weather(true, degree, windDegree, windSpeed, humidity, icon, condition, city);
+                weather = new Weather(true, degree, windDegree, windSpeed, humidity, icon, condition, city);*/
             }
         } catch (Exception e) {
             weather = new Weather(false);
-            e.printStackTrace();
+            /*e.printStackTrace();*/
         }
         return weather;
     }

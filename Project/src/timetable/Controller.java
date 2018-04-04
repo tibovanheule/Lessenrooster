@@ -22,9 +22,7 @@ import timetable.about.AboutController;
 import timetable.config.Config;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
-import timetable.lecture.LectureController;
 import timetable.objects.Item;
-import timetable.objects.Lecture;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
 import timetable.views.SortButtons;
@@ -145,24 +143,6 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage);
-            stage.show();
-            stage.focusedProperty().addListener(o -> controller.close());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*functie om de aangeklikte les weer te geven */
-    private void lecture(Lecture selected) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
-            Parent root = loader.load();
-            LectureController controller = loader.getController();
-            controller.setLecture(selected);
-            Stage stage = new Stage();
-            controller.setStageAndSetupListeners(stage);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 450, 450));
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

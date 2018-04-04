@@ -6,19 +6,21 @@ import timetable.objects.Lecture;
 
 
 public class LectureController {
-    public Label duration, hour, student, teacher, course, day;
+    public Label text, course;
     private Stage stage;
 
     public void setLecture(Lecture lecture) {
         String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
         try {
-            duration.setText(lecture.getDuration() + "hours");
-            hour.setText("block" + lecture.getBlock());
-            //location.setText("test");
-            student.setText(lecture.getStudent());
-            teacher.setText(lecture.getTeacher());
+
             course.setText(lecture.getCourse());
-            day.setText(days[lecture.getDay() - 1]);
+            text.setText(days[lecture.getDay() - 1] + "\n"
+                    + "Duration: " + lecture.getDuration() + " hours\n"
+                    + "Block: " + lecture.getBlock() + "\n"
+                    + "For students: " + lecture.getStudent() + "\n"
+                    + "Teacher: " + lecture.getTeacher() + "\n");
+            //location.setText("test");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

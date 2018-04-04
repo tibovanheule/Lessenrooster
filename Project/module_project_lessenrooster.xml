@@ -3,7 +3,7 @@
   <dirname property="module.project_lessenrooster.basedir" file="${ant.file.module_project_lessenrooster}"/>
   
   
-  <property name="compiler.args.project_lessenrooster" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  <property name="compiler.args.project_lessenrooster" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
   
   <property name="project_lessenrooster.output.dir" value="${module.project_lessenrooster.basedir}/../JAR/production/Project lessenrooster"/>
   <property name="project_lessenrooster.testoutput.dir" value="${module.project_lessenrooster.basedir}/../JAR/test/Project lessenrooster"/>

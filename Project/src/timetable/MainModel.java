@@ -2,21 +2,16 @@ package timetable;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.scene.image.Image;
-import timetable.config.Config;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
 import timetable.db.ItemsDAO;
-import timetable.db.mysql.MysqlDataAccessProvider;
-import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
@@ -59,7 +54,7 @@ public class MainModel implements Observable {
     }
 
     public ArrayList<Lecture> getSchedule(Integer key) {
-        if(key.equals(5)){
+        if (key.equals(5)) {
             lecturesChanged = false;
         }
         return schedule.get(key);

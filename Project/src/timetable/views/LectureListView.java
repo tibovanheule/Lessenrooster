@@ -38,7 +38,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                             getStyleClass().remove("conflict");
                             this.setWrapText(true);
                         } else {
-                            setText(lecture.getCourse() + " Uur: " + lecture.getBlock());
+                            setText(lecture.getCourse() + " Uur: " + lecture.getTime());
                             if (lecture.getConflict()) {
                                 getStyleClass().add("conflict");
                             }

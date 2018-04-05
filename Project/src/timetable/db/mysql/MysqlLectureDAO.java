@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class MysqlLectureDAO extends MysqlAbstractDOA implements LectureDAO {
 
-    public MysqlLectureDAO(Connection connection) {
+    MysqlLectureDAO(Connection connection) {
         super(connection);
     }
 
@@ -30,7 +30,7 @@ public class MysqlLectureDAO extends MysqlAbstractDOA implements LectureDAO {
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"), resultSet.getString("location"),
-                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"));
+                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), "time");
                     lectures.add(lecture);
                 }
                 resultSet.close();

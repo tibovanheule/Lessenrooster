@@ -18,7 +18,7 @@ public class MainModel implements Observable {
     public ArrayList<Item> items = new ArrayList<>();
     public DataAccessProvider dataAccessProvider;
     public String standardSchedule;
-    public HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
+    private HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
     public Boolean clearText;
     public Boolean itemsChanged;
     public Boolean lecturesChanged = false;

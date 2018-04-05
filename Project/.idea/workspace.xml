@@ -7,15 +7,538 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/META-INF/INDEX.LIST" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/META-INF/services/java.sql.Driver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/Charsets.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/LocalizedErrorMessages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/TimeZoneMapping.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/3-0-Compat.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/5-0-Compat.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/clusterBase.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/coldFusion.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/fullDebug.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/maxPerformance.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/solarisMaxPerformance.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/LICENSE.zentus" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/META-INF/services/java.sql.Driver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/FreeBSD/x86_64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/aarch64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/android-arm/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/arm/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/armv6/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/armv7/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/ppc64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/x86/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/x86_64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Mac/x86_64/libsqlitejdbc.jnilib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Windows/x86/sqlitejdbc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/org/sqlite/native/Windows/x86_64/sqlitejdbc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/sqlite-jdbc-3.21.0/sqlite-jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/MainModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/MainModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/config/schedule.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/mysql/MysqlLectureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/mysql/MysqlLectureDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteDataAccessContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteDataAccessContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteLectureDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/db/sqlite/SqliteLectureDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/LectureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/LectureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/objects/Lecture.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/objects/Lecture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/views/LectureListView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/26b87c30-31f1-4109-9abf-3946dc68c258.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/26b87c30-31f1-4109-9abf-3946dc68c258.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule.out.properties" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.out.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/META-INF/INDEX.LIST" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/META-INF/services/java.sql.Driver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/FabricCommunicationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/FabricConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/FabricStateResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/HashShardMapping$ReverseShardIndexSorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/HashShardMapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/RangeShardMapping$RangeShardIndexSorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/RangeShardMapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/Response.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ServerGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ServerMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ServerRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardIndex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardMapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardMappingFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardMappingFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/ShardingType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/hibernate/FabricMultiTenantConnectionProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/ErrorReportingExceptionInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/FabricMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/FabricMySQLConnectionProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/FabricMySQLDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/FabricMySQLDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/JDBC4FabricMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/jdbc/JDBC4FabricMySQLConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/AuthenticatedXmlRpcMethodCaller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/DigestAuthentication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/InternalXmlRpcMethodCaller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/ResultSetParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/XmlRpcClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/proto/xmlrpc/XmlRpcMethodCaller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Array.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Data.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Fault.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/MethodCall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/MethodResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Param.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Params.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/ResponseParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Struct.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/base/Value.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/fabric/xmlrpc/exceptions/MySQLFabricException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/AbandonedConnectionCleanupThread$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/AbandonedConnectionCleanupThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/AssertionFailedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/AuthenticationPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/BalanceStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/BestResponseTimeBalanceStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Blob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/BlobFromLocator$LocatorInputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/BlobFromLocator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Buffer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/BufferRow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ByteArrayRow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CacheAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CacheAdapterFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CachedResultSetMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CallableStatement$CallableStatementParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CallableStatement$CallableStatementParamInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CallableStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CharsetMapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Charsets.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Clob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Collation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CommunicationsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/CompressedInputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionFeatureNotAvailableException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionGroupManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$CompoundCacheKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$ExceptionInterceptorChain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl$NetworkTimeoutSetter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionLifecycleInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$BooleanConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$ConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$IntegerConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$LongConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$MemorySizeConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$StringConnectionProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl$XmlMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ConnectionPropertiesTransform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$ComparableWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$IndexMetaDataKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$IteratorWithCleanup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$LocalAndReferencedColumns.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$ProcedureType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$ResultSetIterator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$SingleStringIterator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$TableMetaDataKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$TableType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData$TypeDescriptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaDataUsingInfoSchema$JDBC4FunctionConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DatabaseMetaDataUsingInfoSchema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/DocsConnectionPropsHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/EscapeProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/EscapeProcessorResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/EscapeTokenizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ExceptionInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ExportControlled$StandardSSLSocketFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ExportControlled$X509TrustManagerWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ExportControlled.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Extension.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/FailoverConnectionProxy$FailoverJdbcInterfaceProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/FailoverConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Field.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/IterateBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42CallableStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42Helper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42PreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42ResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42ServerPreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC42UpdatableResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4CallableStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4ClientInfoProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4ClientInfoProviderSP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4CommentClientInfoProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4DatabaseMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4DatabaseMetaDataUsingInfoSchema$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4DatabaseMetaDataUsingInfoSchema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4LoadBalancedMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4MultiHostMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4MySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4MysqlSQLXML$SimpleSaxToReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4MysqlSQLXML.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4NClob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4PreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4PreparedStatementHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4ReplicationMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4ResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4ServerPreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/JDBC4UpdatableResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LicenseConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalanceExceptionChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalancedAutoCommitInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalancedConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalancedConnectionProxy$NullLoadBalancedConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalancedConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LoadBalancedMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/LocalizedErrorMessages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Messages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MiniAdmin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MultiHostConnectionProxy$JdbcInterfaceProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MultiHostConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MultiHostMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlCharset.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlDataTruncation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlDefs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlErrorNumbers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlParameterMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/MysqlSavepoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NamedPipeSocketFactory$NamedPipeSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NamedPipeSocketFactory$RandomAccessFileInputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NamedPipeSocketFactory$RandomAccessFileOutputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NamedPipeSocketFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NdbLoadBalanceExceptionChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NetworkResources.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NoSubInterceptorWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NonRegisteringDriver$ConnectionPhantomReference.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NonRegisteringDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NonRegisteringReplicationDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NotImplemented.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/NotUpdatable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/OperationNotSupportedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/OutputStreamWatcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PacketTooBigException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ParameterBindings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PerConnectionLRUFactory$PerConnectionLRU.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PerConnectionLRUFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PerVmServerConfigCacheFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PerVmServerConfigCacheFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PingTarget.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$AppendingBatchVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$BatchParams.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$BatchVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$EmulatedPreparedStatementBindings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$EndPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement$ParseInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/PreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ProfilerEventHandlerFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/RandomBalanceStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReflectiveStatementInterceptorAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationConnectionGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationConnectionGroupManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationConnectionProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ReplicationMySQLConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ResultSetImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ResultSetInternalMethods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ResultSetMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ResultSetRow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/RowData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/RowDataCursor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/RowDataDynamic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/RowDataStatic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SQLError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Security.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SequentialBalanceStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ServerAffinityStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ServerPreparedStatement$BatchedBindValues.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ServerPreparedStatement$BindValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/ServerPreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SingleByteCharsetConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SocketFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SocketMetadata$Helper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SocketMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/SocksProxySocketFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StandardLoadBalanceExceptionChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StandardSocketFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Statement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StatementImpl$CancelTask$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StatementImpl$CancelTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StatementImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StatementInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StatementInterceptorV2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StreamingNotifiable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StringUtils$SearchMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/TimeUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/TimeZoneMapping.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/UpdatableResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Util$RandStructcture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/V1toV2StatementInterceptorAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/WatchableOutputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/WatchableWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/Wrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/WriterWatcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/CachingSha2PasswordPlugin$AuthStage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/CachingSha2PasswordPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/MysqlClearPasswordPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/MysqlNativePasswordPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/MysqlOldPasswordPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/authentication/Sha256PasswordPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/3-0-Compat.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/5-0-Compat.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/clusterBase.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/coldFusion.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/fullDebug.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/maxPerformance.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/configs/solarisMaxPerformance.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/DeadlockTimeoutRollbackMarker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLDataException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLIntegrityConstraintViolationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLInvalidAuthorizationSpecException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLNonTransientConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLNonTransientException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLQueryInterruptedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLStatementCancelledException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLSyntaxErrorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLTimeoutException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLTransactionRollbackException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLTransientConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/MySQLTransientException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/CommunicationsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLDataException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLIntegrityConstraintViolationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLInvalidAuthorizationSpecException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLNonTransientConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLNonTransientException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLQueryInterruptedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLSyntaxErrorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLTimeoutException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLTransactionRollbackException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLTransientConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/exceptions/jdbc4/MySQLTransientException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/integration/c3p0/MysqlConnectionTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/integration/jboss/ExtendedMysqlExceptionSorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/integration/jboss/MysqlValidConnectionChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/interceptors/ResultSetScannerInterceptor$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/interceptors/ResultSetScannerInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/interceptors/ServerStatusDiffInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/interceptors/SessionAssociationInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC42CallableStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC42PreparedStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4CallableStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4ConnectionWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4MysqlPooledConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4MysqlXAConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4PreparedStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4StatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/JDBC4SuspendableXAConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlConnectionPoolDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlDataSourceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlXAConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlXADataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlXAException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/MysqlXid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/StatementWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/WrapperBase$ConnectionErrorFiringInvocationHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jdbc2/optional/WrapperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jmx/LoadBalanceConnectionGroupManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jmx/LoadBalanceConnectionGroupManagerMBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jmx/ReplicationGroupManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/jmx/ReplicationGroupManagerMBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/Jdk14Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/Log.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/LogFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/LogUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/NullLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/Slf4JLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/log/StandardLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/profiler/LoggingProfilerEventHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/profiler/ProfilerEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/profiler/ProfilerEventHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/Base64Decoder$IntWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/Base64Decoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/BaseBugReport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/ErrorMappingsDocGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/LRUCache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/PropertiesDocGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/ReadAheadInputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/ResultSetUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/ServerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/TimezoneDump.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/com/mysql/jdbc/util/VersionFSHierarchyMaker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mysql-connector-java-5.1.46/org/gjt/mm/mysql/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/LICENSE.zentus" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/maven/org.xerial/sqlite-jdbc/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/META-INF/services/java.sql.Driver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/BusyHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/ExtendedCommand$BackupCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/ExtendedCommand$RestoreCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/ExtendedCommand$SQLExtension.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/ExtendedCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/Function$Aggregate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/Function.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/JDBC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/ProgressHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$DateClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$DatePrecision.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$Encoding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$JournalMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$LockingMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$Pragma.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$PragmaValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$SynchronousMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$TempStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig$TransactionMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteErrorCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteJDBCLoader$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteJDBCLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/SQLiteOpenMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/Codes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CoreConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CoreDatabaseMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CorePreparedStatement$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CorePreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CoreResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/CoreStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/DB$ProgressObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/DB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/core/NativeDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/DateFormatUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/DateParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/DatePrinter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/ExceptionUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateFormat$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$CaseInsensitiveTextStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$CopyQuotedStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$ISO8601TimeZoneStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$NumberStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$Strategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser$TimeZoneStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDateParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$CharacterLiteral.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$Iso8601_Rule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$NumberRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$PaddedNumberField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$Rule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$StringLiteral.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TimeZoneDisplayKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TimeZoneNameRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TimeZoneNumberRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TwelveHourField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TwentyFourHourField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TwoDigitMonthField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TwoDigitNumberField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$TwoDigitYearField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$UnpaddedMonthField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter$UnpaddedNumberField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FastDatePrinter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FormatCache$MultipartKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/date/FormatCache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/javax/SQLiteConnectionPoolDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/javax/SQLitePooledConnection$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/javax/SQLitePooledConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3DatabaseMetaData$ImportedKeyFinder$ForeignKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3DatabaseMetaData$ImportedKeyFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3DatabaseMetaData$PrimaryKeyFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3DatabaseMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3PreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3ResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3Savepoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3Statement$BackupObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc3/JDBC3Statement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4DatabaseMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4PooledConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4PreparedStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4ResultSet$SqliteClob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4ResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/jdbc4/JDBC4Statement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/FreeBSD/x86_64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/aarch64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/android-arm/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/arm/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/armv6/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/armv7/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/ppc64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/x86/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Linux/x86_64/libsqlitejdbc.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Mac/x86_64/libsqlitejdbc.jnilib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Windows/x86/sqlitejdbc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/native/Windows/x86_64/sqlitejdbc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/util/OSInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/util/ResourceFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/org/sqlite/util/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0/sqlite-jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/config/schedule.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/config/schedule.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/objects/Lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/objects/Lecture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -45,23 +568,39 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="resource:timetable.db.database" type="feb32156:DbDataSourceImpl" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="resource:timetable.db.database" type="feb32156:DbDataSourceImpl" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="resource:timetable.db.database" type="feb32156:DbDataSourceImpl" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="resource:timetable.db.database" type="feb32156:DbDataSourceImpl" />
-        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
+        <item name="lecture: table" type="ffe0bd85:SqliteImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
+        <item name="period: table" type="ffe0bd85:SqliteImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="database.db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
+        <item name="sqlite_master: table" type="ffe0bd85:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -121,23 +660,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LectureController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LectureController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/lecture/LectureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LectureListView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/views/LectureListView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -145,17 +672,90 @@
       <file leaf-file-name="MainModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="-1175">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/Main.java">
+      <file leaf-file-name="LectureListView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/views/LectureListView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            <state relative-caret-position="323">
+              <caret line="41" column="56" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqliteLectureDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="34" column="206" selection-start-line="34" selection-start-column="206" selection-end-line="34" selection-end-column="206" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lecture.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/objects/Lecture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+              <folding>
+                <element signature="e#192#193#0" expanded="true" />
+                <element signature="e#219#220#0" expanded="true" />
+                <element signature="e#762#763#0" expanded="true" />
+                <element signature="e#793#794#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#913#914#0" expanded="true" />
+                <element signature="e#939#940#0" expanded="true" />
+                <element signature="e#972#973#0" expanded="true" />
+                <element signature="e#1000#1001#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1100#1101#0" expanded="true" />
+                <element signature="e#1129#1130#0" expanded="true" />
+                <element signature="e#1164#1165#0" expanded="true" />
+                <element signature="e#1195#1196#0" expanded="true" />
+                <element signature="e#1229#1230#0" expanded="true" />
+                <element signature="e#1259#1260#0" expanded="true" />
+                <element signature="e#1293#1294#0" expanded="true" />
+                <element signature="e#1323#1324#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MysqlLectureDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#401#402#0" expanded="true" />
+                <element signature="e#434#435#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqliteDataAccessContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+              <folding>
+                <element signature="e#640#641#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,42 +772,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemsListView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/views/ItemsListView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-801">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/main.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="107" column="137" selection-start-line="107" selection-start-column="137" selection-end-line="107" selection-end-column="137" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file leaf-file-name="schedule.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="schedule.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -257,7 +826,6 @@
         <option value="$PROJECT_DIR$/src/timetable/db/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/DataAccessContext.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/Db.java" />
-        <option value="$PROJECT_DIR$/src/timetable/objects/Lecture.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/settings.css" />
         <option value="$PROJECT_DIR$/schedule.out.properties" />
         <option value="$PROJECT_DIR$/src/timetable/about/AboutController.java" />
@@ -267,7 +835,6 @@
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessContext.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java" />
-        <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/DataAccessProvider.java" />
         <option value="$PROJECT_DIR$/src/timetable/lecture/lecture.css" />
@@ -287,22 +854,24 @@
         <option value="$PROJECT_DIR$/src/timetable/db/LectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/TaskCell.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/SettingsController.java" />
-        <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/StdoutList.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/DataAccessException.java" />
         <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlDataAccessProvider.java" />
-        <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/ItemsListView.java" />
-        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
         <option value="$PROJECT_DIR$/src/timetable/Main.java" />
         <option value="$PROJECT_DIR$/src/timetable/main.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" />
-        <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
-        <option value="$PROJECT_DIR$/src/timetable/views/LectureListView.java" />
         <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
         <option value="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" />
+        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
+        <option value="$PROJECT_DIR$/src/timetable/views/LectureListView.java" />
+        <option value="$PROJECT_DIR$/src/timetable/objects/Lecture.java" />
+        <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java" />
+        <option value="$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java" />
+        <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" />
+        <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
       </list>
     </option>
   </component>
@@ -313,7 +882,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -353,7 +922,37 @@
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="sqlite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
               <item name="lecture" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
@@ -577,12 +1176,12 @@
       <workItem from="1522616613503" duration="3028000" />
       <workItem from="1522619828813" duration="19000" />
       <workItem from="1522673668013" duration="15809000" />
-      <workItem from="1522748966607" duration="32095000" />
+      <workItem from="1522748966607" duration="37604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370113000" />
+    <option name="totallyTimeSpent" value="375622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,12 +1206,12 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4934896" visible="true" weight="0.32689655" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4934896" visible="true" weight="0.32689655" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.46614584" />
-      <window_info anchor="right" id="Database" order="5" weight="0.2265625" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21223958" />
+      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.2265625" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49934897" weight="0.32965517" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -681,7 +1280,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -689,13 +1288,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/javafx.base/javafx/beans/property/ObjectPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/javafx.controls/javafx/scene/control/TextField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -725,13 +1317,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/db/Db.java" />
-    <entry file="file://$PROJECT_DIR$/schedule.out.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/about/about.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -753,13 +1338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="34" column="93" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
         </state>
       </provider>
     </entry>
@@ -809,13 +1387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/objects/Lecture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -929,13 +1500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -990,16 +1554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1020,13 +1574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1034,13 +1581,6 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/views/ItemsListView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1066,16 +1606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/views/LectureListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2414">
@@ -1088,8 +1618,108 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/lecture/LectureController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        <state relative-caret-position="408">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1175">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://26b87c30-31f1-4109-9abf-3946dc68c258/schema/main/table/period.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/views/LectureListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="41" column="56" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/objects/Lecture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="e#192#193#0" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+            <element signature="e#939#940#0" expanded="true" />
+            <element signature="e#972#973#0" expanded="true" />
+            <element signature="e#1000#1001#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1100#1101#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1259#1260#0" expanded="true" />
+            <element signature="e#1293#1294#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schedule.out.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/mysql/MysqlLectureDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="206" selection-start-line="34" selection-start-column="206" selection-end-line="34" selection-end-column="206" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/config/schedule.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>

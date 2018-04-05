@@ -24,7 +24,7 @@ public class SqliteDataAccessContext implements DataAccessContext {
 
     @Override
     public LectureDAO getLectureDoa() {
-        return new MysqlLectureDAO(connection);
+        return new SqliteLectureDAO(connection);
     }
 
     @Override

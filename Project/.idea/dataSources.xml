@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="resource:timetable.db.database" uuid="26b87c30-31f1-4109-9abf-3946dc68c258">
+    <data-source source="LOCAL" name="database.db" uuid="26b87c30-31f1-4109-9abf-3946dc68c258">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:resource:timetable.db.database</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/timetable/database.db</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>

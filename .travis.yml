@@ -17,5 +17,5 @@ after_success:
 - sudo apt-get install sshpass
 - cd ../JAR/artifacts/Project_lessenrooster_jar
 - ls
-- sshpass -p $SFTP_PASSWORD scp -r "Project lessenrooster.jar" $SFTP_USER@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts
-- sshpass -p $SFTP_PASSWORD scp -r $SFTP_USER@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts "Project lessenrooster.jar"
+- sshpass -p ugent scp -r "Project lessenrooster.jar" artifacts@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts
+- sshpass -p ugent scp -r artifacts@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts "Project lessenrooster.jar"

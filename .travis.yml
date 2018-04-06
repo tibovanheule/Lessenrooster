@@ -14,8 +14,7 @@ env:
   - 'SFTP_USER=artifacts'
   - 'SFTP_PASSWORD=ugent'
 after_success:
-- sudo apt-get install sshpass
 - cd ../JAR/artifacts/Project_lessenrooster_jar
 - ls
-- sshpass -p ugent scp -r "Project lessenrooster.jar" artifacts@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts
-- sshpass -p ugent scp -r artifacts@46.101.81.61:/usr/local/apache2/htdocs/tibo/artifacts "Project lessenrooster.jar"
+- curl --ftp-create-dirs
+       -T "Project lessenrooster.jar" ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61

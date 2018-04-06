@@ -8,3 +8,11 @@ before_install:
 script:
   - ant build.modules
   - ant build.all.artifacts
+env:
+  global:
+  - 'SFTP_USER=artifacts'
+  - 'SFTP_PASSWORD=ugent'
+after_success:
+- curl --ftp-create-dirs
+       -T filename
+       sftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61/usr/local/apache2/htdocs/tibo/artifacts

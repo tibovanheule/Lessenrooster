@@ -14,8 +14,8 @@ public class WeatherScraper {
     private Weather weather = null;
     /*
      * Normaal Zou ik een JSON Library gebruikt hebben en rechtsteeks met de api gewerkt hebben. Deze is ook al geïmplementeerd (zie beneden, jar die gebruikt ik zou hebben ook toegevoegd in zip),
-     * Maar om een extra library (Voor de JSON) te vermijden en om mij mogelijke Indianio problemen ,ten gevolge van een Extra library, te besparen.
-     * Laat ik mijn web server het werk nu doen. ik geef aan de url de authenticatie sleutel van api mee en ook de Stadsnaam (via URL parameters)
+     * Maar om een extra library (Voor de JSON) te vermijden.
+     * Laat ik nu mijn web server het werk doen. ik geef aan de url de authenticatie sleutel van api mee en ook de Stadsnaam (via URL parameters)
      * en krijg een de correcte output op aparte lijnen terug. daarmee kunnen we dat in array van strings maken.
      * Het formaat:
      *   --Icon name

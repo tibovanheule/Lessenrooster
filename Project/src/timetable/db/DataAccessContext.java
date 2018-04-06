@@ -6,6 +6,8 @@ public interface DataAccessContext extends AutoCloseable {
 
     LectureDAO getLectureDoa();
 
+    PeriodDAO getPeriodDAO();
+
     @Override
     void close() throws DataAccessException;
 }

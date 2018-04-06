@@ -1,9 +1,6 @@
 package timetable.db.mysql;
 
-import timetable.db.DataAccessContext;
-import timetable.db.DataAccessException;
-import timetable.db.ItemsDAO;
-import timetable.db.LectureDAO;
+import timetable.db.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,8 +18,14 @@ public class MysqlDataAccessContext implements DataAccessContext {
         return new MysqlItemsDAO(connection);
     }
 
+    @Override
     public LectureDAO getLectureDoa() {
         return new MysqlLectureDAO(connection);
+    }
+
+    @Override
+    public PeriodDAO getPeriodDAO() {
+        return new MysqlPeriodDAO(connection);
     }
 
     @Override

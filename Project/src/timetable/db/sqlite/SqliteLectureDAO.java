@@ -71,6 +71,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 days.put(i, lectures);
             } catch (Exception e) {
                 /*e.printStackTrace();*/
+                throw new DataAccessException("could't get lectures", e);
             }
         }
         return days;

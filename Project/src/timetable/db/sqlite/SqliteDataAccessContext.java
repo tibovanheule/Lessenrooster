@@ -1,10 +1,6 @@
 package timetable.db.sqlite;
 
-import timetable.db.DataAccessContext;
-import timetable.db.DataAccessException;
-import timetable.db.ItemsDAO;
-import timetable.db.LectureDAO;
-import timetable.db.mysql.MysqlLectureDAO;
+import timetable.db.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,7 +9,7 @@ public class SqliteDataAccessContext implements DataAccessContext {
 
     private Connection connection;
 
-    public SqliteDataAccessContext(Connection connection) {
+    SqliteDataAccessContext(Connection connection) {
         this.connection = connection;
     }
 
@@ -25,6 +21,11 @@ public class SqliteDataAccessContext implements DataAccessContext {
     @Override
     public LectureDAO getLectureDoa() {
         return new SqliteLectureDAO(connection);
+    }
+
+    @Override
+    public PeriodDAO getPeriodDAO() {
+        return new SqlitePeriodDAO(connection);
     }
 
     @Override

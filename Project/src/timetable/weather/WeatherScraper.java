@@ -8,6 +8,7 @@ import timetable.objects.Weather;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class WeatherScraper {
@@ -27,9 +28,8 @@ public class WeatherScraper {
      *   --City
      */
 
-    private String[] getData() {
-        //stringbuilder zodat we later de inputline er aan toe kunnen voegen (sneller dan string concatenatie += )
-        String[] stringsArray = new String[7];
+    private ArrayList<String> getData() {
+        ArrayList<String> strings = new ArrayList<>();
         try {
             Config config = new Config();
             Properties properties = config.getproperties();
@@ -40,8 +40,7 @@ public class WeatherScraper {
             BufferedReader input = new BufferedReader(new InputStreamReader(weather.openStream()));
             int count = 0;
             while ((inputLine = input.readLine()) != null) {
-                stringsArray[count] = inputLine;
-                count++;
+                strings.add(inputLine);
             }
         } catch (Exception e) {
             weather = new Weather(false);
@@ -49,12 +48,12 @@ public class WeatherScraper {
             new StdError("WARNING! couldn't get the weather! Do you have an internet connection?");
 
         }
-        return stringsArray;
+        return strings;
     }
 
     public Weather getWeather() {
         try {
-            String[] jsonString = getData();
+            ArrayList<String> jsonString = getData();
             //deze if voor als het ophalen niet gelukt is dan wordt er geen extra error opgegooid
             if (weather == null) {
                 /*
@@ -71,7 +70,7 @@ public class WeatherScraper {
                  * String city = location.getString("city");
                  * weather = new Weather(true, degree, windDegree, windSpeed, humidity, icon, condition, city);
                  */
-                weather = new Weather(true, Double.parseDouble(jsonString[2]), Double.parseDouble(jsonString[4]), Double.parseDouble(jsonString[3]), jsonString[5], jsonString[0], jsonString[1], jsonString[6]);
+                weather = new Weather(true, Double.parseDouble(jsonString.get(2)), Double.parseDouble(jsonString.get(4)), Double.parseDouble(jsonString.get(3)), jsonString.get(5), jsonString.get(0), jsonString.get(1), jsonString.get(6));
             }
         } catch (Exception e) {
             weather = new Weather(false);

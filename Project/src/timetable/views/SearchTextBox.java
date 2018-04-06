@@ -5,12 +5,13 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import timetable.MainModel;
 
-public class SearchTextBox extends TextField implements InvalidationListener, EventHandler<ActionEvent> {
+public class SearchTextBox extends TextField implements InvalidationListener, EventHandler<KeyEvent> {
 
     public SearchTextBox(){
-        textProperty().addListener(o -> {if(!getText().equals("")){model.filterItems(getText());}});
+        setOnKeyTyped(this::handle);
     }
 
     private MainModel model;
@@ -37,6 +38,7 @@ public class SearchTextBox extends TextField implements InvalidationListener, Ev
     }
 
     @Override
-    public void handle(ActionEvent event) {
+    public void handle(KeyEvent event) {
+        model.filterItems(getText());
     }
 }

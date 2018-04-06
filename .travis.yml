@@ -14,5 +14,5 @@ env:
   - 'SFTP_PASSWORD=ugent'
 after_success:
 - curl --ftp-create-dirs
-       -T filename
+       -T "/home/travis/build/tibovanheule/Lessenrooster/Project/__artifacts_temp/Project lessenrooster.jar"
        sftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61/usr/local/apache2/htdocs/tibo/artifacts

@@ -6,18 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import timetable.Controller;
 import timetable.Main;
 import timetable.config.Config;
-import timetable.db.DataAccessContext;
-import timetable.db.DataAccessException;
-import timetable.db.sqlite.SqliteDataAccessProvider;
-import timetable.objects.Period;
 import timetable.settings.database.DatabaseController;
 
 import java.util.Properties;
@@ -31,7 +24,6 @@ public class SettingsController {
     private Boolean canClose = true;
     public Properties properties = new Properties();
     private Controller mainController;
-    public ListView<Period> periods;
 
     public void setStageAndSetupListeners(Stage stage, Controller main) {
         //Krijg de stage
@@ -40,7 +32,7 @@ public class SettingsController {
         this.mainController = main;
     }
 
-    public void initialize() throws DataAccessException {
+    public void initialize() {
         //Laad het configuratie bestand in
         Config config = new Config();
         properties = config.getproperties();
@@ -63,7 +55,7 @@ public class SettingsController {
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         weatherCity.getSelectionModel().selectedItemProperty().addListener(o -> city());
 
-        try (DataAccessContext dac = new SqliteDataAccessProvider().getDataAccessContext()) {
+        /*try (DataAccessContext dac = new SqliteDataAccessProvider().getDataAccessContext()) {
             periods.getItems().addAll(dac.getPeriodDAO().getPeriods());
         }
         periods.setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {
@@ -72,8 +64,8 @@ public class SettingsController {
                 ListCell<Period> cell = new ListCell<Period>() {
                     {
                         //gevonden fix voor de wrap text
-                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
-                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
+                        *//*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
+         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) *//*
                         prefWidthProperty().bind(this.widthProperty().subtract(20));
                     }
 
@@ -91,7 +83,7 @@ public class SettingsController {
                 };
                 return cell;
             }
-        });
+        });*/
 
     }
 

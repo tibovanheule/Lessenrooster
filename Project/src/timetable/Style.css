@@ -67,6 +67,10 @@ Main css
     -fx-background-color: #f9f9f9;
 }
 
+.dayHolder *:selected{
+    -fx-text-fill: black;
+}
+
 .dayHolder .scroll-bar {
     -fx-background-color: white;
 }

@@ -19,7 +19,7 @@ import timetable.objects.Lecture;
 
 public class LectureListView extends ListView<Lecture> implements InvalidationListener, EventHandler<MouseEvent> {
     public LectureListView() {
-        setOnMouseClicked(this::handle);
+
         setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
             @Override
             public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
@@ -37,11 +37,13 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                             setGraphic(null);
                             getStyleClass().remove("conflict");
                             this.setWrapText(true);
+                            setOnMouseClicked(null);
                         } else {
                             setText(lecture.getCourse() + " Uur: " + lecture.getTime());
                             if (lecture.getConflict()) {
                                 getStyleClass().add("conflict");
                             }
+                            setOnMouseClicked(LectureListView.this::handle);
                         }
                     }
                 };

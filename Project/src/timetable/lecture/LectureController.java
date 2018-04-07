@@ -17,6 +17,7 @@ public class LectureController {
             text.setText(days[lecture.getDay() - 1] + "\n"
                     + "Duration: " + lecture.getDuration() + " hours\n"
                     + "Block: " + lecture.getBlock() + "\n"
+                    + "Start hour" + lecture.getTime() + "\n"
                     + "For students: " + lecture.getStudent() + "\n"
                     + "Teacher: " + lecture.getTeacher() + "\n");
             //location.setText("test");

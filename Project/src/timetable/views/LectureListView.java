@@ -46,6 +46,12 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                             setOnMouseClicked(LectureListView.this::handle);
                         }
                     }
+
+                    @Override
+                    public void updateSelected(boolean selected) {
+                        /*door deze methode te overschrijven slagen we er dat de stijlregels niet overschreven worden
+                        * wanneer iets geselecteerd wordt. namelijk dat de text wit werd met een blauwe achtergrond*/
+                    }
                 };
                 return cell;
             }

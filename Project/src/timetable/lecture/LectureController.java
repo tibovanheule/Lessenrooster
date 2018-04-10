@@ -1,3 +1,4 @@
+/*Tibo Vanheule*/
 package timetable.lecture;
 
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,6 @@ public class LectureController {
         this.lecture = lecture;
         String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
         try {
-
             course.setText(lecture.getCourse());
             text.setText(days[lecture.getDay() - 1] + "\n"
                     + "Duration: " + lecture.getDuration() + " hours\n"
@@ -30,7 +30,6 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
-
         } catch (Exception e) {
             e.printStackTrace();
         }

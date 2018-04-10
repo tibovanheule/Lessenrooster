@@ -1,3 +1,4 @@
+<!-- Tibo Vanehule -->
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -7,26 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@../lecture.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.lecture.editLecture.EditLecture">
-   <children>
-      <AnchorPane prefHeight="98.0" prefWidth="450.0" styleClass="blue">
-         <children>
-            <Label layoutX="56.0" layoutY="35.0" styleClass="blue" text="Edit course" />
-         </children>
-      </AnchorPane>
-      <TextField fx:id="name" layoutX="115.0" layoutY="122.0" />
-      <ComboBox fx:id="day" layoutX="116.0" layoutY="158.0" prefWidth="150.0" />
-      <ComboBox fx:id="duration" layoutX="115.0" layoutY="192.0" prefWidth="150.0" />
-      <ComboBox fx:id="block" layoutX="114.0" layoutY="225.0" prefWidth="150.0" />
-      <ComboBox fx:id="students" layoutX="115.0" layoutY="263.0" prefWidth="150.0" />
-      <ComboBox fx:id="teacher" layoutX="114.0" layoutY="302.0" prefWidth="150.0" />
-      <Label layoutX="60.0" layoutY="127.0" text="Name:" />
-      <Label layoutX="60.0" layoutY="162.0" text="Day:" />
-      <Label layoutX="60.0" layoutY="196.0" text="Duration:" />
-      <Label layoutX="60.0" layoutY="229.0" text="Block:" />
-      <Label layoutX="60.0" layoutY="266.0" text="Students:" />
-      <Label layoutX="60.0" layoutY="305.0" text="Teacher:" />
-      <Label layoutX="62.0" layoutY="347.0" text="Location:" />
-      <ComboBox fx:id="loc" layoutX="115.0" layoutY="342.0" prefWidth="150.0" />
-      <Button layoutX="196.0" layoutY="397.0" mnemonicParsing="false" onAction="#close" text="Close" />
-   </children>
+    <AnchorPane prefHeight="98.0" prefWidth="450.0" styleClass="blue">
+        <Label layoutX="56.0" layoutY="35.0" styleClass="blue" text="Edit course" />
+    </AnchorPane>
+    <TextField fx:id="name" layoutX="115.0" layoutY="122.0" />
+    <ComboBox fx:id="day" layoutX="116.0" layoutY="158.0" prefWidth="150.0" />
+    <ComboBox fx:id="duration" layoutX="115.0" layoutY="192.0" prefWidth="150.0" />
+    <ComboBox fx:id="block" layoutX="114.0" layoutY="225.0" prefWidth="150.0" />
+    <ComboBox fx:id="students" layoutX="115.0" layoutY="263.0" prefWidth="150.0" />
+    <ComboBox fx:id="teacher" layoutX="114.0" layoutY="302.0" prefWidth="150.0" />
+    <Label layoutX="60.0" layoutY="127.0" text="Name:" />
+    <Label layoutX="60.0" layoutY="162.0" text="Day:" />
+    <Label layoutX="60.0" layoutY="196.0" text="Duration:" />
+    <Label layoutX="60.0" layoutY="229.0" text="Block:" />
+    <Label layoutX="60.0" layoutY="266.0" text="Students:" />
+    <Label layoutX="60.0" layoutY="305.0" text="Teacher:" />
+    <Label layoutX="62.0" layoutY="347.0" text="Location:" />
+    <ComboBox fx:id="loc" layoutX="115.0" layoutY="342.0" prefWidth="150.0" />
+    <Button layoutX="196.0" layoutY="397.0" mnemonicParsing="false" onAction="#close" text="Close" />
 </AnchorPane>

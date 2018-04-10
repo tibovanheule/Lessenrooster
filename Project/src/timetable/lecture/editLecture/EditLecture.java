@@ -1,3 +1,4 @@
+/*Tibo Vanheule*/
 package timetable.lecture.editLecture;
 
 import javafx.scene.control.ComboBox;

@@ -4,6 +4,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import timetable.Controller;
 import timetable.Main;
@@ -11,7 +12,7 @@ import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.SettingsController;
 
-import java.io.File;
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 
@@ -49,6 +50,28 @@ public class DatabaseController {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
+    }
+
+    public void newDb(){
+        /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Database");
+        File file = fileChooser.showSaveDialog(stage);
+        InputStream is = null;
+        OutputStream os = null;
+        /*try {
+            is = Main.class.getResourceAsStream("empty.db");
+            os = new FileOutputStream();
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            is.close();
+            os.close();
+        }*/
+
     }
 
     public void dragDropped(DragEvent event) {

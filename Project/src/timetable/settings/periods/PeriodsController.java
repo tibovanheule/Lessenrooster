@@ -1,17 +1,17 @@
 package timetable.settings.periods;
 
-import javafx.collections.ObservableList;
-import javafx.scene.control.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import timetable.Controller;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.sqlite.SqliteDataAccessProvider;
-import timetable.objects.Lecture;
 import timetable.objects.Period;
 import timetable.settings.SettingsController;
-import timetable.views.LectureListView;
 
 import java.util.Properties;
 
@@ -21,30 +21,30 @@ public class PeriodsController {
     private Stage stage;
     private SettingsController settingsController;
     public TableView<Period> table;
-    public TableColumn id, hour, minute;
+    public TableColumn<Period, Integer> id, hour, minute;
 
     public void initialize() {
-        id.setCellFactory(new Callback<TableColumn, TableCell>() {
-            @Override
-            public TableCell call(TableColumn myObjectListView) {
-                TableCell cell = new TableCell() {
-                    {
-                        //gevonden fix voor de wrap text
-                        prefWidthProperty().bind(this.widthProperty().subtract(20));
-                    }
-
-                    @Override
-                    protected void updateItem(Period period) {
-                        super.updateItem(period, b);
-                        if (b || period == null) {
-                            setText(null);
-                            setGraphic(null);
-                            this.setWrapText(true);
-                        } else {
-                            setText(period.getBlock()+"");
-                        }
-                    }
-
+        id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
+                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getBlock()).asObject();
+                                       return obsInt;
+                                   }
+                               }
+        );
+        hour.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
+                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getHour()).asObject();
+                                       return obsInt;
+                                   }
+                               }
+        );
+        minute.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
+                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getMinute()).asObject();
+                                       return obsInt;
+                                   }
+                               }
+        );
     }
 
 

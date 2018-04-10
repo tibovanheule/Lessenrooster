@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import timetable.about.AboutController;
 import timetable.config.Config;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
@@ -131,23 +130,6 @@ public class Controller {
     public void exit() {
         Platform.exit();
         System.exit(0);
-    }
-
-    /*functie voor het about the program weer te geven*/
-    public void about() {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("about/about.fxml"));
-            Parent root = loader.load();
-            AboutController controller = loader.getController();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage);
-            stage.show();
-            stage.focusedProperty().addListener(o -> controller.close());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /*functie om het weerbericht op te roepen*/

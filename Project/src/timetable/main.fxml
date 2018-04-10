@@ -9,6 +9,7 @@
 <?import timetable.views.ItemsListView?>
 <?import timetable.views.SearchTextBox?>
 <?import timetable.views.LectureListView?>
+<?import timetable.views.AboutButton?>
 <GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
     <fx:define>
@@ -126,7 +127,7 @@
                     <Insets right="30.0"/>
                 </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#about" styleClass="about"/>
+            <AboutButton mnemonicParsing="false" styleClass="about"/>
             <Button mnemonicParsing="false" onAction="#settings" styleClass="settings"/>
             <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize"/>
             <Button mnemonicParsing="false" onAction="#exit" styleClass="close"/>

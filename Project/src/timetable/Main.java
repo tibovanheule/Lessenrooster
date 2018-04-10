@@ -68,20 +68,6 @@ public class Main extends Application {
         primaryStage.setMaximized(Boolean.parseBoolean(properties.getProperty("startMaximized")));
         controller.setStageAndSetupListeners(primaryStage);
 
-        /*scene.focusOwnerProperty().addListener(o ->{
-                    try {
-                        System.out.println(scene.getFocusOwner().getId());
-                        System.out.println(scene.getFocusOwner().getParent().getId());
-                        if(!scene.getFocusOwner().getId().equals("list")){
-                                controller.drawerAction();
-                        }
-                    }catch (Exception e){
-                        System.out.println(e);
-                    }
-                });
-         */
-
-
         if (getParameters().getRaw().size() == 0) {
             primaryStage.show();
         } else if (getParameters().getRaw().size() == 2) {

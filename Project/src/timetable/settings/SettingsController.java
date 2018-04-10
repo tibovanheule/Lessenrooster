@@ -12,6 +12,7 @@ import timetable.Controller;
 import timetable.Main;
 import timetable.config.Config;
 import timetable.settings.database.DatabaseController;
+import timetable.settings.periods.PeriodsController;
 
 import java.util.Properties;
 
@@ -55,35 +56,7 @@ public class SettingsController {
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         weatherCity.getSelectionModel().selectedItemProperty().addListener(o -> city());
 
-        /*try (DataAccessContext dac = new SqliteDataAccessProvider().getDataAccessContext()) {
-            periods.getItems().addAll(dac.getPeriodDAO().getPeriods());
-        }
-        periods.setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {
-            @Override
-            public ListCell<Period> call(ListView<Period> myObjectListView) {
-                ListCell<Period> cell = new ListCell<Period>() {
-                    {
-                        //gevonden fix voor de wrap text
-                        *//*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
-         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) *//*
-                        prefWidthProperty().bind(this.widthProperty().subtract(20));
-                    }
 
-                    @Override
-                    protected void updateItem(Period period, boolean b) {
-                        super.updateItem(period, b);
-                        if (b || period == null) {
-                            setText(null);
-                            setGraphic(null);
-                            this.setWrapText(true);
-                        } else {
-                            setText(period.getBlock() + ": " + period.getHour() + ":" + period.getMinute());
-                        }
-                    }
-                };
-                return cell;
-            }
-        });*/
 
     }
 
@@ -115,6 +88,23 @@ public class SettingsController {
             stage.setScene(scene);
             controller.setStageAndSetupListeners(stage, mainController, this, properties);
             stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void period() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/periods/periods.fxml"));
+            Parent root = loader.load();
+            PeriodsController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(root, 450, 450);
+            stage.setScene(scene);
+            controller.setStageAndSetupListeners(stage, mainController, this, properties);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();
         }

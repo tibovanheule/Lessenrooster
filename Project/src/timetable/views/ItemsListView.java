@@ -40,7 +40,7 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
             }
         });
 
-        setOnMouseClicked(this::handle);
+        setOnMouseClicked(this);
     }
 
     private MainModel model;

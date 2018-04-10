@@ -17,42 +17,32 @@ import java.util.Properties;
 
 public class PeriodsController {
     private Controller mainController;
-    private Properties properties;
     private Stage stage;
-    private SettingsController settingsController;
     public TableView<Period> table;
     public TableColumn<Period, Integer> id, hour, minute;
 
     public void initialize() {
         id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
-                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
-                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getBlock()).asObject();
-                                       return obsInt;
-                                   }
-                               }
-        );
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                return new SimpleIntegerProperty(p.getValue().getBlock()).asObject();
+            }
+        });
         hour.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
-                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
-                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getHour()).asObject();
-                                       return obsInt;
-                                   }
-                               }
-        );
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                return new SimpleIntegerProperty(p.getValue().getHour()).asObject();
+            }
+        });
         minute.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Period, Integer>, ObservableValue<Integer>>() {
-                                   public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
-                                       ObservableValue<Integer> obsInt = new SimpleIntegerProperty(p.getValue().getMinute()).asObject();
-                                       return obsInt;
-                                   }
-                               }
-        );
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Period, Integer> p) {
+                return new SimpleIntegerProperty(p.getValue().getMinute()).asObject();
+            }
+        });
     }
 
 
-    public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController, Properties properties) {
+    public void setStageAndSetupListeners(Stage stage, Controller controller) {
         this.stage = stage;
         this.mainController = controller;
-        this.settingsController = settingsController;
-        this.properties = properties;
 
         try (DataAccessContext dac = new SqliteDataAccessProvider().getDataAccessContext()) {
             table.getItems().addAll(dac.getPeriodDAO().getPeriods());

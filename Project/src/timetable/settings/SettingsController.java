@@ -102,7 +102,7 @@ public class SettingsController {
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
             stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage, mainController, this, properties);
+            controller.setStageAndSetupListeners(stage, mainController);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

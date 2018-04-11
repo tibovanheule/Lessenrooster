@@ -56,21 +56,40 @@ public class DatabaseController {
         /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
+        FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
+
+        fileChooser.getExtensionFilters().add(ext);
+
+        fileChooser.setSelectedExtensionFilter(ext);
         File file = fileChooser.showSaveDialog(stage);
-        InputStream is = null;
-        OutputStream os = null;
-        /*try {
-            is = Main.class.getResourceAsStream("empty.db");
-            os = new FileOutputStream();
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
+
+        InputStream stream = null;
+        OutputStream resStreamOut = null;
+        String folder;
+        try {
+            stream = Main.class.getResourceAsStream("empty.db");
+            if(stream == null) {
+                throw new Exception("Couldn't create new db.");
             }
+
+            int readBytes;
+            byte[] buffer = new byte[4096];
+            folder = file.toURI().getPath();
+            resStreamOut = new FileOutputStream(folder);
+            while ((readBytes = stream.read(buffer)) > 0) {
+                resStreamOut.write(buffer, 0, readBytes);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
-            is.close();
-            os.close();
-        }*/
+            try {
+                stream.close();
+                resStreamOut.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

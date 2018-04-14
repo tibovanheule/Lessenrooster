@@ -44,7 +44,7 @@ public class PeriodsController {
         this.stage = stage;
         this.mainController = controller;
 
-        try (DataAccessContext dac = new SqliteDataAccessProvider().getDataAccessContext()) {
+        try (DataAccessContext dac = mainController.model.dataAccessProvider.getDataAccessContext()) {
             table.getItems().addAll(dac.getPeriodDAO().getPeriods());
         } catch (DataAccessException e) {
             e.printStackTrace();

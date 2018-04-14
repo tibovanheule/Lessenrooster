@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Main;
+import timetable.db.DataAccessProvider;
 import timetable.lecture.editLecture.EditLecture;
 import timetable.objects.Lecture;
 
@@ -16,6 +17,7 @@ public class LectureController {
     private Stage stage;
     private Lecture lecture;
     public Boolean canClose = true;
+    public DataAccessProvider dataAccessProvider;
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
@@ -35,8 +37,10 @@ public class LectureController {
         }
     }
 
-    public void setStageAndSetupListeners(Stage stage) {
+    public void setStageAndSetupListeners(Stage stage, DataAccessProvider dataAccessProvider) {
         this.stage = stage;
+        this.dataAccessProvider = dataAccessProvider;
+        System.out.println(dataAccessProvider);
     }
 
     public void edit() {
@@ -48,7 +52,7 @@ public class LectureController {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage, lecture, this);
+            controller.setStageAndSetupListeners(stage, lecture, this, this.dataAccessProvider);
             stage.show();
         } catch (Exception e) {
             canClose = true;

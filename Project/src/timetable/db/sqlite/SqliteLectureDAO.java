@@ -21,9 +21,16 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
             // TODO: 29/03/2018 prepared statement
-            String selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                    "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? AND day = ? ORDER BY first_block";
-             //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+            String selection;
+            if (item.getSort().equals("lecture")) {
+                selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE course = ? AND day = ? ORDER BY first_block";
+
+            } else {
+                selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? AND day = ? ORDER BY first_block";
+                //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+            }
             try (PreparedStatement statement = prepare(selection)) {
                 statement.setString(1, item.getName());
                 statement.setInt(2, i);
@@ -57,7 +64,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                     }
                 }*/
 
-                    int j = 0;
+                int j = 0;
                 while (j < lectures.size() - 1) {
                     Lecture lecture1 = lectures.get(j);
                     Lecture lecture2 = lectures.get(j + 1);
@@ -66,7 +73,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                         lecture2.setConflict(true);
                     }
                     j++;
-                    }
+                }
 
                 days.put(i, lectures);
             } catch (Exception e) {

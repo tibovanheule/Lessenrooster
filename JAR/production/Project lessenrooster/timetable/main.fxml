@@ -1,164 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import timetable.MainModel?>
-<?import timetable.views.SortButtons?>
-<?import timetable.views.ItemsListView?>
-<?import timetable.views.SearchTextBox?>
-<?import timetable.views.LectureListView?>
-<?import timetable.views.AboutButton?>
-<GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import timetable.*?>
+<?import timetable.views.*?>
+
+<GridPane styleClass="body" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.Controller">
     <fx:define>
-        <MainModel fx:id="model"/>
+        <MainModel fx:id="model" />
     </fx:define>
     <columnConstraints>
-        <ColumnConstraints hgrow="NEVER" maxWidth="800.0" prefWidth="215.0"/>
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="665.0"/>
-        <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="NEVER" maxWidth="-Infinity" prefWidth="200.0"/>
+        <ColumnConstraints hgrow="NEVER" maxWidth="800.0" prefWidth="215.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="665.0" />
+        <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="NEVER" maxWidth="-Infinity" prefWidth="200.0" />
     </columnConstraints>
-    <VBox fx:id="drawer" prefHeight="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS"
-          GridPane.vgrow="ALWAYS">
+    <VBox fx:id="drawer" prefHeight="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
 
         <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="268.0" spacing="10.0">
 
-            <Label fx:id="appname" styleClass="appName" text="Appname"/>
-            <ImageView fx:id="dbLogo" fitHeight="31.0" fitWidth="27.0" pickOnBounds="true"
-                       preserveRatio="true"/>
-            <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerOpen"/>
+            <Label fx:id="appname" styleClass="appName" text="Appname" />
+            <ImageView fx:id="dbLogo" fitHeight="31.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerOpen" />
 
             <padding>
-                <Insets right="20.0" top="10.0"/>
+                <Insets right="20.0" top="10.0" />
             </padding>
         </HBox>
         <GridPane>
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
 
             <HBox alignment="CENTER">
 
-                <Label styleClass="dayLabel" text="Monday"/>
+                <Label styleClass="dayLabel" text="Monday" />
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="1">
 
-                <Label styleClass="dayLabel" text="Tuesday"/>
+                <Label styleClass="dayLabel" text="Tuesday" />
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="2">
 
-                <Label styleClass="dayLabel" text="wednesday"/>
+                <Label styleClass="dayLabel" text="wednesday" />
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="3">
 
-                <Label styleClass="dayLabel" text="thursday"/>
+                <Label styleClass="dayLabel" text="thursday" />
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="4">
 
-                <Label styleClass="dayLabel" text="friday"/>
+                <Label styleClass="dayLabel" text="friday" />
 
             </HBox>
 
         </GridPane>
         <GridPane prefWidth="866.0" VBox.vgrow="ALWAYS">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
 
-            <LectureListView fx:id="monday" prefHeight="486.0" prefWidth="134.0" styleClass="dayHolder" model="$model" userData="1"/>
-            <LectureListView fx:id="tuesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="1" model="$model" userData="2"/>
-            <LectureListView fx:id="wednesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="2" model="$model" userData="3"/>
-            <LectureListView fx:id="thursday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="3" model="$model" userData="4"/>
-            <LectureListView fx:id="friday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder"
-                      GridPane.columnIndex="4" model="$model" userData="5"/>
+            <LectureListView fx:id="monday" prefHeight="486.0" prefWidth="134.0" styleClass="dayHolder" userData="1" model="$model" />
+            <LectureListView fx:id="tuesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" userData="2" model="$model" GridPane.columnIndex="1" />
+            <LectureListView fx:id="wednesday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" userData="3" model="$model" GridPane.columnIndex="2" />
+            <LectureListView fx:id="thursday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" userData="4" model="$model" GridPane.columnIndex="3" />
+            <LectureListView fx:id="friday" prefHeight="200.0" prefWidth="200.0" styleClass="dayHolder" userData="5" model="$model" GridPane.columnIndex="4" />
 
         </GridPane>
 
         <padding>
-            <Insets top="10.0"/>
+            <Insets top="10.0" />
         </padding>
     </VBox>
     <VBox prefHeight="137.0" prefWidth="200.0" styleClass="leftMenu">
 
-        <Label fx:id="time" styleClass="time" text="17:45"/>
-        <Label fx:id="day" styleClass="day" text="Monday"/>
-        <Label fx:id="date" styleClass="date" text="28 Sep"/>
-        <ImageView fx:id="weatherIcon" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="weatherIcon" onMouseClicked="#weather">
+        <Label fx:id="time" styleClass="time" text="17:45" />
+        <Label fx:id="day" styleClass="day" text="Monday" />
+        <Label fx:id="date" styleClass="date" text="28 Sep" />
+        <ImageView fx:id="weatherIcon" fitHeight="45.0" fitWidth="45.0" onMouseClicked="#weather" pickOnBounds="true" preserveRatio="true" styleClass="weatherIcon">
 
         </ImageView>
 
         <padding>
-            <Insets left="20.0" top="20.0"/>
+            <Insets left="20.0" top="20.0" />
         </padding>
     </VBox>
     <AnchorPane fx:id="draw" styleClass="drawer" GridPane.columnIndex="2">
         <GridPane.margin>
-            <Insets/>
+            <Insets />
         </GridPane.margin>
 
-        <HBox alignment="TOP_RIGHT" layoutX="15.0" layoutY="14.0" prefHeight="34.0" prefWidth="179.0"
-              spacing="5.0">
+        <HBox alignment="TOP_RIGHT" layoutX="15.0" layoutY="14.0" prefHeight="34.0" prefWidth="179.0" spacing="5.0">
 
             <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerClose">
                 <HBox.margin>
-                    <Insets right="30.0"/>
+                    <Insets right="30.0" />
                 </HBox.margin>
             </Button>
-            <AboutButton mnemonicParsing="false" styleClass="about"/>
-            <Button mnemonicParsing="false" onAction="#settings" styleClass="settings"/>
-            <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize"/>
-            <Button mnemonicParsing="false" onAction="#exit" styleClass="close"/>
-            <VBox alignment="CENTER_RIGHT"/>
+            <AboutButton mnemonicParsing="false" styleClass="about"  />
+            <Button mnemonicParsing="false" onAction="#settings" styleClass="settings" />
+            <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize" />
+            <Button mnemonicParsing="false" onAction="#exit" styleClass="close" />
+            <VBox alignment="CENTER_RIGHT" />
 
         </HBox>
-        <HBox layoutX="10.399999618530273" layoutY="50.400001525878906" prefWidth="200.0" spacing="5.0">
+        <HBox layoutX="10.399999618530273" layoutY="50.400001525878906" prefWidth="220.0" spacing="5.0">
 
             <SearchTextBox fx:id="searchText" styleClass="searchText" model="$model"/>
             <Button mnemonicParsing="false" styleClass="search" />
 
             <padding>
-                <Insets bottom="10.0" top="10.0"/>
+                <Insets bottom="10.0" top="10.0" />
             </padding>
         </HBox>
-        <ItemsListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="200.0"
-                       styleClass="listselect" model="$model" />
-        <HBox layoutX="6.0" layoutY="91.0">
+        <ItemsListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="220.0" styleClass="listselect" model="$model" />
+        <HBox alignment="CENTER" layoutX="6.0" layoutY="91.0" prefWidth="220" maxWidth="200" >
 
-            <SortButtons fx:id="students" styleClass="navItem" text="_Students" userData="students"
-                         model="$model"/>
-            <SortButtons fx:id="teachers" styleClass="navItem" text="_Teachers" userData="teacher"
-                         model="$model"/>
-            <SortButtons fx:id="loc" styleClass="navItem" text="_Location" userData="location"
-                         model="$model"/>
+            <SortButtons fx:id="students" styleClass="navItem" text="_Student" userData="students" model="$model"/>
+            <SortButtons fx:id="teachers" styleClass="navItem" text="_Teacher" userData="teacher" model="$model"/>
+            <SortButtons fx:id="loc" styleClass="navItem" text="_Location" userData="location" model="$model"/>
+            <SortButtons fx:id="lecture" styleClass="navItem" text="_Course" userData="lecture" model="$model"/>
 
         </HBox>
 
     </AnchorPane>
 
     <rowConstraints>
-        <RowConstraints/>
+        <RowConstraints />
     </rowConstraints>
 </GridPane>

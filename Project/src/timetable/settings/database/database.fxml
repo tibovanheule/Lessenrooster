@@ -20,7 +20,7 @@
         <Image url="@../../resources/images/drag.png" />
 
     </ImageView>
-    <Label layoutX="53.0" layoutY="183.0" text="Drag &amp; Drop your file or click it to select the sqlite DB" />
+    <Label layoutX="53.0" layoutY="183.0" text="Don't forget to check your period settings!" />
     <Button layoutX="53.0" layoutY="377.0" mnemonicParsing="false" onAction="#close" text="Button" />
    <Button layoutX="119.0" layoutY="378.0" mnemonicParsing="false" onAction="#newDb" text="new DB" />
 

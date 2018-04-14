@@ -41,7 +41,7 @@ public class Controller {
     public TextField searchText;
     public ListView<Item> list;
     public ImageView dbLogo, weatherIcon;
-    public SortButtons students, teachers, loc;
+    public SortButtons students, teachers, loc, lecture;
     public AnchorPane draw;
     private Stage stage;
     public MainModel model;

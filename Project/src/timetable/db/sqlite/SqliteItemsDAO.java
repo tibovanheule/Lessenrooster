@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
     SqliteItemsDAO(Connection connection) {
@@ -18,8 +19,14 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
     @Override
     public Iterable<Item> getList(String sort) throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
-        String selection = "SELECT name FROM " + sort;
-        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery(selection)) {
+        HashMap<String,String> queries = new HashMap<>();
+        queries.put("lecture","select distinct course as name from lecture");
+        queries.put("teacher","select name from teacher");
+        queries.put("students","select name from students");
+        queries.put("location","select name from location");
+
+
+        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery(queries.get(sort))) {
             while (resultSet.next()) {
                 ((ArrayList<Item>) items).add(new Item(sort, resultSet.getString("name")));
             }
@@ -27,6 +34,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
             //foutmelding weergeven in de lijst.
             throw new DataAccessException("could not retrieve items", e);
         }
+
         return items;
     }
 
@@ -37,7 +45,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
         for (String table : tables) {
             String selection = "SELECT * FROM " + table + " WHERE name LIKE ?";
             //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
-            try (PreparedStatement statement = prepare(selection);) {
+            try (PreparedStatement statement = prepare(selection)) {
                 statement.setString(1, "%" + searchWord + "%");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
@@ -47,6 +55,17 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
             } catch (Exception e) {
                 throw new DataAccessException("could not retrieve items", e);
             }
+        }
+        String sql = "SELECT DISTINCT course FROM lecture where course like ?";
+        try (PreparedStatement statement = prepare(sql)) {
+             statement.setString(1, "%" + searchWord + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                items.add(new Item("lecture", resultSet.getString("course")));
+            }
+        } catch (Exception e) {
+            //foutmelding weergeven in de lijst.
+            throw new DataAccessException("could not retrieve items", e);
         }
         return items;
     }

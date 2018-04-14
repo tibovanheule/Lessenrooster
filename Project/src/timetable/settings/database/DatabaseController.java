@@ -1,16 +1,21 @@
 package timetable.settings.database;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import timetable.Controller;
 import timetable.Main;
 import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.SettingsController;
+import timetable.settings.periods.PeriodsController;
 
 import java.io.*;
 import java.util.List;
@@ -90,6 +95,13 @@ public class DatabaseController {
             }
 
         }
+        dbChange = true;
+        mysql.setSelected(false);
+        /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
+         * garantie is dat het programma altijd op dezelfde pc gaat draaien */
+        properties.setProperty("DB.use","false");
+        url = "jdbc:sqlite:"+file.getPath();
+        close();
 
     }
 
@@ -132,4 +144,5 @@ public class DatabaseController {
         settingsController.show();
         stage.close();
     }
+
 }

@@ -55,6 +55,7 @@ Main css
     -fx-background-color: #efeeec;
     -fx-font-family: lato;
     -fx-text-fill: #46529d;
+    -fx-padding: 10px 0 0 0;
 }
 
 .dayHolder {

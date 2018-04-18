@@ -60,7 +60,6 @@ public class EditLecture {
 
     public void initialize() {
         day.getItems().addAll(days);
-        System.out.println(dataAccessProvider);
         duration.getItems().addAll(1, 2, 3);
 
         teacher.setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {

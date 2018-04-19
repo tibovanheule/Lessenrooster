@@ -55,15 +55,15 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
         this.model = model;
         model.addListener(this);
         getItems().addAll(model.items);
-        /*getSelectionModel().selectedItemProperty().addListener(o -> Platform.runLater(() ->model.setSchedule()));*/
+
     }
 
     @Override
     public void invalidated(Observable o) {
-        if (model.itemsChanged) {
+        if (model.getItemsChanged()) {
             getItems().clear();
             getItems().addAll(model.items);
-            model.itemsChanged = false;
+            model.setItemsChanged(false);
         }
     }
 

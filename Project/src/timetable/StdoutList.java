@@ -5,7 +5,6 @@ import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
 import timetable.db.ItemsDAO;
-import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 
@@ -20,7 +19,8 @@ class StdoutList {
         Config config = new Config();
         Properties properties = config.getproperties();
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            dataAccessProvider = new MysqlDataAccessProvider();
+            /*dataAccessProvider = new MysqlDataAccessProvider();*/
+            dataAccessProvider = null;
         } else {
             dataAccessProvider = new SqliteDataAccessProvider();
         }
@@ -28,7 +28,7 @@ class StdoutList {
         try (BufferedWriter group = new BufferedWriter(new OutputStreamWriter(System.out))) {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
                 ItemsDAO itemsDAO = dac.getItemDoa();
-                for (Item item : itemsDAO.getList(sort.toLowerCase())) {
+                for (Item item : itemsDAO.getList()) {
                     group.write(item.getName() + "\n");
                     group.flush();
                 }

@@ -81,7 +81,9 @@ public class Main extends Application {
             } catch (Exception e) {
                 /*e.printStackTrace();*/
             }
+
             primaryStage.show();
+
         } else if (getParameters().getRaw().size() == 3) {
             try {
                 LocalDateTime now = LocalDateTime.now();

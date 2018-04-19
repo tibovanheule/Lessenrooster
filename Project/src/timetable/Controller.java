@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import timetable.config.Config;
-import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 import timetable.objects.Weather;
@@ -56,18 +55,18 @@ public class Controller {
 
         //als de property true is gebruik dan mysql (voorlopig constant false)
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            model.dataAccessProvider = new MysqlDataAccessProvider();
+            /*model.setDataAccessProvider(new MysqlDataAccessProvider());*/
             //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
             Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
             dbLogo.setImage(image);
         } else {
             //in elk ander geval, valt het terug op sqlite
-            model.dataAccessProvider = new SqliteDataAccessProvider();
+            model.setDataAccessProvider(new SqliteDataAccessProvider());
             Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
             dbLogo.setImage(image);
         }
-        model.standardSchedule = properties.getProperty("standard.schedule");
-        model.changeItems(model.standardSchedule);
+        model.setStandardSchedule(properties.getProperty("standard.schedule"));
+        model.changeItems(model.getStandardSchedule());
 
         appname.setText(properties.getProperty("program.name"));
 

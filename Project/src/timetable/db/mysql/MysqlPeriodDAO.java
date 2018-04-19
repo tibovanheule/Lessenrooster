@@ -1,3 +1,4 @@
+/*
 package timetable.db.mysql;
 
 import timetable.db.DataAccessException;
@@ -5,6 +6,7 @@ import timetable.db.PeriodDAO;
 import timetable.objects.Period;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,4 +32,18 @@ public class MysqlPeriodDAO extends MysqlAbstractDOA implements PeriodDAO {
         }
         return periods;
     }
+
+    @Override
+    public int updatePeriods(Period period) throws DataAccessException {
+        String update = "UPDATE period SET hour=?, minute=? where id ?";
+        try (PreparedStatement preparedStatement = prepare(update);) {
+            preparedStatement.setInt(1, period.getHour());
+            preparedStatement.setInt(2, period.getMinute());
+            preparedStatement.setInt(3, period.getBlock());
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            throw new DataAccessException("could not update periods", e);
+        }
+    }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package timetable.db.mysql;
 
 import timetable.db.DataAccessException;
@@ -51,3 +52,4 @@ public class MysqlItemsDAO extends MysqlAbstractDOA implements ItemsDAO {
         return items;
     }
 }
+*/

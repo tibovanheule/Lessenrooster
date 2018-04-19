@@ -1,3 +1,4 @@
+/*
 package timetable.db.mysql;
 
 import java.sql.Connection;
@@ -24,3 +25,4 @@ public class MysqlAbstractDOA {
         return connection.prepareStatement(sql);
     }
 }
+*/

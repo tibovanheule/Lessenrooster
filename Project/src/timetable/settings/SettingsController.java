@@ -68,7 +68,7 @@ public class SettingsController {
     private void startupSchedule() {
         //Selectie in property steken
         properties.setProperty("standard.schedule", defaultStartup.getSelectionModel().getSelectedItem());
-        mainController.model.standardSchedule = defaultStartup.getSelectionModel().getSelectedItem();
+        mainController.model.setStandardSchedule(defaultStartup.getSelectionModel().getSelectedItem());
     }
 
     private void city() {

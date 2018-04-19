@@ -33,13 +33,13 @@ public class EditLecture {
         this.controller = controller;
         this.dataAccessProvider = dataAccessProvider;
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-            for (Item item : dac.getItemDoa().getList("teacher")) {
+            for (Item item : dac.getStudentsDAO().getStudent()) {
                 teacher.getItems().add(item);
             }
-            for (Item item : dac.getItemDoa().getList("students")) {
+            for (Item item : dac.getTeacherDAO().getTeacher()) {
                 students.getItems().add(item.getName());
             }
-            for (Item item : dac.getItemDoa().getList("location")) {
+            for (Item item : dac.getLocationDAO().getLocation()) {
                 loc.getItems().add(item.getName());
             }
             for (Period item : dac.getPeriodDAO().getPeriods()) {

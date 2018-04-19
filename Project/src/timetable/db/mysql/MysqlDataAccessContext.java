@@ -1,3 +1,4 @@
+/*
 package timetable.db.mysql;
 
 import timetable.db.*;
@@ -37,3 +38,4 @@ public class MysqlDataAccessContext implements DataAccessContext {
         }
     }
 }
+*/

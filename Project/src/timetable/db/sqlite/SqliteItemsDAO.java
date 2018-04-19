@@ -17,8 +17,11 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
     }
 
     @Override
-    public Iterable<Item> getList(String sort) throws DataAccessException {
+    public Iterable<Item> getList() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
+
+        String sort = null;
+        // TODO: 18/04/2018 queries
         HashMap<String,String> queries = new HashMap<>();
         queries.put("lecture","select distinct course as name from lecture");
         queries.put("teacher","select name from teacher");
@@ -56,6 +59,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
                 throw new DataAccessException("could not retrieve items", e);
             }
         }
+        /* Extra query voor de lessen*/
         String sql = "SELECT DISTINCT course FROM lecture where course like ?";
         try (PreparedStatement statement = prepare(sql)) {
              statement.setString(1, "%" + searchWord + "%");

@@ -16,12 +16,55 @@ import java.util.List;
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();
-    public DataAccessProvider dataAccessProvider;
-    public String standardSchedule;
+
+    public DataAccessProvider getDataAccessProvider() {
+        return dataAccessProvider;
+    }
+
+    public void setDataAccessProvider(DataAccessProvider dataAccessProvider) {
+        this.dataAccessProvider = dataAccessProvider;
+    }
+
+    private DataAccessProvider dataAccessProvider;
+
+    public String getStandardSchedule() {
+        return standardSchedule;
+    }
+
+    public void setStandardSchedule(String standardSchedule) {
+        this.standardSchedule = standardSchedule;
+    }
+
+    private String standardSchedule;
     private HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
-    public Boolean clearText;
-    public Boolean itemsChanged;
-    public Boolean lecturesChanged = false;
+
+    public Boolean getClearText() {
+        return clearText;
+    }
+
+    public void setClearText(Boolean clearText) {
+        this.clearText = clearText;
+    }
+
+    public Boolean getItemsChanged() {
+        return itemsChanged;
+    }
+
+    public void setItemsChanged(Boolean itemsChanged) {
+        this.itemsChanged = itemsChanged;
+    }
+
+    public Boolean getLecturesChanged() {
+        return lecturesChanged;
+    }
+
+    public void setLecturesChanged(Boolean lecturesChanged) {
+        this.lecturesChanged = lecturesChanged;
+    }
+
+    private Boolean clearText;
+    private Boolean itemsChanged;
+    private Boolean lecturesChanged = false;
 
     public MainModel() {
 
@@ -67,10 +110,15 @@ public class MainModel implements Observable {
         //listview leeg maken voor nieuwe items
         items.clear();
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-            ItemsDAO itemsDAO = dac.getItemDoa();
-            for (Item item : itemsDAO.getList(whatList)) {
+            HashMap<String, Iterable<Item>> lists = new HashMap<>();
+            lists.put("students", dac.getStudentsDAO().getStudent());
+            lists.put("teacher", dac.getTeacherDAO().getTeacher());
+            lists.put("location", dac.getLocationDAO().getLocation());
+
+            for (Item item : lists.get(whatList)) {
                 items.add(item);
             }
+
         } catch (DataAccessException e) {
             e.printStackTrace();
         }

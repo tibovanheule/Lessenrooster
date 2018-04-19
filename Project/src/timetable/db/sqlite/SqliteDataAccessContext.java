@@ -27,6 +27,19 @@ public class SqliteDataAccessContext implements DataAccessContext {
     public PeriodDAO getPeriodDAO() {
         return new SqlitePeriodDAO(connection);
     }
+    @Override
+    public StudentsDAO getStudentsDAO() {
+        return new SqliteStudentsDAO(connection);
+    }
+    @Override
+    public LocationDAO getLocationDAO() {
+        return new SqliteLocationDAO(connection);
+    }
+
+    @Override
+    public TeacherDAO getTeacherDAO() {
+        return new SqliteTeacherDAO(connection);
+    }
 
     @Override
     public void close() {

@@ -69,13 +69,12 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
-        /*getSelectionModel().selectedItemProperty().addListener(o -> Platform.runLater(() ->model.setSchedule()));*/
-    }
+        }
 
     @Override
     public void invalidated(Observable o) {
 
-        if (model.lecturesChanged) {
+        if (model.getLecturesChanged()) {
             getItems().clear();
             getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
         }
@@ -91,7 +90,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             LectureController controller = loader.getController();
             controller.setLecture(getSelectionModel().getSelectedItem());
             Stage stage = new Stage();
-            controller.setStageAndSetupListeners(stage,model.dataAccessProvider);
+            controller.setStageAndSetupListeners(stage,model.getDataAccessProvider());
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             stage.show();

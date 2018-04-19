@@ -17,7 +17,7 @@ public class LectureController {
     private Stage stage;
     private Lecture lecture;
     public Boolean canClose = true;
-    public DataAccessProvider dataAccessProvider;
+    private DataAccessProvider dataAccessProvider;
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;

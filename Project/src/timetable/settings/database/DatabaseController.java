@@ -1,21 +1,15 @@
 package timetable.settings.database;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import timetable.Controller;
 import timetable.Main;
-import timetable.db.mysql.MysqlDataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.settings.SettingsController;
-import timetable.settings.periods.PeriodsController;
 
 import java.io.*;
 import java.util.List;
@@ -57,7 +51,7 @@ public class DatabaseController {
         }
     }
 
-    public void newDb(){
+    public void newDb() {
         /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
@@ -73,7 +67,7 @@ public class DatabaseController {
         String folder;
         try {
             stream = Main.class.getResourceAsStream("empty.db");
-            if(stream == null) {
+            if (stream == null) {
                 throw new Exception("Couldn't create new db.");
             }
 
@@ -88,9 +82,13 @@ public class DatabaseController {
             ex.printStackTrace();
         } finally {
             try {
-                stream.close();
-                resStreamOut.close();
-            }catch (IOException e){
+                if (stream != null) {
+                    stream.close();
+                }
+                if (resStreamOut != null) {
+                    resStreamOut.close();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -99,8 +97,8 @@ public class DatabaseController {
         mysql.setSelected(false);
         /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
          * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-        properties.setProperty("DB.use","false");
-        url = "jdbc:sqlite:"+file.getPath();
+        properties.setProperty("DB.use", "false");
+        url = "jdbc:sqlite:" + file.getPath();
         close();
 
     }
@@ -109,10 +107,10 @@ public class DatabaseController {
         dbChange = true;
         mysql.setSelected(false);
         /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
-        * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-        properties.setProperty("DB.use","false");
+         * garantie is dat het programma altijd op dezelfde pc gaat draaien */
+        properties.setProperty("DB.use", "false");
         List<File> files = event.getDragboard().getFiles();
-        url = "jdbc:sqlite:"+files.get(0).getPath();
+        url = "jdbc:sqlite:" + files.get(0).getPath();
     }
 
     public void chooseDB() {
@@ -125,17 +123,18 @@ public class DatabaseController {
         if (dbChange) {
             if (mysql.isSelected()) {
                 //nieuwe data provider
-                mainController.model.dataAccessProvider = new MysqlDataAccessProvider();
+                // TODO: 18/04/2018 geter en seters 
+                /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
                 mainController.dbLogo.setImage(image);
             } else if (url != null) {
-                mainController.model.dataAccessProvider = new SqliteDataAccessProvider(url);
+                mainController.model.setDataAccessProvider(new SqliteDataAccessProvider(url));
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             } else {
                 //anders is het sqlite
-                mainController.model.dataAccessProvider = new SqliteDataAccessProvider();
+                mainController.model.setDataAccessProvider(new SqliteDataAccessProvider());
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             }

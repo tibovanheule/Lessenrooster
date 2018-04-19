@@ -20,7 +20,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         HashMap<Integer, ArrayList<Lecture>> days = new HashMap<>();
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
-            // TODO: 29/03/2018 prepared statement
+            // TODO: 29/03/2018 queries
             String selection;
             if (item.getSort().equals("lecture")) {
                 selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
@@ -42,6 +42,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                     lectures.add(lecture);
                 }
                 resultSet.close();
+
                 // Sortering (lessen in de juiste volgorde zetten) Dit is wel niet meer nodig omdat dit werk nu uitbesteed wordt aan de DB (zie sql query)
                 //lectures.sort(Comparator.comparing(Lecture::getBlock));
                 /*for (Lecture lecture : lectures) {

@@ -38,7 +38,6 @@ public class WeatherScraper {
             URL weather = new URL("https://tibovanheule.space/artifacts/wundergroundApi.php?key=" + key + "&city=" + city);
             String inputLine;
             BufferedReader input = new BufferedReader(new InputStreamReader(weather.openStream()));
-            int count = 0;
             while ((inputLine = input.readLine()) != null) {
                 strings.add(inputLine);
             }

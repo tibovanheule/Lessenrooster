@@ -41,8 +41,22 @@ public class Controller {
     public ListView<Item> list;
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc, lecture;
+
+    public AnchorPane getDraw() {
+        return draw;
+    }
+
     public AnchorPane draw;
     private Stage stage;
+
+    public MainModel getModel() {
+        return model;
+    }
+
+    public void setModel(MainModel model) {
+        this.model = model;
+    }
+
     public MainModel model;
 
     void setStageAndSetupListeners(Stage controller) {

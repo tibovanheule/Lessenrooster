@@ -74,8 +74,8 @@ public class Main extends Application {
             try {
                 Runnable runnable = new Thread(() -> {
                     Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                    controller.model.setSchedule(item);
-                    controller.draw.setVisible(false);
+                    controller.getModel().setSchedule(item);
+                    controller.getDraw().setVisible(false);
                 });
                 Platform.runLater(runnable);
             } catch (Exception e) {
@@ -100,8 +100,8 @@ public class Main extends Application {
             }
             try {
                 Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
-                controller.model.setSchedule(item);
-                controller.draw.setVisible(false);
+                controller.getModel().setSchedule(item);
+                controller.getDraw().setVisible(false);
                 SnapshotParameters snapshotParameters = new SnapshotParameters();
                 /*voor betere image kwaliteit */
                 snapshotParameters.setTransform(new Scale(2, 2));

@@ -48,7 +48,7 @@ public class PeriodsController {
         this.stage = stage;
         this.mainController = controller;
 
-        try (DataAccessContext dac = mainController.model.getDataAccessProvider().getDataAccessContext()) {
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             table.getItems().addAll(dac.getPeriodDAO().getPeriods());
         } catch (DataAccessException e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class PeriodsController {
         period.setHour(hour);
         System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
 
-        try(DataAccessContext dac = mainController.model.getDataAccessProvider().getDataAccessContext()){
+        try(DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()){
             dac.getPeriodDAO().updatePeriods(period);
         }catch (DataAccessException e){
             e.printStackTrace();

@@ -23,7 +23,13 @@ public class SettingsController {
     public ComboBox<String> defaultStartup, weatherCity;
     private Stage stage;
     private Boolean canClose = true;
-    public Properties properties = new Properties();
+
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+
+    private Properties properties = new Properties();
     private Controller mainController;
 
     public void setStageAndSetupListeners(Stage stage, Controller main) {
@@ -68,7 +74,7 @@ public class SettingsController {
     private void startupSchedule() {
         //Selectie in property steken
         properties.setProperty("standard.schedule", defaultStartup.getSelectionModel().getSelectedItem());
-        mainController.model.setStandardSchedule(defaultStartup.getSelectionModel().getSelectedItem());
+        mainController.getModel().setStandardSchedule(defaultStartup.getSelectionModel().getSelectedItem());
     }
 
     private void city() {

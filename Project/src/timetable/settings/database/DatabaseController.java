@@ -129,17 +129,17 @@ public class DatabaseController {
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
                 mainController.dbLogo.setImage(image);
             } else if (url != null) {
-                mainController.model.setDataAccessProvider(new SqliteDataAccessProvider(url));
+                mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             } else {
                 //anders is het sqlite
-                mainController.model.setDataAccessProvider(new SqliteDataAccessProvider());
+                mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.dbLogo.setImage(image);
             }
         }
-        settingsController.properties = this.properties;
+        settingsController.setProperties(this.properties);
         settingsController.show();
         stage.close();
     }

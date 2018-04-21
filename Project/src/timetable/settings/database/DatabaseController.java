@@ -1,5 +1,6 @@
 package timetable.settings.database;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
@@ -87,18 +88,25 @@ public class DatabaseController {
                 }
                 if (resStreamOut != null) {
                     resStreamOut.close();
+                    dbChange = true;
+                    mysql.setSelected(false);
+                    /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
+                     * garantie is dat het programma altijd op dezelfde pc gaat draaien */
+                    properties.setProperty("DB.use", "false");
+                    url = "jdbc:sqlite:" + file.getPath();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText("Periods");
+                    alert.setContentText("Don't forget to change the periods table before adding \nlectures! You can change it in the settings");
+
+                    alert.showAndWait();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }
-        dbChange = true;
-        mysql.setSelected(false);
-        /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
-         * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-        properties.setProperty("DB.use", "false");
-        url = "jdbc:sqlite:" + file.getPath();
+
         close();
 
     }

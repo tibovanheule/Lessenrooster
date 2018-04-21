@@ -1,9 +1,9 @@
 package timetable.settings.periods;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -17,13 +17,40 @@ public class PeriodsController {
     private Controller mainController;
     private Stage stage;
     public TableView<Period> table;
-    public TableColumn<Period, Integer> delete, hour, minute;
+    public TableColumn<Period, Integer>  hour, minute;
+    public TableColumn<Period, Boolean> delete;
 
     public void initialize() {
-        delete.setEditable(false);
-        delete.setCellValueFactory(new PropertyValueFactory<>("block"));
+
+        class ButtonCell extends TableCell<Period, Boolean> {
+            private final Button cellButton = new Button();
+
+            private ButtonCell(){
+
+                cellButton.setOnAction(new EventHandler<ActionEvent>(){
+
+                    @Override
+                    public void handle(ActionEvent t) {
+
+                        int selectdIndex = getTableRow().getIndex();
+
+                        //Create a new table show details of the selected item
+                        Period selectedRecord = table.getItems().get(selectdIndex);
+                      System.out.println(selectedRecord.getId());
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean t, boolean empty) {
+                super.updateItem(t, empty);
+                if(!empty){
+                    setGraphic(cellButton);
+                }
+            }
+        }
         delete.setCellFactory(column -> {
-            TableCell<Period, Integer> cell = new TextFieldTableCell<>();
+            ButtonCell cell = new ButtonCell();
             cell.setAlignment(Pos.CENTER);
             return cell;
         });

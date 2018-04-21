@@ -42,7 +42,7 @@ public class Controller {
     public ImageView dbLogo, weatherIcon;
     public SortButtons students, teachers, loc, lecture;
 
-    public AnchorPane getDraw() {
+    AnchorPane getDraw() {
         return draw;
     }
 
@@ -51,10 +51,6 @@ public class Controller {
 
     public MainModel getModel() {
         return model;
-    }
-
-    public void setModel(MainModel model) {
-        this.model = model;
     }
 
     public MainModel model;

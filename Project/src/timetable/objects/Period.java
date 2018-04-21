@@ -19,15 +19,15 @@ public class Period {
 
     private Integer hour;
     private Integer minute;
-    private Integer block;
+    private Integer id;
     private Boolean changed;
 
-    public Integer getBlock() {
-        return block;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBlock(Integer block) {
-        this.block = block;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Boolean getChanged() {
@@ -39,7 +39,7 @@ public class Period {
     }
 
     public Period(Integer block, Integer hour, Integer minute) {
-        this.block = block;
+        this.id = block;
         this.hour = hour;
         this.minute = minute;
         this.changed = false;

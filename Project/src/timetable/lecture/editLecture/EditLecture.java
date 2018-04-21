@@ -43,7 +43,7 @@ public class EditLecture {
                 loc.getItems().add(item.getName());
             }
             for (Period item : dac.getPeriodDAO().getPeriods()) {
-                block.getItems().add(item.getBlock());
+                block.getItems().add(item.getId());
             }
         } catch (Exception e) {
             e.printStackTrace();

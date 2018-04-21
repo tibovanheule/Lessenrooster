@@ -17,12 +17,12 @@ public class PeriodsController {
     private Controller mainController;
     private Stage stage;
     public TableView<Period> table;
-    public TableColumn<Period, Integer> id, hour, minute;
+    public TableColumn<Period, Integer> delete, hour, minute;
 
     public void initialize() {
-        id.setEditable(false);
-        id.setCellValueFactory(new PropertyValueFactory<>("block"));
-        id.setCellFactory(column -> {
+        delete.setEditable(false);
+        delete.setCellValueFactory(new PropertyValueFactory<>("block"));
+        delete.setCellFactory(column -> {
             TableCell<Period, Integer> cell = new TextFieldTableCell<>();
             cell.setAlignment(Pos.CENTER);
             return cell;
@@ -57,7 +57,7 @@ public class PeriodsController {
 
     private void update(Period period, Integer hour) {
         period.setHour(hour);
-        System.out.println("id: " + period.getBlock() + " hour: " + period.getHour() + " minute: " + period.getMinute());
+        System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
 
         try(DataAccessContext dac = mainController.model.getDataAccessProvider().getDataAccessContext()){
             dac.getPeriodDAO().updatePeriods(period);

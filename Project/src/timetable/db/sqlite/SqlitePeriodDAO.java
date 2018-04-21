@@ -32,11 +32,22 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
 
     @Override
     public int updatePeriods(Period period) throws DataAccessException {
-        String update = "UPDATE period SET hour=?, minute=? where id ?";
-        try (PreparedStatement preparedStatement = prepare(update);) {
+        String update = "UPDATE period SET hour=?, minute = ? where id = ?";
+        try (PreparedStatement preparedStatement = prepare(update)) {
             preparedStatement.setInt(1, period.getHour());
             preparedStatement.setInt(2, period.getMinute());
-            preparedStatement.setInt(3, period.getBlock());
+            preparedStatement.setInt(3, period.getId());
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            throw new DataAccessException("could not update periods", e);
+        }
+    }
+
+    @Override
+    public int deletePeriods(Period period) throws DataAccessException {
+        String update = "delete from period where id = ?";
+        try (PreparedStatement preparedStatement = prepare(update)) {
+            preparedStatement.setInt(1, period.getId());
             return preparedStatement.executeUpdate();
         } catch (Exception e) {
             throw new DataAccessException("could not update periods", e);

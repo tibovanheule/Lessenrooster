@@ -13,7 +13,7 @@
     <TextField fx:id="name" layoutX="115.0" layoutY="122.0" />
     <ComboBox fx:id="day" layoutX="116.0" layoutY="158.0" prefWidth="150.0" />
     <ComboBox fx:id="duration" layoutX="115.0" layoutY="192.0" prefWidth="150.0" />
-    <ComboBox fx:id="block" layoutX="114.0" layoutY="225.0" prefWidth="150.0" />
+    <ComboBox fx:id="id" layoutX="114.0" layoutY="225.0" prefWidth="150.0" />
     <ComboBox fx:id="students" layoutX="115.0" layoutY="263.0" prefWidth="150.0" />
     <ComboBox fx:id="teacher" layoutX="114.0" layoutY="302.0" prefWidth="150.0" />
     <Label layoutX="60.0" layoutY="127.0" text="Name:" />

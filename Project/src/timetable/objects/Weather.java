@@ -5,27 +5,9 @@ public class Weather {
     private Double windDegree;
     private Double windSpeed;
     private String humidity;
-
-    public String getCity() {
-        return city;
-    }
-
     private String city;
-
-
-    public String getCondition() {
-        return condition;
-    }
-
     private String condition;
-
-    public Boolean getConnection() {
-        return connection;
-    }
-
     private Boolean connection;
-
-
     private String icon;
 
     public Weather(Boolean connection, Double temp, Double windDegree, Double windSpeed, String humidity, String icon, String condition, String city) {
@@ -41,6 +23,18 @@ public class Weather {
 
     public Weather(Boolean connection) {
         this.connection = connection;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public Boolean getConnection() {
+        return connection;
     }
 
     public String getIcon() {

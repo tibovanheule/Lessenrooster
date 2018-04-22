@@ -1,9 +1,7 @@
 package timetable.db.sqlite;
 
 import timetable.db.DataAccessException;
-import timetable.db.ItemsDAO;
 import timetable.db.LocationDAO;
-import timetable.db.StudentsDAO;
 import timetable.objects.Item;
 
 import java.sql.Connection;

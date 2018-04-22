@@ -29,6 +29,24 @@ public class Main extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
 
+    public static void main(String[] args) {
+        //Controle lengte argumenten
+        if (args.length == 0 || args.length == 2 || args.length == 3) {
+            //Start prog met argumenten -> normale start
+            launch(args);
+        } else if (args.length == 1) {
+            new StdoutList(args[0]);
+            Platform.exit();
+            System.exit(0);
+        } else if (args.length >= 4) {
+            new StdError("Invalid! please don't give more than 3 arguments! :) \n");
+            //Platform.exit om de Javafx-applicatie af te sluiten
+            Platform.exit();
+            //sluit Java Virtual Machine af met error code 2
+            System.exit(1);
+        }
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -132,25 +150,6 @@ public class Main extends Application {
         }
 
 
-    }
-
-
-    public static void main(String[] args) {
-        //Controle lengte argumenten
-        if (args.length == 0 || args.length == 2 || args.length == 3) {
-            //Start prog met argumenten -> normale start
-            launch(args);
-        } else if (args.length == 1) {
-            new StdoutList(args[0]);
-            Platform.exit();
-            System.exit(0);
-        } else if (args.length >= 4) {
-            new StdError("Invalid! please don't give more than 3 arguments! :) \n");
-            //Platform.exit om de Javafx-applicatie af te sluiten
-            Platform.exit();
-            //sluit Java Virtual Machine af met error code 2
-            System.exit(1);
-        }
     }
 
 }

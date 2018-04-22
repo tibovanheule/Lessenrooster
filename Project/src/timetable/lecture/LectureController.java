@@ -18,14 +18,12 @@ public class LectureController {
     private Label text, course;
     private Stage stage;
     private Lecture lecture;
-
+    private Boolean canClose = true;
+    private DataAccessProvider dataAccessProvider;
 
     public void setCanClose(Boolean canClose) {
         this.canClose = canClose;
     }
-
-    private Boolean canClose = true;
-    private DataAccessProvider dataAccessProvider;
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;

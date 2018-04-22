@@ -1,26 +1,12 @@
-.blue{
+.blue {
     -fx-background-color: #4d59a1;
 }
-.body{
+
+.body {
     -fx-background-color: #efeeec;
 }
 
-.button{
-    -fx-background-color: #efeeec;
-    -fx-border-width: 2px;
-    -fx-border-color: #b3b0ac;
-    -fx-border-style: solid;
-    -fx-text-fill: #b3b0ac;
-    -fx-font-family: "Lato Semibold";
-}
-
-.check-box{
-    -fx-background-color: #efeeec;
-    -fx-text-fill: #b3b0ac;
-    -fx-font-family: "Lato Semibold";
-}
-
-.combo-box{
+.button {
     -fx-background-color: #efeeec;
     -fx-border-width: 2px;
     -fx-border-color: #b3b0ac;
@@ -29,11 +15,27 @@
     -fx-font-family: "Lato Semibold";
 }
 
-Label{
+.check-box {
+    -fx-background-color: #efeeec;
+    -fx-text-fill: #b3b0ac;
+    -fx-font-family: "Lato Semibold";
+}
+
+.combo-box {
+    -fx-background-color: #efeeec;
+    -fx-border-width: 2px;
+    -fx-border-color: #b3b0ac;
+    -fx-border-style: solid;
+    -fx-text-fill: #b3b0ac;
+    -fx-font-family: "Lato Semibold";
+}
+
+Label {
     -fx-font-family: Lato;
     -fx-text-fill: #b3b0ac;
 }
-.blue Label{
+
+.blue Label {
     -fx-font-size: 24px;
     -fx-text-fill: white;
 }

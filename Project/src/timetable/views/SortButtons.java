@@ -9,11 +9,11 @@ import timetable.MainModel;
 
 public class SortButtons extends Button implements InvalidationListener, EventHandler<ActionEvent> {
 
-    public SortButtons(){
+    private MainModel model;
+
+    public SortButtons() {
         setOnAction(this);
     }
-
-    private MainModel model;
 
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {

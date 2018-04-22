@@ -18,6 +18,7 @@ import timetable.objects.Period;
 
 public class EditLecture {
 
+    private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
     private Stage stage;
     private Lecture lecture;
     private LectureController controller;
@@ -32,7 +33,6 @@ public class EditLecture {
     @FXML
     private TextField name;
     private DataAccessProvider dataAccessProvider;
-    private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
 
     public void setStageAndSetupListeners(Stage stage, Lecture lecture, LectureController controller, DataAccessProvider dataAccessProvider) {
         this.stage = stage;
@@ -56,9 +56,9 @@ public class EditLecture {
             e.printStackTrace();
         }
         name.setText(lecture.getCourse());
-        id.setValue(new Period(lecture.getBlock(),0,0));
+        id.setValue(new Period(lecture.getBlock(), 0, 0));
         duration.setValue(lecture.getDuration());
-        teacher.setValue(new Item("teacher",lecture.getTeacher()));
+        teacher.setValue(new Item("teacher", lecture.getTeacher()));
         students.setValue(lecture.getStudent());
         day.setValue(days[lecture.getDay() - 1]);
         loc.setValue(lecture.getLocation());
@@ -90,7 +90,7 @@ public class EditLecture {
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getHour()+":"+item.getMinute());
+                            setText(item.getHour() + ":" + item.getMinute());
                         }
                     }
                 };
@@ -102,7 +102,6 @@ public class EditLecture {
     public void initialize() {
         day.getItems().addAll(days);
         duration.getItems().addAll(1, 2, 3);
-
 
 
     }

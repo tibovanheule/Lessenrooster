@@ -22,11 +22,11 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
 
         String sort = null;
         // TODO: 18/04/2018 queries
-        HashMap<String,String> queries = new HashMap<>();
-        queries.put("lecture","select distinct course as name from lecture");
-        queries.put("teacher","select name from teacher");
-        queries.put("students","select name from students");
-        queries.put("location","select name from location");
+        HashMap<String, String> queries = new HashMap<>();
+        queries.put("lecture", "select distinct course as name from lecture");
+        queries.put("teacher", "select name from teacher");
+        queries.put("students", "select name from students");
+        queries.put("location", "select name from location");
 
 
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery(queries.get(sort))) {
@@ -62,7 +62,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
         /* Extra query voor de lessen*/
         String sql = "SELECT DISTINCT course FROM lecture where course like ?";
         try (PreparedStatement statement = prepare(sql)) {
-             statement.setString(1, "%" + searchWord + "%");
+            statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 items.add(new Item("lecture", resultSet.getString("course")));

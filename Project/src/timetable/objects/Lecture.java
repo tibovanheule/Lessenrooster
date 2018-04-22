@@ -5,15 +5,9 @@ public class Lecture {
     private String teacher;
     private String location;
     private String course;
-
-    public String getTime() {
-        return time;
-    }
-
     private String time;
     private Integer day, block, duration;
     private Boolean conflict;
-
     public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration, String time) {
         this.block = block;
         this.course = course;
@@ -24,6 +18,10 @@ public class Lecture {
         this.teacher = teacher;
         this.conflict = false;
         this.time = time;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public Boolean getConflict() {

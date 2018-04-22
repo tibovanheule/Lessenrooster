@@ -38,8 +38,26 @@ import java.util.TimerTask;
 
 public class Controller {
 
+    public MainModel model;
     @FXML
     private Label day;
+    @FXML
+    private Label date;
+    @FXML
+    private Label time;
+    @FXML
+    private Label appname;
+    @FXML
+    private TextField searchText;
+    @FXML
+    private ListView<Item> list;
+    @FXML
+    private ImageView dbLogo, weatherIcon;
+    @FXML
+    private SortButtons students, teachers, loc, lecture;
+    @FXML
+    private AnchorPane draw;
+    private Stage stage;
 
     public Label getDay() {
         return day;
@@ -57,34 +75,13 @@ public class Controller {
         return dbLogo;
     }
 
-    @FXML
-    private Label date;
-    @FXML
-    private Label time;
-    @FXML
-    private Label appname;
-    @FXML
-    private TextField searchText;
-    @FXML
-    private ListView<Item> list;
-    @FXML
-    private ImageView dbLogo, weatherIcon;
-    @FXML
-    private SortButtons students, teachers, loc, lecture;
-
     AnchorPane getDraw() {
         return draw;
     }
 
-    @FXML
-    private AnchorPane draw;
-    private Stage stage;
-
     public MainModel getModel() {
         return model;
     }
-
-    public MainModel model;
 
     void setStageAndSetupListeners(Stage controller) {
         this.stage = controller;
@@ -192,12 +189,13 @@ public class Controller {
     public void create() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
+            loader.setController(new CreateController());
             Parent root = loader.load();
             CreateController controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage);
+            controller.setStageAndSetupListeners(stage,this);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

@@ -18,6 +18,8 @@ import timetable.lecture.LectureController;
 import timetable.objects.Lecture;
 
 public class LectureListView extends ListView<Lecture> implements InvalidationListener, EventHandler<MouseEvent> {
+    private MainModel model;
+
     public LectureListView() {
 
         setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
@@ -50,15 +52,13 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                     @Override
                     public void updateSelected(boolean selected) {
                         /*door deze methode te overschrijven slagen we er dat de stijlregels niet overschreven worden
-                        * wanneer iets geselecteerd wordt. namelijk dat de text wit werd met een blauwe achtergrond*/
+                         * wanneer iets geselecteerd wordt. namelijk dat de text wit werd met een blauwe achtergrond*/
                     }
                 };
                 return cell;
             }
         });
     }
-
-    private MainModel model;
 
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {
@@ -69,7 +69,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
-        }
+    }
 
     @Override
     public void invalidated(Observable o) {
@@ -90,7 +90,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             LectureController controller = loader.getController();
             controller.setLecture(getSelectionModel().getSelectedItem());
             Stage stage = new Stage();
-            controller.setStageAndSetupListeners(stage,model.getDataAccessProvider());
+            controller.setStageAndSetupListeners(stage, model.getDataAccessProvider());
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             stage.show();

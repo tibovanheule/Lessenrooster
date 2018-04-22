@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -20,7 +23,7 @@ public class PeriodsController {
     @FXML
     private TableView<Period> table;
     @FXML
-    private TableColumn<Period, Integer>  hour, minute;
+    private TableColumn<Period, Integer> hour, minute;
     @FXML
     private TableColumn<Period, Boolean> delete;
 
@@ -29,9 +32,9 @@ public class PeriodsController {
         class ButtonCell extends TableCell<Period, Boolean> {
             private final Button cellButton = new Button();
 
-            private ButtonCell(){
+            private ButtonCell() {
 
-                cellButton.setOnAction(new EventHandler<ActionEvent>(){
+                cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
                     @Override
                     public void handle(ActionEvent t) {
@@ -40,7 +43,7 @@ public class PeriodsController {
 
                         //Create a new table show details of the selected item
                         Period selectedRecord = table.getItems().get(selectdIndex);
-                      System.out.println(selectedRecord.getId());
+                        System.out.println(selectedRecord.getId());
                     }
                 });
             }
@@ -48,7 +51,7 @@ public class PeriodsController {
             @Override
             protected void updateItem(Boolean t, boolean empty) {
                 super.updateItem(t, empty);
-                if(!empty){
+                if (!empty) {
                     setGraphic(cellButton);
                 }
             }
@@ -90,9 +93,9 @@ public class PeriodsController {
         period.setHour(hour);
         System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
 
-        try(DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()){
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             dac.getPeriodDAO().updatePeriods(period);
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             e.printStackTrace();
         }
     }

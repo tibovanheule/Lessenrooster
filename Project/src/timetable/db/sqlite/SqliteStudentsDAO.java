@@ -1,7 +1,6 @@
 package timetable.db.sqlite;
 
 import timetable.db.DataAccessException;
-import timetable.db.ItemsDAO;
 import timetable.db.StudentsDAO;
 import timetable.objects.Item;
 
@@ -47,6 +46,18 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
             throw new DataAccessException("could not retrieve items", e);
         }
         return items;
+    }
 
+    @Override
+    public int createStudent(String item) throws DataAccessException {
+        String insert = "INSERT INTO students (id,name) VALUES (?,?)";
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(2,item);
+            statement.execute();
+        } catch (Exception e) {
+            //foutmelding weergeven in de lijst.
+            throw new DataAccessException("could not create student", e);
+        }
+        return 0;
     }
 }

@@ -1,6 +1,18 @@
 package timetable.objects;
 
 public class Period {
+    private Integer hour;
+    private Integer minute;
+    private Integer id;
+    private Boolean changed;
+
+    public Period(Integer block, Integer hour, Integer minute) {
+        this.id = block;
+        this.hour = hour;
+        this.minute = minute;
+        this.changed = false;
+    }
+
     public Integer getHour() {
         return hour;
     }
@@ -17,11 +29,6 @@ public class Period {
         this.minute = minute;
     }
 
-    private Integer hour;
-    private Integer minute;
-    private Integer id;
-    private Boolean changed;
-
     public Integer getId() {
         return id;
     }
@@ -36,12 +43,5 @@ public class Period {
 
     public void setChanged(Boolean changed) {
         this.changed = changed;
-    }
-
-    public Period(Integer block, Integer hour, Integer minute) {
-        this.id = block;
-        this.hour = hour;
-        this.minute = minute;
-        this.changed = false;
     }
 }

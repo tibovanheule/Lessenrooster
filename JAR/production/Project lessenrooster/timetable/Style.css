@@ -68,8 +68,6 @@ Main css
     -fx-background-color: #f9f9f9;
 }
 
-
-
 .dayHolder .scroll-bar {
     -fx-background-color: white;
 }
@@ -168,7 +166,7 @@ Main css
     -fx-background-color: #F65459;
 }
 
-.appName{
+.appName {
     -fx-font-family: Lato;
     -fx-text-fill: #8d93be;
 }

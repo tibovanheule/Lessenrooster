@@ -15,12 +15,22 @@ import java.util.List;
 
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
+    private DataAccessProvider dataAccessProvider;
+    private String standardSchedule;
+    private HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
+    private Boolean clearText;
+    private Boolean itemsChanged;
+    private Boolean lecturesChanged = false;
+
+    public MainModel() {
+
+
+    }
 
     public ArrayList<Item> getItems() {
         return items;
     }
-
-    private ArrayList<Item> items = new ArrayList<>();
 
     public DataAccessProvider getDataAccessProvider() {
         return dataAccessProvider;
@@ -30,8 +40,6 @@ public class MainModel implements Observable {
         this.dataAccessProvider = dataAccessProvider;
     }
 
-    private DataAccessProvider dataAccessProvider;
-
     public String getStandardSchedule() {
         return standardSchedule;
     }
@@ -39,9 +47,6 @@ public class MainModel implements Observable {
     public void setStandardSchedule(String standardSchedule) {
         this.standardSchedule = standardSchedule;
     }
-
-    private String standardSchedule;
-    private HashMap<Integer, ArrayList<Lecture>> schedule = new HashMap<>();
 
     public Boolean getClearText() {
         return clearText;
@@ -66,16 +71,6 @@ public class MainModel implements Observable {
     public void setLecturesChanged(Boolean lecturesChanged) {
         this.lecturesChanged = lecturesChanged;
     }
-
-    private Boolean clearText;
-    private Boolean itemsChanged;
-    private Boolean lecturesChanged = false;
-
-    public MainModel() {
-
-
-    }
-
 
     private void fireInvalidationEvent() {
         for (InvalidationListener listener : listenerList) {

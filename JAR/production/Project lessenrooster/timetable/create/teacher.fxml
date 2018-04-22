@@ -9,12 +9,12 @@
     <children>
         <AnchorPane prefHeight="100.0" prefWidth="450.0" styleClass="blue">
             <children>
-                <Label layoutX="36.0" layoutY="42.0" styleClass="blue" text="Create Student" />
+                <Label layoutX="36.0" layoutY="42.0" styleClass="blue" text="Create Teacher" />
             </children>
         </AnchorPane>
-        <Button layoutX="84.0" layoutY="260.0" mnemonicParsing="false" onAction="#saveStudent" text="Save &amp; dont close" />
+        <Button layoutX="84.0" layoutY="260.0" mnemonicParsing="false" onAction="#saveTeacher" text="Save &amp; dont close" />
         <Button layoutX="84.0" layoutY="388.0" mnemonicParsing="false" onAction="#close" text="Close" />
         <Button layoutX="368.0" layoutY="120.0" mnemonicParsing="false" onAction="#menu" text="Menu" />
-        <TextField fx:id="name" layoutX="84.0" layoutY="225.0" promptText="Student group" />
+        <TextField fx:id="name" layoutX="84.0" layoutY="225.0" promptText="teacher group" />
     </children>
 </AnchorPane>

@@ -1,8 +1,6 @@
 package timetable.db.sqlite;
 
 import timetable.db.DataAccessException;
-import timetable.db.ItemsDAO;
-import timetable.db.StudentsDAO;
 import timetable.db.TeacherDAO;
 import timetable.objects.Item;
 

@@ -26,14 +26,12 @@ public class SettingsController {
     private ComboBox<String> defaultStartup, weatherCity;
     private Stage stage;
     private Boolean canClose = true;
-
+    private Properties properties = new Properties();
+    private Controller mainController;
 
     public void setProperties(Properties properties) {
         this.properties = properties;
     }
-
-    private Properties properties = new Properties();
-    private Controller mainController;
 
     public void setStageAndSetupListeners(Stage stage, Controller main) {
         //Krijg de stage
@@ -64,7 +62,6 @@ public class SettingsController {
         windowSize.selectedProperty().addListener(o -> startMaximized());
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         weatherCity.getSelectionModel().selectedItemProperty().addListener(o -> city());
-
 
 
     }

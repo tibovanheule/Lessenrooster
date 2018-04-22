@@ -12,6 +12,8 @@ import timetable.objects.Item;
 
 public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
 
+    private MainModel model;
+
     public ItemsListView() {
         setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {
             @Override
@@ -42,8 +44,6 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
 
         setOnMouseClicked(this);
     }
-
-    private MainModel model;
 
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {

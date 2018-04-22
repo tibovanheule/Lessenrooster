@@ -2,7 +2,6 @@ package timetable.views;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -10,11 +9,11 @@ import timetable.MainModel;
 
 public class SearchTextBox extends TextField implements InvalidationListener, EventHandler<KeyEvent> {
 
-    public SearchTextBox(){
+    private MainModel model;
+
+    public SearchTextBox() {
         setOnKeyTyped(this::handle);
     }
-
-    private MainModel model;
 
     // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {
@@ -28,10 +27,10 @@ public class SearchTextBox extends TextField implements InvalidationListener, Ev
 
     @Override
     public void invalidated(Observable o) {
-        if(model.getClearText()){
-            try{
+        if (model.getClearText()) {
+            try {
                 clear();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

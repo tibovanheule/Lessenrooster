@@ -1,6 +1,7 @@
 //Tibo Vanheule
 package timetable.weather;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,8 +10,10 @@ import timetable.Main;
 import timetable.objects.Weather;
 
 public class WeatherController {
-    public Label temp, humid, condition, windSpeed;
-    public ImageView weatherIcon, arrow, compass;
+    @FXML
+    private Label temp, humid, condition, windSpeed;
+    @FXML
+    private ImageView weatherIcon, arrow, compass;
     private Stage stage;
 
     public void setStageAndSetupListeners(Stage stage) {

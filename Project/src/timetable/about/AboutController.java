@@ -1,6 +1,7 @@
 //Tibo Vanheule
 package timetable.about;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import timetable.config.Config;
@@ -8,7 +9,8 @@ import timetable.config.Config;
 import java.util.Properties;
 
 public class AboutController {
-    public Label text;
+    @FXML
+    private Label text;
     private Stage stage;
 
     public void setStageAndSetupListeners(Stage stage) {

@@ -1,5 +1,6 @@
 package timetable.settings.database;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
@@ -22,7 +23,8 @@ public class DatabaseController {
     private Stage stage;
     private boolean dbChange;
     private SettingsController settingsController;
-    public CheckBox mysql;
+    @FXML
+    private CheckBox mysql;
     private String url;
 
     public void initialize() {
@@ -135,16 +137,16 @@ public class DatabaseController {
                 /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
-                mainController.dbLogo.setImage(image);
+                mainController.getDbLogo().setImage(image);
             } else if (url != null) {
                 mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-                mainController.dbLogo.setImage(image);
+                mainController.getDbLogo().setImage(image);
             } else {
                 //anders is het sqlite
                 mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-                mainController.dbLogo.setImage(image);
+                mainController.getDbLogo().setImage(image);
             }
         }
         settingsController.setProperties(this.properties);

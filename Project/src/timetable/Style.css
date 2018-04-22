@@ -167,3 +167,8 @@ Main css
     -fx-text-fill: white;
     -fx-background-color: #F65459;
 }
+
+.appName{
+    -fx-font-family: Lato;
+    -fx-text-fill: #8d93be;
+}

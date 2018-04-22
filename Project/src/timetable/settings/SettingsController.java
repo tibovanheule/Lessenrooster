@@ -1,6 +1,7 @@
 //Tibo Vanheule
 package timetable.settings;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,8 +20,10 @@ import java.util.Properties;
 public class SettingsController {
     //array met mogelijkheden voor de standaard lijsten uitbreiding mogelijk
     private static final String[] defaultList = {"students", "teacher", "location"}, cities = {"koksijde", "oostende", "gent", "brugge", "brussel", "leuven", "Antwerpen"};
-    public CheckBox windowSize;
-    public ComboBox<String> defaultStartup, weatherCity;
+    @FXML
+    private CheckBox windowSize;
+    @FXML
+    private ComboBox<String> defaultStartup, weatherCity;
     private Stage stage;
     private Boolean canClose = true;
 

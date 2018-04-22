@@ -92,9 +92,9 @@ public class Main extends Application {
                 DateTimeFormatter formatDay = DateTimeFormatter.ofPattern("EEEE");
                 DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("d LLLL");
 
-                controller.date.setText(now.format(formatDate));
-                controller.day.setText(now.format(formatDay));
-                controller.time.setText(now.format(formatTime));
+                controller.getDate().setText(now.format(formatDate));
+                controller.getDay().setText(now.format(formatDay));
+                controller.getTime().setText(now.format(formatTime));
             } catch (Exception e) {
                 /*e.printStackTrace();*/
             }

@@ -1,6 +1,7 @@
 /*Tibo Vanheule*/
 package timetable.lecture;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,10 +14,17 @@ import timetable.lecture.editLecture.EditLecture;
 import timetable.objects.Lecture;
 
 public class LectureController {
-    public Label text, course;
+    @FXML
+    private Label text, course;
     private Stage stage;
     private Lecture lecture;
-    public Boolean canClose = true;
+
+
+    public void setCanClose(Boolean canClose) {
+        this.canClose = canClose;
+    }
+
+    private Boolean canClose = true;
     private DataAccessProvider dataAccessProvider;
 
     public void setLecture(Lecture lecture) {

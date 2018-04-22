@@ -54,7 +54,7 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
     public void setModel(MainModel model) {
         this.model = model;
         model.addListener(this);
-        getItems().addAll(model.items);
+        getItems().addAll(model.getItems());
 
     }
 
@@ -62,7 +62,7 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
     public void invalidated(Observable o) {
         if (model.getItemsChanged()) {
             getItems().clear();
-            getItems().addAll(model.items);
+            getItems().addAll(model.getItems());
             model.setItemsChanged(false);
         }
     }

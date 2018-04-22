@@ -15,7 +15,12 @@ import java.util.List;
 
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
-    public ArrayList<Item> items = new ArrayList<>();
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    private ArrayList<Item> items = new ArrayList<>();
 
     public DataAccessProvider getDataAccessProvider() {
         return dataAccessProvider;

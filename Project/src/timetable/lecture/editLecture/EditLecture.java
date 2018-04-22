@@ -1,6 +1,7 @@
 /*Tibo Vanheule*/
 package timetable.lecture.editLecture;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -20,11 +21,16 @@ public class EditLecture {
     private Stage stage;
     private Lecture lecture;
     private LectureController controller;
-    public ComboBox<Integer> duration;
-    public ComboBox<Period> id;
-    public ComboBox<String> students, day, loc;
-    public ComboBox<Item> teacher;
-    public TextField name;
+    @FXML
+    private ComboBox<Integer> duration;
+    @FXML
+    private ComboBox<Period> id;
+    @FXML
+    private ComboBox<String> students, day, loc;
+    @FXML
+    private ComboBox<Item> teacher;
+    @FXML
+    private TextField name;
     private DataAccessProvider dataAccessProvider;
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
 
@@ -103,7 +109,7 @@ public class EditLecture {
 
     public void close() {
         // TODO: 10/04/2018 onderliggende stage realtime aanpassen
-        controller.canClose = true;
+        controller.setCanClose(true);
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
 
         } catch (DataAccessException e) {

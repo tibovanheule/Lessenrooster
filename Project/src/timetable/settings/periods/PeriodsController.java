@@ -2,6 +2,7 @@ package timetable.settings.periods;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,9 +17,12 @@ import timetable.objects.Period;
 public class PeriodsController {
     private Controller mainController;
     private Stage stage;
-    public TableView<Period> table;
-    public TableColumn<Period, Integer>  hour, minute;
-    public TableColumn<Period, Boolean> delete;
+    @FXML
+    private TableView<Period> table;
+    @FXML
+    private TableColumn<Period, Integer>  hour, minute;
+    @FXML
+    private TableColumn<Period, Boolean> delete;
 
     public void initialize() {
 

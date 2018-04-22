@@ -5,6 +5,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import timetable.config.Config;
+import timetable.create.CreateController;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Item;
 import timetable.objects.Weather;
@@ -36,17 +38,46 @@ import java.util.TimerTask;
 
 public class Controller {
 
-    public Label day, date, time, appname;
-    public TextField searchText;
-    public ListView<Item> list;
-    public ImageView dbLogo, weatherIcon;
-    public SortButtons students, teachers, loc, lecture;
+    @FXML
+    private Label day;
+
+    public Label getDay() {
+        return day;
+    }
+
+    public Label getDate() {
+        return date;
+    }
+
+    public Label getTime() {
+        return time;
+    }
+
+    public ImageView getDbLogo() {
+        return dbLogo;
+    }
+
+    @FXML
+    private Label date;
+    @FXML
+    private Label time;
+    @FXML
+    private Label appname;
+    @FXML
+    private TextField searchText;
+    @FXML
+    private ListView<Item> list;
+    @FXML
+    private ImageView dbLogo, weatherIcon;
+    @FXML
+    private SortButtons students, teachers, loc, lecture;
 
     AnchorPane getDraw() {
         return draw;
     }
 
-    public AnchorPane draw;
+    @FXML
+    private AnchorPane draw;
     private Stage stage;
 
     public MainModel getModel() {
@@ -150,6 +181,22 @@ public class Controller {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 220));
+            controller.setStageAndSetupListeners(stage);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
+            Parent root = loader.load();
+            CreateController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());

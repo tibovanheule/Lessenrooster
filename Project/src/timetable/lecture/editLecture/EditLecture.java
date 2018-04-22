@@ -20,7 +20,8 @@ public class EditLecture {
     private Stage stage;
     private Lecture lecture;
     private LectureController controller;
-    public ComboBox<Integer> block, duration;
+    public ComboBox<Integer> duration;
+    public ComboBox<Period> id;
     public ComboBox<String> students, day, loc;
     public ComboBox<Item> teacher;
     public TextField name;
@@ -43,25 +44,18 @@ public class EditLecture {
                 loc.getItems().add(item.getName());
             }
             for (Period item : dac.getPeriodDAO().getPeriods()) {
-                block.getItems().add(item.getId());
+                id.getItems().add(item);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         name.setText(lecture.getCourse());
-        block.setValue(lecture.getBlock());
-        duration.setValue(lecture.getDuration());/*
-        teacher.setValue(lecture.getTeacher());*/
+        id.setValue(new Period(lecture.getBlock(),0,0));
+        duration.setValue(lecture.getDuration());
+        teacher.setValue(new Item("teacher",lecture.getTeacher()));
         students.setValue(lecture.getStudent());
         day.setValue(days[lecture.getDay() - 1]);
         loc.setValue(lecture.getLocation());
-
-    }
-
-    public void initialize() {
-        day.getItems().addAll(days);
-        duration.getItems().addAll(1, 2, 3);
-
         teacher.setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {
             @Override
             public ListCell<Item> call(ListView<Item> p) {
@@ -79,6 +73,31 @@ public class EditLecture {
                 };
             }
         });
+        id.setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {
+            @Override
+            public ListCell<Period> call(ListView<Period> p) {
+                return new ListCell<Period>() {
+                    @Override
+                    protected void updateItem(Period item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            setText(item.getHour()+":"+item.getMinute());
+                        }
+                    }
+                };
+            }
+        });
+
+    }
+
+    public void initialize() {
+        day.getItems().addAll(days);
+        duration.getItems().addAll(1, 2, 3);
+
+
 
     }
 

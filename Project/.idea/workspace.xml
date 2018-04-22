@@ -10,13 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/settings/periods/PeriodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/settings/periods/PeriodsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/timetable/create/CreateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/timetable/create/create.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/timetable/create/create.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/LectureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/LectureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/editLecture/EditLecture.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/Project lessenrooster/timetable/lecture/editLecture/EditLecture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule.out.properties" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.out.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/settings/periods/PeriodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/periods/PeriodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,65 +95,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EditLecture.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EditLecture.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-235">
-              <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
+            <state relative-caret-position="321">
+              <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2500#2933#0" expanded="true" />
+                <element signature="e#2932#2933#0" expanded="true" />
+                <element signature="e#3148#3585#0" expanded="true" />
+                <element signature="e#3584#3585#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/Controller.java">
+      <file leaf-file-name="lecture.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/lecture/lecture.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="SqliteDataAccessContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+            <state relative-caret-position="306">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1419#1420#0" expanded="true" />
-                <element signature="e#1445#1446#0" expanded="true" />
-                <element signature="e#1473#1474#0" expanded="true" />
+                <element signature="e#633#634#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#857#858#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodsController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/settings/periods/PeriodsController.java">
+      <file leaf-file-name="SqlitePeriodDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqlitePeriodDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="289">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#459#460#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingsController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/timetable/settings/SettingsController.java">
+      <file leaf-file-name="SqliteAbstractDOA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="374">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#978#979#0" expanded="true" />
-                <element signature="e#1022#1023#0" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#336#337#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
+      <file leaf-file-name="LectureController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/lecture/LectureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="103" column="107" selection-start-line="103" selection-start-column="107" selection-end-line="103" selection-end-column="107" />
+            <state relative-caret-position="306">
+              <caret line="27" column="70" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/timetable/create/CreateController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -201,7 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
         <option value="26b87c30-31f1-4109-9abf-3946dc68c258/schema/main/table/period.sql" />
         <option value="$PROJECT_DIR$/src/timetable/objects/Lecture.java" />
         <option value="$PROJECT_DIR$/src/timetable/about/AboutController.java" />
@@ -223,7 +241,6 @@
         <option value="$PROJECT_DIR$/src/timetable/views/ItemsListView.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/LectureListView.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/SearchTextBox.java" />
-        <option value="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" />
         <option value="$PROJECT_DIR$/src/timetable/weather/WeatherScraper.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteStudentsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/LocationDAO.java" />
@@ -246,12 +263,14 @@
         <option value="$PROJECT_DIR$/src/timetable/objects/Period.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqlitePeriodDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/PeriodDAO.java" />
-        <option value="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" />
         <option value="$PROJECT_DIR$/src/timetable/Main.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/SettingsController.java" />
         <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/periods/PeriodsController.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" />
+        <option value="$PROJECT_DIR$/src/timetable/create/CreateController.java" />
+        <option value="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" />
+        <option value="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" />
       </list>
     </option>
   </component>
@@ -304,23 +323,29 @@
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name="about" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="create" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="timetable" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-              <item name="periods" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture" type="462c0819:PsiDirectoryNode" />
+              <item name="editLecture" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
@@ -346,6 +371,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="per&#9;FILE&#9;file://C:/Users/seven/Desktop/Project lessenrooster/Project/src/timetable/db/sqlite/SqlitePeriodDAO.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;Sqlite (Xerial)" />
@@ -359,23 +385,24 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="timetable.db" />
-      <recent name="timetable" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\db\Sqlite" />
-      <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="timetable.db" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable" />
       <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\main" />
       <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src" />
       <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\config" />
       <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\sample\images" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="timetable.db" />
+      <recent name="timetable" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="timetable.db" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\create" />
+      <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\db\Sqlite" />
+      <recent name="C:\Users\seven\Desktop\Project lessenrooster\Project\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -526,12 +553,12 @@
       <workItem from="1523700164175" duration="10823000" />
       <workItem from="1524025678255" duration="6024000" />
       <workItem from="1524058156647" duration="15301000" />
-      <workItem from="1524327783657" duration="4505000" />
+      <workItem from="1524327783657" duration="9450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458295000" />
+    <option name="totallyTimeSpent" value="463240000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -556,11 +583,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4934896" visible="true" weight="0.32689655" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4934896" visible="true" weight="0.32689655" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.10611979" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.10611979" />
       <window_info anchor="right" id="Database" order="5" visible="true" weight="0.11328125" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49934897" weight="0.32965517" />
       <window_info id="Learn" order="6" />
@@ -631,7 +658,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -639,54 +666,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/objects/Lecture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/objects/items.java" />
-    <entry file="file://$PROJECT_DIR$/src/timetable/views/AboutButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/views/ItemsListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/views/TaskCell.java" />
-    <entry file="file://$PROJECT_DIR$/src/timetable/objects/Weather.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/objects/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/LectureController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -877,39 +860,6 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc3/JDBC3Connection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="182" selection-start-line="182" selection-end-line="182" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/core/CoreConnection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc4/JDBC4Connection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/objects/Period.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -925,38 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqlitePeriodDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="50" column="53" lean-forward="true" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
-          <folding>
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,8 +926,120 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="103" column="107" selection-start-line="103" selection-start-column="107" selection-end-line="103" selection-end-column="107" />
+        <state relative-caret-position="-478">
+          <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/create/create.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/create/create.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/create/CreateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteDataAccessContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc4/JDBC4Connection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc3/JDBC3Connection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc3/JDBC3Statement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/jdbc3/JDBC3ResultSet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqlitePeriodDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar!/org/sqlite/core/CoreConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/db/sqlite/SqliteAbstractDOA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/LectureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="70" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/editLecture.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/lecture.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2500#2933#0" expanded="true" />
+            <element signature="e#2932#2933#0" expanded="true" />
+            <element signature="e#3148#3585#0" expanded="true" />
+            <element signature="e#3584#3585#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

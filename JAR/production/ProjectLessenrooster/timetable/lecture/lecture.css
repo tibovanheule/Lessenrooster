@@ -1,0 +1,25 @@
+/*Tibo Vanheule*/
+.blue {
+    -fx-background-color: #4d59a1;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.body {
+    -fx-background-color: #efeeec;
+}
+
+Button {
+    -fx-background-color: #efeeec;
+    -fx-border-width: 2px;
+    -fx-border-color: #b3b0ac;
+    -fx-border-style: solid;
+    -fx-text-fill: #b3b0ac;
+    -fx-font-family: "Lato Semibold";
+}
+
+Label {
+    -fx-font-family: Lato;
+}
+

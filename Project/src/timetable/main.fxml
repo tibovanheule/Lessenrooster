@@ -7,7 +7,7 @@
 <?import timetable.MainModel?>
 <?import timetable.views.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" styleClass="body" stylesheets="@Style.css"
-          xmlns="http://javafx.com/javafx/9.0.1" fx:controller="timetable.Controller">
+          xmlns="http://javafx.com/javafx/9" fx:controller="timetable.Controller">
     <fx:define>
         <MainModel fx:id="model"/>
     </fx:define>

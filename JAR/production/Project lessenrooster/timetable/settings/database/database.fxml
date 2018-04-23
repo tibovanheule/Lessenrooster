@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="timetable.settings.database.DatabaseController">
+            xmlns="http://javafx.com/javafx/9" fx:controller="timetable.settings.database.DatabaseController">
 
     <AnchorPane prefHeight="130.0" prefWidth="607.0" styleClass="blue" stylesheets="@database.css">
 

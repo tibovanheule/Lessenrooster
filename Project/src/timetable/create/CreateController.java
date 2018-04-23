@@ -1,8 +1,6 @@
 //Tibo Vanheule
 package timetable.create;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -12,7 +10,6 @@ import javafx.stage.Stage;
 import timetable.Controller;
 import timetable.db.DataAccessContext;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class CreateController {
@@ -25,7 +22,7 @@ public class CreateController {
     private AnchorPane rootPane2;
     private Controller mainController;
     @FXML
-    private Button student,teacher,loc,lecture;
+    private Button student, teacher, loc, lecture;
 
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
@@ -34,10 +31,10 @@ public class CreateController {
     }
 
     public void initialize() {
-        student.setOnAction(o->page(student.getUserData()+""));
-        loc.setOnAction(o->page(loc.getUserData()+""));
-        teacher.setOnAction(o->page(teacher.getUserData()+""));
-        lecture.setOnAction(o->page(lecture.getUserData()+""));
+        student.setOnAction(o -> page(student.getUserData() + ""));
+        loc.setOnAction(o -> page(loc.getUserData() + ""));
+        teacher.setOnAction(o -> page(teacher.getUserData() + ""));
+        lecture.setOnAction(o -> page(lecture.getUserData() + ""));
 
 
     }
@@ -45,7 +42,7 @@ public class CreateController {
     private void page(String ui) {
         /*dynamisch laden van fxml*/
         try {
-            FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(ui+".fxml"));
+            FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(ui + ".fxml"));
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().setAll(pane);

@@ -37,7 +37,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"), resultSet.getString("location"),
-                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), resultSet.getString("hour") + ":" + resultSet.getString("minute"));
+                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), resultSet.getInt("hour") , resultSet.getInt("minute"));
 
                     lectures.add(lecture);
                 }
@@ -45,16 +45,17 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
                 // Sortering (lessen in de juiste volgorde zetten) Dit is wel niet meer nodig omdat dit werk nu uitbesteed wordt aan de DB (zie sql query)
                 //lectures.sort(Comparator.comparing(Lecture::getBlock));
-                /*for (Lecture lecture : lectures) {
-                    String conflict = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                            "JOIN location ON location_id=location.id WHERE day = ? AND ( ? >=first_block  )) AND " + item.getSort() + ".name = ? AND NOT course = ?";
+                for (Lecture lecture : lectures) {
+                    String conflict = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, period.hour AS hour," +
+                            " period.minute AS minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                            "JOIN location ON location_id=location.id JOIN period ON lecture.first_block=period.id" +
+                            " WHERE day = ? AND (hour BETWEEN ? AND ?) AND " + item.getSort() + ".name = ? AND NOT course = ?";
 
                     try (PreparedStatement conflicts = prepare(conflict)) {
                         conflicts.setString(5, lecture.getCourse());
                         conflicts.setInt(1, lecture.getDay());
-                        conflicts.setInt(2, lecture.getBlock());
-                        *//*ik doe het einduur -1 omdat between inclusive is*//*
-                        conflicts.setInt(3, lecture.getBlock() + lecture.getDuration()  );
+                        conflicts.setInt(2, lecture.getHour());
+                        conflicts.setInt(3, lecture.getHour() + lecture.getDuration()-1  );
                         conflicts.setString(4, item.getName());
                         ResultSet resultSet2 = conflicts.executeQuery();
                         if(resultSet2.next()){
@@ -63,9 +64,9 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }*/
+                }
 
-                int j = 0;
+                /*int j = 0;
                 while (j < lectures.size() - 1) {
                     Lecture lecture1 = lectures.get(j);
                     Lecture lecture2 = lectures.get(j + 1);
@@ -74,7 +75,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                         lecture2.setConflict(true);
                     }
                     j++;
-                }
+                }*/
 
                 days.put(i, lectures);
             } catch (Exception e) {

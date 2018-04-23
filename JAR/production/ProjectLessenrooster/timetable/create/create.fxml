@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="450.0" prefWidth="450.0" styleClass="body"
+            stylesheets="@create.css" xmlns="http://javafx.com/javafx/9">
+    <AnchorPane layoutX="-7.0" prefHeight="100.0" prefWidth="459.0" styleClass="blue"/>
+    <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="411.0" mnemonicParsing="false"
+            onAction="#close" text="Close" textOverrun="CLIP"/>
+    <Button fx:id="student" layoutX="47.0" layoutY="266.0" mnemonicParsing="false" userData="student" text="Student"/>
+    <Button fx:id="teacher" layoutX="142.0" layoutY="266.0" mnemonicParsing="false" text="teacher" userData="teacher"/>
+    <Button fx:id="loc" layoutX="243.0" layoutY="266.0" mnemonicParsing="false" text="Location" userData="location"/>
+    <Button fx:id="lecture" layoutX="338.0" layoutY="266.0" mnemonicParsing="false" text="Lecture" userData="lecture"/>
+</AnchorPane>

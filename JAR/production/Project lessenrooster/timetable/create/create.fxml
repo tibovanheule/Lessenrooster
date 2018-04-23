@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="450.0" prefWidth="450.0" styleClass="body"
-            stylesheets="@create.css" xmlns="http://javafx.com/javafx/9.0.1">
+            stylesheets="@create.css" xmlns="http://javafx.com/javafx/9">
     <AnchorPane layoutX="-7.0" prefHeight="100.0" prefWidth="459.0" styleClass="blue"/>
     <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="411.0" mnemonicParsing="false"
             onAction="#close" text="Close" textOverrun="CLIP"/>

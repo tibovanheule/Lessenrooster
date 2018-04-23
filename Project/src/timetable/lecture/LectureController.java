@@ -45,7 +45,6 @@ public class LectureController {
     public void setStageAndSetupListeners(Stage stage, DataAccessProvider dataAccessProvider) {
         this.stage = stage;
         this.dataAccessProvider = dataAccessProvider;
-        System.out.println(dataAccessProvider);
     }
 
     public void edit() {

@@ -4,7 +4,7 @@ Main css
  */
 @font-face {
     font-family: 'lato';
-    src: url('resources/Lato-Regular.ttf');
+    src: url('resources/lato.ttf');
 }
 
 .body {

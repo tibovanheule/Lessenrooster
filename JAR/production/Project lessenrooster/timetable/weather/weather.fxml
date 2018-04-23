@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="450.0" styleClass="body" stylesheets="@weather.css"
-            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="timetable.weather.WeatherController">
+            xmlns="http://javafx.com/javafx/9" fx:controller="timetable.weather.WeatherController">
 
     <Label fx:id="temp" layoutX="121.0" layoutY="96.0" text="temp"/>
     <ImageView fx:id="weatherIcon" fitHeight="92.0" fitWidth="92.0" layoutX="15.0" layoutY="14.0"

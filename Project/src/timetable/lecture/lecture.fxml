@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450.0" styleClass="body"
-            stylesheets="@lecture.css" xmlns="http://javafx.com/javafx/9.0.1"
+            stylesheets="@lecture.css" xmlns="http://javafx.com/javafx/9"
             fx:controller="timetable.lecture.LectureController">
     <AnchorPane prefHeight="110.0" prefWidth="450.0" styleClass="blue">
         <Label fx:id="course" layoutX="41.0" layoutY="46.0" styleClass="blue" text="Course"/>

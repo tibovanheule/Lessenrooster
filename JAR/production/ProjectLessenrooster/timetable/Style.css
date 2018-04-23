@@ -1,0 +1,172 @@
+/*
+Tibo Vanheule
+Main css
+ */
+@font-face {
+    font-family: 'lato';
+    src: url('resources/lato.ttf');
+}
+
+.body {
+    -fx-background-color: #efeeec;
+}
+
+.leftMenu {
+    -fx-background-color: #46529d;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 5, 0, 0, 0);
+}
+
+.day {
+    -fx-font-family: lato;
+    -fx-font-size: 32px;
+    -fx-text-fill: #8d93be;
+}
+
+.date {
+    -fx-font-family: lato;
+    -fx-font-size: 32px;
+    -fx-text-fill: #8d93be;
+}
+
+.time {
+    -fx-font-family: lato;
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+}
+
+.listselect {
+    -fx-background-color: #efeeec;
+}
+
+.listselect .list-cell {
+    -fx-background-color: #efeeec;
+    -fx-font-family: lato;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b3b0ac;
+    -fx-wrap-text: true;
+}
+
+.listselect .list-cell:selected {
+    -fx-text-fill: #46529d;
+    -fx-font-weight: bold;
+}
+
+.navItem {
+    -fx-background-color: #efeeec;
+    -fx-font-family: lato;
+    -fx-text-fill: #46529d;
+    -fx-padding: 10px 0 0 0;
+}
+
+.dayHolder {
+    -fx-background-color: #f9f9f9;
+}
+
+.dayHolder * {
+    -fx-wrap-text: true;
+    -fx-border-width: 0px;
+    -fx-background-color: #f9f9f9;
+}
+
+.dayHolder .scroll-bar {
+    -fx-background-color: white;
+}
+
+.dayLabel {
+    -fx-font-family: lato;
+    -fx-text-fill: #94a8b7;
+    -fx-font-size: 16px;
+}
+
+.searchText {
+    -fx-background-color: #efeeec;
+    -fx-border-color: #b3b0ac;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+.search {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/search.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.next {
+    -fx-text-fill: #8d93be;
+    -fx-font-family: lato;
+}
+
+.nextItem {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: lato;
+}
+
+.drawer {
+    -fx-background-color: #efeeec;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 0);
+    -fx-background-insets: 100%;
+}
+
+.drawerOpen {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/drawerOpen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.windowSize {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/windowSize.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.settings {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.close {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/close.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.drawerClose {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/drawerClose.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.weatherIcon {
+    -fx-opacity: 50%;
+}
+
+.about {
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("resources/images/about.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.conflict {
+    -fx-text-fill: white;
+    -fx-background-color: #F65459;
+}
+
+.appName {
+    -fx-font-family: Lato;
+    -fx-text-fill: #8d93be;
+}

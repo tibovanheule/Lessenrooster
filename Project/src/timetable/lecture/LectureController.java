@@ -19,6 +19,8 @@ public class LectureController {
     private Label text, course;
     @FXML
     private ListView<Lecture> conflicts;
+    @FXML
+    private Label conflictText;
     private Stage stage;
     private Lecture lecture;
     private Boolean canClose = true;
@@ -40,7 +42,12 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
-            conflicts.getItems().addAll(lecture.getConflicts());
+            if (!lecture.getConflicts().isEmpty()) {
+                conflicts.getItems().addAll(lecture.getConflicts());
+            } else {
+                conflictText.setText("There are no conflicts found!");
+                conflicts.setVisible(false);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

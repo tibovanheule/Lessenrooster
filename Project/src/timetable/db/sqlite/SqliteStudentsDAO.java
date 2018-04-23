@@ -52,7 +52,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     public int createStudent(String item) throws DataAccessException {
         String insert = "INSERT INTO students (id,name) VALUES (?,?)";
         try (PreparedStatement statement = prepare(insert)) {
-            statement.setString(2,item);
+            statement.setString(2, item);
             statement.execute();
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.

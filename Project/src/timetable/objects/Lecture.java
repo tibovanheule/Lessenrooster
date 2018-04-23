@@ -8,22 +8,7 @@ public class Lecture implements Comparator<Lecture> {
     private Integer day;
     private Integer block;
     private Integer duration;
-
-    public ArrayList<Lecture> getConflicts() {
-        return conflicts;
-    }
-
     private ArrayList<Lecture> conflicts = new ArrayList<>();
-
-
-    public Integer getHour() {
-        return hour;
-    }
-
-    public Integer getMinute() {
-        return minute;
-    }
-
     private Integer hour;
     private Integer minute;
     private Boolean conflict;
@@ -42,7 +27,19 @@ public class Lecture implements Comparator<Lecture> {
         this.minute = minute;
     }
 
-    public void addConflict(Lecture lecture){
+    public ArrayList<Lecture> getConflicts() {
+        return conflicts;
+    }
+
+    public Integer getHour() {
+        return hour;
+    }
+
+    public Integer getMinute() {
+        return minute;
+    }
+
+    public void addConflict(Lecture lecture) {
         conflicts.add(lecture);
     }
 
@@ -82,18 +79,17 @@ public class Lecture implements Comparator<Lecture> {
         return teacher;
     }
 
-    public String getStudent()
-    {
+    public String getStudent() {
         return student;
     }
 
     @Override
     public int compare(Lecture o1, Lecture o2) {
-        if(o1.getTime().compareTo(o2.getTime())==0){
+        if (o1.getTime().compareTo(o2.getTime()) == 0) {
             return 0;
-        }else if( o1.getHour() < o2.getHour() && o2.getHour() < o1.getHour() + o1.getDuration()){
+        } else if (o1.getHour() < o2.getHour() && o2.getHour() < o1.getHour() + o1.getDuration()) {
             return -1;
-        }else{
+        } else {
             return 1;
         }
     }

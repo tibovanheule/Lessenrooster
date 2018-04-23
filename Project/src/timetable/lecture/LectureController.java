@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Main;
@@ -16,6 +17,8 @@ import timetable.objects.Lecture;
 public class LectureController {
     @FXML
     private Label text, course;
+    @FXML
+    private ListView<Lecture> conflicts;
     private Stage stage;
     private Lecture lecture;
     private Boolean canClose = true;
@@ -37,6 +40,7 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
+            conflicts.getItems().addAll(lecture.getConflicts());
         } catch (Exception e) {
             e.printStackTrace();
         }

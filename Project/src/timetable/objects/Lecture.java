@@ -1,10 +1,20 @@
 package timetable.objects;
 
-public class Lecture {
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class Lecture implements Comparator<Lecture> {
     private String student, teacher, location, course, time;
     private Integer day;
     private Integer block;
     private Integer duration;
+
+    public ArrayList<Lecture> getConflicts() {
+        return conflicts;
+    }
+
+    private ArrayList<Lecture> conflicts = new ArrayList<>();
+
 
     public Integer getHour() {
         return hour;
@@ -30,6 +40,10 @@ public class Lecture {
         this.time = hour + ":" + minute;
         this.hour = hour;
         this.minute = minute;
+    }
+
+    public void addConflict(Lecture lecture){
+        conflicts.add(lecture);
     }
 
     public String getTime() {
@@ -68,7 +82,20 @@ public class Lecture {
         return teacher;
     }
 
-    public String getStudent() {
+    public String getStudent()
+    {
         return student;
     }
+
+    @Override
+    public int compare(Lecture o1, Lecture o2) {
+        if(o1.getTime().compareTo(o2.getTime())==0){
+            return 0;
+        }else if( o1.getHour() < o2.getHour() && o2.getHour() < o1.getHour() + o1.getDuration()){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
 }
+

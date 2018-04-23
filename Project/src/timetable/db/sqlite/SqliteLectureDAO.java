@@ -8,6 +8,7 @@ import timetable.objects.Lecture;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,45 +38,30 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"), resultSet.getString("location"),
-                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), resultSet.getInt("hour") , resultSet.getInt("minute"));
+                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), resultSet.getInt("hour"), resultSet.getInt("minute"));
 
                     lectures.add(lecture);
                 }
                 resultSet.close();
 
-                // Sortering (lessen in de juiste volgorde zetten) Dit is wel niet meer nodig omdat dit werk nu uitbesteed wordt aan de DB (zie sql query)
-                //lectures.sort(Comparator.comparing(Lecture::getBlock));
-                for (Lecture lecture : lectures) {
-                    String conflict = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, period.hour AS hour," +
-                            " period.minute AS minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                            "JOIN location ON location_id=location.id JOIN period ON lecture.first_block=period.id" +
-                            " WHERE day = ? AND (hour BETWEEN ? AND ?) AND " + item.getSort() + ".name = ? AND NOT course = ?";
 
-                    try (PreparedStatement conflicts = prepare(conflict)) {
-                        conflicts.setString(5, lecture.getCourse());
-                        conflicts.setInt(1, lecture.getDay());
-                        conflicts.setInt(2, lecture.getHour());
-                        conflicts.setInt(3, lecture.getHour() + lecture.getDuration()-1  );
-                        conflicts.setString(4, item.getName());
-                        ResultSet resultSet2 = conflicts.executeQuery();
-                        if(resultSet2.next()){
-                            lecture.setConflict(true);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                /*int j = 0;
-                while (j < lectures.size() - 1) {
+                int j = 0;
+                while (j < lectures.size()) {
+                    int k = 0;
                     Lecture lecture1 = lectures.get(j);
-                    Lecture lecture2 = lectures.get(j + 1);
-                    if (lecture1.getBlock().equals(lecture2.getBlock()) || lecture2.getBlock() < lecture1.getBlock() + lecture1.getDuration()) {
-                        lecture1.setConflict(true);
-                        lecture2.setConflict(true);
+                    while (k < lectures.size()) {
+                        if (k != j) {
+                            Lecture lecture2 = lectures.get(k);
+                            if (lecture1.compare(lecture1, lecture2) <= 0) {
+                                lecture1.addConflict(lecture2);
+                                lecture1.setConflict(true);
+                                lecture2.setConflict(true);
+                            }
+                        }
+                        k++;
                     }
                     j++;
-                }*/
+                }
 
                 days.put(i, lectures);
             } catch (Exception e) {
@@ -84,5 +70,22 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             }
         }
         return days;
+    }
+
+    @Override
+    public Iterable<Item> getLectures() throws DataAccessException {
+        ArrayList<Item> items = new ArrayList<Item>();
+        String selection = "select distinct course as name from lecture";
+        //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+        try (Statement statement = create()) {
+            ResultSet resultSet = statement.executeQuery(selection);
+            while (resultSet.next()) {
+                items.add(new Item("lecture", resultSet.getString("name")));
+            }
+            resultSet.close();
+        } catch (Exception e) {
+            throw new DataAccessException("could not retrieve items", e);
+        }
+        return items;
     }
 }

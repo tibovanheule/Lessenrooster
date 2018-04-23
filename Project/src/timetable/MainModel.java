@@ -114,6 +114,7 @@ public class MainModel implements Observable {
             lists.put("students", dac.getStudentsDAO().getStudent());
             lists.put("teacher", dac.getTeacherDAO().getTeacher());
             lists.put("location", dac.getLocationDAO().getLocation());
+            lists.put("lecture", dac.getLectureDoa().getLectures());
 
             for (Item item : lists.get(whatList)) {
                 items.add(item);

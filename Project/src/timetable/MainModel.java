@@ -5,7 +5,6 @@ import javafx.beans.Observable;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
-import timetable.db.ItemsDAO;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 
@@ -72,12 +71,11 @@ public class MainModel implements Observable {
         this.lecturesChanged = lecturesChanged;
     }
 
-    private void fireInvalidationEvent() {
+    public void fireInvalidationEvent() {
         for (InvalidationListener listener : listenerList) {
             listener.invalidated(this);
         }
-        /*For debugging purposes (to know when everything is registered if at all)
-        System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
+        /*System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
     }
 
     public void setSchedule(Item selected) {
@@ -136,8 +134,16 @@ public class MainModel implements Observable {
         } else {
             // zo niet haal de gefilterde lijst op
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                ItemsDAO itemsDAO = dac.getItemDoa();
-                for (Item item : itemsDAO.getFilterdList(searchText)) {
+                for (Item item : dac.getStudentsDAO().getFilteredStudent(searchText)) {
+                    items.add(item);
+                }
+                for (Item item : dac.getTeacherDAO().getFilteredTeacher(searchText)) {
+                    items.add(item);
+                }
+                for (Item item : dac.getLocationDAO().getFilteredLocation(searchText)) {
+                    items.add(item);
+                }
+                for (Item item : dac.getLectureDoa().getFilteredLectures(searchText)) {
                     items.add(item);
                 }
             } catch (DataAccessException e) {

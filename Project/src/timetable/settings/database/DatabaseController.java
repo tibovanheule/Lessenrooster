@@ -120,6 +120,7 @@ public class DatabaseController {
          * garantie is dat het programma altijd op dezelfde pc gaat draaien */
         properties.setProperty("DB.use", "false");
         List<File> files = event.getDragboard().getFiles();
+        mainController.setDbName(files.get(0).getName());
         url = "jdbc:sqlite:" + files.get(0).getPath();
     }
 
@@ -138,6 +139,7 @@ public class DatabaseController {
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
                 mainController.getDbLogo().setImage(image);
+                mainController.setDbName("Online");
             } else if (url != null) {
                 mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
@@ -147,7 +149,9 @@ public class DatabaseController {
                 mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
                 mainController.getDbLogo().setImage(image);
+                mainController.setDbName("Lessenrooster(offline)");
             }
+            mainController.getModel().fireInvalidationEvent();
         }
         settingsController.setProperties(this.properties);
         settingsController.show();

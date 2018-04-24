@@ -11,7 +11,8 @@
     <Label fx:id="text" layoutX="24.0" layoutY="125.0" text="Lectures and info"/>
     <Button layoutX="196.0" layoutY="393.0" mnemonicParsing="false" onAction="#close" text="Close"/>
     <Button layoutX="365.0" layoutY="119.0" mnemonicParsing="false" onAction="#edit" text="Edit"/>
-    <ListView fx:id="conflicts" layoutX="20.0" layoutY="262.0" prefHeight="115.0" prefWidth="387.0" styleClass="conflicts"/>
+    <ListView fx:id="conflicts" layoutX="20.0" layoutY="262.0" prefHeight="115.0" prefWidth="387.0"
+              styleClass="conflicts"/>
     <Label fx:id="conflictText" layoutX="22.0" layoutY="240.0" text="conflicts:"/>
 
 

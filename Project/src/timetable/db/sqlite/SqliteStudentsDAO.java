@@ -20,7 +20,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
         Iterable<Item> items = new ArrayList<>();
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from students")) {
             while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item("students", resultSet.getString("name"),resultSet.getInt("id")));
+                ((ArrayList<Item>) items).add(new Item("students", resultSet.getString("name"), resultSet.getInt("id")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
@@ -39,7 +39,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("students", resultSet.getString("name"),resultSet.getInt("id")));
+                items.add(new Item("students", resultSet.getString("name"), resultSet.getInt("id")));
             }
             resultSet.close();
         } catch (Exception e) {

@@ -14,7 +14,6 @@ import javafx.util.Callback;
 import timetable.Main;
 import timetable.db.DataAccessProvider;
 import timetable.lecture.editLecture.EditLecture;
-import timetable.objects.Item;
 import timetable.objects.Lecture;
 
 public class LectureController {
@@ -85,7 +84,7 @@ public class LectureController {
         }
     }
 
-    public void initialize(){
+    public void initialize() {
         conflicts.setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
             @Override
             public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
@@ -112,10 +111,11 @@ public class LectureController {
                 return cell;
             }
         });
-        conflicts.getSelectionModel().selectedItemProperty().addListener(o->lecture());
+        conflicts.getSelectionModel().selectedItemProperty().addListener(o -> lecture());
     }
-    public void lecture(){
-        if (!conflicts.getItems().isEmpty()){
+
+    public void lecture() {
+        if (!conflicts.getItems().isEmpty()) {
             setLecture(conflicts.getSelectionModel().getSelectedItem());
         }
 

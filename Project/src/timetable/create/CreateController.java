@@ -60,6 +60,7 @@ public class CreateController {
                 e.printStackTrace();
             }
         }
+        mainController.getModel().fireInvalidationEvent();
     }
 
     public void saveTeacher() {
@@ -70,6 +71,7 @@ public class CreateController {
                 e.printStackTrace();
             }
         }
+        mainController.getModel().fireInvalidationEvent();
     }
 
     public void menu() {

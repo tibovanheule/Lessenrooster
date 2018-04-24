@@ -7,38 +7,11 @@ import timetable.objects.Item;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
     SqliteItemsDAO(Connection connection) {
         super(connection);
-    }
-
-    @Override
-    public Iterable<Item> getList() throws DataAccessException {
-        Iterable<Item> items = new ArrayList<>();
-
-        String sort = null;
-        // TODO: 18/04/2018 queries
-        HashMap<String, String> queries = new HashMap<>();
-        queries.put("lecture", "select distinct course as name from lecture");
-        queries.put("teacher", "select name from teacher");
-        queries.put("students", "select name from students");
-        queries.put("location", "select name from location");
-
-
-        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery(queries.get(sort))) {
-            while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item(sort, resultSet.getString("name"),resultSet.getInt("id")));
-            }
-        } catch (Exception e) {
-            //foutmelding weergeven in de lijst.
-            throw new DataAccessException("could not retrieve items", e);
-        }
-
-        return items;
     }
 
     @Override
@@ -52,7 +25,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
                 statement.setString(1, "%" + searchWord + "%");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    items.add(new Item(table, resultSet.getString("name"),resultSet.getInt("id")));
+                    items.add(new Item(table, resultSet.getString("name"), resultSet.getInt("id")));
                 }
                 resultSet.close();
             } catch (Exception e) {
@@ -65,7 +38,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("lecture", resultSet.getString("course"),null));
+                items.add(new Item("lecture", resultSet.getString("course"), null));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.

@@ -11,8 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -22,10 +20,8 @@ import javafx.util.Duration;
 import timetable.config.Config;
 import timetable.create.CreateController;
 import timetable.db.sqlite.SqliteDataAccessProvider;
-import timetable.objects.Item;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
-import timetable.views.SortButtons;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
@@ -45,16 +41,15 @@ public class Controller {
     private Label date;
     @FXML
     private Label time;
+
+    public void setDbName(String dbFile) {
+        dbName.setText(dbFile);
+    }
+
     @FXML
-    private Label appname;
-    @FXML
-    private TextField searchText;
-    @FXML
-    private ListView<Item> list;
+    private Label dbName;
     @FXML
     private ImageView dbLogo, weatherIcon;
-    @FXML
-    private SortButtons students, teachers, loc, lecture;
     @FXML
     private AnchorPane draw;
     private Stage stage;
@@ -106,7 +101,7 @@ public class Controller {
         model.setStandardSchedule(properties.getProperty("standard.schedule"));
         model.changeItems(model.getStandardSchedule());
 
-        appname.setText(properties.getProperty("program.name"));
+        dbName.setText("Lessenrooster (offline)");
 
 
         Timer timer = new Timer();

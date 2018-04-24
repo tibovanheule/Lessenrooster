@@ -81,10 +81,27 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             ResultSet resultSet = statement.executeQuery(selection);
             while (resultSet.next()) {
                 /*sinds dat vakken niet gedeleted worden a.d.h.v. het id en die ook geen hebben geven we null eraan mee*/
-                items.add(new Item("lecture", resultSet.getString("name"),null));
+                items.add(new Item("lecture", resultSet.getString("name"), null));
             }
             resultSet.close();
         } catch (Exception e) {
+            throw new DataAccessException("could not retrieve items", e);
+        }
+        return items;
+    }
+
+    @Override
+    public Iterable<Item> getFilteredLectures(String searchText) throws DataAccessException {
+        ArrayList<Item> items = new ArrayList<Item>();
+        String sql = "SELECT DISTINCT course FROM lecture where course like ?";
+        try (PreparedStatement statement = prepare(sql)) {
+            statement.setString(1, "%" + searchText + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                items.add(new Item("lecture", resultSet.getString("course"), null));
+            }
+        } catch (Exception e) {
+            //foutmelding weergeven in de lijst.
             throw new DataAccessException("could not retrieve items", e);
         }
         return items;

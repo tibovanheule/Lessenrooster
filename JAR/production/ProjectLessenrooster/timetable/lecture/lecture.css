@@ -24,7 +24,7 @@ Label {
     -fx-font-family: Lato;
 }
 
-.conflicts *{
+.conflicts * {
     -fx-background-color: #efeeec;
 }
 

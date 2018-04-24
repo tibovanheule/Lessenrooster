@@ -91,7 +91,7 @@ public class Main extends Application {
         } else if (getParameters().getRaw().size() == 2) {
             try {
                 Runnable runnable = new Thread(() -> {
-                    Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1),null);
+                    Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null);
                     controller.getModel().setSchedule(item);
                     controller.getDraw().setVisible(false);
                 });
@@ -117,7 +117,7 @@ public class Main extends Application {
                 /*e.printStackTrace();*/
             }
             try {
-                Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1),null);
+                Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null);
                 controller.getModel().setSchedule(item);
                 controller.getDraw().setVisible(false);
                 SnapshotParameters snapshotParameters = new SnapshotParameters();

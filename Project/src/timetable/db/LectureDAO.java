@@ -10,4 +10,5 @@ public interface LectureDAO {
     HashMap<Integer, ArrayList<Lecture>> getWeek(Item item) throws DataAccessException;
 
     Iterable<Item> getLectures() throws DataAccessException;
+    Iterable<Item> getFilteredLectures(String searchText) throws DataAccessException;
 }

@@ -33,14 +33,21 @@ class StdoutList {
                 sorts.put("location",dac.getLocationDAO().getLocation());
                 sorts.put("course",dac.getLectureDoa().getLectures());
                 sorts.put("teacher",dac.getTeacherDAO().getTeacher());
-                for (Item item : sorts.get("sort")) {
+                for (Item item : sorts.get(sort)) {
                     group.write(item.getName() + "\n");
                     group.flush();
                 }
             } catch (DataAccessException e) {
                 /*e.printStackTrace();*/
                 try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                    error.write("Invalid! Check you're arguments, sir! :( \n");
+                    error.write("Couldn't read the database.\n");
+                    error.flush();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
+            } catch (NullPointerException e){
+                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
+                    error.write("Check your arguments\n");
                     error.flush();
                 } catch (IOException error) {
                     error.printStackTrace();

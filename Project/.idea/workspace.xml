@@ -10,25 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/LectureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/LectureController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/lecture.css" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/lecture.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/lecture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/lecture/lecture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/resources/images/drawerClose.png" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/resources/images/drawerClose.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/StdoutList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/StdoutList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/StudentsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/StudentsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteItemsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteItemsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteStudentsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteStudentsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteTeacherDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteTeacherDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/lecture.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/lecture.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/objects/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/objects/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/resources/images/drawerClose.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/resources/images/drawerClose.png" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -144,8 +127,8 @@
       <file leaf-file-name="StdoutList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="629">
+              <caret line="49" column="53" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -592,12 +575,12 @@
       <workItem from="1524327783657" duration="33117000" />
       <workItem from="1524483328359" duration="7362000" />
       <workItem from="1524557963992" duration="2623000" />
-      <workItem from="1524562061301" duration="2382000" />
+      <workItem from="1524562061301" duration="2838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499274000" />
+    <option name="totallyTimeSpent" value="499730000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -622,13 +605,13 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49544272" weight="0.32689655" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49544272" visible="true" weight="0.32689655" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19466145" />
       <window_info anchor="right" id="Database" order="5" weight="0.11328125" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49934897" visible="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49934897" weight="0.32965517" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -933,6 +916,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3264">
           <caret line="209" column="40" selection-start-line="209" selection-start-column="40" selection-end-line="209" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,8 +1075,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+        <state relative-caret-position="629">
+          <caret line="49" column="53" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
         </state>
       </provider>
     </entry>

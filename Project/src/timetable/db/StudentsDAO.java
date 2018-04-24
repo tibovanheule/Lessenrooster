@@ -8,4 +8,6 @@ public interface StudentsDAO {
     Iterable<Item> getFilteredStudent(String SearchWord) throws DataAccessException;
 
     int createStudent(String item) throws DataAccessException;
+
+    int deleteStudent(Item item) throws DataAccessException;
 }

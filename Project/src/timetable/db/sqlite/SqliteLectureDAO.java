@@ -80,7 +80,8 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         try (Statement statement = create()) {
             ResultSet resultSet = statement.executeQuery(selection);
             while (resultSet.next()) {
-                items.add(new Item("lecture", resultSet.getString("name")));
+                /*sinds dat vakken niet gedeleted worden a.d.h.v. het id en die ook geen hebben geven we null eraan mee*/
+                items.add(new Item("lecture", resultSet.getString("name"),null));
             }
             resultSet.close();
         } catch (Exception e) {

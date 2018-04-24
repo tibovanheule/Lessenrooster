@@ -18,9 +18,9 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     @Override
     public Iterable<Item> getStudent() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
-        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select name from students")) {
+        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from students")) {
             while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item("students", resultSet.getString("name")));
+                ((ArrayList<Item>) items).add(new Item("students", resultSet.getString("name"),resultSet.getInt("id")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
@@ -39,7 +39,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("students", resultSet.getString("name")));
+                items.add(new Item("students", resultSet.getString("name"),resultSet.getInt("id")));
             }
             resultSet.close();
         } catch (Exception e) {
@@ -55,7 +55,18 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
             statement.setString(2, item);
             statement.execute();
         } catch (Exception e) {
-            //foutmelding weergeven in de lijst.
+            throw new DataAccessException("could not create student", e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int deleteStudent(Item item) throws DataAccessException {
+        String delete = "DELETE FROM students WHERE id = ?";
+        try (PreparedStatement statement = prepare(delete)) {
+            statement.setInt(2, item.getId());
+            statement.execute();
+        } catch (Exception e) {
             throw new DataAccessException("could not create student", e);
         }
         return 0;

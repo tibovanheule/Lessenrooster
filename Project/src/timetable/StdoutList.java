@@ -11,6 +11,7 @@ import timetable.objects.Item;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.Properties;
 
 class StdoutList {
@@ -27,8 +28,12 @@ class StdoutList {
 
         try (BufferedWriter group = new BufferedWriter(new OutputStreamWriter(System.out))) {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                ItemsDAO itemsDAO = dac.getItemDoa();
-                for (Item item : itemsDAO.getList()) {
+                HashMap<String,Iterable<Item>> sorts = new HashMap<>();
+                sorts.put("students",dac.getStudentsDAO().getStudent());
+                sorts.put("location",dac.getLocationDAO().getLocation());
+                sorts.put("course",dac.getLectureDoa().getLectures());
+                sorts.put("teacher",dac.getTeacherDAO().getTeacher());
+                for (Item item : sorts.get("sort")) {
                     group.write(item.getName() + "\n");
                     group.flush();
                 }

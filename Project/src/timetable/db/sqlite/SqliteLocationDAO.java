@@ -18,9 +18,9 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     @Override
     public Iterable<Item> getLocation() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
-        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select name from location")) {
+        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from location")) {
             while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item("location", resultSet.getString("name")));
+                ((ArrayList<Item>) items).add(new Item("location", resultSet.getString("name"),resultSet.getInt("id")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
@@ -33,13 +33,13 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     @Override
     public Iterable<Item> getFilteredLocation(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
-        String selection = "SELECT * FROM location WHERE name LIKE ?";
+        String selection = "SELECT id,name FROM location WHERE name LIKE ?";
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
         try (PreparedStatement statement = prepare(selection)) {
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("location", resultSet.getString("name")));
+                items.add(new Item("location", resultSet.getString("name"),resultSet.getInt("id")));
             }
             resultSet.close();
         } catch (Exception e) {

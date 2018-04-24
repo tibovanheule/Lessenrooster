@@ -31,7 +31,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
 
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery(queries.get(sort))) {
             while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item(sort, resultSet.getString("name")));
+                ((ArrayList<Item>) items).add(new Item(sort, resultSet.getString("name"),resultSet.getInt("id")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
@@ -52,7 +52,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
                 statement.setString(1, "%" + searchWord + "%");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    items.add(new Item(table, resultSet.getString("name")));
+                    items.add(new Item(table, resultSet.getString("name"),resultSet.getInt("id")));
                 }
                 resultSet.close();
             } catch (Exception e) {
@@ -65,7 +65,7 @@ public class SqliteItemsDAO extends SqliteAbstractDOA implements ItemsDAO {
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("lecture", resultSet.getString("course")));
+                items.add(new Item("lecture", resultSet.getString("course"),null));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.

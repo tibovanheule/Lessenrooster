@@ -1,12 +1,18 @@
 package timetable.objects;
 
 public class Item {
-    private String sort;
-    private String name;
+    private String sort, name;
 
-    public Item(String sort, String name) {
+    public Integer getId() {
+        return id;
+    }
+
+    private Integer id;
+
+    public Item(String sort, String name, Integer id) {
         this.name = name;
         this.sort = sort;
+        this.id = id;
     }
 
     public String getName() {

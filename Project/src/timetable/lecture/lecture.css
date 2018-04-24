@@ -2,8 +2,9 @@
 .blue {
     -fx-background-color: #4d59a1;
     -fx-text-fill: white;
-    -fx-font-size: 24px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
+    -fx-font-family: Lato;
 }
 
 .body {
@@ -21,5 +22,9 @@ Button {
 
 Label {
     -fx-font-family: Lato;
+}
+
+.conflicts *{
+    -fx-background-color: #efeeec;
 }
 

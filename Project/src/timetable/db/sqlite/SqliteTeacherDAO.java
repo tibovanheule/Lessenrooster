@@ -18,9 +18,9 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
     @Override
     public Iterable<Item> getTeacher() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
-        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select name from teacher")) {
+        try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from teacher")) {
             while (resultSet.next()) {
-                ((ArrayList<Item>) items).add(new Item("teacher", resultSet.getString("name")));
+                ((ArrayList<Item>) items).add(new Item("teacher", resultSet.getString("name"),resultSet.getInt("id")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
@@ -39,7 +39,7 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
             statement.setString(1, "%" + searchWord + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("teacher", resultSet.getString("name")));
+                items.add(new Item("teacher", resultSet.getString("name"),resultSet.getInt("id")));
             }
             resultSet.close();
         } catch (Exception e) {

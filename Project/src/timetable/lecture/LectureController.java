@@ -6,12 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import timetable.Main;
 import timetable.db.DataAccessProvider;
 import timetable.lecture.editLecture.EditLecture;
+import timetable.objects.Item;
 import timetable.objects.Lecture;
 
 public class LectureController {
@@ -43,6 +46,7 @@ public class LectureController {
                     + "Location: " + lecture.getLocation() + "\n"
             );
             if (!lecture.getConflicts().isEmpty()) {
+                conflicts.getItems().clear();
                 conflicts.getItems().addAll(lecture.getConflicts());
             } else {
                 conflictText.setText("There are no conflicts found!");
@@ -79,5 +83,41 @@ public class LectureController {
         if (canClose) {
             stage.close();
         }
+    }
+
+    public void initialize(){
+        conflicts.setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
+            @Override
+            public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
+                ListCell<Lecture> cell = new ListCell<Lecture>() {
+                    {
+                        //gevonden fix voor de wrap text
+                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
+                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
+                        prefWidthProperty().bind(this.widthProperty().subtract(20));
+                    }
+
+                    @Override
+                    protected void updateItem(Lecture item, boolean b) {
+                        super.updateItem(item, b);
+                        if (b || item == null) {
+                            setText(null);
+                            setGraphic(null);
+                            this.setWrapText(true);
+                        } else {
+                            setText(item.getCourse());
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+        conflicts.getSelectionModel().selectedItemProperty().addListener(o->lecture());
+    }
+    public void lecture(){
+        if (!conflicts.getItems().isEmpty()){
+            setLecture(conflicts.getSelectionModel().getSelectedItem());
+        }
+
     }
 }

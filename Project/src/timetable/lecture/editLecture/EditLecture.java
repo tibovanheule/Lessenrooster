@@ -58,7 +58,7 @@ public class EditLecture {
         name.setText(lecture.getCourse());
         id.setValue(new Period(lecture.getBlock(), 0, 0));
         duration.setValue(lecture.getDuration());
-        teacher.setValue(new Item("teacher", lecture.getTeacher()));
+        teacher.setValue(new Item("teacher", lecture.getTeacher(),null));
         students.setValue(lecture.getStudent());
         day.setValue(days[lecture.getDay() - 1]);
         loc.setValue(lecture.getLocation());

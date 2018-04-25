@@ -1,11 +1,15 @@
 package timetable.settings.database;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import timetable.Controller;
@@ -25,9 +29,16 @@ public class DatabaseController {
     private SettingsController settingsController;
     @FXML
     private CheckBox mysql;
+    @FXML
+    private ImageView drag;
     private String url;
+    @FXML
+    private AnchorPane rootPane;
 
     public void initialize() {
+        drag.setOnDragOver(this::dragOver);
+        drag.setOnDragDropped(this::dragDropped);
+        drag.setOnDragDetected(this::dragStart);
 
     }
 
@@ -48,7 +59,12 @@ public class DatabaseController {
         dbChange = true;
     }
 
-    public void dragOver(DragEvent event) {
+    private void dragStart(MouseEvent event){
+        Image image = new Image("resources/images/dragHover.png");
+        drag.setImage(image);
+    }
+
+    private void dragOver(DragEvent event) {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
@@ -59,9 +75,7 @@ public class DatabaseController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
         FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
-
         fileChooser.getExtensionFilters().add(ext);
-
         fileChooser.setSelectedExtensionFilter(ext);
         File file = fileChooser.showSaveDialog(stage);
 
@@ -73,7 +87,6 @@ public class DatabaseController {
             if (stream == null) {
                 throw new Exception("Couldn't create new db.");
             }
-
             int readBytes;
             byte[] buffer = new byte[4096];
             folder = file.toURI().getPath();
@@ -96,36 +109,48 @@ public class DatabaseController {
                      * garantie is dat het programma altijd op dezelfde pc gaat draaien */
                     properties.setProperty("DB.use", "false");
                     url = "jdbc:sqlite:" + file.getPath();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText("Periods");
-                    alert.setContentText("Don't forget to change the periods table before adding \nlectures! You can change it in the settings");
-
-                    alert.showAndWait();
+                    mainController.setDbName(file.getName());
+                    /*Dynamisch inladen van de periods */
+                    try {
+                        FXMLLoader loader = new FXMLLoader(DatabaseController.class.getResource("periods.fxml"));
+                        loader.setController(this);
+                        AnchorPane pane = loader.load();
+                        rootPane.getChildren().addAll(pane);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-
-        close();
-
     }
 
-    public void dragDropped(DragEvent event) {
+    private void dragDropped(DragEvent event) {
         dbChange = true;
         mysql.setSelected(false);
         /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
          * garantie is dat het programma altijd op dezelfde pc gaat draaien */
         properties.setProperty("DB.use", "false");
-        List<File> files = event.getDragboard().getFiles();
-        mainController.setDbName(files.get(0).getName());
-        url = "jdbc:sqlite:" + files.get(0).getPath();
+        File file = event.getDragboard().getFiles().get(0);
+        mainController.setDbName(file.getName());
+        url = "jdbc:sqlite:" + file.getPath();
+        this.close();
     }
 
     public void chooseDB() {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("open Database");
+        FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
+        fileChooser.getExtensionFilters().add(ext);
+        fileChooser.setSelectedExtensionFilter(ext);
+        File file = fileChooser.showOpenDialog(stage);
+        dbChange = true;
+        mysql.setSelected(false);
+        properties.setProperty("DB.use", "false");
+        mainController.setDbName(file.getName());
+        url = "jdbc:sqlite:" + file.getPath();
+        this.close();
     }
 
     public void close() {
@@ -134,7 +159,6 @@ public class DatabaseController {
         if (dbChange) {
             if (mysql.isSelected()) {
                 //nieuwe data provider
-                // TODO: 18/04/2018 geter en seters 
                 /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
                 //aanduiding aanpassen
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));

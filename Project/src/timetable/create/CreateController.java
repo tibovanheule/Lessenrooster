@@ -68,6 +68,7 @@ public class CreateController {
                     //Create a new table show details of the selected item
                     Item selectedRecord = table.getItems().get(selectdIndex);
                     delete(selectedRecord);
+                    table.getItems().remove(selectdIndex);
                 }
             });
         }
@@ -75,6 +76,11 @@ public class CreateController {
         @Override
         protected void updateItem(Boolean t, boolean empty) {
             super.updateItem(t, empty);
+            if (empty || t == null) {
+                setText(null);
+                setGraphic(null);
+                setOnMouseClicked(null);
+            }
             if (!empty) {
                 setGraphic(cellButton);
             }
@@ -103,6 +109,7 @@ public class CreateController {
             });
             /*name.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue()));*/
 
+            // TODO: 25/04/2018 hashmap
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
                 for (Item item : dac.getStudentsDAO().getStudent()) {
                     table.getItems().addAll(item);

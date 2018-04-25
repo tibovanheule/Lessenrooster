@@ -5,10 +5,10 @@ drop table teacher;
 drop table location;
 drop table lecture;
 
-create table period   ("id", "hour", "minute");
-create table students ("id", "name");
-create table teacher  ("id", "name");
-create table location ("id", "name");
+create table period   ("id" INTEGER PRIMARY KEY , "hour", "minute");
+create table students ("id" INTEGER PRIMARY KEY , "name");
+create table teacher  ("id" INTEGER PRIMARY KEY , "name");
+create table location ("id" INTEGER PRIMARY KEY , "name");
 create table lecture  ("students_id", "teacher_id", "location_id", "course", "day", "first_block", "duration");
 
 insert into period values (1,  8, 30)

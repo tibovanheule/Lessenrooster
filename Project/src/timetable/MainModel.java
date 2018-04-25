@@ -108,6 +108,7 @@ public class MainModel implements Observable {
         //listview leeg maken voor nieuwe items
         items.clear();
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+            // TODO: 25/04/2018 hashmap met functions
             HashMap<String, Iterable<Item>> lists = new HashMap<>();
             lists.put("students", dac.getStudentsDAO().getStudent());
             lists.put("teacher", dac.getTeacherDAO().getTeacher());

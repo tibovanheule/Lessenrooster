@@ -57,6 +57,7 @@ public class CreateController {
 
         private ButtonCell() {
 
+            cellButton.setText("Delete");
             cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override

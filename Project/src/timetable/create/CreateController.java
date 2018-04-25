@@ -1,26 +1,39 @@
 //Tibo Vanheule
 package timetable.create;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import timetable.Controller;
 import timetable.db.DataAccessContext;
+import timetable.db.DataAccessException;
+import timetable.objects.Item;
 
 import java.io.IOException;
 
 public class CreateController {
     private Stage stage;
     @FXML
-    private TextField name;
+    private TableColumn<Item, String> name;
+    @FXML
+    private TableColumn<Item, Boolean> delete;
     @FXML
     private AnchorPane rootPane;
     @FXML
     private AnchorPane rootPane2;
     private Controller mainController;
+    @FXML
+    private TableView<Item> table;
     @FXML
     private Button student, teacher, loc, lecture;
 
@@ -39,6 +52,34 @@ public class CreateController {
 
     }
 
+    class ButtonCell extends TableCell<Item, Boolean> {
+        private final Button cellButton = new Button();
+
+        private ButtonCell() {
+
+            cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent t) {
+
+                    int selectdIndex = getTableRow().getIndex();
+
+                    //Create a new table show details of the selected item
+                    Item selectedRecord = table.getItems().get(selectdIndex);
+                    delete(selectedRecord);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (!empty) {
+                setGraphic(cellButton);
+            }
+        }
+    }
+
     private void page(String ui) {
         /*dynamisch laden van fxml*/
         try {
@@ -46,6 +87,29 @@ public class CreateController {
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().setAll(pane);
+
+
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            name.setCellFactory(column -> {
+                TableCell<Item, String> cell = new TextFieldTableCell<>();
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            });
+            delete.setCellFactory(column -> {
+                ButtonCell cell = new ButtonCell();
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            });
+            /*name.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue()));*/
+
+            try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+                for (Item item : dac.getStudentsDAO().getStudent()) {
+                    table.getItems().addAll(item);
+                }
+            } catch (DataAccessException e) {
+                e.printStackTrace();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,5 +151,13 @@ public class CreateController {
 
     public void close() {
         stage.close();
+    }
+
+    private void delete(Item item) {
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+            dac.getStudentsDAO().deleteStudent(item);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

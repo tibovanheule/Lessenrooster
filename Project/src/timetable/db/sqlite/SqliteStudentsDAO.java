@@ -63,11 +63,12 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     @Override
     public int deleteStudent(Item item) throws DataAccessException {
         String delete = "DELETE FROM students WHERE id = ?";
+        System.out.println(item.getId());
         try (PreparedStatement statement = prepare(delete)) {
-            statement.setInt(2, item.getId());
+            statement.setInt(1, item.getId());
             statement.execute();
         } catch (Exception e) {
-            throw new DataAccessException("could not create student", e);
+            throw new DataAccessException("could not delete student", e);
         }
         return 0;
     }

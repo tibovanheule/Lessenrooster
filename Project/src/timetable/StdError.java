@@ -10,6 +10,7 @@ public class StdError {
             errorWriter.append(error);
             /*errorWriter.write(error);*/
             errorWriter.flush();
+
         } catch (IOException errorWhileGivingAErrorLol) {
             errorWhileGivingAErrorLol.printStackTrace();
         }

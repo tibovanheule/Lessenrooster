@@ -38,7 +38,6 @@ public class DatabaseController {
     public void initialize() {
         drag.setOnDragOver(this::dragOver);
         drag.setOnDragDropped(this::dragDropped);
-        drag.setOnDragDetected(this::dragStart);
 
     }
 
@@ -57,11 +56,6 @@ public class DatabaseController {
 
         properties.setProperty("DB.use", String.valueOf(mysql.isSelected()));
         dbChange = true;
-    }
-
-    private void dragStart(MouseEvent event){
-        Image image = new Image("resources/images/dragHover.png");
-        drag.setImage(image);
     }
 
     private void dragOver(DragEvent event) {
@@ -175,7 +169,7 @@ public class DatabaseController {
                 mainController.getDbLogo().setImage(image);
                 mainController.setDbName("Lessenrooster(offline)");
             }
-            mainController.getModel().fireInvalidationEvent();
+            mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         }
         settingsController.setProperties(this.properties);
         settingsController.show();

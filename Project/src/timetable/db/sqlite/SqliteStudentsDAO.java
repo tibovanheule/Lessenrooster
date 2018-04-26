@@ -49,22 +49,36 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     @Override
-    public int createStudent(String item) throws DataAccessException {
+    public Item createStudent(String item) throws DataAccessException {
         String insert = "INSERT INTO students (id,name) VALUES (?,?)";
+        Item returnItem = null ;
         try (PreparedStatement statement = prepare(insert)) {
             statement.setString(2, item);
-            statement.execute();
+            statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    returnItem = new Item("student","student",generatedKeys.getInt(1));
+                }
+            } catch (Exception e) {
+                throw new DataAccessException("could not get inserted id", e);
+            }
         } catch (Exception e) {
             throw new DataAccessException("could not create student", e);
         }
-        return 0;
+        return returnItem;
     }
 
     @Override
     public int deleteStudent(Item item) throws DataAccessException {
         String delete = "DELETE FROM students WHERE id = ?";
-        System.out.println(item.getId());
+        String lectures = "DELETE FROM lectures where students_id = ?";
         try (PreparedStatement statement = prepare(delete)) {
+            statement.setInt(1, item.getId());
+            statement.execute();
+        } catch (Exception e) {
+            throw new DataAccessException("could not delete student", e);
+        }
+        try (PreparedStatement statement = prepare(lectures)) {
             statement.setInt(1, item.getId());
             statement.execute();
         } catch (Exception e) {
@@ -72,4 +86,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
         }
         return 0;
     }
+
+
+
 }

@@ -6,7 +6,7 @@ import timetable.objects.Lecture;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface LectureDAO {
+public interface LectureDAO extends DAO {
     HashMap<Integer, ArrayList<Lecture>> getWeek(Item item) throws DataAccessException;
 
     Iterable<Item> getLectures() throws DataAccessException;

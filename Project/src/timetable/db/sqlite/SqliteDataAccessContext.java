@@ -13,10 +13,6 @@ public class SqliteDataAccessContext implements DataAccessContext {
         this.connection = connection;
     }
 
-    @Override
-    public ItemsDAO getItemDoa() {
-        return new SqliteItemsDAO(connection);
-    }
 
     @Override
     public LectureDAO getLectureDoa() {

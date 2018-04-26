@@ -12,11 +12,13 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import timetable.Controller;
+import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.objects.Item;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Optional;
 
 public class CreateController {
@@ -36,6 +38,8 @@ public class CreateController {
     private Button student, teacher, loc, lecture, create;
     private Boolean canClose=true;
 
+
+
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
         this.stage = stage;
@@ -47,6 +51,7 @@ public class CreateController {
         loc.setOnAction(o -> page(loc.getUserData() + ""));
         teacher.setOnAction(o -> page(teacher.getUserData() + ""));
         lecture.setOnAction(o -> page(lecture.getUserData() + ""));
+
 
 
     }
@@ -109,6 +114,7 @@ public class CreateController {
             /*name.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue()));*/
 
             // TODO: 25/04/2018 hashmap
+
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
                 for (Item item : dac.getStudentsDAO().getStudent()) {
                     table.getItems().addAll(item);
@@ -124,6 +130,7 @@ public class CreateController {
 
 
     public void create() {
+
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             table.getItems().add(dac.getStudentsDAO().createStudent("student"));
             mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());

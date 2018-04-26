@@ -36,11 +36,7 @@ public class Controller {
 
     public MainModel model;
     @FXML
-    private Label day;
-    @FXML
-    private Label date;
-    @FXML
-    private Label time;
+    private Label day, date,time;
 
     public void setDbName(String dbFile) {
         dbName.setText(dbFile);

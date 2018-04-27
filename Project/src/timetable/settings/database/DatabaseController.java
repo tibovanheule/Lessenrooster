@@ -125,29 +125,7 @@ public class DatabaseController {
                         loader.setController(this);
                         AnchorPane pane = loader.load();
                         rootPane.getChildren().addAll(pane);
-                        class ButtonCell extends TableCell<Period, Boolean> {
-                            private final Button cellButton = new Button();
 
-                            private ButtonCell() {
-                                cellButton.setOnAction(new EventHandler<ActionEvent>() {
-                                    @Override
-                                    public void handle(ActionEvent t) {
-                                        int selectdIndex = getTableRow().getIndex();
-                                        //Create a new table show details of the selected item
-                                        Period selectedRecord = table.getItems().get(selectdIndex);
-                                        delete(selectedRecord);
-                                    }
-                                });
-                            }
-
-                            @Override
-                            protected void updateItem(Boolean t, boolean empty) {
-                                super.updateItem(t, empty);
-                                if (!empty) {
-                                    setGraphic(cellButton);
-                                }
-                            }
-                        }
                         delete.setCellFactory(column -> {
                             ButtonCell cell = new ButtonCell();
                             cell.setAlignment(Pos.CENTER);
@@ -270,6 +248,36 @@ public class DatabaseController {
             table.getItems().remove(period);
         } catch (DataAccessException e) {
             e.printStackTrace();
+        }
+    }
+
+    class ButtonCell extends TableCell<Period, Boolean> {
+        private final Button cellButton = new Button();
+
+        private ButtonCell() {
+            cellButton.setText("Delete");
+            cellButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent t) {
+                    int selectdIndex = getTableRow().getIndex();
+                    //Create a new table show details of the selected item
+                    Period selectedRecord = table.getItems().get(selectdIndex);
+                    delete(selectedRecord);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty || t == null) {
+                setText(null);
+                setGraphic(null);
+                setOnMouseClicked(null);
+            }
+            if (!empty) {
+                setGraphic(cellButton);
+            }
         }
     }
 

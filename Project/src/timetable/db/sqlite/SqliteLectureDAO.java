@@ -109,8 +109,8 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
     @Override
     public int delete(Item item) throws DataAccessException {
-        // TODO: 27/04/2018 uitbreiden 
-        String delete = "DELETE FROM lecture WHERE students_id = ?";
+        // TODO: 27/04/2018 uitbreiden
+        String delete = "DELETE FROM lecture WHERE students_id = ? and lectures_id = ? and hour";
 
         try (PreparedStatement statement = prepare(delete)) {
             statement.setInt(1, item.getId());
@@ -124,7 +124,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     @Override
     public Item create(String item) throws DataAccessException {
         // TODO: 27/04/2018 uitbreiden
-        String insert = "INSERT INTO lecture (id,name) VALUES (?,?)";
+        String insert = "INSERT INTO lecture (id,name,hour) VALUES (?,?,?)";
         Item returnItem = null;
         try (PreparedStatement statement = prepare(insert)) {
             statement.setString(2, item);

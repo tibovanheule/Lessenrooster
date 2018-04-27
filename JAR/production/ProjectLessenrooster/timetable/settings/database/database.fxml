@@ -4,7 +4,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="450.0"
             prefWidth="451.0" stylesheets="@database.css" xmlns="http://javafx.com/javafx/9"
             fx:controller="timetable.settings.database.DatabaseController">
 

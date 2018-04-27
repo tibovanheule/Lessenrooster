@@ -3,10 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@settings.css"
             xmlns="http://javafx.com/javafx/9.0.1" fx:controller="timetable.settings.SettingsController">
-    <AnchorPane prefHeight="82.0" prefWidth="450.0" styleClass="blue">
+    <AnchorPane prefHeight="100" prefWidth="450.0" styleClass="blue">
         <Label layoutX="28.0" layoutY="30.0" styleClass="title" text="SETTINGS"/>
         <padding>
             <Insets bottom="20.0"/>

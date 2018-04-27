@@ -99,7 +99,6 @@ public class SettingsController {
     }
 
 
-
     public void show() {
         stage.requestFocus();
         canClose = true;

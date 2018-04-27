@@ -120,4 +120,39 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         }
         return 0;
     }
+
+    @Override
+    public Item create(String item) throws DataAccessException {
+        // TODO: 27/04/2018 uitbreiden
+        String insert = "INSERT INTO lecture (id,name) VALUES (?,?)";
+        Item returnItem = null;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(2, item);
+            statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    returnItem = new Item("lecture", "lecture", generatedKeys.getInt(1));
+                }
+            } catch (Exception e) {
+                throw new DataAccessException("could not get inserted id", e);
+            }
+        } catch (Exception e) {
+            throw new DataAccessException("could not create student", e);
+        }
+        return returnItem;
+    }
+
+    @Override
+    public int updateName(Item item) throws DataAccessException {
+        String insert = "UPDATE lecture SET name=? WHERE id=?";
+        Item returnItem = null;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(1, item.getName());
+            statement.setInt(2, item.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            throw new DataAccessException("could not create lecture", e);
+        }
+        return 0;
+    }
 }

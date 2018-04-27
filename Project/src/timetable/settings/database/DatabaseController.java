@@ -11,7 +11,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -26,7 +25,6 @@ import timetable.objects.Period;
 import timetable.settings.SettingsController;
 
 import java.io.*;
-import java.util.List;
 import java.util.Properties;
 
 public class DatabaseController {
@@ -129,6 +127,7 @@ public class DatabaseController {
                         rootPane.getChildren().addAll(pane);
                         class ButtonCell extends TableCell<Period, Boolean> {
                             private final Button cellButton = new Button();
+
                             private ButtonCell() {
                                 cellButton.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
@@ -140,6 +139,7 @@ public class DatabaseController {
                                     }
                                 });
                             }
+
                             @Override
                             protected void updateItem(Boolean t, boolean empty) {
                                 super.updateItem(t, empty);
@@ -167,7 +167,7 @@ public class DatabaseController {
                             return cell;
                         });
                         minute.setOnEditCommit(event -> updatemin(event.getRowValue(), event.getNewValue()));
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
@@ -220,7 +220,7 @@ public class DatabaseController {
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
                 mainController.getDbLogo().setImage(image);
                 mainController.setDbName("Online");
-            }  else if (url == null){
+            } else if (url == null) {
                 //anders is het sqlite
                 mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
                 Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
@@ -233,6 +233,7 @@ public class DatabaseController {
         settingsController.show();
         stage.close();
     }
+
     private void updatehour(Period period, Integer hour) {
         period.setHour(hour);
         System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
@@ -243,6 +244,7 @@ public class DatabaseController {
             e.printStackTrace();
         }
     }
+
     private void updatemin(Period period, Integer min) {
         period.setMinute(min);
         System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
@@ -253,19 +255,20 @@ public class DatabaseController {
             e.printStackTrace();
         }
     }
-    public void period(){
-       try(DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-           table.getItems().add(dac.getPeriodDAO().createPeriod());
-       }catch (DataAccessException e){
-           e.printStackTrace();
-       }
+
+    public void period() {
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+            table.getItems().add(dac.getPeriodDAO().createPeriod());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void delete(Period period){
-        try(DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+    public void delete(Period period) {
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             dac.getPeriodDAO().deletePeriods(period);
             table.getItems().remove(period);
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             e.printStackTrace();
         }
     }

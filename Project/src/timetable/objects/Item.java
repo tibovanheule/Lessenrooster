@@ -1,7 +1,13 @@
 package timetable.objects;
 
 public class Item {
-    private String sort, name;
+    private String sort;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
     private Integer id;
 
     public Item(String sort, String name, Integer id) {

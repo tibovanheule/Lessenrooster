@@ -54,13 +54,47 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
         String delete = "DELETE FROM location WHERE id = ?";
         String lectures = "DELETE FROM lecture WHERE location_id= ?";
 
-        try (PreparedStatement statement2 = prepare(lectures);PreparedStatement statement = prepare(delete)) {
+        try (PreparedStatement statement2 = prepare(lectures); PreparedStatement statement = prepare(delete)) {
             statement2.setInt(1, item.getId());
             statement2.execute();
             statement.setInt(1, item.getId());
             statement.execute();
         } catch (Exception e) {
             throw new DataAccessException("could not delete student", e);
+        }
+        return 0;
+    }
+
+    @Override
+    public Item create(String item) throws DataAccessException {
+        String insert = "INSERT INTO location (id,name) VALUES (?,?)";
+        Item returnItem = null;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(2, item);
+            statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    returnItem = new Item("location", "location", generatedKeys.getInt(1));
+                }
+            } catch (Exception e) {
+                throw new DataAccessException("could not get inserted id", e);
+            }
+        } catch (Exception e) {
+            throw new DataAccessException("could not create student", e);
+        }
+        return returnItem;
+    }
+
+    @Override
+    public int updateName(Item item) throws DataAccessException {
+        String insert = "UPDATE location SET name=? WHERE id=?";
+        Item returnItem = null;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(1, item.getName());
+            statement.setInt(2, item.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            throw new DataAccessException("could not create location", e);
         }
         return 0;
     }

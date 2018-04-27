@@ -2,7 +2,6 @@ package timetable.db.sqlite;
 
 import timetable.db.DataAccessException;
 import timetable.db.PeriodDAO;
-import timetable.objects.Item;
 import timetable.objects.Period;
 
 import java.sql.Connection;
@@ -56,16 +55,16 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
     }
 
     @Override
-    public Period createPeriod() throws DataAccessException{
+    public Period createPeriod() throws DataAccessException {
         String selection = "INSERT INTO period (id,hour,minute) VALUES (?,?,?)";
         Period period = null;
         try (PreparedStatement statement = prepare(selection)) {
-            statement.setInt(2,0);
-            statement.setInt(3,0);
+            statement.setInt(2, 0);
+            statement.setInt(3, 0);
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             while (resultSet.next()) {
-                period = new Period(resultSet.getInt(1),0,0);
+                period = new Period(resultSet.getInt(1), 0, 0);
             }
         } catch (Exception e) {
             throw new DataAccessException("could not retrieve periods", e);

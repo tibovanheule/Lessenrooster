@@ -114,6 +114,7 @@ public class EditLecture {
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
+
         stage.close();
     }
 }

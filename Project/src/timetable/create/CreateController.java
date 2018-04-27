@@ -16,6 +16,7 @@ import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.objects.Item;
+import timetable.objects.Period;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -51,43 +52,6 @@ public class CreateController {
         loc.setOnAction(o -> page(loc.getUserData() + ""));
         teacher.setOnAction(o -> page(teacher.getUserData() + ""));
         lecture.setOnAction(o -> page(lecture.getUserData() + ""));
-
-
-    }
-
-    class ButtonCell extends TableCell<Item, Boolean> {
-        private final Button cellButton = new Button();
-
-        private ButtonCell() {
-
-            cellButton.setText("Delete");
-            cellButton.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent t) {
-
-                    int selectdIndex = getTableRow().getIndex();
-
-                    //Create a new table show details of the selected item
-                    Item selectedRecord = table.getItems().get(selectdIndex);
-                    delete(selectedRecord);
-                    table.getItems().remove(selectdIndex);
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if (empty || t == null) {
-                setText(null);
-                setGraphic(null);
-                setOnMouseClicked(null);
-            }
-            if (!empty) {
-                setGraphic(cellButton);
-            }
-        }
     }
 
     private void page(String ui) {
@@ -106,14 +70,16 @@ public class CreateController {
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
+            table.setEditable(true);
+            name.setEditable(true);
+            delete.setEditable(false);
             delete.setCellFactory(column -> {
                 ButtonCell cell = new ButtonCell();
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
-            /*name.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue()));*/
-
-            // TODO: 25/04/2018 hashmap
+            // TODO: 27/04/2018 edit
+            name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue()));
 
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
                 HashMap<String, DAO> daos = new HashMap<>();
@@ -134,20 +100,18 @@ public class CreateController {
         }
     }
 
-
     public void create() {
 
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-            HashMap<String, Item> daos = new HashMap<>();
-            daos.put("student", dac.getStudentsDAO().createStudent("student"));
-            daos.put("teacher", dac.getTeacherDAO().createTeacher("teacher"));
-            table.getItems().add(daos.get(ui));
+            HashMap<String, DAO> daos = new HashMap<>();
+            daos.put("student", dac.getStudentsDAO());
+            daos.put("teacher", dac.getTeacherDAO());
+            table.getItems().add(daos.get(ui).create(ui));
             mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     public void menu() {
         try {
@@ -185,10 +149,61 @@ public class CreateController {
                 DAO dao = daos.get(ui);
                 dao.delete(item);
                 mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
+                table.getItems().remove(item);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         canClose = true;
+    }
+
+    class ButtonCell extends TableCell<Item, Boolean> {
+        private final Button cellButton = new Button();
+
+        private ButtonCell() {
+
+            cellButton.setText("Delete");
+            cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent t) {
+
+                    int selectdIndex = getTableRow().getIndex();
+
+                    //Create a new table show details of the selected item
+                    Item selectedRecord = table.getItems().get(selectdIndex);
+                    delete(selectedRecord);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty || t == null) {
+                setText(null);
+                setGraphic(null);
+                setOnMouseClicked(null);
+            }
+            if (!empty) {
+                setGraphic(cellButton);
+            }
+        }
+    }
+    private void updateName(Item item, String name) {
+        item.setName(name);
+        System.out.println("id: " + item.getId() + " name: " + item.getName());
+
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+            HashMap<String, DAO> daos = new HashMap<>();
+            daos.put("student", dac.getStudentsDAO());
+            daos.put("teacher", dac.getTeacherDAO());
+            daos.put("location", dac.getLocationDAO());
+            daos.put("lecture", dac.getLectureDoa());
+            DAO dao = daos.get(ui);
+            dao.updateName(item);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

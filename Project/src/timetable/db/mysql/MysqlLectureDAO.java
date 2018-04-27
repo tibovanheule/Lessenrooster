@@ -21,7 +21,6 @@ public class MysqlLectureDAO extends MysqlAbstractDOA implements LectureDAO {
         HashMap<Integer, ArrayList<Lecture>> days = new HashMap<>();
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
-            // TODO: 29/03/2018 prepared statement
             String selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block  FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
                     "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? AND day = ? ORDER BY first_block asc";
             //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html

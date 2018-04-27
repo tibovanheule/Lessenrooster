@@ -36,12 +36,7 @@ public class Controller {
 
     public MainModel model;
     @FXML
-    private Label day, date,time;
-
-    public void setDbName(String dbFile) {
-        dbName.setText(dbFile);
-    }
-
+    private Label day, date, time;
     @FXML
     private Label dbName;
     @FXML
@@ -49,6 +44,10 @@ public class Controller {
     @FXML
     private AnchorPane draw;
     private Stage stage;
+
+    public void setDbName(String dbFile) {
+        dbName.setText(dbFile);
+    }
 
     public Label getDay() {
         return day;

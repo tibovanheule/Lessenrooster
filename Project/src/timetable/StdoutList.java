@@ -1,6 +1,7 @@
 package timetable;
 
 import timetable.config.Config;
+import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
@@ -27,12 +28,12 @@ class StdoutList {
 
         try (BufferedWriter group = new BufferedWriter(new OutputStreamWriter(System.out))) {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                HashMap<String, Iterable<Item>> sorts = new HashMap<>();
-                sorts.put("students", dac.getStudentsDAO().getStudent());
-                sorts.put("location", dac.getLocationDAO().getLocation());
-                sorts.put("course", dac.getLectureDoa().getLectures());
-                sorts.put("teacher", dac.getTeacherDAO().getTeacher());
-                for (Item item : sorts.get(sort)) {
+                HashMap<String, DAO> sorts = new HashMap<>();
+                sorts.put("students", dac.getStudentsDAO());
+                sorts.put("location", dac.getLocationDAO());
+                sorts.put("course", dac.getLectureDoa());
+                sorts.put("teacher", dac.getTeacherDAO());
+                for (Item item : sorts.get(sort).get()) {
                     group.write(item.getName() + "\n");
                     group.flush();
                 }

@@ -13,7 +13,6 @@ import timetable.Controller;
 import timetable.Main;
 import timetable.config.Config;
 import timetable.settings.database.DatabaseController;
-import timetable.settings.periods.PeriodsController;
 
 import java.util.Properties;
 
@@ -99,22 +98,7 @@ public class SettingsController {
         }
     }
 
-    public void period() {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/periods/periods.fxml"));
-            Parent root = loader.load();
-            PeriodsController controller = loader.getController();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 450, 450);
-            stage.setScene(scene);
-            controller.setStageAndSetupListeners(stage, mainController);
-            stage.show();
-            stage.focusedProperty().addListener(o -> controller.close());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void show() {
         stage.requestFocus();

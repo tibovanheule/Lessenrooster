@@ -16,7 +16,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     @Override
-    public Iterable<Item> getStudent() throws DataAccessException {
+    public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from students")) {
             while (resultSet.next()) {
@@ -69,7 +69,7 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     @Override
-    public int deleteStudent(Item item) throws DataAccessException {
+    public int delete(Item item) throws DataAccessException {
         String delete = "DELETE FROM students WHERE id = ?";
         String lectures = "DELETE FROM lecture WHERE students_id = ?";
 

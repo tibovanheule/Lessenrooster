@@ -2,6 +2,7 @@ package timetable;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
@@ -108,14 +109,13 @@ public class MainModel implements Observable {
         //listview leeg maken voor nieuwe items
         items.clear();
         try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-            // TODO: 25/04/2018 hashmap met functions
-            HashMap<String, Iterable<Item>> lists = new HashMap<>();
-            lists.put("students", dac.getStudentsDAO().getStudent());
-            lists.put("teacher", dac.getTeacherDAO().getTeacher());
-            lists.put("location", dac.getLocationDAO().getLocation());
-            lists.put("lecture", dac.getLectureDoa().getLectures());
+            HashMap<String, DAO> lists = new HashMap<>();
+            lists.put("students", dac.getStudentsDAO());
+            lists.put("teacher", dac.getTeacherDAO());
+            lists.put("location", dac.getLocationDAO());
+            lists.put("lecture", dac.getLectureDoa());
 
-            for (Item item : lists.get(whatList)) {
+            for (Item item : lists.get(whatList).get()) {
                 items.add(item);
             }
 

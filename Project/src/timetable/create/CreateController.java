@@ -36,8 +36,8 @@ public class CreateController {
     private TableView<Item> table;
     @FXML
     private Button student, teacher, loc, lecture, create;
-    private Boolean canClose=true;
-
+    private Boolean canClose = true;
+    private String ui;
 
 
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
@@ -51,7 +51,6 @@ public class CreateController {
         loc.setOnAction(o -> page(loc.getUserData() + ""));
         teacher.setOnAction(o -> page(teacher.getUserData() + ""));
         lecture.setOnAction(o -> page(lecture.getUserData() + ""));
-
 
 
     }
@@ -94,6 +93,7 @@ public class CreateController {
     private void page(String ui) {
         /*dynamisch laden van fxml*/
         try {
+            this.ui = ui;
             FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(ui + ".fxml"));
             loader.setController(this);
             AnchorPane pane = loader.load();
@@ -116,7 +116,13 @@ public class CreateController {
             // TODO: 25/04/2018 hashmap
 
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-                for (Item item : dac.getStudentsDAO().getStudent()) {
+                HashMap<String, DAO> daos = new HashMap<>();
+                daos.put("student", dac.getStudentsDAO());
+                daos.put("teacher", dac.getTeacherDAO());
+                daos.put("location", dac.getLocationDAO());
+                daos.put("lecture", dac.getLectureDoa());
+                DAO dao = daos.get(ui);
+                for (Item item : dao.get()) {
                     table.getItems().addAll(item);
                 }
             } catch (DataAccessException e) {
@@ -132,7 +138,10 @@ public class CreateController {
     public void create() {
 
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-            table.getItems().add(dac.getStudentsDAO().createStudent("student"));
+            HashMap<String, Item> daos = new HashMap<>();
+            daos.put("student", dac.getStudentsDAO().createStudent("student"));
+            daos.put("teacher", dac.getTeacherDAO().createTeacher("teacher"));
+            table.getItems().add(daos.get(ui));
             mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,7 +161,7 @@ public class CreateController {
     }
 
     public void close() {
-        if(canClose){
+        if (canClose) {
             stage.close();
         }
     }
@@ -165,17 +174,20 @@ public class CreateController {
         alert.setContentText("If a student is used in a lecture,\n then that lecture gets deleted too ");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK){
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             // ... user chose OK
-
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-                dac.getStudentsDAO().deleteStudent(item);
+                HashMap<String, DAO> daos = new HashMap<>();
+                daos.put("student", dac.getStudentsDAO());
+                daos.put("teacher", dac.getTeacherDAO());
+                daos.put("location", dac.getLocationDAO());
+                daos.put("lecture", dac.getLectureDoa());
+                DAO dao = daos.get(ui);
+                dao.delete(item);
                 mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            // ... user chose CANCEL or closed the dialog
         }
         canClose = true;
     }

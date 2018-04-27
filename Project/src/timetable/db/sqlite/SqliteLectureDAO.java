@@ -73,7 +73,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     }
 
     @Override
-    public Iterable<Item> getLectures() throws DataAccessException {
+    public Iterable<Item> get() throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
         String selection = "select distinct course as name from lecture";
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
@@ -105,5 +105,19 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             throw new DataAccessException("could not retrieve items", e);
         }
         return items;
+    }
+
+    @Override
+    public int delete(Item item) throws DataAccessException {
+        // TODO: 27/04/2018 uitbreiden 
+        String delete = "DELETE FROM lecture WHERE students_id = ?";
+
+        try (PreparedStatement statement = prepare(delete)) {
+            statement.setInt(1, item.getId());
+            statement.execute();
+        } catch (Exception e) {
+            throw new DataAccessException("could not delete student", e);
+        }
+        return 0;
     }
 }

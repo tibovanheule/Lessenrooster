@@ -16,7 +16,7 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
     }
 
     @Override
-    public Iterable<Item> getTeacher() throws DataAccessException {
+    public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from teacher")) {
             while (resultSet.next()) {
@@ -47,5 +47,40 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
         }
         return items;
 
+    }
+    @Override
+    public Item createTeacher(String item) throws DataAccessException {
+        String insert = "INSERT INTO teacher (id,name) VALUES (?,?)";
+        Item returnItem = null ;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(2, item);
+            statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    returnItem = new Item("teacher","teacher",generatedKeys.getInt(1));
+                }
+            } catch (Exception e) {
+                throw new DataAccessException("could not get inserted id", e);
+            }
+        } catch (Exception e) {
+            throw new DataAccessException("could not create student", e);
+        }
+        return returnItem;
+    }
+
+    @Override
+    public int delete(Item item) throws DataAccessException {
+        String delete = "DELETE FROM teacher WHERE id = ?";
+        String lectures = "DELETE FROM lecture WHERE teacher_id = ?";
+
+        try (PreparedStatement statement2 = prepare(lectures);PreparedStatement statement = prepare(delete)) {
+            statement2.setInt(1, item.getId());
+            statement2.execute();
+            statement.setInt(1, item.getId());
+            statement.execute();
+        } catch (Exception e) {
+            throw new DataAccessException("could not delete teacher", e);
+        }
+        return 0;
     }
 }

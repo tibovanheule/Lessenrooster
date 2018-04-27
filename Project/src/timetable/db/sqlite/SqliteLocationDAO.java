@@ -16,7 +16,7 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     @Override
-    public Iterable<Item> getLocation() throws DataAccessException {
+    public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
         try (Statement statement = create(); ResultSet resultSet = statement.executeQuery("select id,name from location")) {
             while (resultSet.next()) {
@@ -47,5 +47,21 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
         }
         return items;
 
+    }
+
+    @Override
+    public int delete(Item item) throws DataAccessException {
+        String delete = "DELETE FROM location WHERE id = ?";
+        String lectures = "DELETE FROM lecture WHERE location_id= ?";
+
+        try (PreparedStatement statement2 = prepare(lectures);PreparedStatement statement = prepare(delete)) {
+            statement2.setInt(1, item.getId());
+            statement2.execute();
+            statement.setInt(1, item.getId());
+            statement.execute();
+        } catch (Exception e) {
+            throw new DataAccessException("could not delete student", e);
+        }
+        return 0;
     }
 }

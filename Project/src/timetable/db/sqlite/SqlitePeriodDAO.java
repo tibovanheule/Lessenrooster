@@ -72,4 +72,6 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
         }
         return period;
     }
+
+
 }

@@ -9,7 +9,7 @@
 <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@create.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane layoutX="-7.0" prefHeight="100.0" prefWidth="459.0" styleClass="blue">
       <children>
-         <Label layoutX="50.0" layoutY="41.0" styleClass="blue" text="Create " />
+         <Label layoutX="50.0" layoutY="41.0" text="Create " />
       </children></AnchorPane>
     <Button contentDisplay="CENTER" ellipsisString="" layoutX="200.0" layoutY="411.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
     <Button fx:id="student" layoutX="47.0" layoutY="266.0" mnemonicParsing="false" text="Student" userData="student" />

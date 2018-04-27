@@ -47,7 +47,6 @@ public class CreateController {
 
     // TODO: 27/04/2018 3 FXML files into 1 ????
 
-    // TODO: 27/04/2018 Fix error 
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
         this.stage = stage;
@@ -59,7 +58,6 @@ public class CreateController {
         student.setOnAction(o -> page(student.getUserData() + ""));
         loc.setOnAction(o -> page(loc.getUserData() + ""));
         teacher.setOnAction(o -> page(teacher.getUserData() + ""));
-        lecture.setOnAction(o -> page(lecture.getUserData() + ""));
     }
 
     private void page(String ui) {

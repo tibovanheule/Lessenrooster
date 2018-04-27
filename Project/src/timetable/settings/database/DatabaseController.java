@@ -184,6 +184,9 @@ public class DatabaseController {
         properties.setProperty("DB.use", "false");
         mainController.setDbName(file.getName());
         url = "jdbc:sqlite:" + file.getPath();
+        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+        Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
+        mainController.getDbLogo().setImage(image);
         this.close();
     }
 

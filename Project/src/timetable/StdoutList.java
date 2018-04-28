@@ -14,6 +14,8 @@ import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Properties;
 
+/**
+ * Class to output students,teachers or locations onto the standaard output*/
 class StdoutList {
     StdoutList(String sort) {
         DataAccessProvider dataAccessProvider;

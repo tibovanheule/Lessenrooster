@@ -1,4 +1,4 @@
-//Tibo vanheule
+/*Tibo vanheule*/
 package timetable;
 
 import javafx.animation.FadeTransition;
@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -32,6 +33,11 @@ import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Main companion class
+ * To close the windows, open a stage, time ...
+ * @author Tibo Vanheule
+ */
 public class Controller {
 
     public MainModel model;
@@ -45,19 +51,22 @@ public class Controller {
     private AnchorPane draw;
     private Stage stage;
 
+    /**
+     * Change the label text in the window, so user know wich database there are using.*/
     public void setDbName(String dbFile) {
         dbName.setText(dbFile);
     }
 
-    public Label getDay() {
+
+    Label getDay() {
         return day;
     }
 
-    public Label getDate() {
+    Label getDate() {
         return date;
     }
 
-    public Label getTime() {
+    Label getTime() {
         return time;
     }
 
@@ -125,17 +134,13 @@ public class Controller {
 
         Platform.runLater(this::getWeather);
 
-        //wanneer men op een andere lijst (de dagen) klikt de slectie wissen in de huidige lijst
-        //in alle lijsten is er steeds maar 1 selectie (bugs vermijden)
-        //day.focusedProperty().addListener(o -> day.getSelectionModel().clearSelection());
-        //listeners opzetten
-
-
-        /*day.getSelectionModel().selectedItemProperty().addListener(o -> lecture(day.getSelectionModel().getSelectedItem()));
-         */
+        time.setWrapText(true);
+        time.setTextAlignment(TextAlignment.JUSTIFY);
 
     }
 
+    /**
+     * Change the label text in the window, so user know wich database there are using.*/
     private void getWeather() {
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
@@ -145,21 +150,20 @@ public class Controller {
                 Image image = new Image(getClass().getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
                 weatherIcon.setImage(image);
             } catch (Exception e) {
-                e.printStackTrace();
-                //omdat de fout meestal komt door een verkeerd getypt icon in de resources
-                // is het handig de icon name te printen ;)
-                System.out.println(weather.getIcon());
+                /*e.printStackTrace();*/
             }
         }
     }
 
-    /*wanneer er op het kruisje wordt gedrukt programma afsluiten en jvm afsluiten met foutcode (0 in dit geval)*/
+    /**
+     * Close program with error code 0*/
     public void exit() {
         Platform.exit();
         System.exit(0);
     }
 
-    /*functie om het weerbericht op te roepen*/
+    /**
+     * Stage to show extra weather info*/
     public void weather() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
@@ -176,6 +180,8 @@ public class Controller {
         }
     }
 
+    /**
+     * Create a new stage, Stage to create a student or teacher or location.*/
     public void create() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
@@ -193,7 +199,8 @@ public class Controller {
         }
     }
 
-    /*functie om de settings scherm op te roepen*/
+    /**
+     * Create a new stage and view the settings window*/
     public void settings() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/settings.fxml"));
@@ -210,7 +217,8 @@ public class Controller {
         }
     }
 
-    /*functie om de maximaliseer button te laten werken (maximaliseer als het klein is en omgekeerd)*/
+    /**
+     * Maximize or minimize the window*/
     public void maximize() {
         if (stage.isMaximized()) {
             stage.setMaximized(false);
@@ -219,9 +227,8 @@ public class Controller {
         }
     }
 
-    /*functie voor de drawer te laten verschijnen of verdwijnen. werkt met een fade en translate transition die
-     * tegelijker tijd wordt afgespeeld door de parallel transition.
-     */
+    /**
+     * Method to show or to hide the right menu drawer*/
     public void drawerAction() {
         FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
         ft.setCycleCount(1);

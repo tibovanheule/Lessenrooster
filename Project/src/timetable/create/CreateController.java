@@ -1,8 +1,6 @@
 //Tibo Vanheule
 package timetable.create;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -41,12 +39,14 @@ public class CreateController {
     private Boolean canClose = true;
     private String ui;
     private MainModel model;
-    /**Create controller or Create companion
+
+    /**
+     * Create controller or Create companion
      * This class dynamically loads Fxml files when when of the buttons is clicked (Student button, Teacher button and Loaction Button).
-     * these files contain a tablevieuw*/
+     * these files contain a tablevieuw
+     */
 
     // TODO: 27/04/2018 3 FXML files into 1 ????
-
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
         this.stage = stage;
@@ -180,14 +180,10 @@ public class CreateController {
 
         private ButtonCell() {
             cellButton.setText("Delete");
-            cellButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent t) {
-                    int selectdIndex = getTableRow().getIndex();
-                    //Create a new table show details of the selected item
-                    Item selectedRecord = table.getItems().get(selectdIndex);
-                    delete(selectedRecord);
-                }
+            cellButton.setOnAction((event) -> {
+                int selectdIndex = getTableRow().getIndex();
+                Item selectedRecord = table.getItems().get(selectdIndex);
+                delete(selectedRecord);
             });
         }
 

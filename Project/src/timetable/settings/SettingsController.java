@@ -24,6 +24,15 @@ public class SettingsController {
     @FXML
     private ComboBox<String> defaultStartup, weatherCity;
     private Stage stage;
+
+    public Boolean getCanClose() {
+        return canClose;
+    }
+
+    public void setCanClose(Boolean canClose) {
+        this.canClose = canClose;
+    }
+
     private Boolean canClose = true;
     private Properties properties = new Properties();
     private Controller mainController;

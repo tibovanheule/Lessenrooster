@@ -1,7 +1,5 @@
 package timetable.settings.database;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -18,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import timetable.Controller;
 import timetable.Main;
+import timetable.StdError;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.sqlite.SqliteDataAccessProvider;
@@ -31,7 +30,6 @@ public class DatabaseController {
     private Controller mainController;
     private Properties properties;
     private Stage stage;
-    private boolean dbChange;
     private SettingsController settingsController;
     @FXML
     private CheckBox mysql;
@@ -48,8 +46,8 @@ public class DatabaseController {
     private TableColumn<Period, Boolean> delete;
 
     public void initialize() {
-        drag.setOnDragOver(this::dragOver);
-        drag.setOnDragDropped(this::dragDropped);
+        mysql.setDisable(true);
+        mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
 
     }
 
@@ -59,15 +57,69 @@ public class DatabaseController {
         this.mainController = controller;
         this.settingsController = settingsController;
         this.properties = properties;
-        mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));
-        mysql.setDisable(true);
-        mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
+        drag.setOnDragOver(this::dragOver);
+        drag.setOnDragDropped(this::dragDropped);
+        /*
+        mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
+        /*deze zijn puur zodat intellij niet zou klagen  */
+        table = null;
+        hour = null;
+        minute = null;
+        delete = null;
     }
 
     public void mysql() {
-
         properties.setProperty("DB.use", String.valueOf(mysql.isSelected()));
-        dbChange = true;
+        if (mysql.isSelected()) {
+            //nieuwe data provider
+            /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
+            //aanduiding aanpassen
+            Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
+            mainController.getDbLogo().setImage(image);
+            mainController.setDbName("Online");
+        } else {
+            //anders is het sqlite
+            mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
+            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
+            mainController.getDbLogo().setImage(image);
+            mainController.setDbName("Lessenrooster(offline)");
+        }
+    }
+
+    public void period() {
+        try {
+            FXMLLoader loader = new FXMLLoader(DatabaseController.class.getResource("periods.fxml"));
+            loader.setController(this);
+            AnchorPane pane = loader.load();
+            rootPane.getChildren().addAll(pane);
+
+            delete.setCellFactory(column -> {
+                ButtonCell cell = new ButtonCell();
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            });
+            hour.setCellValueFactory(new PropertyValueFactory<>("hour"));
+            hour.setCellFactory(column -> {
+                TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            });
+            hour.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute()));
+            minute.setCellValueFactory(new PropertyValueFactory<>("minute"));
+            minute.setCellFactory(column -> {
+                TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            });
+            minute.setOnEditCommit(event -> update(event.getRowValue(), event.getRowValue().getHour(), event.getNewValue()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+            table.getItems().addAll(dac.getPeriodDAO().getPeriods());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private void dragOver(DragEvent event) {
@@ -85,83 +137,31 @@ public class DatabaseController {
         fileChooser.setSelectedExtensionFilter(ext);
         File file = fileChooser.showSaveDialog(stage);
 
-        InputStream stream = null;
-        OutputStream resStreamOut = null;
-        String folder;
-        try {
-            stream = Main.class.getResourceAsStream("empty.db");
-            if (stream == null) {
-                throw new Exception("Couldn't create new db.");
-            }
+        try (InputStream stream = Main.class.getResourceAsStream("empty.db");
+             OutputStream resStreamOut = new FileOutputStream(file.getPath())) {
             int readBytes;
             byte[] buffer = new byte[4096];
-            folder = file.toURI().getPath();
-            resStreamOut = new FileOutputStream(folder);
             while ((readBytes = stream.read(buffer)) > 0) {
                 resStreamOut.write(buffer, 0, readBytes);
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                if (stream != null) {
-                    stream.close();
-                }
-                if (resStreamOut != null) {
-                    resStreamOut.close();
-                    dbChange = true;
-                    mysql.setSelected(false);
-                    /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
-                     * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-                    properties.setProperty("DB.use", "false");
-                    url = "jdbc:sqlite:" + file.getPath();
-                    mainController.setDbName(file.getName());
-                    mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-                    Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-                    mainController.getDbLogo().setImage(image);
-                    /*Dynamisch inladen van de periods */
-                    try {
-                        FXMLLoader loader = new FXMLLoader(DatabaseController.class.getResource("periods.fxml"));
-                        loader.setController(this);
-                        AnchorPane pane = loader.load();
-                        rootPane.getChildren().addAll(pane);
-
-                        delete.setCellFactory(column -> {
-                            ButtonCell cell = new ButtonCell();
-                            cell.setAlignment(Pos.CENTER);
-                            return cell;
-                        });
-                        hour.setCellValueFactory(new PropertyValueFactory<>("hour"));
-                        hour.setCellFactory(column -> {
-                            TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
-                            cell.setAlignment(Pos.CENTER);
-                            return cell;
-                        });
-                        hour.setOnEditCommit(event -> updatehour(event.getRowValue(), event.getNewValue()));
-                        minute.setCellValueFactory(new PropertyValueFactory<>("minute"));
-                        minute.setCellFactory(column -> {
-                            TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
-                            cell.setAlignment(Pos.CENTER);
-                            return cell;
-                        });
-                        minute.setOnEditCommit(event -> updatemin(event.getRowValue(), event.getNewValue()));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-                        table.getItems().addAll(dac.getPeriodDAO().getPeriods());
-                    } catch (DataAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            mysql.setSelected(false);
+            /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
+             * garantie is dat het programma altijd op dezelfde pc gaat draaien */
+            properties.setProperty("DB.use", "false");
+            url = "jdbc:sqlite:" + file.getPath();
+            mainController.setDbName(file.getName());
+            mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
+            mainController.getDbLogo().setImage(image);
+            period();
+        } catch (IOException ex) {
+            new StdError(ex.getMessage());
+        } catch (NullPointerException e) {
+            new StdError("Couldn't create new database.");
         }
     }
 
     private void dragDropped(DragEvent event) {
-        dbChange = true;
         mysql.setSelected(false);
         /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
          * garantie is dat het programma altijd op dezelfde pc gaat draaien */
@@ -169,7 +169,10 @@ public class DatabaseController {
         File file = event.getDragboard().getFiles().get(0);
         mainController.setDbName(file.getName());
         url = "jdbc:sqlite:" + file.getPath();
-        this.close();
+        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+        Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
+        mainController.getDbLogo().setImage(image);
+        close();
     }
 
     public void chooseDB() {
@@ -179,7 +182,6 @@ public class DatabaseController {
         fileChooser.getExtensionFilters().add(ext);
         fileChooser.setSelectedExtensionFilter(ext);
         File file = fileChooser.showOpenDialog(stage);
-        dbChange = true;
         mysql.setSelected(false);
         properties.setProperty("DB.use", "false");
         mainController.setDbName(file.getName());
@@ -187,38 +189,20 @@ public class DatabaseController {
         mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
         Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
         mainController.getDbLogo().setImage(image);
-        this.close();
+        close();
     }
 
     public void close() {
-        //als de settings i.v.m de DB gewijzigd is, laat die metteen ook aan passen in de mainController
-        //zodat een een herstart van programma niet nodig is.
-        if (dbChange) {
-            if (mysql.isSelected()) {
-                //nieuwe data provider
-                /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
-                //aanduiding aanpassen
-                Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
-                mainController.getDbLogo().setImage(image);
-                mainController.setDbName("Online");
-            } else if (url == null) {
-                //anders is het sqlite
-                mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
-                Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-                mainController.getDbLogo().setImage(image);
-                mainController.setDbName("Lessenrooster(offline)");
-            }
-            mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
-        }
+        mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         settingsController.setProperties(this.properties);
-        settingsController.show();
         stage.close();
+        settingsController.setCanClose(true);
+
     }
 
-    private void updatehour(Period period, Integer hour) {
+    private void update(Period period, Integer hour, Integer minute) {
         period.setHour(hour);
-        System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
-
+        period.setMinute(minute);
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             dac.getPeriodDAO().updatePeriods(period);
         } catch (DataAccessException e) {
@@ -226,18 +210,7 @@ public class DatabaseController {
         }
     }
 
-    private void updatemin(Period period, Integer min) {
-        period.setMinute(min);
-        System.out.println("id: " + period.getId() + " hour: " + period.getHour() + " minute: " + period.getMinute());
-
-        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-            dac.getPeriodDAO().updatePeriods(period);
-        } catch (DataAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void period() {
+    public void createPeriod() {
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             table.getItems().add(dac.getPeriodDAO().createPeriod());
         } catch (DataAccessException e) {
@@ -259,14 +232,10 @@ public class DatabaseController {
 
         private ButtonCell() {
             cellButton.setText("Delete");
-            cellButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent t) {
-                    int selectdIndex = getTableRow().getIndex();
-                    //Create a new table show details of the selected item
-                    Period selectedRecord = table.getItems().get(selectdIndex);
-                    delete(selectedRecord);
-                }
+            cellButton.setOnAction((event) -> {
+                int selectdIndex = getTableRow().getIndex();
+                Period selectedRecord = table.getItems().get(selectdIndex);
+                delete(selectedRecord);
             });
         }
 
@@ -282,6 +251,7 @@ public class DatabaseController {
                 setGraphic(cellButton);
             }
         }
+
     }
 
 }

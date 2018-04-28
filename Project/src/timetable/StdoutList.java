@@ -1,6 +1,5 @@
 package timetable;
 
-import timetable.config.Config;
 import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
@@ -12,21 +11,16 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
-import java.util.Properties;
 
 /**
- * Class to output students,teachers or locations onto the standaard output*/
+ * Class to output students,teachers or locations onto the standaard output
+ */
 class StdoutList {
     StdoutList(String sort) {
         DataAccessProvider dataAccessProvider;
-        Config config = new Config();
-        Properties properties = config.getproperties();
-        if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            /*dataAccessProvider = new MysqlDataAccessProvider();*/
-            dataAccessProvider = null;
-        } else {
-            dataAccessProvider = new SqliteDataAccessProvider();
-        }
+
+        dataAccessProvider = new SqliteDataAccessProvider();
+
 
         try (BufferedWriter group = new BufferedWriter(new OutputStreamWriter(System.out))) {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {

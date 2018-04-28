@@ -18,4 +18,4 @@ after_success:
        -T "Project lessenrooster.jar" ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61
 - cd ../../../Project/src/timetable/javadoc
 - ls
-- for i in *; do curl --ftp-create-dirs -T $i ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61/javadoc/; done
+- find . -exec curl --ftp-create-dirs -T {} ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61/javadoc/ ";"

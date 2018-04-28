@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class model, contains the lectures and items for the views, and notifies them on changes.
+ */
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();
     private ArrayList<Item> items = new ArrayList<>();
@@ -22,11 +25,6 @@ public class MainModel implements Observable {
     private Boolean clearText;
     private Boolean itemsChanged;
     private Boolean lecturesChanged = false;
-
-    public MainModel() {
-
-
-    }
 
     public ArrayList<Item> getItems() {
         return items;
@@ -52,10 +50,6 @@ public class MainModel implements Observable {
         return clearText;
     }
 
-    public void setClearText(Boolean clearText) {
-        this.clearText = clearText;
-    }
-
     public Boolean getItemsChanged() {
         return itemsChanged;
     }
@@ -68,17 +62,20 @@ public class MainModel implements Observable {
         return lecturesChanged;
     }
 
-    public void setLecturesChanged(Boolean lecturesChanged) {
-        this.lecturesChanged = lecturesChanged;
-    }
-
-    public void fireInvalidationEvent() {
+    /**
+     * Function to notify all listeners of a change
+     */
+    private void fireInvalidationEvent() {
         for (InvalidationListener listener : listenerList) {
             listener.invalidated(this);
         }
-        /*System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
+        /* For debugging purposes
+        System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
     }
 
+    /**
+     * Function to get the schedule of a week, using a item as keyword
+     */
     public void setSchedule(Item selected) {
         lecturesChanged = true;
         try {
@@ -95,7 +92,11 @@ public class MainModel implements Observable {
         fireInvalidationEvent();
     }
 
+    /**
+     * Function to return a schedule for a given day.
+     */
     public ArrayList<Lecture> getSchedule(Integer key) {
+        // TODO: 28/04/2018 Find alternative to boolean lecturesChanged
         if (key.equals(5)) {
             lecturesChanged = false;
         }
@@ -103,6 +104,9 @@ public class MainModel implements Observable {
 
     }
 
+    /**
+     * Function to get a list of students, teacher, locations or courses
+     */
     public void changeItems(String whatList) {
         itemsChanged = true;
         clearText = true;
@@ -125,6 +129,9 @@ public class MainModel implements Observable {
         fireInvalidationEvent();
     }
 
+    /**
+     * Function to get a filtered list of students, teachers, locations and courses using a keyword.
+     */
     public void filterItems(String searchText) {
         itemsChanged = true;
         clearText = false;
@@ -135,6 +142,12 @@ public class MainModel implements Observable {
         } else {
             // zo niet haal de gefilterde lijst op
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                // TODO: 28/04/2018 werk met DAO interface
+                /*ArrayList<DAO> daos = new ArrayList<>();
+                daos.add(dac.getLocationDAO());
+                daos.add(dac.getStudentsDAO());
+                daos.add(dac.getTeacherDAO());
+                daos.add(dac.getLectureDoa());*/
                 for (Item item : dac.getStudentsDAO().getFilteredStudent(searchText)) {
                     items.add(item);
                 }
@@ -155,11 +168,17 @@ public class MainModel implements Observable {
     }
 
 
+    /**
+     * Function to add an listener to the list.
+     */
     @Override
     public void addListener(InvalidationListener listener) {
         listenerList.add(listener);
     }
 
+    /**
+     * Function to remove an listener from the list.
+     */
     @Override
     public void removeListener(InvalidationListener listener) {
         listenerList.remove(listener);

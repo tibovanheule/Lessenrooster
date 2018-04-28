@@ -16,11 +16,12 @@ import java.util.HashMap;
  * Class to output students,teachers or locations onto the standaard output
  */
 class StdoutList {
+    /**
+     * function to output students,teachers or locations onto the standaard output
+     */
     StdoutList(String sort) {
         DataAccessProvider dataAccessProvider;
-
         dataAccessProvider = new SqliteDataAccessProvider();
-
 
         try (BufferedWriter group = new BufferedWriter(new OutputStreamWriter(System.out))) {
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
@@ -35,28 +36,14 @@ class StdoutList {
                 }
             } catch (DataAccessException e) {
                 /*e.printStackTrace();*/
-                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                    error.write("Couldn't read the database.\n");
-                    error.flush();
-                } catch (IOException error) {
-                    error.printStackTrace();
-                }
+                new StdError("Couldn't read the database.\n");
             } catch (NullPointerException e) {
-                try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                    error.write("Check your arguments\n");
-                    error.flush();
-                } catch (IOException error) {
-                    error.printStackTrace();
-                }
+                new StdError("Check your arguments\n");
             }
         } catch (IOException e) {
             /*e.printStackTrace();*/
-            try (BufferedWriter error = new BufferedWriter(new OutputStreamWriter(System.err))) {
-                error.write("Error while trying to write down the result! :o \n");
-                error.flush();
-            } catch (IOException error) {
-                error.printStackTrace();
-            }
+            new StdError("Error while trying to output the result! \n");
+
         }
     }
 }

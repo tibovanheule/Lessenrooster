@@ -10,121 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/allclasses-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/allclasses-noframe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/overview-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/package-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/Controller.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/Main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/MainModel.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/StdError.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/StdoutList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/about/AboutController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/about/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/about/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/about/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/config/Config.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/config/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/config/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/config/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/create/CreateController.ButtonCell.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/create/CreateController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/create/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/create/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/create/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/DAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/DataAccessContext.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/DataAccessException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/DataAccessProvider.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/DbConnect.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/LectureDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/LocationDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/PeriodDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/StudentsDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/TeacherDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteAbstractDOA.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteDataAccessContext.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteDataAccessProvider.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteLectureDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteLocationDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqlitePeriodDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteStudentsDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/SqliteTeacherDAO.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/db/sqlite/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/LectureController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/editLecture/EditLecture.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/editLecture/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/editLecture/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/editLecture/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/lecture/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/Item.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/Lecture.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/Period.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/Weather.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/objects/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/SettingsController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/database/DatabaseController.ButtonCell.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/database/DatabaseController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/database/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/database/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/database/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/settings/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/AboutButton.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/ItemsListView.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/LectureListView.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/SearchTextBox.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/SortButtons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/views/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/weather/WeatherController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/weather/WeatherScraper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/weather/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/weather/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timetable/javadoc/timetable/weather/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/StdError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/StdError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/StdoutList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/StdoutList.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -219,11 +108,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainModel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="117" column="54" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
+            <state relative-caret-position="493">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -231,17 +120,17 @@
       <file leaf-file-name="StdError.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StdoutList.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StdoutList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="204">
+              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -307,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/ButtonCell.java" />
-        <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/database/view/PeriodTable.java" />
         <option value="$PROJECT_DIR$/src/timetable/settings/database/database.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/db/DataAccessContext.java" />
@@ -317,7 +205,6 @@
         <option value="$PROJECT_DIR$/src/timetable/db/PeriodDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/LocationDAO.java" />
         <option value="$PROJECT_DIR$/src/timetable/db/LectureDAO.java" />
-        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
         <option value="$PROJECT_DIR$/src/timetable/create/student.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/create/teacher.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/create/location.fxml" />
@@ -343,6 +230,8 @@
         <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
         <option value="$PROJECT_DIR$/src/timetable/Main.java" />
         <option value="$PROJECT_DIR$/src/timetable/StdoutList.java" />
+        <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
+        <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
       </list>
     </option>
   </component>
@@ -356,7 +245,7 @@
     <packageJsonPaths />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="width" value="978" />
     <option name="height" value="1039" />
@@ -602,12 +491,12 @@
       <workItem from="1524557963992" duration="2623000" />
       <workItem from="1524562061301" duration="9513000" />
       <workItem from="1524605856552" duration="37447000" />
-      <workItem from="1524788034433" duration="28593000" />
+      <workItem from="1524788034433" duration="30270000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="572445000" />
+    <option name="totallyTimeSpent" value="574122000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -620,6 +509,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
@@ -1072,24 +962,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
+    <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="117" column="54" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
+        <state relative-caret-position="204">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/StdoutList.java">
+    <entry file="file://$PROJECT_DIR$/src/timetable/MainModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="493">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
         </state>
       </provider>
     </entry>

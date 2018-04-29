@@ -10,7 +10,10 @@ import timetable.Main;
 import timetable.objects.Weather;
 
 /**
-* Companion to display the weather data in a stage */
+ * Companion to display the weather data in a stage
+ *
+ * @author Tibo Vanheule
+ */
 public class WeatherController {
     @FXML
     private Label temp, humid, condition, windSpeed;
@@ -28,7 +31,8 @@ public class WeatherController {
     }
 
     /**
-     * initialize stage, set all Labels with the weather datat*/
+     * initialize stage, set all Labels with the weather datat
+     */
     public void initialize() {
 
         Weather weather = new WeatherScraper().getWeather();

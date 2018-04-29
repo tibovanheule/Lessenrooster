@@ -13,6 +13,8 @@ import java.util.Properties;
 
 /**
  * Class to get weather data of a city (specified in the settings)
+ *
+ * @author Tibo Vanheule
  */
 public class WeatherScraper {
     private Weather weather = null;

@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 
 /**
  * Class to output an custom error message to the standard error
+ *
+ * @author Tibo Vanheule
  */
 public class StdError {
     /**

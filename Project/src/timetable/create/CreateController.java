@@ -25,6 +25,8 @@ import java.util.Optional;
  * Create controller or Create companion
  * This class dynamically loads Fxml files when when of the buttons is clicked (Student button, Teacher button and Loaction Button).
  * these files contain a table view
+ *
+ * @author Tibo Vanheule
  */
 public class CreateController {
     private Stage stage;
@@ -46,6 +48,9 @@ public class CreateController {
     private MainModel model;
 
 
+    /**
+     * Setup of stage maincontrooler and model fields. So it can be used in the whole class
+     */
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
         this.stage = stage;
@@ -53,15 +58,19 @@ public class CreateController {
         this.model = mainController.getModel();
     }
 
+    /**
+     * intialization, setup of the buttons
+     */
     public void initialize() {
-        student.setOnAction(o -> page(student.getUserData() + ""));
-        loc.setOnAction(o -> page(loc.getUserData() + ""));
-        teacher.setOnAction(o -> page(teacher.getUserData() + ""));
+        // TODO: 29/04/2018 Beste manier om iets naar string te converten?
+        student.setOnAction(o -> page(student.getUserData().toString()));
+        loc.setOnAction(o -> page(loc.getUserData().toString()));
+        teacher.setOnAction(o -> page(teacher.getUserData().toString()));
     }
 
     /**
      * Function that loaads correct Fxml and sets up the table and fill the table
-     * */
+     */
     private void page(String ui) {
         /*dynamisch laden van fxml*/
         try {
@@ -81,7 +90,7 @@ public class CreateController {
             name.setEditable(true);
             delete.setEditable(false);
             delete.setCellFactory(column -> {
-                ButtonCellItem cell = new ButtonCellItem(table,this);
+                ButtonCellItem cell = new ButtonCellItem(table, this);
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
@@ -106,7 +115,7 @@ public class CreateController {
 
     /**
      * Function to create a new student, teacher or location. and adds it to the table
-     * */
+     */
     public void create() {
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
             HashMap<String, DAO> daos = new HashMap<>();
@@ -122,7 +131,7 @@ public class CreateController {
 
     /**
      * Go back to the menu, let user choose between a teacher, location and a student.
-     * */
+     */
     public void menu() {
         try {
             FXMLLoader loader = new FXMLLoader(CreateController.class.getResource("create.fxml"));
@@ -135,7 +144,8 @@ public class CreateController {
     }
 
     /**
-     * close stage, if no alert is open.*/
+     * close stage, if no alert is open.
+     */
     public void close() {
         if (canClose) {
             stage.close();
@@ -143,7 +153,8 @@ public class CreateController {
     }
 
     /**
-     * Display an alert, then if user pressed ok, delete the selected teacher, location or student*/
+     * Display an alert, then if user pressed ok, delete the selected teacher, location or student
+     */
     public void delete(Item item) {
         /*don't close windows when alert is displayed (alert causes to shift the focus wich closes the stage)*/
         canClose = false;
@@ -173,7 +184,7 @@ public class CreateController {
 
     /**
      * Function update a name of a location student or teacher when a editCommit happens.
-     * */
+     */
     private void updateName(Item item, String name) {
         item.setName(name);
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {

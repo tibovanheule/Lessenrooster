@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 /**
  * Class to output students,teachers or locations onto the standaard output
+ *
+ * @author Tibo Vanheule
  */
 class StdoutList {
     /**

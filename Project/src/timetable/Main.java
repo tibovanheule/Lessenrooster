@@ -26,6 +26,8 @@ import java.util.Properties;
 
 /**
  * Main application, checks agruments
+ *
+ * @author Tibo Vanheule
  */
 public class Main extends Application {
 

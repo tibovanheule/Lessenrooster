@@ -123,10 +123,10 @@ public class LectureController {
 
     }
 
-    public void delete(){
-        try(DataAccessContext dac = dataAccessProvider.getDataAccessContext();){
+    public void delete() {
+        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext();) {
             dac.getLectureDoa().delete(lecture);
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             e.printStackTrace();
         }
     }

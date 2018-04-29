@@ -15,6 +15,8 @@ import java.util.List;
 
 /**
  * Class model, contains the lectures and items for the views, and notifies them on changes.
+ *
+ * @author Tibo Vanheule
  */
 public class MainModel implements Observable {
     private List<InvalidationListener> listenerList = new ArrayList<>();

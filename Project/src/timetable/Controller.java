@@ -36,6 +36,7 @@ import java.util.TimerTask;
 /**
  * Main companion class
  * To close the windows, open a stage, time ...
+ *
  * @author Tibo Vanheule
  */
 public class Controller {
@@ -52,7 +53,8 @@ public class Controller {
     private Stage stage;
 
     /**
-     * Change the label text in the window, so user know wich database there are using.*/
+     * Change the label text in the window, so user know wich database there are using.
+     */
     public void setDbName(String dbFile) {
         dbName.setText(dbFile);
     }
@@ -140,8 +142,10 @@ public class Controller {
     }
 
     // TODO: 29/04/2018 Move buttons to views
+
     /**
-     * Change the label text in the window, so user know wich database there are using.*/
+     * Change the label text in the window, so user know wich database there are using.
+     */
     private void getWeather() {
         WeatherScraper weatherscraper = new WeatherScraper();
         Weather weather = weatherscraper.getWeather();
@@ -157,14 +161,16 @@ public class Controller {
     }
 
     /**
-     * Close program with error code 0*/
+     * Close program with error code 0
+     */
     public void exit() {
         Platform.exit();
         System.exit(0);
     }
 
     /**
-     * Stage to show extra weather info*/
+     * Stage to show extra weather info
+     */
     public void weather() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("weather/weather.fxml"));
@@ -182,7 +188,8 @@ public class Controller {
     }
 
     /**
-     * Create a new stage, Stage to create a student or teacher or location.*/
+     * Create a new stage, Stage to create a student or teacher or location.
+     */
     public void create() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
@@ -201,7 +208,8 @@ public class Controller {
     }
 
     /**
-     * Create a new stage and view the settings window*/
+     * Create a new stage and view the settings window
+     */
     public void settings() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("settings/settings.fxml"));
@@ -219,7 +227,8 @@ public class Controller {
     }
 
     /**
-     * Maximize or minimize the window*/
+     * Maximize or minimize the window
+     */
     public void maximize() {
         if (stage.isMaximized()) {
             stage.setMaximized(false);
@@ -229,7 +238,8 @@ public class Controller {
     }
 
     /**
-     * Method to show or to hide the right menu drawer*/
+     * Method to show or to hide the right menu drawer
+     */
     public void drawerAction() {
         FadeTransition ft = new FadeTransition(Duration.millis(300), draw);
         ft.setCycleCount(1);

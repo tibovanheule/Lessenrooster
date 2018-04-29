@@ -1,3 +1,4 @@
+/*Tibo Vanheule*/
 package timetable.views;
 
 import javafx.beans.InvalidationListener;
@@ -17,6 +18,8 @@ import timetable.MainModel;
 import timetable.lecture.LectureController;
 import timetable.objects.Lecture;
 
+/**
+ * @author Tibo Vanheule*/
 public class LectureListView extends ListView<Lecture> implements InvalidationListener, EventHandler<MouseEvent> {
     private MainModel model;
 
@@ -71,6 +74,9 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
         model.addListener(this);
     }
 
+    /**
+     * When invalidated, Clear all items in the listview and new ones
+     * invokes model.getSchedule*/
     @Override
     public void invalidated(Observable o) {
 
@@ -81,6 +87,8 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
 
     }
 
+    /**
+     * when clicked upon, open a new stage lecture. The stage displays information about the lecture.*/
     @Override
     public void handle(MouseEvent event) {
         /*functie om de aangeklikte les weer te geven */

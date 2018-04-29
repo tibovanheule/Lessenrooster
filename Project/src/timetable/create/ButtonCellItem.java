@@ -8,7 +8,7 @@ import timetable.objects.Item;
 class ButtonCellItem extends TableCell<Item, Boolean> {
     private final Button cellButton = new Button();
 
-    ButtonCellItem(TableView<Item> table,CreateController createController) {
+    ButtonCellItem(TableView<Item> table, CreateController createController) {
         cellButton.setText("Delete");
         cellButton.setOnAction((event) -> {
             int selectdIndex = getTableRow().getIndex();

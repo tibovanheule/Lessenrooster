@@ -1,3 +1,4 @@
+/*Tibo Vanheule*/
 package timetable.views;
 
 import javafx.beans.InvalidationListener;
@@ -11,7 +12,8 @@ import timetable.MainModel;
 import timetable.objects.Item;
 
 /**
- * Class extends Listview*/
+ * Class extends Listview
+ */
 public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
 
     private MainModel model;

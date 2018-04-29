@@ -94,7 +94,7 @@ public class DatabaseController {
             rootPane.getChildren().addAll(pane);
 
             delete.setCellFactory(column -> {
-                ButtonCell cell = new ButtonCell();
+                PeriodButtonCell cell = new PeriodButtonCell(table,this);
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
@@ -226,32 +226,4 @@ public class DatabaseController {
             e.printStackTrace();
         }
     }
-
-    class ButtonCell extends TableCell<Period, Boolean> {
-        private final Button cellButton = new Button();
-
-        private ButtonCell() {
-            cellButton.setText("Delete");
-            cellButton.setOnAction((event) -> {
-                int selectdIndex = getTableRow().getIndex();
-                Period selectedRecord = table.getItems().get(selectdIndex);
-                delete(selectedRecord);
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if (empty || t == null) {
-                setText(null);
-                setGraphic(null);
-                setOnMouseClicked(null);
-            }
-            if (!empty) {
-                setGraphic(cellButton);
-            }
-        }
-
-    }
-
 }

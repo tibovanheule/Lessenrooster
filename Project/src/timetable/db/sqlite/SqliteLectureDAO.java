@@ -122,6 +122,24 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     }
 
     @Override
+    public int delete(Lecture item) throws DataAccessException {
+        // TODO: 27/04/2018 uitbreiden
+        String delete = "DELETE FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                "JOIN location ON location_id=location.id JOIN period ON first_block=period.id" +
+                " WHERE course = ? AND day = ?";
+
+
+        try (PreparedStatement statement = prepare(delete)) {
+            statement.setString(1, item.getCourse());
+            statement.setInt(2, item.getDay());
+            statement.execute();
+        } catch (Exception e) {
+            throw new DataAccessException("could not delete student", e);
+        }
+        return 0;
+    }
+
+    @Override
     public Item create(String item) throws DataAccessException {
         // TODO: 27/04/2018 uitbreiden
         String insert = "INSERT INTO lecture (id,name,hour) VALUES (?,?,?)";
@@ -155,4 +173,5 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         }
         return 0;
     }
+
 }

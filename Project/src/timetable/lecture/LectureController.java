@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import timetable.Main;
+import timetable.db.DataAccessContext;
+import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
 import timetable.lecture.editLecture.EditLecture;
 import timetable.objects.Lecture;
@@ -119,5 +121,13 @@ public class LectureController {
             setLecture(conflicts.getSelectionModel().getSelectedItem());
         }
 
+    }
+
+    public void delete(){
+        try(DataAccessContext dac = dataAccessProvider.getDataAccessContext();){
+            dac.getLectureDoa().delete(lecture);
+        }catch (DataAccessException e){
+            e.printStackTrace();
+        }
     }
 }

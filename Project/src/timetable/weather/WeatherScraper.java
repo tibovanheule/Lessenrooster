@@ -11,6 +11,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 
+/**
+ * Class to get weather data of a city (specified in the settings)
+ */
 public class WeatherScraper {
     private Weather weather = null;
     /*
@@ -28,6 +31,9 @@ public class WeatherScraper {
      *   --City
      */
 
+    /**
+     * Function to get the weather data
+     */
     private ArrayList<String> getData() {
         ArrayList<String> strings = new ArrayList<>();
         try {
@@ -50,6 +56,10 @@ public class WeatherScraper {
         return strings;
     }
 
+
+    /**
+     * Function to make a Weather object
+     */
     public Weather getWeather() {
         try {
             ArrayList<String> jsonString = getData();
@@ -73,7 +83,7 @@ public class WeatherScraper {
             }
         } catch (Exception e) {
             weather = new Weather(false);
-            /*e.printStackTrace();*/
+            new StdError("couldn't parse json \n");
         }
         return weather;
     }

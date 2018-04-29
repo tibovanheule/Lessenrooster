@@ -139,6 +139,7 @@ public class Controller {
 
     }
 
+    // TODO: 29/04/2018 Move buttons to views
     /**
      * Change the label text in the window, so user know wich database there are using.*/
     private void getWeather() {

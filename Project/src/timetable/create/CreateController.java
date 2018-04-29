@@ -21,6 +21,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Optional;
 
+/**
+ * Create controller or Create companion
+ * This class dynamically loads Fxml files when when of the buttons is clicked (Student button, Teacher button and Loaction Button).
+ * these files contain a table view
+ */
 public class CreateController {
     private Stage stage;
     @FXML
@@ -40,13 +45,7 @@ public class CreateController {
     private String ui;
     private MainModel model;
 
-    /**
-     * Create controller or Create companion
-     * This class dynamically loads Fxml files when when of the buttons is clicked (Student button, Teacher button and Loaction Button).
-     * these files contain a tablevieuw
-     */
 
-    // TODO: 27/04/2018 3 FXML files into 1 ????
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
         //krijgen van de stage
         this.stage = stage;
@@ -60,6 +59,9 @@ public class CreateController {
         teacher.setOnAction(o -> page(teacher.getUserData() + ""));
     }
 
+    /**
+     * Function that loaads correct Fxml and sets up the table and fill the table
+     * */
     private void page(String ui) {
         /*dynamisch laden van fxml*/
         try {
@@ -68,7 +70,6 @@ public class CreateController {
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().setAll(pane);
-
 
             name.setCellValueFactory(new PropertyValueFactory<>("name"));
             name.setCellFactory(column -> {
@@ -80,7 +81,7 @@ public class CreateController {
             name.setEditable(true);
             delete.setEditable(false);
             delete.setCellFactory(column -> {
-                ButtonCell cell = new ButtonCell();
+                ButtonCellItem cell = new ButtonCellItem(table,this);
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
@@ -98,12 +99,14 @@ public class CreateController {
             } catch (DataAccessException e) {
                 e.printStackTrace();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Function to create a new student, teacher or location. and adds it to the table
+     * */
     public void create() {
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
             HashMap<String, DAO> daos = new HashMap<>();
@@ -117,6 +120,9 @@ public class CreateController {
         }
     }
 
+    /**
+     * Go back to the menu, let user choose between a teacher, location and a student.
+     * */
     public void menu() {
         try {
             FXMLLoader loader = new FXMLLoader(CreateController.class.getResource("create.fxml"));
@@ -128,22 +134,27 @@ public class CreateController {
         }
     }
 
+    /**
+     * close stage, if no alert is open.*/
     public void close() {
         if (canClose) {
             stage.close();
         }
     }
 
-    private void delete(Item item) {
+    /**
+     * Display an alert, then if user pressed ok, delete the selected teacher, location or student*/
+    public void delete(Item item) {
+        /*don't close windows when alert is displayed (alert causes to shift the focus wich closes the stage)*/
         canClose = false;
+        /*Alert*/
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Are you sure");
         alert.setContentText("If a student is used in a lecture,\nthen that lecture gets deleted too ");
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // ... user chose OK
+            // user chose OK, Delete
             try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
                 HashMap<String, DAO> daos = new HashMap<>();
                 daos.put("student", dac.getStudentsDAO());
@@ -160,6 +171,9 @@ public class CreateController {
         canClose = true;
     }
 
+    /**
+     * Function update a name of a location student or teacher when a editCommit happens.
+     * */
     private void updateName(Item item, String name) {
         item.setName(name);
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
@@ -172,32 +186,6 @@ public class CreateController {
             mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         } catch (DataAccessException e) {
             e.printStackTrace();
-        }
-    }
-
-    class ButtonCell extends TableCell<Item, Boolean> {
-        private final Button cellButton = new Button();
-
-        private ButtonCell() {
-            cellButton.setText("Delete");
-            cellButton.setOnAction((event) -> {
-                int selectdIndex = getTableRow().getIndex();
-                Item selectedRecord = table.getItems().get(selectdIndex);
-                delete(selectedRecord);
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if (empty || t == null) {
-                setText(null);
-                setGraphic(null);
-                setOnMouseClicked(null);
-            }
-            if (!empty) {
-                setGraphic(cellButton);
-            }
         }
     }
 }

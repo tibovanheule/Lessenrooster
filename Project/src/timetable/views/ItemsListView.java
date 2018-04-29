@@ -10,6 +10,8 @@ import javafx.util.Callback;
 import timetable.MainModel;
 import timetable.objects.Item;
 
+/**
+ * Class extends Listview*/
 public class ItemsListView extends ListView<Item> implements InvalidationListener, EventHandler<MouseEvent> {
 
     private MainModel model;

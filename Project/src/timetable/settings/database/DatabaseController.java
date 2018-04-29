@@ -3,7 +3,10 @@ package timetable.settings.database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -61,11 +64,6 @@ public class DatabaseController {
         drag.setOnDragDropped(this::dragDropped);
         /*
         mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
-        /*deze zijn puur zodat intellij niet zou klagen  */
-        table = null;
-        hour = null;
-        minute = null;
-        delete = null;
     }
 
     public void mysql() {
@@ -94,7 +92,7 @@ public class DatabaseController {
             rootPane.getChildren().addAll(pane);
 
             delete.setCellFactory(column -> {
-                PeriodButtonCell cell = new PeriodButtonCell(table,this);
+                PeriodButtonCell cell = new PeriodButtonCell(table, this);
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });

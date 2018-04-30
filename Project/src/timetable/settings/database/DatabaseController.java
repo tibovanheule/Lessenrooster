@@ -62,8 +62,7 @@ public class DatabaseController {
         this.properties = properties;
         drag.setOnDragOver(this::dragOver);
         drag.setOnDragDropped(this::dragDropped);
-        /*
-        mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
+        /*mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
     }
 
     public void mysql() {
@@ -142,15 +141,7 @@ public class DatabaseController {
             while ((readBytes = stream.read(buffer)) > 0) {
                 resStreamOut.write(buffer, 0, readBytes);
             }
-            mysql.setSelected(false);
-            /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
-             * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-            properties.setProperty("DB.use", "false");
-            url = "jdbc:sqlite:" + file.getPath();
-            mainController.setDbName(file.getName());
-            mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-            mainController.getDbLogo().setImage(image);
+            setDatabase(file);
             period();
         } catch (IOException ex) {
             new StdError(ex.getMessage());
@@ -160,16 +151,7 @@ public class DatabaseController {
     }
 
     private void dragDropped(DragEvent event) {
-        mysql.setSelected(false);
-        /*we gaan enkel de mysql uitzetten, we gaan geen absolute paden in onze config gaan zetten omdat er geen
-         * garantie is dat het programma altijd op dezelfde pc gaat draaien */
-        properties.setProperty("DB.use", "false");
-        File file = event.getDragboard().getFiles().get(0);
-        mainController.setDbName(file.getName());
-        url = "jdbc:sqlite:" + file.getPath();
-        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-        Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-        mainController.getDbLogo().setImage(image);
+        setDatabase(event.getDragboard().getFiles().get(0));
         close();
     }
 
@@ -179,15 +161,20 @@ public class DatabaseController {
         FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
         fileChooser.getExtensionFilters().add(ext);
         fileChooser.setSelectedExtensionFilter(ext);
-        File file = fileChooser.showOpenDialog(stage);
-        mysql.setSelected(false);
-        properties.setProperty("DB.use", "false");
-        mainController.setDbName(file.getName());
-        url = "jdbc:sqlite:" + file.getPath();
-        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-        Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-        mainController.getDbLogo().setImage(image);
+        setDatabase(fileChooser.showOpenDialog(stage));
         close();
+    }
+
+    private void setDatabase(File file) {
+        if (file != null) {
+            mysql.setSelected(false);
+            properties.setProperty("DB.use", "false");
+            mainController.setDbName(file.getName().replace(".db", ""));
+            url = "jdbc:sqlite:" + file.getPath();
+            mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
+            mainController.getDbLogo().setImage(image);
+        }
     }
 
     public void close() {

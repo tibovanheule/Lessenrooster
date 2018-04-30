@@ -24,12 +24,17 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             // TODO: 29/03/2018 queries
             String selection;
             if (item.getSort().equals("lecture")) {
-                selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                selection = "SELECT teacher_id, location_id, lecture.students_id, course, day, students.name AS student, teacher.name AS teacher, " +
+                        "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
+                        " JOIN teacher on teacher.id=teacher_id " +
                         "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE course = ? AND day = ? ORDER BY first_block";
 
             } else {
-                selection = "SELECT course, day, students.name AS student, teacher.name AS teacher, location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? AND day = ? ORDER BY first_block";
+                selection = "SELECT teacher_id, location_id, students_id, course, day, students.name AS student, teacher.name AS teacher," +
+                        " location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON " +
+                        "lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
+                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? " +
+                        "AND day = ? ORDER BY first_block";
                 //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
             }
             try (PreparedStatement statement = prepare(selection)) {
@@ -37,8 +42,11 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 statement.setInt(2, i);
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"), resultSet.getString("location"),
-                            resultSet.getString("course"), resultSet.getInt("day"), resultSet.getInt("first_block"), resultSet.getInt("duration"), resultSet.getInt("hour"), resultSet.getInt("minute"));
+                    Lecture lecture = new Lecture(resultSet.getString("student"), resultSet.getString("teacher"),
+                            resultSet.getString("location"), resultSet.getString("course"), resultSet.getInt("day"),
+                            resultSet.getInt("first_block"), resultSet.getInt("duration"),
+                            resultSet.getInt("hour"), resultSet.getInt("minute"), resultSet.getInt("students_id"),
+                            resultSet.getInt("teacher_id"), resultSet.getInt("location_id"));
 
                     lectures.add(lecture);
                 }
@@ -66,6 +74,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 days.put(i, lectures);
             } catch (Exception e) {
                 /*e.printStackTrace();*/
+                e.printStackTrace();
                 throw new DataAccessException("could't get lectures", e);
             }
         }
@@ -109,29 +118,23 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
     @Override
     public int delete(Item item) throws DataAccessException {
-        // TODO: 27/04/2018 uitbreiden
-        String delete = "DELETE FROM lecture WHERE students_id = ? and lectures_id = ? and hour";
-
-        try (PreparedStatement statement = prepare(delete)) {
-            statement.setInt(1, item.getId());
-            statement.execute();
-        } catch (Exception e) {
-            throw new DataAccessException("could not delete student", e);
-        }
+        /*to comply with DAO interface, never used*/
         return 0;
     }
 
     @Override
     public int delete(Lecture item) throws DataAccessException {
-        // TODO: 27/04/2018 uitbreiden
-        String delete = "DELETE FROM lecture JOIN students ON lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                "JOIN location ON location_id=location.id JOIN period ON first_block=period.id" +
-                " WHERE course = ? AND day = ?";
-
+        String delete = "DELETE FROM lecture WHERE course = ? AND day = ? AND students_id = ? AND teacher_id = ? AND" +
+                " first_block = ? AND location_id = ? AND duration = ?";
 
         try (PreparedStatement statement = prepare(delete)) {
             statement.setString(1, item.getCourse());
             statement.setInt(2, item.getDay());
+            statement.setInt(3, item.getStudentId());
+            statement.setInt(4, item.getTeacherId());
+            statement.setInt(5, item.getBlock());
+            statement.setInt(6, item.getLocationId());
+            statement.setInt(7, item.getDuration());
             statement.execute();
         } catch (Exception e) {
             throw new DataAccessException("could not delete student", e);
@@ -139,13 +142,24 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         return 0;
     }
 
+
     @Override
-    public Item create(String item) throws DataAccessException {
-        // TODO: 27/04/2018 uitbreiden
-        String insert = "INSERT INTO lecture (id,name,hour) VALUES (?,?,?)";
+    public Item create(String item) {
+        /*to comply with DAO interface, not used*/
+        return null;
+    }
+
+    public Item create(Lecture lecture) throws DataAccessException {
+        String insert = "INSERT INTO lecture (course,first_block,students_id,location_id,teacher_id,day,duration) VALUES (?,?,?,?,?,?,?)";
         Item returnItem = null;
         try (PreparedStatement statement = prepare(insert)) {
-            statement.setString(2, item);
+            statement.setString(1, lecture.getCourse());
+            statement.setInt(2, lecture.getBlock());
+            statement.setInt(3, lecture.getStudentId());
+            statement.setInt(4, lecture.getLocationId());
+            statement.setInt(5, lecture.getTeacherId());
+            statement.setInt(6,lecture.getDay());
+            statement.setInt(7, lecture.getDuration());
             statement.executeUpdate();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {

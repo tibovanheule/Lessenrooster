@@ -8,12 +8,29 @@ public class Lecture implements Comparator<Lecture> {
     private Integer day;
     private Integer block;
     private Integer duration;
-    private ArrayList<Lecture> conflicts = new ArrayList<>();
     private Integer hour;
     private Integer minute;
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public Integer getLocationId() {
+        return locationId;
+    }
+
+    private Integer studentId;
+    private Integer teacherId;
+    private Integer locationId;
+    private ArrayList<Lecture> conflicts = new ArrayList<>();
     private Boolean conflict;
 
-    public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration, Integer hour, Integer minute) {
+    public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration, Integer hour,
+                   Integer minute, Integer sutdentId, Integer teacherId, Integer locationId) {
         this.block = block;
         this.course = course;
         this.day = day;
@@ -25,6 +42,9 @@ public class Lecture implements Comparator<Lecture> {
         this.time = hour + ":" + minute;
         this.hour = hour;
         this.minute = minute;
+        this.studentId = sutdentId;
+        this.locationId = locationId;
+        this.teacherId = teacherId;
     }
 
     public ArrayList<Lecture> getConflicts() {

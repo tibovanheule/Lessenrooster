@@ -27,6 +27,7 @@ public class MainModel implements Observable {
     private Boolean clearText;
     private Boolean itemsChanged;
     private Boolean lecturesChanged = false;
+    private Item currentItem;
 
     public ArrayList<Item> getItems() {
         return items;
@@ -76,14 +77,23 @@ public class MainModel implements Observable {
     }
 
     /**
+     * Function to refresh the schedule after an edit or deletion of a lecture */
+    public void refresh(){
+        if(currentItem!=null){
+            setSchedule(currentItem);
+        }
+    }
+
+    /**
      * Function to get the schedule of a week, using a item as keyword
      */
     public void setSchedule(Item selected) {
+        currentItem = selected;
         lecturesChanged = true;
         try {
             if (selected != null) {
                 try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                    schedule = dac.getLectureDoa().getWeek(selected);
+                    schedule = dac.getLectureDoa().getWeek(currentItem);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

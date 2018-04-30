@@ -98,7 +98,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             LectureController controller = loader.getController();
             controller.setLecture(getSelectionModel().getSelectedItem());
             Stage stage = new Stage();
-            controller.setStageAndSetupListeners(stage, model.getDataAccessProvider());
+            controller.setStageAndSetupListeners(stage, model);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             stage.show();

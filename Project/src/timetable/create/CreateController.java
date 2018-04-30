@@ -64,12 +64,12 @@ public class CreateController {
     public void initialize() {
         // TODO: 29/04/2018 Beste manier om iets naar string te converten?
         student.setOnAction(o -> page(student.getUserData().toString()));
-        loc.setOnAction(o -> page(loc.getUserData().toString()));
-        teacher.setOnAction(o -> page(teacher.getUserData().toString()));
+        loc.setOnAction(o -> page((String) loc.getUserData()));
+        teacher.setOnAction(o -> page(teacher.getUserData() + ""));
     }
 
     /**
-     * Function that loaads correct Fxml and sets up the table and fill the table
+     * Function that loads correct Fxml and sets up the table and fill the table
      */
     private void page(String ui) {
         /*dynamisch laden van fxml*/

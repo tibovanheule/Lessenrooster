@@ -11,7 +11,9 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import timetable.Controller;
 import timetable.Main;
+import timetable.MainModel;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.DataAccessProvider;
@@ -28,7 +30,7 @@ public class LectureController {
     private Stage stage;
     private Lecture lecture;
     private Boolean canClose = true;
-    private DataAccessProvider dataAccessProvider;
+    private MainModel model;
 
     public void setCanClose(Boolean canClose) {
         this.canClose = canClose;
@@ -58,9 +60,9 @@ public class LectureController {
         }
     }
 
-    public void setStageAndSetupListeners(Stage stage, DataAccessProvider dataAccessProvider) {
+    public void setStageAndSetupListeners(Stage stage, MainModel model) {
         this.stage = stage;
-        this.dataAccessProvider = dataAccessProvider;
+        this.model = model;
     }
 
     public void edit() {
@@ -72,7 +74,7 @@ public class LectureController {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage, lecture, this, this.dataAccessProvider);
+            controller.setStageAndSetupListeners(stage, lecture, this, model.getDataAccessProvider());
             stage.show();
         } catch (Exception e) {
             canClose = true;
@@ -124,8 +126,10 @@ public class LectureController {
     }
 
     public void delete() {
-        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext();) {
+        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext();) {
             dac.getLectureDoa().delete(lecture);
+            model.refresh();
+            close();
         } catch (DataAccessException e) {
             e.printStackTrace();
         }

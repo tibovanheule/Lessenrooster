@@ -84,6 +84,7 @@ public class Main extends Application {
         controller.setStageAndSetupListeners(primaryStage);
 
 
+        /*Hashmap kan enkel lengte 0, 2 of 3 zijn*/
         // TODO: 28/04/2018 Wat is beter?
         HashMap<Integer, Runnable> args = new HashMap<>();
         args.put(0, primaryStage::show);

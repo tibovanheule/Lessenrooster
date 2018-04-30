@@ -19,10 +19,27 @@
       <change beforePath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/settings/database/DatabaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JAR/production/ProjectLessenrooster/timetable/settings/database/DatabaseController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule.out.properties" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.out.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/about/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/about/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/create/create.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/create/create.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/create/location.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/create/location.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/create/student.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/create/student.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/create/teacher.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/create/teacher.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/db/sqlite/SqliteLectureDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/LectureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/editLecture/editLecture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/editLecture/editLecture.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/lecture/lecture.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/objects/Lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/objects/Lecture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/resources/images/student.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/resources/images/student.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/settings/database/database.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/database/database.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/settings/database/periods.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/database/periods.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/settings/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/settings/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/views/LectureListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/views/SearchTextBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/views/SearchTextBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/weather/weather.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/weather/weather.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -121,7 +138,7 @@
         <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
-              <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+              <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
               <folding>
                 <element signature="e#3215#3677#0" expanded="true" />
                 <element signature="e#3676#3677#0" expanded="true" />
@@ -142,8 +159,8 @@
       <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
+            <state relative-caret-position="68">
+              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -258,7 +275,7 @@
     <packageJsonPaths />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="width" value="978" />
     <option name="height" value="1039" />
@@ -599,12 +616,12 @@
       <workItem from="1524557963992" duration="2623000" />
       <workItem from="1524562061301" duration="9513000" />
       <workItem from="1524605856552" duration="37447000" />
-      <workItem from="1524788034433" duration="49453000" />
+      <workItem from="1524788034433" duration="50211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="593305000" />
+    <option name="totallyTimeSpent" value="594063000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1096,7 +1113,7 @@
     <entry file="file://$PROJECT_DIR$/src/timetable/lecture/editLecture/EditLecture.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
-          <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+          <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
           <folding>
             <element signature="e#3215#3677#0" expanded="true" />
             <element signature="e#3676#3677#0" expanded="true" />
@@ -1113,8 +1130,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/settings/database/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
+        <state relative-caret-position="68">
+          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
         </state>
       </provider>
     </entry>

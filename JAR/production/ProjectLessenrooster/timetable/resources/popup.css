@@ -1,3 +1,4 @@
+/*Tibo Vanheule*/
 .blue {
     -fx-background-color: #4d59a1;
 }
@@ -6,13 +7,24 @@
     -fx-background-color: #efeeec;
 }
 
-.button {
+Button {
     -fx-background-color: #efeeec;
     -fx-border-width: 2px;
     -fx-border-color: #b3b0ac;
     -fx-border-style: solid;
     -fx-text-fill: #b3b0ac;
     -fx-font-family: "Lato Semibold";
+}
+
+Label {
+    -fx-font-family: Lato;
+}
+
+.blue Label{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Lato;
 }
 
 .check-box {
@@ -28,14 +40,4 @@
     -fx-border-style: solid;
     -fx-text-fill: #b3b0ac;
     -fx-font-family: "Lato Semibold";
-}
-
-Label {
-    -fx-font-family: Lato;
-    -fx-text-fill: #b3b0ac;
-}
-
-.title {
-    -fx-font-size: 24px;
-    -fx-text-fill: white;
 }

@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane2" prefHeight="450.0" prefWidth="450.0" styleClass="body"
-            stylesheets="@create.css" xmlns="http://javafx.com/javafx/9">
+            stylesheets="@../resources/popup.css" xmlns="http://javafx.com/javafx/9">
     <children>
         <AnchorPane prefHeight="100.0" prefWidth="450.0" styleClass="blue">
             <children>
-                <Label layoutX="36.0" layoutY="42.0" styleClass="blue" text="Create Student"/>
+                <Label layoutX="36.0" layoutY="42.0" styleClass="blue" text="Create Teacher"/>
             </children>
         </AnchorPane>
         <Button fx:id="create" layoutX="153.0" layoutY="388.0" mnemonicParsing="false" onAction="#create"

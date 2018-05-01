@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import timetable.settings.database.CustomTableColumn?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450" styleClass="body"
-            stylesheets="@database.css" xmlns="http://javafx.com/javafx/9">
+            stylesheets="@../resources/popup.css" xmlns="http://javafx.com/javafx/9">
 
     <AnchorPane prefHeight="100.0" prefWidth="450.0" styleClass="blue">
 

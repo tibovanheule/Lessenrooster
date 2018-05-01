@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="450.0" prefWidth="450.0" styleClass="body"
-            stylesheets="@create.css" xmlns="http://javafx.com/javafx/9">
+            stylesheets="@../resources/popup.css" xmlns="http://javafx.com/javafx/9">
     <AnchorPane layoutX="-7.0" prefHeight="100.0" prefWidth="459.0" styleClass="blue">
         <children>
             <Label layoutX="50.0" layoutY="41.0" text="Create "/>

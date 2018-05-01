@@ -1,12 +1,14 @@
 timetable
+timetable.Day
 timetable.about
+timetable.comboboxes
 timetable.config
 timetable.create
+timetable.createLecture
 timetable.db
 timetable.db.sqlite
 timetable.lecture
 timetable.lecture.editLecture
-timetable.lecture.editLecture.Comboboxes
 timetable.objects
 timetable.settings
 timetable.settings.database

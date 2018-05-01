@@ -22,7 +22,6 @@
         <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="268.0" spacing="10.0">
 
             <Label fx:id="dbName" styleClass="appName" text="Appname"/>
-            <ImageView fx:id="dbLogo" fitHeight="31.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true"/>
             <Button mnemonicParsing="false" onAction="#drawerAction" styleClass="drawerOpen"/>
 
             <padding>

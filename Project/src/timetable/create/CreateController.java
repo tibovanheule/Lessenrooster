@@ -62,10 +62,9 @@ public class CreateController {
      * intialization, setup of the buttons
      */
     public void initialize() {
-        // TODO: 29/04/2018 Beste manier om iets naar string te converten?
         student.setOnAction(o -> page(student.getUserData().toString()));
-        loc.setOnAction(o -> page((String) loc.getUserData()));
-        teacher.setOnAction(o -> page(teacher.getUserData() + ""));
+        loc.setOnAction(o -> page(loc.getUserData().toString()));
+        teacher.setOnAction(o -> page(teacher.getUserData().toString()));
     }
 
     /**
@@ -158,11 +157,10 @@ public class CreateController {
     public void delete(Item item) {
         /*don't close windows when alert is displayed (alert causes to shift the focus wich closes the stage)*/
         canClose = false;
-        /*Alert*/
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Are you sure");
-        alert.setContentText("If a student is used in a lecture,\nthen that lecture gets deleted too ");
+        alert.setContentText("If a "+ui+" is used in a lecture,\nthen that lecture gets deleted too ");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // user chose OK, Delete

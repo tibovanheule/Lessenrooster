@@ -3,12 +3,12 @@ package timetable.settings.database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -16,10 +16,11 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
+import javafx.stage.StageStyle;
 import timetable.Controller;
 import timetable.Main;
 import timetable.StdError;
+import timetable.create.CreateController;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.db.sqlite.SqliteDataAccessProvider;
@@ -44,16 +45,14 @@ public class DatabaseController {
     @FXML
     private TableView<Period> table;
     @FXML
-    private TableColumn<Period, Integer> hour, minute;
+    private CustomTableColumn hour, minute;
     @FXML
     private TableColumn<Period, Boolean> delete;
 
     public void initialize() {
         mysql.setDisable(true);
         mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
-
     }
-
 
     public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController, Properties properties) {
         this.stage = stage;
@@ -75,6 +74,7 @@ public class DatabaseController {
             mainController.getDbLogo().setImage(image);
             mainController.setDbName("Online");
         } else {
+            // TODO: 30/04/2018 Sqlite standaard rooster moet duidlijker!
             //anders is het sqlite
             mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
             Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
@@ -90,25 +90,14 @@ public class DatabaseController {
             AnchorPane pane = loader.load();
             rootPane.getChildren().addAll(pane);
 
+            // TODO: 30/04/2018 Cellfactories afscheiden ?
             delete.setCellFactory(column -> {
                 PeriodButtonCell cell = new PeriodButtonCell(table, this);
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
-            hour.setCellValueFactory(new PropertyValueFactory<>("hour"));
-            hour.setCellFactory(column -> {
-                TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
-                cell.setAlignment(Pos.CENTER);
-                return cell;
-            });
-            hour.setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute()));
-            minute.setCellValueFactory(new PropertyValueFactory<>("minute"));
-            minute.setCellFactory(column -> {
-                TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
-                cell.setAlignment(Pos.CENTER);
-                return cell;
-            });
-            minute.setOnEditCommit(event -> update(event.getRowValue(), event.getRowValue().getHour(), event.getNewValue()));
+            hour.setup(mainController, new PropertyValueFactory<>("hour"));
+            minute.setup(mainController, new PropertyValueFactory<>("minute"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,7 +135,7 @@ public class DatabaseController {
         } catch (IOException ex) {
             new StdError(ex.getMessage());
         } catch (NullPointerException e) {
-            new StdError("Couldn't create new database.");
+            /*user has canceled the filechooser dialog*/
         }
     }
 
@@ -182,15 +171,19 @@ public class DatabaseController {
         settingsController.setProperties(this.properties);
         stage.close();
         settingsController.setCanClose(true);
-
-    }
-
-    private void update(Period period, Integer hour, Integer minute) {
-        period.setHour(hour);
-        period.setMinute(minute);
-        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
-            dac.getPeriodDAO().updatePeriods(period);
-        } catch (DataAccessException e) {
+        /*menu to add student and so on*/
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
+            loader.setController(new CreateController());
+            Parent root = loader.load();
+            CreateController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 450, 450));
+            controller.setStageAndSetupListeners(stage, mainController);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

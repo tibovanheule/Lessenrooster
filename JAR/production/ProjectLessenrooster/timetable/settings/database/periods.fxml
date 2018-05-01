@@ -2,8 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import timetable.settings.database.CustomTableColumn?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450" styleClass="body"
-            stylesheets="@database.css" xmlns="http://javafx.com/javafx/9.0.1">
+            stylesheets="@database.css" xmlns="http://javafx.com/javafx/9">
 
     <AnchorPane prefHeight="100.0" prefWidth="450.0" styleClass="blue">
 
@@ -12,12 +13,9 @@
     </AnchorPane>
     <TableView fx:id="table" editable="true" layoutX="25.0" layoutY="107.0" prefHeight="271.0" prefWidth="400.0">
         <columns>
-
-            <TableColumn fx:id="hour" prefWidth="186.40000915527344" text="hour"/>
-
-            <TableColumn fx:id="minute" prefWidth="75.0" text="minute"/>
+            <CustomTableColumn fx:id="hour" prefWidth="186.40000915527344" text="hour"/>
+            <CustomTableColumn fx:id="minute" prefWidth="75.0" text="minute"/>
             <TableColumn fx:id="delete" editable="false" prefWidth="75.0" text="Delete"/>
-
         </columns>
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

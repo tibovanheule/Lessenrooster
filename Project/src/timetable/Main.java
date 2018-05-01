@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
-import javafx.scene.text.Font;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -38,22 +37,25 @@ public class Main extends Application {
      * Checks arguments, then acts on those...
      */
     public static void main(String[] args) {
-        //Controle lengte argumenten
-        if (args.length == 0 || args.length == 2 || args.length == 3) {
-            //Start prog met argumenten -> normale start
-            launch(args);
-        } else if (args.length == 1) {
+        HashMap<Integer, Runnable> arg = new HashMap<>();
+        arg.put(0, () -> launch(args));
+        arg.put(2, () -> launch(args));
+        arg.put(3, () -> launch(args));
+        arg.put(1, () -> {
             new StdoutList(args[0]);
             Platform.exit();
             System.exit(0);
-        } else if (args.length > 3) {
+        });
+        try {
+            arg.get(args.length).run();
+        }catch (Exception e) {
             new StdError("Invalid! please don't give more than 3 arguments! :) \n");
-            //Platform.exit om de Javafx-applicatie af te sluiten
             Platform.exit();
-            //sluit Java Virtual Machine af met error code 2
             System.exit(2);
         }
     }
+
+
 
     /**
      * Setup Stage.
@@ -83,9 +85,7 @@ public class Main extends Application {
         primaryStage.setMaximized(Boolean.parseBoolean(properties.getProperty("startMaximized")));
         controller.setStageAndSetupListeners(primaryStage);
 
-
-        /*Hashmap kan enkel lengte 0, 2 of 3 zijn*/
-        // TODO: 28/04/2018 Wat is beter?
+        /*Could have done this with a if-statement too, but some prefer a if-statement-less program*/
         HashMap<Integer, Runnable> args = new HashMap<>();
         args.put(0, primaryStage::show);
         args.put(2, () -> {
@@ -96,21 +96,7 @@ public class Main extends Application {
             screenshot(controller, root);
             primaryStage.show();
         });
-
         args.get(getParameters().getRaw().size()).run();
-
-        /*if (getParameters().getRaw().size() == 0) {
-            primaryStage.show();
-        } else if (getParameters().getRaw().size() == 2) {
-            loadSchedule(controller);
-            primaryStage.show();
-        } else if (getParameters().getRaw().size() == 3) {
-            screenshot(controller,root);
-            Platform.exit();
-            System.exit(0);
-        }*/
-
-
     }
 
     /**
@@ -119,8 +105,7 @@ public class Main extends Application {
     private void loadSchedule(Controller controller) {
         try {
             Runnable runnable = new Thread(() -> {
-                Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null);
-                controller.getModel().setSchedule(item);
+                controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null));
                 controller.getDraw().setVisible(false);
             });
             Platform.runLater(runnable);
@@ -135,11 +120,9 @@ public class Main extends Application {
     private void screenshot(Controller controller, Parent root) {
         try {
             controller.getTime().setText(getParameters().getRaw().get(1));
-            controller.getTime().setFont(new Font("Arial", 16));
             controller.getDay().setVisible(false);
             controller.getDate().setVisible(false);
-            Item item = new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null);
-            controller.getModel().setSchedule(item);
+            controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null));
             controller.getDraw().setVisible(false);
             SnapshotParameters snapshotParameters = new SnapshotParameters();
             snapshotParameters.setTransform(new Scale(2, 2));

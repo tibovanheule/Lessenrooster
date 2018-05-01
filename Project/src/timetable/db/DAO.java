@@ -10,4 +10,6 @@ public interface DAO {
     Item create(String item) throws DataAccessException;
 
     int updateName(Item item) throws DataAccessException;
+
+    Iterable<Item> getFiltered(String searchWord) throws DataAccessException;
 }

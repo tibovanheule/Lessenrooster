@@ -100,7 +100,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     }
 
     @Override
-    public Iterable<Item> getFilteredLectures(String searchText) throws DataAccessException {
+    public Iterable<Item> getFiltered(String searchText) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
         String sql = "SELECT DISTINCT course FROM lecture where course like ?";
         try (PreparedStatement statement = prepare(sql)) {
@@ -149,7 +149,8 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         return null;
     }
 
-    public Item create(Lecture lecture) throws DataAccessException {
+    @Override
+    public int create(Lecture lecture) throws DataAccessException {
         String insert = "INSERT INTO lecture (course,first_block,students_id,location_id,teacher_id,day,duration) VALUES (?,?,?,?,?,?,?)";
         Item returnItem = null;
         try (PreparedStatement statement = prepare(insert)) {
@@ -158,20 +159,41 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             statement.setInt(3, lecture.getStudentId());
             statement.setInt(4, lecture.getLocationId());
             statement.setInt(5, lecture.getTeacherId());
-            statement.setInt(6,lecture.getDay());
+            statement.setInt(6, lecture.getDay());
             statement.setInt(7, lecture.getDuration());
             statement.executeUpdate();
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    returnItem = new Item("lecture", "lecture", generatedKeys.getInt(1));
-                }
-            } catch (Exception e) {
-                throw new DataAccessException("could not get inserted id", e);
-            }
         } catch (Exception e) {
             throw new DataAccessException("could not create student", e);
         }
-        return returnItem;
+        return 0;
+    }
+
+    @Override
+    public int update(Lecture lecture, Lecture old) throws DataAccessException {
+        String insert = "UPDATE lecture SET course=?,first_block=?,students_id=?,location_id=?,teacher_id=?,day=?,duration=? " +
+                "WHERE course=? AND first_block=? AND students_id=? AND location_id=? AND teacher_id=? AND day=? AND duration=?";
+        Item returnItem = null;
+        try (PreparedStatement statement = prepare(insert)) {
+            statement.setString(1, lecture.getCourse());
+            statement.setInt(2, lecture.getBlock());
+            statement.setInt(3, lecture.getStudentId());
+            statement.setInt(4, lecture.getLocationId());
+            statement.setInt(5, lecture.getTeacherId());
+            statement.setInt(6, lecture.getDay());
+            statement.setInt(7, lecture.getDuration());
+
+            statement.setString(8, old.getCourse());
+            statement.setInt(9, old.getBlock());
+            statement.setInt(10, old.getStudentId());
+            statement.setInt(11, old.getLocationId());
+            statement.setInt(12, old.getTeacherId());
+            statement.setInt(13, old.getDay());
+            statement.setInt(14, old.getDuration());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            throw new DataAccessException("could not create student", e);
+        }
+        return 0;
     }
 
     @Override

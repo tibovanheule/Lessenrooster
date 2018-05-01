@@ -31,7 +31,7 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
     }
 
     @Override
-    public Iterable<Item> getFilteredTeacher(String searchWord) throws DataAccessException {
+    public Iterable<Item> getFiltered(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
         String selection = "SELECT * FROM teacher WHERE name LIKE ?";
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html

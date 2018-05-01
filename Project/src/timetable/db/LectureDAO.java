@@ -11,7 +11,9 @@ public interface LectureDAO extends DAO {
 
     Iterable<Item> get() throws DataAccessException;
 
-    Iterable<Item> getFilteredLectures(String searchText) throws DataAccessException;
+    int update(Lecture lecture, Lecture old) throws DataAccessException;
+
+    int create(Lecture lecture) throws DataAccessException;
 
     int delete(Lecture lecture) throws DataAccessException;
 }

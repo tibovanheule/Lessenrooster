@@ -79,7 +79,7 @@ public class MainModel implements Observable {
     /**
      * Function to refresh the schedule after an edit or deletion of a lecture */
     public void refresh(){
-        if(currentItem!=null){
+        if(currentItem!=null) {
             setSchedule(currentItem);
         }
     }
@@ -108,7 +108,6 @@ public class MainModel implements Observable {
      * Function to return a schedule for a given day.
      */
     public ArrayList<Lecture> getSchedule(Integer key) {
-        // TODO: 28/04/2018 Find alternative to boolean lecturesChanged
         if (key.equals(5)) {
             lecturesChanged = false;
         }
@@ -154,23 +153,15 @@ public class MainModel implements Observable {
         } else {
             // zo niet haal de gefilterde lijst op
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                // TODO: 28/04/2018 werk met DAO interface
-                /*ArrayList<DAO> daos = new ArrayList<>();
+                ArrayList<DAO> daos = new ArrayList<>();
                 daos.add(dac.getLocationDAO());
                 daos.add(dac.getStudentsDAO());
                 daos.add(dac.getTeacherDAO());
-                daos.add(dac.getLectureDoa());*/
-                for (Item item : dac.getStudentsDAO().getFilteredStudent(searchText)) {
-                    items.add(item);
-                }
-                for (Item item : dac.getTeacherDAO().getFilteredTeacher(searchText)) {
-                    items.add(item);
-                }
-                for (Item item : dac.getLocationDAO().getFilteredLocation(searchText)) {
-                    items.add(item);
-                }
-                for (Item item : dac.getLectureDoa().getFilteredLectures(searchText)) {
-                    items.add(item);
+                daos.add(dac.getLectureDoa());
+                for(DAO dao:daos){
+                    for (Item item : dao.getFiltered(searchText)) {
+                        items.add(item);
+                    }
                 }
             } catch (DataAccessException e) {
                 e.printStackTrace();

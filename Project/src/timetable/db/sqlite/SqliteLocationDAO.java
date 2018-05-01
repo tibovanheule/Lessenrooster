@@ -31,7 +31,7 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     @Override
-    public Iterable<Item> getFilteredLocation(String searchWord) throws DataAccessException {
+    public Iterable<Item> getFiltered(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
         String selection = "SELECT id,name FROM location WHERE name LIKE ?";
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html

@@ -6,6 +6,7 @@ timetable.db
 timetable.db.sqlite
 timetable.lecture
 timetable.lecture.editLecture
+timetable.lecture.editLecture.Comboboxes
 timetable.objects
 timetable.settings
 timetable.settings.database

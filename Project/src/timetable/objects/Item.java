@@ -2,7 +2,9 @@ package timetable.objects;
 
 /**
  * Object Item, holds all Item data
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class Item {
     private String sort;
     private String name;
@@ -31,7 +33,8 @@ public class Item {
     }
 
     /**
-     * overrides tostring, to not print object memory address*/
+     * overrides tostring, to not print object memory address
+     */
     @Override
     public String toString() {
         return name;

@@ -4,7 +4,9 @@ import timetable.objects.Item;
 
 /**
  * specifies methods of StudentsDAO
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public interface StudentsDAO extends DAO {
     Iterable<Item> get() throws DataAccessException;
 

@@ -12,12 +12,15 @@ import timetable.objects.Period;
 
 /**
  * Custom table column, cellfactory
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class CustomTableColumn extends TableColumn<Period, Integer> {
     private Controller controller;
 
     /**
-     * constructor, sets cellfactory and on edit*/
+     * constructor, sets cellfactory and on edit
+     */
     public CustomTableColumn() {
         setCellFactory(column -> {
             javafx.scene.control.TableCell<Period, Integer> cell = new TextFieldTableCell<>(new IntegerStringConverter());
@@ -28,7 +31,8 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
     }
 
     /**
-     * sets propertyValue factory and field controller*/
+     * sets propertyValue factory and field controller
+     */
     public void setup(Controller controller, PropertyValueFactory propertyValueFactory) {
         this.controller = controller;
         setCellValueFactory(propertyValueFactory);
@@ -36,7 +40,8 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
     }
 
     /**
-     * updates a period*/
+     * updates a period
+     */
     private void update(Period period, Integer hour, Integer minute) {
         period.setHour(hour);
         period.setMinute(minute);

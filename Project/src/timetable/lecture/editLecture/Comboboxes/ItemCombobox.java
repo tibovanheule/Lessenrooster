@@ -8,7 +8,9 @@ import timetable.objects.Item;
 
 /**
  * custom Combobox, with cell factory.
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class ItemCombobox extends ComboBox<Item> {
 
     public ItemCombobox() {

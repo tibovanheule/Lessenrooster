@@ -48,13 +48,12 @@ public class Main extends Application {
         });
         try {
             arg.get(args.length).run();
-        }catch (Exception e) {
+        } catch (Exception e) {
             new StdError("Invalid! please don't give more than 3 arguments! :) \n");
             Platform.exit();
             System.exit(2);
         }
     }
-
 
 
     /**

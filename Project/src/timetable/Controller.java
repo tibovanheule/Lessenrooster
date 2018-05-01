@@ -73,7 +73,6 @@ public class Controller {
     }
 
 
-
     AnchorPane getDraw() {
         return draw;
     }

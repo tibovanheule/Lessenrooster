@@ -12,14 +12,17 @@ import java.util.ArrayList;
 
 /**
  * class implements LocationDAO, to get edit add locations in sqlite
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO {
     SqliteLocationDAO(Connection connection) {
         super(connection);
     }
 
     /**
-     * get all locations*/
+     * get all locations
+     */
     @Override
     public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
@@ -36,7 +39,8 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     /**
-     * get a filterd iterable of loactions based on a keyword*/
+     * get a filterd iterable of loactions based on a keyword
+     */
     @Override
     public Iterable<Item> getFiltered(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
@@ -57,7 +61,8 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     /**
-     * delete a location and lectures connected to that location*/
+     * delete a location and lectures connected to that location
+     */
     @Override
     public int delete(Item item) throws DataAccessException {
         String delete = "DELETE FROM location WHERE id = ?";
@@ -75,7 +80,8 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     /**
-     * add a location*/
+     * add a location
+     */
     @Override
     public Item create(String item) throws DataAccessException {
         String insert = "INSERT INTO location (id,name) VALUES (?,?)";
@@ -97,7 +103,8 @@ public class SqliteLocationDAO extends SqliteAbstractDOA implements LocationDAO 
     }
 
     /**
-     * update the name of a location*/
+     * update the name of a location
+     */
     @Override
     public int updateName(Item item) throws DataAccessException {
         String insert = "UPDATE location SET name=? WHERE id=?";

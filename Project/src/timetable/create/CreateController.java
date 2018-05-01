@@ -160,7 +160,7 @@ public class CreateController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Are you sure");
-        alert.setContentText("If a "+ui+" is used in a lecture,\nthen that lecture gets deleted too ");
+        alert.setContentText("If a " + ui + " is used in a lecture,\nthen that lecture gets deleted too ");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // user chose OK, Delete

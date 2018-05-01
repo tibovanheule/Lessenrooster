@@ -22,7 +22,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
             String selection = "SELECT teacher_id, location_id, lecture.students_id, course, day, students.name AS student, teacher.name AS teacher, " +
-            "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
+                    "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
                     " JOIN teacher on teacher.id=teacher_id " +
                     "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE";
             if (item.getSort().equals("lecture")) {

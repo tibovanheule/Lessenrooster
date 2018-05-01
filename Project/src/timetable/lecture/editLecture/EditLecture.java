@@ -17,7 +17,9 @@ import timetable.objects.Period;
 
 /**
  * class to let the user edit, update an lecture.
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class EditLecture {
 
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
@@ -37,9 +39,10 @@ public class EditLecture {
     private MainModel model;
 
     // TODO: 1/05/2018 kijk voor dit te verkorten
+
     /**
      * set up fields lecture stage controllermodel, add elements of database to the comboboxes, set values
-     * */
+     */
     public void setStageAndSetupListeners(Stage stage, Lecture lecture, LectureController controller, MainModel model) {
         this.stage = stage;
         this.lecture = lecture;

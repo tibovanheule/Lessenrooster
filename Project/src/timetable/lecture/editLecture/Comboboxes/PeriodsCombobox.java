@@ -8,7 +8,9 @@ import timetable.objects.Period;
 
 /**
  * Custom combobox. for Periods
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class PeriodsCombobox extends ComboBox<Period> {
     public PeriodsCombobox() {
         setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {

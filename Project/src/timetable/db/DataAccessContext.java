@@ -3,7 +3,9 @@ package timetable.db;
 
 /**
  * interface to specify methods of DataAccessContext
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public interface DataAccessContext extends AutoCloseable {
 
     LectureDAO getLectureDoa();

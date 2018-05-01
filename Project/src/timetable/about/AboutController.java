@@ -50,7 +50,8 @@ public class AboutController {
     }
 
     /**
-     * Close the stage*/
+     * Close the stage
+     */
     public void close() {
         //afsluiten stage
         stage.close();

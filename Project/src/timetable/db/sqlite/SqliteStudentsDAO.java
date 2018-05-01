@@ -12,14 +12,17 @@ import java.util.ArrayList;
 
 /**
  * Class to add, delete or update students in a sqlite database
- * @author Tibo Vanheule*/
+ *
+ * @author Tibo Vanheule
+ */
 public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO {
     SqliteStudentsDAO(Connection connection) {
         super(connection);
     }
 
     /**
-     * gets all students*/
+     * gets all students
+     */
     @Override
     public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
@@ -36,7 +39,8 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     /**
-     * gets a filtered iterable based on a keyword*/
+     * gets a filtered iterable based on a keyword
+     */
     @Override
     public Iterable<Item> getFiltered(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
@@ -56,7 +60,8 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     /**
-     * Create a student*/
+     * Create a student
+     */
     @Override
     public Item create(String item) throws DataAccessException {
         String insert = "INSERT INTO students (id,name) VALUES (?,?)";
@@ -78,7 +83,8 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     /**
-     * delete a student*/
+     * delete a student
+     */
     @Override
     public int delete(Item item) throws DataAccessException {
         String delete = "DELETE FROM students WHERE id = ?";
@@ -96,7 +102,8 @@ public class SqliteStudentsDAO extends SqliteAbstractDOA implements StudentsDAO 
     }
 
     /**
-     * update the name of a student*/
+     * update the name of a student
+     */
     @Override
     public int updateName(Item item) throws DataAccessException {
         String insert = "UPDATE students SET name=? WHERE id=?";

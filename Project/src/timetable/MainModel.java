@@ -77,9 +77,10 @@ public class MainModel implements Observable {
     }
 
     /**
-     * Function to refresh the schedule after an edit or deletion of a lecture */
-    public void refresh(){
-        if(currentItem!=null) {
+     * Function to refresh the schedule after an edit or deletion of a lecture
+     */
+    public void refresh() {
+        if (currentItem != null) {
             setSchedule(currentItem);
         }
     }
@@ -158,7 +159,7 @@ public class MainModel implements Observable {
                 daos.add(dac.getStudentsDAO());
                 daos.add(dac.getTeacherDAO());
                 daos.add(dac.getLectureDoa());
-                for(DAO dao:daos){
+                for (DAO dao : daos) {
                     for (Item item : dao.getFiltered(searchText)) {
                         items.add(item);
                     }

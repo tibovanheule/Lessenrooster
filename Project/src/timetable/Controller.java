@@ -47,7 +47,7 @@ public class Controller {
     @FXML
     private Label dbName;
     @FXML
-    private ImageView dbLogo, weatherIcon;
+    private ImageView weatherIcon;
     @FXML
     private AnchorPane draw;
     private Stage stage;
@@ -72,9 +72,7 @@ public class Controller {
         return time;
     }
 
-    public ImageView getDbLogo() {
-        return dbLogo;
-    }
+
 
     AnchorPane getDraw() {
         return draw;
@@ -95,14 +93,9 @@ public class Controller {
         //als de property true is gebruik dan mysql (voorlopig constant false)
         if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
             /*model.setDataAccessProvider(new MysqlDataAccessProvider());*/
-            //deze afbeelding is voor het gemak dan weten we op welke DB we draaien als we het prog draaien
-            Image image = new Image(getClass().getResourceAsStream("resources/images/mysql.png"));
-            dbLogo.setImage(image);
         } else {
             //in elk ander geval, valt het terug op sqlite
             model.setDataAccessProvider(new SqliteDataAccessProvider());
-            Image image = new Image(getClass().getResourceAsStream("resources/images/sqlite.png"));
-            dbLogo.setImage(image);
         }
         model.setStandardSchedule(properties.getProperty("standard.schedule"));
         model.changeItems(model.getStandardSchedule());

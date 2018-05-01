@@ -2,14 +2,12 @@ package timetable.settings.database;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
@@ -69,16 +67,11 @@ public class DatabaseController {
         if (mysql.isSelected()) {
             //nieuwe data provider
             /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
-            //aanduiding aanpassen
-            Image image = new Image(Main.class.getResourceAsStream("resources/images/mysql.png"));
-            mainController.getDbLogo().setImage(image);
             mainController.setDbName("Online");
         } else {
             // TODO: 30/04/2018 Sqlite standaard rooster moet duidlijker!
             //anders is het sqlite
             mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
-            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-            mainController.getDbLogo().setImage(image);
             mainController.setDbName("Lessenrooster(offline)");
         }
     }
@@ -90,11 +83,8 @@ public class DatabaseController {
             AnchorPane pane = loader.load();
             rootPane.getChildren().addAll(pane);
 
-            // TODO: 30/04/2018 Cellfactories afscheiden ?
             delete.setCellFactory(column -> {
-                PeriodButtonCell cell = new PeriodButtonCell(table, this);
-                cell.setAlignment(Pos.CENTER);
-                return cell;
+                return new PeriodButtonCell(table, this);
             });
             hour.setup(mainController, new PropertyValueFactory<>("hour"));
             minute.setup(mainController, new PropertyValueFactory<>("minute"));
@@ -161,8 +151,6 @@ public class DatabaseController {
             mainController.setDbName(file.getName().replace(".db", ""));
             url = "jdbc:sqlite:" + file.getPath();
             mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-            Image image = new Image(Main.class.getResourceAsStream("resources/images/sqlite.png"));
-            mainController.getDbLogo().setImage(image);
         }
     }
 

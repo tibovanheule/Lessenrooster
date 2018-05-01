@@ -52,17 +52,17 @@
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="2">
 
-                <Label styleClass="dayLabel" text="wednesday"/>
+                <Label styleClass="dayLabel" text="Wednesday"/>
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="3">
 
-                <Label styleClass="dayLabel" text="thursday"/>
+                <Label styleClass="dayLabel" text="Thursday"/>
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="4">
 
-                <Label styleClass="dayLabel" text="friday"/>
+                <Label styleClass="dayLabel" text="Friday"/>
 
             </HBox>
 

@@ -18,7 +18,8 @@ public class SearchTextBox extends TextField implements InvalidationListener, Ev
     private MainModel model;
 
     /**
-     * Constructor, set the the event handler OnKeyTyped*/
+     * Constructor, set the the event handler OnKeyTyped
+     */
     public SearchTextBox() {
         setOnKeyTyped(this::handle);
     }

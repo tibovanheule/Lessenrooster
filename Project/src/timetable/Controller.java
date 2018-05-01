@@ -20,6 +20,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import timetable.config.Config;
 import timetable.create.CreateController;
+import timetable.createLecture.CreateLecture;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Weather;
 import timetable.settings.SettingsController;
@@ -190,6 +191,22 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, this);
+            stage.show();
+            stage.focusedProperty().addListener(o -> controller.close());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createLecture() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("createLecture/createLecture.fxml"));
+            Parent root = loader.load();
+            CreateLecture controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 450, 450));
+            controller.setStageAndSetupListeners(stage, model);
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

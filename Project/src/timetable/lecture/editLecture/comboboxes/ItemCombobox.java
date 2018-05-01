@@ -1,4 +1,4 @@
-package timetable.createLecture.Comboboxes;
+package timetable.lecture.editLecture.comboboxes;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;

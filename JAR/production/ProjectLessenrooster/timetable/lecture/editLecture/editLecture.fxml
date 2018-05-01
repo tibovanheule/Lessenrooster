@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import timetable.lecture.editLecture.PeriodsCombobox?>
-<?import timetable.lecture.editLecture.ItemCombobox?>
+<?import timetable.lecture.editLecture.comboboxes.ItemCombobox?>
+<?import timetable.lecture.editLecture.comboboxes.PeriodsCombobox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450.0" styleClass="body"
             stylesheets="@../lecture.css" xmlns="http://javafx.com/javafx/9"
             fx:controller="timetable.lecture.editLecture.EditLecture">

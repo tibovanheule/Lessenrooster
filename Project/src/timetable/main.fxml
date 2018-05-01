@@ -122,7 +122,6 @@
                 </HBox.margin>
             </Button>
             <AboutButton mnemonicParsing="false" styleClass="about"/>
-            <Button mnemonicParsing="false" onAction="#create" styleClass="windowSize"/>
             <Button mnemonicParsing="false" onAction="#settings" styleClass="settings"/>
             <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize"/>
             <Button mnemonicParsing="false" onAction="#exit" styleClass="close"/>
@@ -139,9 +138,15 @@
                 <Insets bottom="10.0" top="10.0"/>
             </padding>
         </HBox>
-        <ItemsListView fx:id="list" layoutX="5.0" layoutY="126.0" prefHeight="400.0" prefWidth="220.0"
+        <ItemsListView fx:id="list" layoutX="5.0" layoutY="136.0" prefHeight="390.0" prefWidth="220.0"
                        styleClass="listselect" model="$model"/>
-        <HBox alignment="CENTER" layoutX="6.0" layoutY="91.0" prefWidth="220" maxWidth="200">
+        <HBox alignment="CENTER" layoutX="6.0" layoutY="110.0" prefWidth="220" maxWidth="200">
+
+            <Button styleClass="navItem" text="add student, teach...    " userData="students" onAction="#create" />
+            <Button styleClass="navItem" text="add lecture" userData="teacher" onAction="#createLecture" />
+
+        </HBox>
+        <HBox alignment="CENTER" layoutX="6.0" layoutY="90.0" prefWidth="220" maxWidth="200">
 
             <SortButtons fx:id="students" styleClass="navItem" text="_Student" userData="students" model="$model"/>
             <SortButtons fx:id="teachers" styleClass="navItem" text="_Teacher" userData="teacher" model="$model"/>
@@ -149,6 +154,7 @@
             <SortButtons fx:id="lecture" styleClass="navItem" text="_Course" userData="lecture" model="$model"/>
 
         </HBox>
+
 
     </AnchorPane>
 

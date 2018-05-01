@@ -44,4 +44,9 @@ public class Period {
     public void setChanged(Boolean changed) {
         this.changed = changed;
     }
+
+    @Override
+    public String toString() {
+        return hour + ":" + minute;
+    }
 }

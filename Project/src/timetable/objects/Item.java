@@ -26,4 +26,9 @@ public class Item {
     public String getSort() {
         return sort;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

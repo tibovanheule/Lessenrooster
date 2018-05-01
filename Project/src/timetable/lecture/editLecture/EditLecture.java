@@ -3,14 +3,11 @@ package timetable.lecture.editLecture;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+import timetable.MainModel;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
-import timetable.db.DataAccessProvider;
 import timetable.lecture.LectureController;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
@@ -25,77 +22,43 @@ public class EditLecture {
     @FXML
     private ComboBox<Integer> duration;
     @FXML
-    private ComboBox<Period> id;
+    private PeriodsCombobox period;
     @FXML
-    private ComboBox<String> students, day, loc;
+    private ComboBox<String> day;
     @FXML
-    private ComboBox<Item> teacher;
+    private ItemCombobox teacher, students, loc;
     @FXML
     private TextField name;
-    private DataAccessProvider dataAccessProvider;
+    private MainModel model;
 
-    public void setStageAndSetupListeners(Stage stage, Lecture lecture, LectureController controller, DataAccessProvider dataAccessProvider) {
+    public void setStageAndSetupListeners(Stage stage, Lecture lecture, LectureController controller, MainModel model) {
         this.stage = stage;
         this.lecture = lecture;
         this.controller = controller;
-        this.dataAccessProvider = dataAccessProvider;
-        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+        this.model = model;
+        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
             for (Item item : dac.getStudentsDAO().get()) {
-                teacher.getItems().add(item);
+                students.getItems().add(item);
             }
             for (Item item : dac.getTeacherDAO().get()) {
-                students.getItems().add(item.getName());
+                teacher.getItems().add(item);
             }
             for (Item item : dac.getLocationDAO().get()) {
-                loc.getItems().add(item.getName());
+                loc.getItems().add(item);
             }
             for (Period item : dac.getPeriodDAO().getPeriods()) {
-                id.getItems().add(item);
+                period.getItems().add(item);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         name.setText(lecture.getCourse());
-        id.setValue(new Period(lecture.getBlock(), 0, 0));
         duration.setValue(lecture.getDuration());
-        teacher.setValue(new Item("teacher", lecture.getTeacher(), null));
-        students.setValue(lecture.getStudent());
+        teacher.setValue(new Item("teacher", lecture.getTeacher(), lecture.getTeacherId()));
+        students.setValue(new Item("student", lecture.getStudent(), lecture.getStudentId()));
+        loc.setValue(new Item("location", lecture.getLocation(), lecture.getLocationId()));
         day.setValue(days[lecture.getDay() - 1]);
-        loc.setValue(lecture.getLocation());
-        teacher.setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {
-            @Override
-            public ListCell<Item> call(ListView<Item> p) {
-                return new ListCell<Item>() {
-                    @Override
-                    protected void updateItem(Item item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (item == null || empty) {
-                            setGraphic(null);
-                        } else {
-                            setText(item.getName());
-                        }
-                    }
-                };
-            }
-        });
-        id.setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {
-            @Override
-            public ListCell<Period> call(ListView<Period> p) {
-                return new ListCell<Period>() {
-                    @Override
-                    protected void updateItem(Period item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (item == null || empty) {
-                            setGraphic(null);
-                        } else {
-                            setText(item.getHour() + ":" + item.getMinute());
-                        }
-                    }
-                };
-            }
-        });
+        period.getSelectionModel().select(new Period(lecture.getBlock(), lecture.getHour(), lecture.getMinute()));
 
     }
 
@@ -107,14 +70,31 @@ public class EditLecture {
     }
 
     public void close() {
-        // TODO: 10/04/2018 onderliggende stage realtime aanpassen
-        controller.setCanClose(true);
-        try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
 
+        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
+            /*Objects are made to have */
+            Item studentItem = students.getSelectionModel().getSelectedItem();
+            Item teacherItem = teacher.getSelectionModel().getSelectedItem();
+            Item locationItem = loc.getSelectionModel().getSelectedItem();
+            String course;
+            if (name.getText().isEmpty()) {
+                course = "Nameless lesson";
+            } else {
+                course = name.getText();
+            }
+            Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
+            Integer durationInt = duration.getSelectionModel().getSelectedItem();
+            Period period2 = period.getSelectionModel().getSelectedItem();
+
+
+            dac.getLectureDoa().update(new Lecture(studentItem.getName(), teacherItem.getName(),
+                    locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
+                    period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId()), lecture);
+            model.refresh();
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
-
+        controller.setCanClose(true);
         stage.close();
     }
 }

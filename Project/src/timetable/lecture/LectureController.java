@@ -11,12 +11,10 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
-import timetable.Controller;
 import timetable.Main;
 import timetable.MainModel;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
-import timetable.db.DataAccessProvider;
 import timetable.lecture.editLecture.EditLecture;
 import timetable.objects.Lecture;
 
@@ -74,7 +72,7 @@ public class LectureController {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage, lecture, this, model.getDataAccessProvider());
+            controller.setStageAndSetupListeners(stage, lecture, this, model);
             stage.show();
         } catch (Exception e) {
             canClose = true;

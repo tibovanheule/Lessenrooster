@@ -24,9 +24,9 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
             String selection = "SELECT teacher_id, location_id, lecture.students_id, course, day, students.name AS student, teacher.name AS teacher, " +
                     "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
                     " JOIN teacher on teacher.id=teacher_id " +
-                    "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE";
+                    "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE ";
             if (item.getSort().equals("lecture")) {
-                selection += " course = ? AND day = ? ORDER BY first_block";
+                selection += "course = ? AND day = ? ORDER BY first_block";
 
             } else {
                 selection += item.getSort() + ".name = ? AND day = ? ORDER BY first_block";

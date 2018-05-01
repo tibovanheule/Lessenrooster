@@ -3,20 +3,17 @@ package timetable.createLecture;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import timetable.MainModel;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
-import timetable.lecture.editLecture.comboboxes.ItemCombobox;
-import timetable.lecture.editLecture.comboboxes.PeriodsCombobox;
+import timetable.comboboxes.ItemCombobox;
+import timetable.comboboxes.PeriodsCombobox;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Period;
-
-import java.util.Optional;
 
 /**
  * class to let the user create an lecture.

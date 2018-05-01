@@ -20,3 +20,24 @@ Label {
     -fx-font-family: Lato;
 }
 
+.blue Label{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Lato;
+}
+
+.check-box {
+    -fx-background-color: #efeeec;
+    -fx-text-fill: #b3b0ac;
+    -fx-font-family: "Lato Semibold";
+}
+
+.combo-box {
+    -fx-background-color: #efeeec;
+    -fx-border-width: 2px;
+    -fx-border-color: #b3b0ac;
+    -fx-border-style: solid;
+    -fx-text-fill: #b3b0ac;
+    -fx-font-family: "Lato Semibold";
+}

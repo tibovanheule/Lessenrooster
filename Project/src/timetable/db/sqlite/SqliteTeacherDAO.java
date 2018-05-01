@@ -10,11 +10,16 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * class to add, delete and select all teachers
+ * @author Tibo Vanheule*/
 public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
     SqliteTeacherDAO(Connection connection) {
         super(connection);
     }
 
+    /**
+     * gets all teachers*/
     @Override
     public Iterable<Item> get() throws DataAccessException {
         Iterable<Item> items = new ArrayList<>();
@@ -30,6 +35,8 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
         return items;
     }
 
+    /**
+     * get a filtered iterable based on a keyword*/
     @Override
     public Iterable<Item> getFiltered(String searchWord) throws DataAccessException {
         ArrayList<Item> items = new ArrayList<Item>();
@@ -49,6 +56,8 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
 
     }
 
+    /**
+     * create a teacher*/
     @Override
     public Item create(String item) throws DataAccessException {
         String insert = "INSERT INTO teacher (id,name) VALUES (?,?)";
@@ -69,6 +78,8 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
         return returnItem;
     }
 
+    /**
+     * delete a teacher*/
     @Override
     public int delete(Item item) throws DataAccessException {
         String delete = "DELETE FROM teacher WHERE id = ?";
@@ -85,6 +96,8 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
         return 0;
     }
 
+    /**
+     * updates a name of a teacher*/
     @Override
     public int updateName(Item item) throws DataAccessException {
         String insert = "UPDATE teacher SET name=? WHERE id=?";

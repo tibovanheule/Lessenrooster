@@ -9,10 +9,15 @@ import timetable.MainModel;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.lecture.LectureController;
+import timetable.lecture.editLecture.Comboboxes.ItemCombobox;
+import timetable.lecture.editLecture.Comboboxes.PeriodsCombobox;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Period;
 
+/**
+ * class to let the user edit, update an lecture.
+ * @author Tibo Vanheule*/
 public class EditLecture {
 
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
@@ -31,6 +36,10 @@ public class EditLecture {
     private TextField name;
     private MainModel model;
 
+    // TODO: 1/05/2018 kijk voor dit te verkorten
+    /**
+     * set up fields lecture stage controllermodel, add elements of database to the comboboxes, set values
+     * */
     public void setStageAndSetupListeners(Stage stage, Lecture lecture, LectureController controller, MainModel model) {
         this.stage = stage;
         this.lecture = lecture;
@@ -58,17 +67,23 @@ public class EditLecture {
         students.setValue(new Item("student", lecture.getStudent(), lecture.getStudentId()));
         loc.setValue(new Item("location", lecture.getLocation(), lecture.getLocationId()));
         day.setValue(days[lecture.getDay() - 1]);
-        period.getSelectionModel().select(new Period(lecture.getBlock(), lecture.getHour(), lecture.getMinute()));
+        period.setValue(new Period(lecture.getBlock(), lecture.getHour(), lecture.getMinute()));
 
     }
 
+    /**
+     * set up combobox day and duration
+     */
     public void initialize() {
         day.getItems().addAll(days);
-        duration.getItems().addAll(1, 2, 3);
+        duration.getItems().addAll(1, 2, 3, 4);
 
 
     }
 
+    /**
+     * close and save the updated lecture
+     */
     public void close() {
 
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {

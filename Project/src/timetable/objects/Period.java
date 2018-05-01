@@ -1,16 +1,19 @@
 package timetable.objects;
 
+/**
+ * Object Period, holds all period data (id, hour , minutes)
+ *
+ * @author Tibo Vanheule
+ */
 public class Period {
     private Integer hour;
     private Integer minute;
     private Integer id;
-    private Boolean changed;
 
     public Period(Integer block, Integer hour, Integer minute) {
         this.id = block;
         this.hour = hour;
         this.minute = minute;
-        this.changed = false;
     }
 
     public Integer getHour() {
@@ -35,14 +38,6 @@ public class Period {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Boolean getChanged() {
-        return changed;
-    }
-
-    public void setChanged(Boolean changed) {
-        this.changed = changed;
     }
 
     @Override

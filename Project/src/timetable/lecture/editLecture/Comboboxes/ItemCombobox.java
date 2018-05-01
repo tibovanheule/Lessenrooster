@@ -1,4 +1,4 @@
-package timetable.lecture.editLecture;
+package timetable.lecture.editLecture.Comboboxes;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -6,6 +6,9 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 import timetable.objects.Item;
 
+/**
+ * custom Combobox, with cell factory.
+ * @author Tibo Vanheule*/
 public class ItemCombobox extends ComboBox<Item> {
 
     public ItemCombobox() {

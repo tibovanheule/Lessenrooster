@@ -1,5 +1,8 @@
 package timetable.objects;
 
+/**
+ * Object Item, holds all Item data
+ * @author Tibo Vanheule*/
 public class Item {
     private String sort;
     private String name;
@@ -27,6 +30,8 @@ public class Item {
         return sort;
     }
 
+    /**
+     * overrides tostring, to not print object memory address*/
     @Override
     public String toString() {
         return name;

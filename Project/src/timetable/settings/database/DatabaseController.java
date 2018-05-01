@@ -28,6 +28,9 @@ import timetable.settings.SettingsController;
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * Class to let users change db settings
+ * @author Tibo Vanheule*/
 public class DatabaseController {
     private Controller mainController;
     private Properties properties;
@@ -52,6 +55,8 @@ public class DatabaseController {
         mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
     }
 
+    /**
+     * sets up fields */
     public void setStageAndSetupListeners(Stage stage, Controller controller, SettingsController settingsController, Properties properties) {
         this.stage = stage;
         this.mainController = controller;
@@ -62,6 +67,8 @@ public class DatabaseController {
         /*mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
     }
 
+    /**
+     * change to mysql*/
     public void mysql() {
         properties.setProperty("DB.use", String.valueOf(mysql.isSelected()));
         if (mysql.isSelected()) {
@@ -76,6 +83,8 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * show the periods table*/
     public void period() {
         try {
             FXMLLoader loader = new FXMLLoader(DatabaseController.class.getResource("periods.fxml"));
@@ -98,12 +107,16 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * if a file is drag over, accept it.*/
     private void dragOver(DragEvent event) {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
 
+    /**
+     * makes a new DB */
     public void newDb() {
         /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
         FileChooser fileChooser = new FileChooser();
@@ -129,11 +142,15 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * invokes setDatabase when a files has been dropped*/
     private void dragDropped(DragEvent event) {
         setDatabase(event.getDragboard().getFiles().get(0));
         close();
     }
 
+    /**
+     * opens a choose dialog*/
     public void chooseDB() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("open Database");
@@ -144,6 +161,8 @@ public class DatabaseController {
         close();
     }
 
+    /**
+     * changes the data access provoider*/
     private void setDatabase(File file) {
         if (file != null) {
             mysql.setSelected(false);
@@ -154,28 +173,17 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * closes stage and changes properties  */
     public void close() {
         mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
         settingsController.setProperties(this.properties);
         stage.close();
         settingsController.setCanClose(true);
-        /*menu to add student and so on*/
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("create/create.fxml"));
-            loader.setController(new CreateController());
-            Parent root = loader.load();
-            CreateController controller = loader.getController();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage, mainController);
-            stage.show();
-            stage.focusedProperty().addListener(o -> controller.close());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
+    /**
+     * create a period*/
     public void createPeriod() {
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             table.getItems().add(dac.getPeriodDAO().createPeriod());
@@ -184,6 +192,8 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * Delete a period*/
     public void delete(Period period) {
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             dac.getPeriodDAO().deletePeriods(period);

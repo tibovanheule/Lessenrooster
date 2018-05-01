@@ -21,21 +21,15 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         HashMap<Integer, ArrayList<Lecture>> days = new HashMap<>();
         for (int i = 1; i < 6; i++) {
             ArrayList<Lecture> lectures = new ArrayList<>();
-            // TODO: 29/03/2018 queries
-            String selection;
+            String selection = "SELECT teacher_id, location_id, lecture.students_id, course, day, students.name AS student, teacher.name AS teacher, " +
+            "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
+                    " JOIN teacher on teacher.id=teacher_id " +
+                    "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE";
             if (item.getSort().equals("lecture")) {
-                selection = "SELECT teacher_id, location_id, lecture.students_id, course, day, students.name AS student, teacher.name AS teacher, " +
-                        "location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON lecture.students_id=students.id" +
-                        " JOIN teacher on teacher.id=teacher_id " +
-                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE course = ? AND day = ? ORDER BY first_block";
+                selection += " course = ? AND day = ? ORDER BY first_block";
 
             } else {
-                selection = "SELECT teacher_id, location_id, students_id, course, day, students.name AS student, teacher.name AS teacher," +
-                        " location.name AS location, duration, first_block, hour , minute FROM lecture JOIN students ON " +
-                        "lecture.students_id=students.id JOIN teacher on teacher.id=teacher_id " +
-                        "JOIN location ON location_id=location.id JOIN period ON first_block=period.id WHERE " + item.getSort() + ".name = ? " +
-                        "AND day = ? ORDER BY first_block";
-                //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+                selection += item.getSort() + ".name = ? AND day = ? ORDER BY first_block";
             }
             try (PreparedStatement statement = prepare(selection)) {
                 statement.setString(1, item.getName());
@@ -52,7 +46,7 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
                 }
                 resultSet.close();
 
-
+                /*conflict check*/
                 int j = 0;
                 while (j < lectures.size()) {
                     int k = 0;

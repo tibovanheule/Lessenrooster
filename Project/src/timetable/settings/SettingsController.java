@@ -16,8 +16,15 @@ import timetable.settings.database.DatabaseController;
 
 import java.util.Properties;
 
+/**
+ * Class to let the user set the settings in the property file and change DB settings
+ *
+ * @author Tibo Vanheule
+ */
 public class SettingsController {
-    //array met mogelijkheden voor de standaard lijsten uitbreiding mogelijk
+    /**
+     * lists for the settings
+     */
     private static final String[] defaultList = {"students", "teacher", "location"}, cities = {"koksijde", "oostende", "gent", "brugge", "brussel", "leuven", "Antwerpen"};
     @FXML
     private CheckBox windowSize;
@@ -28,10 +35,6 @@ public class SettingsController {
     private Properties properties = new Properties();
     private Controller mainController;
 
-    public Boolean getCanClose() {
-        return canClose;
-    }
-
     public void setCanClose(Boolean canClose) {
         this.canClose = canClose;
     }
@@ -40,55 +43,59 @@ public class SettingsController {
         this.properties = properties;
     }
 
+    /**
+     * sets the fields stage and mainController
+     */
     public void setStageAndSetupListeners(Stage stage, Controller main) {
-        //Krijg de stage
         this.stage = stage;
-        //krijg de mainController
         this.mainController = main;
     }
 
+    /**
+     * Loads, read properties to set all settings options
+     */
     public void initialize() {
-        //Laad het configuratie bestand in
         Config config = new Config();
         properties = config.getproperties();
 
-        //Initialisatie van de velden
-        //Toeveogen elementen voor keuze van de standaard lijst
         defaultStartup.getItems().addAll(defaultList);
         defaultStartup.setValue(properties.getProperty("standard.schedule"));
 
         weatherCity.getItems().addAll(cities);
         weatherCity.setValue(properties.getProperty("weather.city"));
 
-
-        //veld true of vals
         windowSize.setSelected(Boolean.parseBoolean(properties.getProperty("startMaximized")));
 
-        //De luisteraars
-        //Als er een wordt geklikt of geselecteerd voeg de functie in de lamba uit
         windowSize.selectedProperty().addListener(o -> startMaximized());
         defaultStartup.getSelectionModel().selectedItemProperty().addListener(o -> startupSchedule());
         weatherCity.getSelectionModel().selectedItemProperty().addListener(o -> city());
-
-
     }
 
+    /**
+     * saves property, start program maximized.
+     */
     private void startMaximized() {
-        //ValueOf gebruikt doordat toString een Null pointer Exception kan geven
         properties.setProperty("startMaximized", String.valueOf(windowSize.isSelected()));
     }
 
+    /**
+     * saves property, show program knows wich list to show at startup.
+     */
     private void startupSchedule() {
-        //Selectie in property steken
         properties.setProperty("standard.schedule", defaultStartup.getSelectionModel().getSelectedItem());
         mainController.getModel().setStandardSchedule(defaultStartup.getSelectionModel().getSelectedItem());
     }
 
+    /**
+     * saves property, city for weather updates
+     */
     private void city() {
-        //Selectie in property steken
         properties.setProperty("weather.city", weatherCity.getSelectionModel().getSelectedItem());
     }
 
+    /**
+     * opens stage for the DBsettings
+     */
     public void dbSettings() {
         try {
             canClose = false;
@@ -106,19 +113,22 @@ public class SettingsController {
         }
     }
 
-
+    /**
+     * shows stage, gives it focus
+     */
     public void show() {
         stage.requestFocus();
         canClose = true;
     }
 
+    /**
+     * saves properties and closes if allowed
+     */
     public void close() {
-        //doorgeven aan config klasse om op te slaan
         Config config = new Config();
         config.saveProperties(properties);
 
         if (canClose) {
-            //Stage afsluiten
             stage.close();
         }
     }

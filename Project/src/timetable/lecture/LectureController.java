@@ -18,6 +18,9 @@ import timetable.db.DataAccessException;
 import timetable.lecture.editLecture.EditLecture;
 import timetable.objects.Lecture;
 
+/**
+ * Class to display information about the lecture
+ * @author Tibo Vanheule*/
 public class LectureController {
     @FXML
     private Label text, course;
@@ -30,10 +33,14 @@ public class LectureController {
     private Boolean canClose = true;
     private MainModel model;
 
+    /**
+     * sets boolean to decide if stage may be closed*/
     public void setCanClose(Boolean canClose) {
         this.canClose = canClose;
     }
 
+    /**
+     * shows information of lecture*/
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
         String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
@@ -58,11 +65,15 @@ public class LectureController {
         }
     }
 
+    /**
+     * sets up fields stage and model*/
     public void setStageAndSetupListeners(Stage stage, MainModel model) {
         this.stage = stage;
         this.model = model;
     }
 
+    /**
+     * load new stage to edit current lecture*/
     public void edit() {
         try {
             canClose = false;
@@ -80,12 +91,17 @@ public class LectureController {
         }
     }
 
+    /**
+     * closes stage, except when editing*/
     public void close() {
         if (canClose) {
             stage.close();
         }
     }
 
+    // TODO: 1/05/2018 Afsplitsen cellfactory
+    /**
+     * sets conflicts cellfactory */
     public void initialize() {
         conflicts.setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
             @Override
@@ -116,6 +132,8 @@ public class LectureController {
         conflicts.getSelectionModel().selectedItemProperty().addListener(o -> lecture());
     }
 
+    /**
+     * When clicked on a conflict lecture show that lecture information in current stage*/
     public void lecture() {
         if (!conflicts.getItems().isEmpty()) {
             setLecture(conflicts.getSelectionModel().getSelectedItem());
@@ -123,6 +141,8 @@ public class LectureController {
 
     }
 
+    /**
+     * delete the lecture*/
     public void delete() {
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext();) {
             dac.getLectureDoa().delete(lecture);

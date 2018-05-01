@@ -3,16 +3,12 @@ package timetable.objects;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Object Lecture, holds all lecture data (day , hour, id's , student name ..)
+ * @author Tibo Vanheule*/
 public class Lecture implements Comparator<Lecture> {
     private String student, teacher, location, course, time;
-    private Integer day;
-    private Integer block;
-    private Integer duration;
-    private Integer hour;
-    private Integer minute;
-    private Integer studentId;
-    private Integer teacherId;
-    private Integer locationId;
+    private Integer day, block, duration, hour, minute, studentId, teacherId, locationId;
     private ArrayList<Lecture> conflicts = new ArrayList<>();
     private Boolean conflict;
     public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration, Integer hour,
@@ -101,6 +97,8 @@ public class Lecture implements Comparator<Lecture> {
         return student;
     }
 
+    /**
+     * gives 0 if two lectures start at the same time, -1 if they overlap and 1 if there is no conflict*/
     @Override
     public int compare(Lecture o1, Lecture o2) {
         if (o1.getTime().compareTo(o2.getTime()) == 0) {

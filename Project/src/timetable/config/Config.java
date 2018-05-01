@@ -7,7 +7,13 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Properties;
 
+/**
+ * Class to read the properties file, if there exist an properties file outside the jar then the class
+ * will use that file, else it uses the standard file inside the jar.
+ * @author Tibo Vanheule*/
 public class Config {
+    /**
+     * function to read the properties.*/
     public Properties getproperties() {
         //initialisatie
         Reader reader = null;
@@ -41,6 +47,8 @@ public class Config {
         return properties;
     }
 
+    /**
+     * class to save the properties*/
     public void saveProperties(Properties properties) {
         try {
             //probeer die op te slaan.

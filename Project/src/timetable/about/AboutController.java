@@ -8,19 +8,29 @@ import timetable.config.Config;
 
 import java.util.Properties;
 
+/**
+ * Class to display information about creator and program
+ *
+ * @author Tibo Vanheule
+ */
 public class AboutController {
     @FXML
     private Label text;
     private Stage stage;
 
+    /**
+     * get stage to use later
+     */
     public void setStageAndSetupListeners(Stage stage) {
         //krijgen van de stage
         this.stage = stage;
     }
 
+    /**
+     * set the text, read from the properties
+     */
     public void initialize() {
 
-        //inladen configuratie bestand
         Config config = new Config();
         Properties properties = config.getproperties();
         //bewust alle tekst in 1 veld gestoken
@@ -37,9 +47,10 @@ public class AboutController {
                 "\nLatest compiled jar with all libraries available on " +
                 "\n" + properties.getProperty("programmer.site") + "/artifacts/"
         );
-
     }
 
+    /**
+     * Close the stage*/
     public void close() {
         //afsluiten stage
         stage.close();

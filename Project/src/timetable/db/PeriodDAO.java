@@ -4,6 +4,9 @@ import timetable.objects.Period;
 
 import java.util.List;
 
+/**
+ * specifies methods of PeriodDAO
+ * @author Tibo Vanheule*/
 public interface PeriodDAO {
     List<Period> getPeriods() throws DataAccessException;
 

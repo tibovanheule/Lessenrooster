@@ -11,11 +11,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class to edit and add periods to a sqlite database
+ *
+ * @author Tibo Vanheule
+ */
 public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
     SqlitePeriodDAO(Connection connection) {
         super(connection);
     }
 
+    /**
+     * get all periods
+     */
     @Override
     public List<Period> getPeriods() throws DataAccessException {
         List<Period> periods = new ArrayList<>();
@@ -30,6 +38,9 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
         return periods;
     }
 
+    /**
+     * update a Period
+     */
     @Override
     public int updatePeriods(Period period) throws DataAccessException {
         String update = "UPDATE period SET hour=?, minute = ? where id = ?";
@@ -43,6 +54,9 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
         }
     }
 
+    /**
+     * delete a period
+     */
     @Override
     public int deletePeriods(Period period) throws DataAccessException {
         String update = "delete from period where id = ?";
@@ -54,6 +68,9 @@ public class SqlitePeriodDAO extends SqliteAbstractDOA implements PeriodDAO {
         }
     }
 
+    /**
+     * Create a Period
+     */
     @Override
     public Period createPeriod() throws DataAccessException {
         String selection = "INSERT INTO period (id,hour,minute) VALUES (?,?,?)";

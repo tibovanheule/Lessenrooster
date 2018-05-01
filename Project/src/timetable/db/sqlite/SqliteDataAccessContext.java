@@ -5,10 +5,18 @@ import timetable.db.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Class implements DataAccessContext, gives back the DAO that you need
+ *
+ * @author Tibo Vanheule
+ */
 public class SqliteDataAccessContext implements DataAccessContext {
 
     private Connection connection;
 
+    /**
+     * sets the connection field
+     */
     SqliteDataAccessContext(Connection connection) {
         this.connection = connection;
     }
@@ -39,12 +47,15 @@ public class SqliteDataAccessContext implements DataAccessContext {
         return new SqliteTeacherDAO(connection);
     }
 
+    /**
+     * Closes connection
+     */
     @Override
-    public void close() {
+    public void close() throws DataAccessException {
         try {
             connection.close();
         } catch (SQLException e) {
-            new DataAccessException("couldn't close the connection :o", e).printStackTrace();
+            throw new DataAccessException("couldn't close the connection :o", e);
         }
     }
 }

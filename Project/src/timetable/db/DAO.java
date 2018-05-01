@@ -2,6 +2,9 @@ package timetable.db;
 
 import timetable.objects.Item;
 
+/**
+ * Interface to specify standard procedures.
+ * @author Tibo Vanheule*/
 public interface DAO {
     int delete(Item item) throws DataAccessException;
 

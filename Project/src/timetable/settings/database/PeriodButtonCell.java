@@ -6,6 +6,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import timetable.objects.Period;
 
+/**
+ * Custom TableCell, to have a delete button in side a cell
+ * @author Tibo Vanheule*/
 class PeriodButtonCell extends TableCell<Period, Boolean> {
     private final Button cellButton = new Button();
 

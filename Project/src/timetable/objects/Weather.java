@@ -1,5 +1,8 @@
 package timetable.objects;
 
+/**
+ * Object Weather, holds all weather data
+ * @author Tibo Vanheule*/
 public class Weather {
     private Double temp;
     private Double windDegree;

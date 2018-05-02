@@ -6,11 +6,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import timetable.MainModel;
+import timetable.comboboxes.ItemCombobox;
+import timetable.comboboxes.PeriodsCombobox;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.lecture.LectureController;
-import timetable.comboboxes.ItemCombobox;
-import timetable.comboboxes.PeriodsCombobox;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Period;
@@ -107,6 +107,9 @@ public class EditLecture {
             Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
                     locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
                     period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
+            for (Lecture lecture : lecture.getConflicts()) {
+                newLecture.addConflict(lecture);
+            }
             dac.getLectureDoa().update(newLecture, lecture);
             controller.setLecture(newLecture);
             model.refresh();
@@ -117,7 +120,9 @@ public class EditLecture {
         controller.setCanClose(true);
     }
 
-    public void close(){
+    /**
+     * close stage*/
+    public void close() {
         stage.close();
     }
 }

@@ -186,6 +186,9 @@ public class DatabaseController {
 
     /**
      * changes the data access provoider
+     * checks if not null -> user canceled filechooser dialog
+     * check if writable and readable
+     * check if is sqlite database
      */
     private boolean setDatabase(Path file) {
         /*http://fileformats.archiveteam.org/wiki/DB_(SQLite) <- mime type gevonden*/
@@ -194,13 +197,16 @@ public class DatabaseController {
                 if( Files.isReadable(file) && Files.isWritable(file)) {
                     url = "jdbc:sqlite:" + file.toString();
                     try {
+                        /*check sqlite, if error occurs , then the file is not an sqlite DB*/
                         DataAccessProvider dataAccessProvider = new SqliteDataAccessProvider(url);
-                        dataAccessProvider.getDataAccessContext().getStudentsDAO().get();
+                        dataAccessProvider.getDataAccessContext().getStudentsDAO().nameExists("test");
                         dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
+                        dataAccessProvider.getDataAccessContext().close();
+                        /*set db file and dataAccessProvoider*/
                         mysql.setSelected(false);
                         properties.setProperty("DB.use", "false");
                         mainController.setDbName(file.getFileName().toString().replace(".db", ""));
-                        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+                        mainController.getModel().setDataAccessProvider(dataAccessProvider);
                     } catch (Exception e) {
                         new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
                         return false;

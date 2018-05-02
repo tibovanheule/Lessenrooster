@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,7 +28,13 @@ import timetable.settings.SettingsController;
 import timetable.weather.WeatherController;
 import timetable.weather.WeatherScraper;
 
+import javax.print.*;
+import javax.print.attribute.Attribute;
+import javax.print.attribute.AttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -285,5 +292,101 @@ public class Controller {
                 parallelTransition.play();
             }
         }
+    }
+
+    public void print(){
+       /* try {
+            FileInputStream textStream = new FileInputStream("test");
+
+            DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+            Doc mydoc = new SimpleDoc(textStream, flavor, null);
+
+            PrintRequestAttributeSet aset = new PrintRequestAttributeSet() {
+                @Override
+                public boolean add(Attribute attribute) {
+                    return false;
+                }
+
+                @Override
+                public boolean addAll(AttributeSet attributes) {
+                    return false;
+                }
+
+                @Override
+                public Attribute get(Class<?> category) {
+                    return null;
+                }
+
+                @Override
+                public boolean remove(Class<?> category) {
+                    return false;
+                }
+
+                @Override
+                public boolean remove(Attribute attribute) {
+                    return false;
+                }
+
+                @Override
+                public boolean containsKey(Class<?> category) {
+                    return false;
+                }
+
+                @Override
+                public boolean containsValue(Attribute attribute) {
+                    return false;
+                }
+
+                @Override
+                public int size() {
+                    return 0;
+                }
+
+                @Override
+                public Attribute[] toArray() {
+                    return new Attribute[0];
+                }
+
+                @Override
+                public void clear() {
+
+                }
+
+                @Override
+                public boolean isEmpty() {
+                    return false;
+                }
+            }
+            PrintService[] services = PrintServiceLookup.lookupPrintServices(
+                    flavor, aset);
+            PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
+
+            if (services.length == 0) {
+                if (defaultService == null) {
+                    //no printer found
+
+                } else {
+                    //print using default
+                    DocPrintJob job = defaultService.createPrintJob();
+                    job.print(mydoc, aset);
+
+                }
+
+            } else {
+
+                //built in UI for printing you may not use this
+                PrintService service = ServiceUI.printDialog(null, 200, 200, services, defaultService, flavor, aset);
+
+
+                if (service != null) {
+                    DocPrintJob job = service.createPrintJob();
+                    job.print(mydoc, aset);
+                }
+
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }*/
     }
 }

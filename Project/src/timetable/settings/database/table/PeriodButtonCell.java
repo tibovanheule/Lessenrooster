@@ -1,17 +1,18 @@
-package timetable.settings.database;
+package timetable.settings.database.table;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import timetable.objects.Period;
+import timetable.settings.database.DatabaseController;
 
 /**
  * Custom TableCell, to have a delete button in side a cell
  *
  * @author Tibo Vanheule
  */
-class PeriodButtonCell extends TableCell<Period, Boolean> {
+public class PeriodButtonCell extends TableCell<Period, Boolean> {
     private final Button cellButton = new Button();
 
     public PeriodButtonCell(TableView<Period> table, DatabaseController databaseController) {

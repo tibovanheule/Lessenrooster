@@ -1,4 +1,4 @@
-package timetable.settings.database;
+package timetable.settings.database.table;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.TableColumn;

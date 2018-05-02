@@ -22,6 +22,8 @@ import timetable.db.DataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Period;
 import timetable.settings.SettingsController;
+import timetable.settings.database.table.CustomTableColumn;
+import timetable.settings.database.table.PeriodButtonCell;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -131,9 +133,10 @@ public class DatabaseController {
         /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
-        FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
-        fileChooser.getExtensionFilters().add(ext);
-        fileChooser.setSelectedExtensionFilter(ext);
+        FileChooser.ExtensionFilter db = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
+        FileChooser.ExtensionFilter sqlite = new FileChooser.ExtensionFilter("Sqlite Database files (*.sqlite)", "*.sqlite");
+        fileChooser.getExtensionFilters().addAll(db, sqlite);
+        fileChooser.setSelectedExtensionFilter(db);
         Path file = fileChooser.showSaveDialog(stage).toPath();
 
         try (InputStream stream = Main.class.getResourceAsStream("empty.db");
@@ -157,7 +160,7 @@ public class DatabaseController {
      * invokes setDatabase when a files has been dropped
      */
     private void dragDropped(DragEvent event) {
-        if (setDatabase(event.getDragboard().getFiles().get(0).toPath())){
+        if (setDatabase(event.getDragboard().getFiles().get(0).toPath())) {
             close();
         }
     }
@@ -169,10 +172,11 @@ public class DatabaseController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("open Database");
         FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
-        fileChooser.getExtensionFilters().add(ext);
+        FileChooser.ExtensionFilter sqlite = new FileChooser.ExtensionFilter("Sqlite Database files (*.sqlite)", "*.sqlite");
+        fileChooser.getExtensionFilters().addAll(ext, sqlite);
         fileChooser.setSelectedExtensionFilter(ext);
         try {
-            if(setDatabase(fileChooser.showOpenDialog(stage).toPath())){
+            if (setDatabase(fileChooser.showOpenDialog(stage).toPath())) {
                 close();
             }
         } catch (NullPointerException e) {
@@ -186,18 +190,23 @@ public class DatabaseController {
     private boolean setDatabase(Path file) {
         /*http://fileformats.archiveteam.org/wiki/DB_(SQLite) <- mime type gevonden*/
         try {
-            if (file != null && Files.isReadable(file)) {
-                url = "jdbc:sqlite:" + file.toString();
-                try {
-                    DataAccessProvider dataAccessProvider = new SqliteDataAccessProvider(url);
-                    dataAccessProvider.getDataAccessContext().getStudentsDAO().get();
-                    dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
-                    mysql.setSelected(false);
-                    properties.setProperty("DB.use", "false");
-                    mainController.setDbName(file.getFileName().toString().replace(".db", ""));
-                    mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-                } catch (Exception e) {
-                    new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
+            if (file != null ){
+                if( Files.isReadable(file) && Files.isWritable(file)) {
+                    url = "jdbc:sqlite:" + file.toString();
+                    try {
+                        DataAccessProvider dataAccessProvider = new SqliteDataAccessProvider(url);
+                        dataAccessProvider.getDataAccessContext().getStudentsDAO().get();
+                        dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
+                        mysql.setSelected(false);
+                        properties.setProperty("DB.use", "false");
+                        mainController.setDbName(file.getFileName().toString().replace(".db", ""));
+                        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+                    } catch (Exception e) {
+                        new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
+                        return false;
+                    }
+                }else{
+                    new StdError("Error", "File", "You're file is either not writable or is not readable", Alert.AlertType.ERROR);
                     return false;
                 }
             }

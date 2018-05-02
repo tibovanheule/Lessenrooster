@@ -87,7 +87,7 @@ public class EditLecture {
     /**
      * close and save the updated lecture
      */
-    public void close() {
+    public void saveClose() {
 
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
             /*Objects are made to have */
@@ -104,15 +104,20 @@ public class EditLecture {
             Integer durationInt = duration.getSelectionModel().getSelectedItem();
             Period period2 = period.getSelectionModel().getSelectedItem();
 
-
-            dac.getLectureDoa().update(new Lecture(studentItem.getName(), teacherItem.getName(),
+            Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
                     locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
-                    period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId()), lecture);
+                    period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
+            dac.getLectureDoa().update(newLecture, lecture);
+            controller.setLecture(newLecture);
             model.refresh();
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
         stage.close();
         controller.setCanClose(true);
+    }
+
+    public void close(){
+        stage.close();
     }
 }

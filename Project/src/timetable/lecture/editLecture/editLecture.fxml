@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import timetable.comboboxes.ItemCombobox?>
 <?import timetable.comboboxes.PeriodsCombobox?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450.0" styleClass="body"
-            stylesheets="@../../resources/popup.css" xmlns="http://javafx.com/javafx/9"
+<AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@../../resources/popup.css"
+            xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="timetable.lecture.editLecture.EditLecture">
     <AnchorPane prefHeight="98.0" prefWidth="450.0" styleClass="blue">
         <Label layoutX="56.0" layoutY="35.0" styleClass="blue" text="Edit course"/>
@@ -24,5 +24,6 @@
     <Label layoutX="60.0" layoutY="305.0" text="Teacher:"/>
     <Label layoutX="62.0" layoutY="347.0" text="Location:"/>
     <ItemCombobox fx:id="loc" layoutX="115.0" layoutY="342.0" prefWidth="150.0"/>
-    <Button layoutX="196.0" layoutY="397.0" mnemonicParsing="false" onAction="#close" text="Close"/>
+    <Button layoutX="257.0" layoutY="397.0" mnemonicParsing="false" onAction="#saveClose" text="Save and close"/>
+    <Button layoutX="203.0" layoutY="397.0" mnemonicParsing="false" onAction="#close" text="Close"/>
 </AnchorPane>

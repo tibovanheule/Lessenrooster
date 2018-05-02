@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import timetable.MainModel;
+import timetable.StdError;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.comboboxes.ItemCombobox;
@@ -67,12 +68,9 @@ public class CreateLecture {
             period.setValue(period.getItems().get(0));
         }catch (Exception e){
             // TODO: 1/05/2018 open student etc
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Create a student, teacher or location first!");
-            alert.showAndWait();
-            close();
+            new StdError("Error","Error","Create a student, teacher or location first!",Alert.AlertType.ERROR);
+            stage.close();
+
         }
 
     }

@@ -15,7 +15,7 @@ public class Lecture implements Comparator<Lecture> {
     private Boolean conflict;
 
     public Lecture(String student, String teacher, String location, String course, Integer day, Integer block, Integer duration, Integer hour,
-                   Integer minute, Integer sutdentId, Integer teacherId, Integer locationId) {
+                   Integer minute, Integer studentId, Integer teacherId, Integer locationId) {
         this.block = block;
         this.course = course;
         this.day = day;
@@ -25,9 +25,13 @@ public class Lecture implements Comparator<Lecture> {
         this.teacher = teacher;
         this.conflict = false;
         this.time = hour + ":" + minute;
+        if(minute == 0){
+            /*if 0 overwrite last string ^^*/
+            this.time = hour + ":0" + minute;
+        }
         this.hour = hour;
         this.minute = minute;
-        this.studentId = sutdentId;
+        this.studentId = studentId;
         this.locationId = locationId;
         this.teacherId = teacherId;
     }

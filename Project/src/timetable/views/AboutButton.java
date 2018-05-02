@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Main;
@@ -40,6 +41,8 @@ public class AboutButton extends Button implements EventHandler<ActionEvent> {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage);
+            stage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
+            stage.setTitle("About");
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {

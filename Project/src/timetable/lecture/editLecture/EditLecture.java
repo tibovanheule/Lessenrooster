@@ -112,7 +112,7 @@ public class EditLecture {
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
-        controller.setCanClose(true);
         stage.close();
+        controller.setCanClose(true);
     }
 }

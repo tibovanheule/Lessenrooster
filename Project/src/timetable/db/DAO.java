@@ -17,4 +17,6 @@ public interface DAO {
     int updateName(Item item) throws DataAccessException;
 
     Iterable<Item> getFiltered(String searchWord) throws DataAccessException;
+
+    Boolean nameExists(String name) throws DataAccessException;
 }

@@ -41,3 +41,7 @@ Label {
     -fx-text-fill: #b3b0ac;
     -fx-font-family: "Lato Semibold";
 }
+.conflict {
+    -fx-text-fill: white;
+    -fx-background-color: #F65459;
+}

@@ -13,13 +13,12 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.sqlite.SQLiteConnection;
-import org.sqlite.SQLiteDataSource;
 import timetable.Controller;
 import timetable.Main;
 import timetable.StdError;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
+import timetable.db.DataAccessProvider;
 import timetable.db.sqlite.SqliteDataAccessProvider;
 import timetable.objects.Period;
 import timetable.settings.SettingsController;
@@ -28,12 +27,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-import java.sql.Connection;
 import java.util.Properties;
 
 /**
@@ -148,8 +143,9 @@ public class DatabaseController {
             while ((readBytes = stream.read(buffer)) > 0) {
                 resStreamOut.write(buffer, 0, readBytes);
             }
-            setDatabase(file);
-            period();
+            if (setDatabase(file)) {
+                period();
+            }
         } catch (IOException ex) {
             new StdError(ex.getMessage());
         } catch (NullPointerException e) {
@@ -161,8 +157,9 @@ public class DatabaseController {
      * invokes setDatabase when a files has been dropped
      */
     private void dragDropped(DragEvent event) {
-        setDatabase(event.getDragboard().getFiles().get(0).toPath());
-        close();
+        if (setDatabase(event.getDragboard().getFiles().get(0).toPath())){
+            close();
+        }
     }
 
     /**
@@ -175,45 +172,40 @@ public class DatabaseController {
         fileChooser.getExtensionFilters().add(ext);
         fileChooser.setSelectedExtensionFilter(ext);
         try {
-            setDatabase(fileChooser.showOpenDialog(stage).toPath());
-        }catch (NullPointerException e){
+            if(setDatabase(fileChooser.showOpenDialog(stage).toPath())){
+                close();
+            }
+        } catch (NullPointerException e) {
             /*user has canceled*/
         }
-        close();
     }
 
     /**
      * changes the data access provoider
      */
-    private void setDatabase(Path file) {
+    private boolean setDatabase(Path file) {
         /*http://fileformats.archiveteam.org/wiki/DB_(SQLite) <- mime type gevonden*/
         try {
-            if (file != null) {
+            if (file != null && Files.isReadable(file)) {
                 url = "jdbc:sqlite:" + file.toString();
                 try {
-                    SQLiteDataSource datasource = new SQLiteDataSource();
-                    datasource.setUrl(url);
-                    Connection conn = datasource.getConnection();
-                    conn.close();
-                    if (Files.probeContentType(file) == null || Files.probeContentType(file).equals("application/x-sqlite3")) {
-                        mysql.setSelected(false);
-                        properties.setProperty("DB.use", "false");
-                        mainController.setDbName(file.getFileName().toString().replace(".db", ""));
-
-                        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
-                    } else {
-                        new StdError("Error", "Wrong file", "There has been detected that you provoided a file with the wrong content type, not 'application/x-sqlite3' ", Alert.AlertType.ERROR);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+                    DataAccessProvider dataAccessProvider = new SqliteDataAccessProvider(url);
+                    dataAccessProvider.getDataAccessContext().getStudentsDAO().get();
+                    dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
+                    mysql.setSelected(false);
+                    properties.setProperty("DB.use", "false");
+                    mainController.setDbName(file.getFileName().toString().replace(".db", ""));
+                    mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider(url));
+                } catch (Exception e) {
                     new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
+                    return false;
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-
+        return true;
     }
 
     /**

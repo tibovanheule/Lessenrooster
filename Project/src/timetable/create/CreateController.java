@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.converter.DefaultStringConverter;
 import timetable.Controller;
 import timetable.MainModel;
+import timetable.StdError;
 import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
@@ -93,7 +94,7 @@ public class CreateController {
                 cell.setAlignment(Pos.CENTER);
                 return cell;
             });
-            name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue()));
+            name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue(), event));
 
             try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
                 HashMap<String, DAO> daos = new HashMap<>();
@@ -183,16 +184,28 @@ public class CreateController {
     /**
      * Function update a name of a location student or teacher when a editCommit happens.
      */
-    private void updateName(Item item, String name) {
-        item.setName(name);
+    private void updateName(Item item, String name, TableColumn.CellEditEvent editEvent) {
+
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             HashMap<String, DAO> daos = new HashMap<>();
             daos.put("student", dac.getStudentsDAO());
             daos.put("teacher", dac.getTeacherDAO());
             daos.put("location", dac.getLocationDAO());
             DAO dao = daos.get(ui);
-            dao.updateName(item);
-            mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
+            if (!dao.nameExists(name)) {
+                item.setName(name);
+                dao.updateName(item);
+                mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
+            } else {
+                canClose = false;
+                new StdError("Warning", "Duplicates", "The name you have entered is already\n in the database", Alert.AlertType.WARNING);
+                canClose = true;
+            }
+            table.getItems().clear();
+            for (Item item1 : dao.get()) {
+                table.getItems().add(item1);
+            }
+
         } catch (DataAccessException e) {
             e.printStackTrace();
         }

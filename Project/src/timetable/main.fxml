@@ -42,7 +42,7 @@
 
             <HBox alignment="CENTER">
 
-                <Label styleClass="dayLabel" text="Monday"/>
+                <Label styleClass="dayLabel" text="Monday" userData="1"/>
 
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="1">
@@ -79,14 +79,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
 
-            <LectureListView prefHeight="486.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="1" model="$model"/>
-            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="178.2" styleClass="dayHolder" userData="2" model="$model"
+            <LectureListView prefHeight="486.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="1"
+                             model="$model"/>
+            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="178.2" styleClass="dayHolder" userData="2"
+                             model="$model"
                              GridPane.columnIndex="1"/>
-            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="3" model="$model"
+            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="3"
+                             model="$model"
                              GridPane.columnIndex="2"/>
-            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="4" model="$model"
+            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="4"
+                             model="$model"
                              GridPane.columnIndex="3"/>
-            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="5" model="$model"
+            <LectureListView prefHeight="200.0" prefWidth="200.0" minWidth="177.2" styleClass="dayHolder" userData="5"
+                             model="$model"
                              GridPane.columnIndex="4"/>
 
         </GridPane>
@@ -142,8 +147,8 @@
                        styleClass="listselect" model="$model"/>
         <HBox alignment="CENTER" layoutX="6.0" layoutY="110.0" prefWidth="220" maxWidth="200">
 
-            <Button styleClass="navItem" text="add student, teach...    " userData="students" onAction="#create" />
-            <Button styleClass="navItem" text="add lecture" userData="teacher" onAction="#createLecture" />
+            <Button styleClass="navItem" text="add student, teach...    " userData="students" onAction="#create"/>
+            <Button styleClass="navItem" text="add lecture" userData="teacher" onAction="#createLecture"/>
 
         </HBox>
         <HBox alignment="CENTER" layoutX="6.0" layoutY="90.0" prefWidth="220" maxWidth="200">

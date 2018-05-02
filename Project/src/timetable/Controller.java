@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -133,6 +132,8 @@ public class Controller {
         time.setWrapText(true);
         time.setTextAlignment(TextAlignment.JUSTIFY);
 
+
+
     }
 
     /**
@@ -181,6 +182,7 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Create a new stage, Stage to create a student or teacher or location.

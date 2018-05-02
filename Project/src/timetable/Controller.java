@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -171,7 +172,10 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 220));
             controller.setStageAndSetupListeners(stage);
+            stage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
+            stage.setTitle("weather");
             stage.show();
+
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,6 +192,7 @@ public class Controller {
             Parent root = loader.load();
             CreateController controller = loader.getController();
             Stage stage = new Stage();
+            stage.initOwner(this.stage);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, this);
@@ -205,6 +210,7 @@ public class Controller {
             CreateLecture controller = loader.getController();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initOwner(this.stage);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, model);
             stage.show();
@@ -226,6 +232,8 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, this);
+            stage.initOwner(this.stage);
+            stage.requestFocus();
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (IOException e) {

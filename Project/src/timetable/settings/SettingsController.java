@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Controller;
@@ -105,8 +106,11 @@ public class SettingsController {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             Scene scene = new Scene(root, 450, 450);
-            stage.setScene(scene);
             controller.setStageAndSetupListeners(stage, mainController, this, properties);
+            stage.setScene(scene);
+            stage.initOwner(this.stage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.requestFocus();
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,7 +33,8 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                 ListCell<Lecture> cell = new ListCell<Lecture>() {
                     {
                         //gevonden fix voor de wrap text
-                        prefWidthProperty().bind(this.widthProperty().subtract(20));
+                        prefWidthProperty().bind(this.widthProperty());
+                        minWidthProperty().bind(this.widthProperty());
                     }
 
                     @Override
@@ -103,6 +105,8 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             Stage stage = new Stage();
             controller.setStageAndSetupListeners(stage, model);
             stage.initStyle(StageStyle.UNDECORATED);
+            stage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
+            stage.setTitle("Lecture");
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
             stage.focusedProperty().addListener(o -> controller.close());

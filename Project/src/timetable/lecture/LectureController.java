@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -52,7 +53,7 @@ public class LectureController {
             course.setText(lecture.getCourse());
             text.setText(days[lecture.getDay() - 1] + "\n"
                     + "Duration: " + lecture.getDuration() + " hours\n"
-                    + "Start hour" + lecture.getTime() + "\n"
+                    + "Start hour: " + lecture.getTime() + "\n"
                     + "For students: " + lecture.getStudent() + "\n"
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
@@ -90,6 +91,9 @@ public class LectureController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, lecture, this, model);
+            stage.initOwner(this.stage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.requestFocus();
             stage.show();
         } catch (Exception e) {
             canClose = true;

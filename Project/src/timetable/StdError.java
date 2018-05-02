@@ -1,5 +1,7 @@
 package timetable;
 
+import javafx.scene.control.Alert;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -24,4 +26,13 @@ public class StdError {
             errorWhileGivingAErrorLol.printStackTrace();
         }
     }
+
+    public StdError(String tilte, String head, String error, Alert.AlertType alertType){
+        Alert alert = new Alert(alertType);
+        alert.setTitle(tilte);
+        alert.setHeaderText(head);
+        alert.setContentText(error);
+        alert.showAndWait();
+    }
+
 }

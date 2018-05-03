@@ -1,13 +1,12 @@
 /*Tibo Vanheule*/
 package timetable.lecture;
 
-import javafx.collections.FXCollections;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import timetable.Main;
@@ -23,6 +22,9 @@ import timetable.objects.Lecture;
  * @author Tibo Vanheule
  */
 public class LectureController {
+
+    ChangeListener listener;
+
     @FXML
     private Label text, course;
     @FXML
@@ -45,10 +47,9 @@ public class LectureController {
      * shows information of lecture
      */
     public void setLecture(Lecture lecture) {
-        System.out.println(lecture.toString());
-        this.lecture = lecture;
-        String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
         try {
+            this.lecture = lecture;
+            String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
             course.setText(lecture.getCourse());
             text.setText(days[lecture.getDay() - 1] + "\n"
                     + "Duration: " + lecture.getDuration() + " hours\n"
@@ -57,17 +58,12 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
-            // TODO: 3/05/2018 exception handelen
-
-            System.out.println("conflicts: "+lecture.getConflicts());
-            System.out.println("items  fc: "+conflicts.getItems());
+            conflicts.getSelectionModel();
             conflicts.getItems().clear();
-            System.out.println("items ac: "+conflicts.getItems());
-            conflicts.getItems().addAll(FXCollections.observableArrayList(lecture.getConflicts()));
-            System.out.println("items end: "+conflicts.getItems());
+            conflicts.getItems().addAll(lecture.getConflicts());
 
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -78,8 +74,11 @@ public class LectureController {
         this.stage = stage;
         this.model = model;
 
-
-        conflicts.getSelectionModel().selectedItemProperty().addListener(o -> setLecture(conflicts.getSelectionModel().getSelectedItem()));
+        conflicts.setOnMouseClicked(o -> {
+            if (conflicts.getSelectionModel().getSelectedItem() != null) {
+                setLecture(conflicts.getSelectionModel().getSelectedItem());
+            }
+        });
     }
 
     /**

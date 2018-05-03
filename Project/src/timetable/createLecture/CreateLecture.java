@@ -44,18 +44,10 @@ public class CreateLecture {
         this.stage = stage;
         this.model = model;
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-            for (Item item : dac.getStudentsDAO().get()) {
-                students.getItems().add(item);
-            }
-            for (Item item : dac.getTeacherDAO().get()) {
-                teacher.getItems().add(item);
-            }
-            for (Item item : dac.getLocationDAO().get()) {
-                loc.getItems().add(item);
-            }
-            for (Period item : dac.getPeriodDAO().getPeriods()) {
-                period.getItems().add(item);
-            }
+            dac.getStudentsDAO().get().forEach(o -> students.getItems().add(o));
+            dac.getTeacherDAO().get().forEach(o -> teacher.getItems().add(o));
+            dac.getLocationDAO().get().forEach(o -> loc.getItems().add(o));
+            dac.getPeriodDAO().getPeriods().forEach(o -> period.getItems().add(o));
         } catch (Exception e) {
             e.printStackTrace();
         }

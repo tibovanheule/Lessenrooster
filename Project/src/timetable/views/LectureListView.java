@@ -101,15 +101,15 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();
             LectureController controller = loader.getController();
-            controller.setLecture(getSelectionModel().getSelectedItem());
             Stage stage = new Stage();
             controller.setStageAndSetupListeners(stage, model);
+            controller.setLecture(getSelectionModel().getSelectedItem());
             stage.initStyle(StageStyle.UNDECORATED);
             stage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
             stage.setTitle("Lecture");
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
-            stage.focusedProperty().addListener(o -> controller.close());
+            /*stage.focusedProperty().addListener(o -> controller.close());*/
         } catch (Exception e) {
             e.printStackTrace();
         }

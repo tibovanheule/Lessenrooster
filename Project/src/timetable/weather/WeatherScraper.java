@@ -51,8 +51,8 @@ public class WeatherScraper {
             }
         } catch (Exception e) {
             weather = new Weather(false);
-            /*e.printStackTrace();*/
-            new StdError("WARNING! couldn't get the weather! Do you have an internet connection?");
+            /*e.printStackTrace();*//*
+            new StdError("WARNING! couldn't get the weather! Do you have an internet connection?");*/
 
         }
         return strings;

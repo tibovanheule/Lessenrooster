@@ -178,3 +178,10 @@ Main css
     -fx-background-position: center;
     -fx-background-size: 150%;
 }
+.addLecture{
+    -fx-background-color: #efeeec;
+    -fx-background-image: url("images/addLesson.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 150%;
+}

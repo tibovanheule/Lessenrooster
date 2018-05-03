@@ -8,10 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import timetable.MainModel;
 import timetable.StdError;
-import timetable.db.DataAccessContext;
-import timetable.db.DataAccessException;
 import timetable.comboboxes.ItemCombobox;
 import timetable.comboboxes.PeriodsCombobox;
+import timetable.db.DataAccessContext;
+import timetable.db.DataAccessException;
 import timetable.objects.Item;
 import timetable.objects.Lecture;
 import timetable.objects.Period;
@@ -22,6 +22,7 @@ import timetable.objects.Period;
  * @author Tibo Vanheule
  */
 public class CreateLecture {
+    private Boolean canClose = true;
 
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
     private Stage stage;
@@ -66,10 +67,11 @@ public class CreateLecture {
             loc.setValue(loc.getItems().get(0));
             day.setValue(days[0]);
             period.setValue(period.getItems().get(0));
-        }catch (Exception e){
+        } catch (Exception e) {
             // TODO: 1/05/2018 open student etc
-            new StdError("Error","Error","Create a student, teacher or location first!",Alert.AlertType.ERROR);
+            new StdError("Error", "Error", "Create a student, teacher or location first!", Alert.AlertType.ERROR);
             stage.close();
+
 
         }
 
@@ -87,43 +89,48 @@ public class CreateLecture {
      * close and create lecture
      */
     public void saveAndClose() {
-
-        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-            /*Objects are made to have */
-            Item studentItem = students.getSelectionModel().getSelectedItem();
-            Item teacherItem = teacher.getSelectionModel().getSelectedItem();
-            Item locationItem = loc.getSelectionModel().getSelectedItem();
-            Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
-            Integer durationInt = duration.getSelectionModel().getSelectedItem();
-            Period period2 = period.getSelectionModel().getSelectedItem();
-
-            String course;
-            if (name.getText().isEmpty()) {
-                course = "Nameless lesson";
-            } else {
-                course = name.getText();
-            }
-
-            try {
-                dac.getLectureDoa().create(new Lecture(studentItem.getName(), teacherItem.getName(),
+        if (!name.getText().isEmpty()) {
+            try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
+                /*Objects are made to have */
+                Item studentItem = students.getSelectionModel().getSelectedItem();
+                Item teacherItem = teacher.getSelectionModel().getSelectedItem();
+                Item locationItem = loc.getSelectionModel().getSelectedItem();
+                Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
+                Integer durationInt = duration.getSelectionModel().getSelectedItem();
+                Period period2 = period.getSelectionModel().getSelectedItem();
+                String course = name.getText();
+                Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
                         locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
-                        period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId()));
-                model.refresh();
-            }catch (Exception e ){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Empty field");
-                alert.setContentText("There are empty fields, couldn't create new lecture");
-                alert.showAndWait();
-                close();
+                        period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
+
+
+                try {
+                    if (!dac.getLectureDoa().conflict(newLecture)) {
+                        dac.getLectureDoa().create(newLecture);
+                        model.refresh();
+                    } else {
+                        new StdError("Error", "Conflict", "The lesson that you are trying to create, \n would conflict with another lesson.", Alert.AlertType.ERROR);
+                    }
+                } catch (NullPointerException e) {
+                    new StdError("Error", "Empty field", "There are empty fields, couldn't create new lecture", Alert.AlertType.ERROR);
+                    close();
+                }
+
+            } catch (DataAccessException e) {
+                e.printStackTrace();
             }
-        } catch (DataAccessException e) {
-            e.printStackTrace();
+            stage.close();
+        } else {
+            canClose = false;
+            new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
+            canClose = true;
         }
-        stage.close();
+
     }
 
-    public void close(){
-        stage.close();
+    public void close() {
+        if (canClose) {
+            stage.close();
+        }
     }
 }

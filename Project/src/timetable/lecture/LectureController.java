@@ -92,11 +92,10 @@ public class LectureController {
             stage.setScene(new Scene(root, 450, 450));
             controller.setStageAndSetupListeners(stage, lecture, this, model);
             stage.initOwner(this.stage);
-            stage.initModality(Modality.WINDOW_MODAL);
             stage.requestFocus();
             stage.show();
+            // TODO: 2/05/2018 canclose
         } catch (Exception e) {
-            canClose = true;
             e.printStackTrace();
         }
     }

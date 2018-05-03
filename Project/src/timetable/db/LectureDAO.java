@@ -21,4 +21,6 @@ public interface LectureDAO extends DAO {
     int create(Lecture lecture) throws DataAccessException;
 
     int delete(Lecture lecture) throws DataAccessException;
+
+    Boolean conflict(Lecture lecture) throws DataAccessException;
 }

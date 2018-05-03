@@ -44,7 +44,7 @@ public class DatabaseController {
     private Stage stage;
     private SettingsController settingsController;
     @FXML
-    private CheckBox mysql,sqlite;
+    private CheckBox mysql;
     @FXML
     private ImageView drag;
     private String url;
@@ -73,7 +73,6 @@ public class DatabaseController {
         drag.setOnDragOver(this::dragOver);
         drag.setOnDragDropped(this::dragDropped);
         /*mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
-        sqlite.setSelected(!Boolean.parseBoolean(properties.getProperty("DB.use")));
     }
 
     /**
@@ -81,7 +80,6 @@ public class DatabaseController {
      */
     public void mysql() {
         if (mysql.isSelected()) {
-            sqlite.setSelected(false);
             properties.setProperty("DB.use", "true");
             //nieuwe data provider
             /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
@@ -90,14 +88,16 @@ public class DatabaseController {
         }
     }
 
-    public void sqlite(){
+    /**
+     * change to standard sqlite database
+     */
+    public void sqlite() {
         properties.setProperty("DB.use", "false");
-        if (sqlite.isSelected()) {
             mysql.setSelected(false);
             mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
             mainController.setDbName("Lessenrooster(offline)");
             close();
-        }
+
     }
 
     /**
@@ -211,8 +211,6 @@ public class DatabaseController {
                         dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
                         dataAccessProvider.getDataAccessContext().close();
                         /*set db file and dataAccessProvoider*/
-                        mysql.setSelected(false);
-                        sqlite.setSelected(false);
                         properties.setProperty("DB.use", "false");
                         mainController.setDbName(file.getFileName().toString().replace(".db", ""));
                         mainController.getModel().setDataAccessProvider(dataAccessProvider);

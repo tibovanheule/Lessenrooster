@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import timetable.comboboxes.ItemCombobox?>
 <?import timetable.comboboxes.PeriodsCombobox?>
-<AnchorPane prefHeight="450.0" prefWidth="450.0" styleClass="body" stylesheets="@../../resources/popup.css"
-            xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="450.0" styleClass="body"
+            stylesheets="@../../resources/popup.css" xmlns="http://javafx.com/javafx/9"
             fx:controller="timetable.lecture.editLecture.EditLecture">
     <AnchorPane prefHeight="98.0" prefWidth="450.0" styleClass="blue">
         <Label layoutX="56.0" layoutY="35.0" styleClass="blue" text="Edit course"/>

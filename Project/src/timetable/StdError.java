@@ -27,7 +27,7 @@ public class StdError {
         }
     }
 
-    public StdError(String tilte, String head, String error, Alert.AlertType alertType){
+    public StdError(String tilte, String head, String error, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(tilte);
         alert.setHeaderText(head);

@@ -206,10 +206,11 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
 
     /**
-     * to check if a name isn't already in database*/
+     * to check if a name isn't already in database
+     */
     @Override
     public Boolean nameExists(String name) {
-       return true;
+        return true;
     }
 
     @Override
@@ -217,9 +218,9 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
         String search = "SELECT course FROM lecture WHERE first_block=? AND day=? LIMIT 1";
         try (PreparedStatement statement = prepare(search)) {
             statement.setInt(1, lecture.getBlock());
-            statement.setInt(2,lecture.getDay());
+            statement.setInt(2, lecture.getDay());
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return true;
             }
         } catch (Exception e) {

@@ -20,7 +20,7 @@ Label {
     -fx-font-family: Lato;
 }
 
-.blue Label{
+.blue Label {
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -41,6 +41,7 @@ Label {
     -fx-text-fill: #b3b0ac;
     -fx-font-family: "Lato Semibold";
 }
+
 .conflict {
     -fx-text-fill: white;
     -fx-background-color: #F65459;

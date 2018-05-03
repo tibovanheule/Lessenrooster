@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.OverrunStyle;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -47,7 +46,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                             getStyleClass().remove("conflict");
                             setOnMouseClicked(null);
                         } else {
-                            setText(lecture.getTime()+" uur \n"+lecture.getCourse() );
+                            setText(lecture.getTime() + " uur \n" + lecture.getCourse());
                             if (lecture.getConflict()) {
                                 getStyleClass().add("conflict");
                             }

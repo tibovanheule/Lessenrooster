@@ -24,8 +24,8 @@ import timetable.objects.Period;
  */
 public class EditLecture {
 
-    private Boolean canClose = true;
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
+    private Boolean canClose = true;
     private Stage stage;
     private Lecture lecture;
     private LectureController controller;

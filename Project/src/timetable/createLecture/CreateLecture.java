@@ -22,9 +22,8 @@ import timetable.objects.Period;
  * @author Tibo Vanheule
  */
 public class CreateLecture {
-    private Boolean canClose = true;
-
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
+    private Boolean canClose = true;
     private Stage stage;
     @FXML
     private ComboBox<Integer> duration;

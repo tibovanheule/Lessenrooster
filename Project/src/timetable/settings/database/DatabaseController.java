@@ -193,8 +193,8 @@ public class DatabaseController {
     private boolean setDatabase(Path file) {
         /*http://fileformats.archiveteam.org/wiki/DB_(SQLite) <- mime type gevonden*/
         try {
-            if (file != null ){
-                if( Files.isReadable(file) && Files.isWritable(file)) {
+            if (file != null) {
+                if (Files.isReadable(file) && Files.isWritable(file)) {
                     url = "jdbc:sqlite:" + file.toString();
                     try {
                         /*check sqlite, if error occurs , then the file is not an sqlite DB*/
@@ -211,7 +211,7 @@ public class DatabaseController {
                         new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
                         return false;
                     }
-                }else{
+                } else {
                     new StdError("Error", "File", "You're file is either not writable or is not readable", Alert.AlertType.ERROR);
                     return false;
                 }

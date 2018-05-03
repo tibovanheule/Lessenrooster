@@ -120,15 +120,16 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
     }
 
     /**
-     * to check if a name isn't already in database*/
+     * to check if a name isn't already in database
+     */
     @Override
     public Boolean nameExists(String name) throws DataAccessException {
-        name = name.replace(" ","");
+        name = name.replace(" ", "");
         String search = "SELECT name FROM teacher WHERE name=? LIMIT 1";
         try (PreparedStatement statement = prepare(search)) {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return true;
             }
         } catch (Exception e) {

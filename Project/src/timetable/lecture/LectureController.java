@@ -1,17 +1,15 @@
 /*Tibo Vanheule*/
 package timetable.lecture;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import timetable.Main;
 import timetable.MainModel;
 import timetable.db.DataAccessContext;
@@ -47,6 +45,7 @@ public class LectureController {
      * shows information of lecture
      */
     public void setLecture(Lecture lecture) {
+        System.out.println(lecture.toString());
         this.lecture = lecture;
         String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
         try {
@@ -58,16 +57,17 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
-            if (!lecture.getConflicts().isEmpty()) {
-                // TODO: 3/05/2018 exception handelen
-                conflicts.getItems().clear();
-                conflicts.getItems().addAll(lecture.getConflicts());
-            } else {
-                conflictText.setText("There are no conflicts found!");
-                conflicts.setVisible(false);
-            }
+            // TODO: 3/05/2018 exception handelen
+
+            System.out.println("conflicts: "+lecture.getConflicts());
+            System.out.println("items  fc: "+conflicts.getItems());
+            conflicts.getItems().clear();
+            System.out.println("items ac: "+conflicts.getItems());
+            conflicts.getItems().addAll(FXCollections.observableArrayList(lecture.getConflicts()));
+            System.out.println("items end: "+conflicts.getItems());
+
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
         }
     }
 
@@ -77,6 +77,9 @@ public class LectureController {
     public void setStageAndSetupListeners(Stage stage, MainModel model) {
         this.stage = stage;
         this.model = model;
+
+
+        conflicts.getSelectionModel().selectedItemProperty().addListener(o -> setLecture(conflicts.getSelectionModel().getSelectedItem()));
     }
 
     /**
@@ -109,22 +112,10 @@ public class LectureController {
         }
     }
 
-    // TODO: 1/05/2018 Afsplitsen cellfactory
-
     /**
-     * sets listerner to listview selectionmodel
+     * sets listener to Listview selection model
      */
     public void initialize() {
-        conflicts.getSelectionModel().selectedItemProperty().addListener(o -> lecture());
-    }
-
-    /**
-     * When clicked on a conflict lecture show that lecture information in current stage
-     */
-    public void lecture() {
-        if (!conflicts.getItems().isEmpty()) {
-            setLecture(conflicts.getSelectionModel().getSelectedItem());
-        }
 
     }
 

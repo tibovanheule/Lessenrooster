@@ -171,14 +171,15 @@ Main css
     -fx-text-fill: #8d93be;
 }
 
-.add{
+.add {
     -fx-background-color: #efeeec;
     -fx-background-image: url("images/add.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: 150%;
 }
-.addLecture{
+
+.addLecture {
     -fx-background-color: #efeeec;
     -fx-background-image: url("images/addLesson.png");
     -fx-background-repeat: no-repeat;

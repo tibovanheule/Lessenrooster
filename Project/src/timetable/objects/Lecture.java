@@ -25,7 +25,7 @@ public class Lecture implements Comparator<Lecture> {
         this.teacher = teacher;
         this.conflict = false;
         this.time = hour + ":" + minute;
-        if(minute == 0){
+        if (minute == 0) {
             /*if 0 overwrite last string ^^*/
             this.time = hour + ":0" + minute;
         }

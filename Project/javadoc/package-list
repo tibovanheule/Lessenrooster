@@ -11,5 +11,6 @@ timetable.lecture.editLecture
 timetable.objects
 timetable.settings
 timetable.settings.database
+timetable.settings.database.table
 timetable.views
 timetable.weather

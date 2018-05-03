@@ -126,10 +126,10 @@
                     <Insets right="30.0"/>
                 </HBox.margin>
             </Button>
-            <AboutButton mnemonicParsing="false" styleClass="about"/>
             <Button mnemonicParsing="false" onAction="#create" styleClass="add"/>
             <Button mnemonicParsing="false" onAction="#createLecture" styleClass="addLecture"/>
             <Button mnemonicParsing="false" onAction="#settings" styleClass="settings"/>
+            <AboutButton mnemonicParsing="false" styleClass="about"/>
             <Button mnemonicParsing="false" onAction="#maximize" styleClass="windowSize"/>
             <Button mnemonicParsing="false" onAction="#exit" styleClass="close"/>
             <VBox alignment="CENTER_RIGHT"/>

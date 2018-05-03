@@ -60,11 +60,9 @@ public class CreateLecture {
             day.setValue(days[0]);
             period.setValue(period.getItems().get(0));
         } catch (Exception e) {
-            // TODO: 1/05/2018 open student etc
             new StdError("Error", "Error", "Create a student, teacher or location first!", Alert.AlertType.ERROR);
             this.stage.close();
             controller.create();
-
         }
 
     }

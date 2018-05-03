@@ -7,7 +7,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import timetable.Controller;
 import timetable.StdError;
 import timetable.db.DataAccessContext;
@@ -40,14 +39,13 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
                 try {
                     return Integer.parseInt(string);
                 } catch (NumberFormatException e) {
-                    new StdError("Error","not a number!","You haven't typed a number!",Alert.AlertType.ERROR);
+                    new StdError("Error", "not a number!", "You haven't typed a number!", Alert.AlertType.ERROR);
                     return 0;
                 }
             }
         };
         setCellFactory(column -> {
-            TableCell<Period, Integer> cell =  new TextFieldTableCell<Period,Integer>(stringConverter);
-
+            TableCell<Period, Integer> cell = new TextFieldTableCell<Period, Integer>(stringConverter);
             cell.setAlignment(Pos.CENTER);
             return cell;
         });
@@ -61,7 +59,7 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
     /**
      * sets propertyValue factory and field controller
      */
-    public void setup(Controller controller, PropertyValueFactory propertyValueFactory) {
+    public void setup(Controller controller, PropertyValueFactory<Period, Integer> propertyValueFactory) {
         this.controller = controller;
         setCellValueFactory(propertyValueFactory);
 

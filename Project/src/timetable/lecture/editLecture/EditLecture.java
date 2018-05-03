@@ -2,10 +2,12 @@
 package timetable.lecture.editLecture;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import timetable.MainModel;
+import timetable.StdError;
 import timetable.comboboxes.ItemCombobox;
 import timetable.comboboxes.PeriodsCombobox;
 import timetable.db.DataAccessContext;
@@ -22,6 +24,7 @@ import timetable.objects.Period;
  */
 public class EditLecture {
 
+    private Boolean canClose = true;
     private static final String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
     private Stage stage;
     private Lecture lecture;
@@ -38,8 +41,6 @@ public class EditLecture {
     private TextField name;
     private MainModel model;
 
-    // TODO: 1/05/2018 kijk voor dit te verkorten
-
     /**
      * set up fields lecture stage controllermodel, add elements of database to the comboboxes, set values
      */
@@ -49,18 +50,10 @@ public class EditLecture {
         this.controller = controller;
         this.model = model;
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-            for (Item item : dac.getStudentsDAO().get()) {
-                students.getItems().add(item);
-            }
-            for (Item item : dac.getTeacherDAO().get()) {
-                teacher.getItems().add(item);
-            }
-            for (Item item : dac.getLocationDAO().get()) {
-                loc.getItems().add(item);
-            }
-            for (Period item : dac.getPeriodDAO().getPeriods()) {
-                period.getItems().add(item);
-            }
+            dac.getStudentsDAO().get().forEach(o -> students.getItems().add(o));
+            dac.getTeacherDAO().get().forEach(o -> teacher.getItems().add(o));
+            dac.getLocationDAO().get().forEach(o -> loc.getItems().add(o));
+            dac.getPeriodDAO().getPeriods().forEach(o -> period.getItems().add(o));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,41 +81,46 @@ public class EditLecture {
      * close and save the updated lecture
      */
     public void saveClose() {
+        if (!name.getText().isEmpty()) {
+            try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
+                /*Objects are made to have */
+                Item studentItem = students.getSelectionModel().getSelectedItem();
+                Item teacherItem = teacher.getSelectionModel().getSelectedItem();
+                Item locationItem = loc.getSelectionModel().getSelectedItem();
+                String course = name.getText();
+                Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
+                Integer durationInt = duration.getSelectionModel().getSelectedItem();
+                Period period2 = period.getSelectionModel().getSelectedItem();
 
-        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-            /*Objects are made to have */
-            Item studentItem = students.getSelectionModel().getSelectedItem();
-            Item teacherItem = teacher.getSelectionModel().getSelectedItem();
-            Item locationItem = loc.getSelectionModel().getSelectedItem();
-            String course;
-            if (name.getText().isEmpty()) {
-                course = "Nameless lesson";
-            } else {
-                course = name.getText();
+                Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
+                        locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
+                        period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
+                for (Lecture lecture : lecture.getConflicts()) {
+                    newLecture.addConflict(lecture);
+                }
+                dac.getLectureDoa().update(newLecture, lecture);
+                controller.setLecture(newLecture);
+                model.refresh();
+            } catch (DataAccessException e) {
+                e.printStackTrace();
             }
-            Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
-            Integer durationInt = duration.getSelectionModel().getSelectedItem();
-            Period period2 = period.getSelectionModel().getSelectedItem();
+            stage.close();
+            controller.setCanClose(true);
+        } else {
+            canClose = false;
+            new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
+            canClose = true;
 
-            Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
-                    locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
-                    period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
-            for (Lecture lecture : lecture.getConflicts()) {
-                newLecture.addConflict(lecture);
-            }
-            dac.getLectureDoa().update(newLecture, lecture);
-            controller.setLecture(newLecture);
-            model.refresh();
-        } catch (DataAccessException e) {
-            e.printStackTrace();
         }
-        stage.close();
-        controller.setCanClose(true);
     }
 
     /**
-     * close stage*/
+     * close stage
+     */
     public void close() {
-        stage.close();
+        if (canClose) {
+            stage.close();
+            controller.setCanClose(true);
+        }
     }
 }

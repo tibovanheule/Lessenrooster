@@ -28,7 +28,7 @@ public class LectureController {
     @FXML
     private Label text, course;
     @FXML
-    private ListView<Lecture> conflicts;
+    private ConflictsListview conflicts;
     @FXML
     private Label conflictText;
     private Stage stage;
@@ -59,6 +59,7 @@ public class LectureController {
                     + "Location: " + lecture.getLocation() + "\n"
             );
             if (!lecture.getConflicts().isEmpty()) {
+                // TODO: 3/05/2018 exception handelen
                 conflicts.getItems().clear();
                 conflicts.getItems().addAll(lecture.getConflicts());
             } else {
@@ -94,7 +95,6 @@ public class LectureController {
             stage.initOwner(this.stage);
             stage.requestFocus();
             stage.show();
-            // TODO: 2/05/2018 canclose
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -112,35 +112,9 @@ public class LectureController {
     // TODO: 1/05/2018 Afsplitsen cellfactory
 
     /**
-     * sets conflicts cellfactory
+     * sets listerner to listview selectionmodel
      */
     public void initialize() {
-        conflicts.setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
-            @Override
-            public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
-                ListCell<Lecture> cell = new ListCell<Lecture>() {
-                    {
-                        //gevonden fix voor de wrap text
-                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
-                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
-                        prefWidthProperty().bind(this.widthProperty().subtract(20));
-                    }
-
-                    @Override
-                    protected void updateItem(Lecture item, boolean b) {
-                        super.updateItem(item, b);
-                        if (b || item == null) {
-                            setText(null);
-                            setGraphic(null);
-                            this.setWrapText(true);
-                        } else {
-                            setText(item.getCourse());
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
         conflicts.getSelectionModel().selectedItemProperty().addListener(o -> lecture());
     }
 

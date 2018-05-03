@@ -93,11 +93,10 @@ public class DatabaseController {
      */
     public void sqlite() {
         properties.setProperty("DB.use", "false");
-            mysql.setSelected(false);
-            mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
-            mainController.setDbName("Lessenrooster(offline)");
-            close();
-
+        mysql.setSelected(false);
+        mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
+        mainController.setDbName("Lessenrooster(offline)");
+        close();
     }
 
     /**

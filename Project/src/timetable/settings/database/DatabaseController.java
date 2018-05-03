@@ -44,7 +44,7 @@ public class DatabaseController {
     private Stage stage;
     private SettingsController settingsController;
     @FXML
-    private CheckBox mysql;
+    private CheckBox mysql,sqlite;
     @FXML
     private ImageView drag;
     private String url;
@@ -73,6 +73,7 @@ public class DatabaseController {
         drag.setOnDragOver(this::dragOver);
         drag.setOnDragDropped(this::dragDropped);
         /*mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
+        sqlite.setSelected(!Boolean.parseBoolean(properties.getProperty("DB.use")));
     }
 
     /**

@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-            prefWidth="451.0" stylesheets="@../../resources/popup.css"
-            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="timetable.settings.database.DatabaseController">
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="451.0" stylesheets="@../../resources/popup.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timetable.settings.database.DatabaseController">
 
     <AnchorPane prefHeight="100.0" prefWidth="450.0" styleClass="blue">
 
-        <Label layoutX="54.0" layoutY="34.0" text="DATABASE SETTINGS"/>
+        <Label layoutX="54.0" layoutY="34.0" text="DATABASE SETTINGS" />
 
     </AnchorPane>
-    <CheckBox fx:id="mysql" layoutX="57.0" layoutY="142.0" mnemonicParsing="false" onAction="#mysql" text="Use Mysql?"/>
-    <ImageView fx:id="drag" fitHeight="177.0" fitWidth="384.0" layoutX="73.0" layoutY="222.0" onMouseClicked="#chooseDB"
-               pickOnBounds="true" preserveRatio="true">
+    <CheckBox fx:id="mysql" layoutX="57.0" layoutY="142.0" mnemonicParsing="false" onAction="#mysql" text="Use Mysql?" />
+    <ImageView fx:id="drag" fitHeight="177.0" fitWidth="384.0" layoutX="73.0" layoutY="222.0" onMouseClicked="#chooseDB" pickOnBounds="true" preserveRatio="true">
 
-        <Image url="@../../resources/images/drag.png"/>
+        <Image url="@../../resources/images/drag.png" />
 
     </ImageView>
-    <Label layoutX="56.0" layoutY="205.0" text="Don't forget to check your period settings!"/>
-    <Button layoutX="200.0" layoutY="399.0" mnemonicParsing="false" onAction="#close" text="Close"/>
-    <Button layoutX="55.0" layoutY="168.0" mnemonicParsing="false" onAction="#newDb" text="New database"/>
-    <Button layoutX="157.0" layoutY="168.0" mnemonicParsing="false" onAction="#chooseDB" text="Open Database"/>
+    <Label layoutX="56.0" layoutY="205.0" text="Don't forget to check your period settings!" />
+    <Button layoutX="200.0" layoutY="399.0" mnemonicParsing="false" onAction="#close" text="Close" />
+    <Button layoutX="55.0" layoutY="168.0" mnemonicParsing="false" onAction="#newDb" text="New database" />
+    <Button layoutX="157.0" layoutY="168.0" mnemonicParsing="false" onAction="#chooseDB" text="Open Database" />
+   <CheckBox fx:id="sqlite" layoutX="56.0" layoutY="118.0" mnemonicParsing="false" text="Use standard Sqlite" />
 
 </AnchorPane>

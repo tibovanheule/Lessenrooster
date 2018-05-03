@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import timetable.Controller;
 import timetable.MainModel;
 import timetable.StdError;
 import timetable.comboboxes.ItemCombobox;
@@ -40,7 +41,7 @@ public class CreateLecture {
     /**
      * set up fields lecture, stage and a model, adds elements of database to the comboboxes, set values
      */
-    public void setStageAndSetupListeners(Stage stage, MainModel model) {
+    public void setStageAndSetupListeners(Stage stage, MainModel model, Controller controller) {
         this.stage = stage;
         this.model = model;
         try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
@@ -61,8 +62,8 @@ public class CreateLecture {
         } catch (Exception e) {
             // TODO: 1/05/2018 open student etc
             new StdError("Error", "Error", "Create a student, teacher or location first!", Alert.AlertType.ERROR);
-            stage.close();
-
+            this.stage.close();
+            controller.create();
 
         }
 

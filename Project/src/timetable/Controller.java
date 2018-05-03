@@ -212,8 +212,8 @@ public class Controller {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.initOwner(this.stage);
             stage.setScene(new Scene(root, 450, 450));
-            controller.setStageAndSetupListeners(stage, model);
             stage.show();
+            controller.setStageAndSetupListeners(stage, model,this);
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();

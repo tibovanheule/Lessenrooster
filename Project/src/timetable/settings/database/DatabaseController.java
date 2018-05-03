@@ -80,16 +80,23 @@ public class DatabaseController {
      * change to mysql
      */
     public void mysql() {
-        properties.setProperty("DB.use", String.valueOf(mysql.isSelected()));
         if (mysql.isSelected()) {
+            sqlite.setSelected(false);
+            properties.setProperty("DB.use", "true");
             //nieuwe data provider
             /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
             mainController.setDbName("Online");
-        } else {
-            // TODO: 30/04/2018 Sqlite standaard rooster moet duidlijker!
-            //anders is het sqlite
+            close();
+        }
+    }
+
+    public void sqlite(){
+        properties.setProperty("DB.use", "false");
+        if (sqlite.isSelected()) {
+            mysql.setSelected(false);
             mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
             mainController.setDbName("Lessenrooster(offline)");
+            close();
         }
     }
 
@@ -205,9 +212,11 @@ public class DatabaseController {
                         dataAccessProvider.getDataAccessContext().close();
                         /*set db file and dataAccessProvoider*/
                         mysql.setSelected(false);
+                        sqlite.setSelected(false);
                         properties.setProperty("DB.use", "false");
                         mainController.setDbName(file.getFileName().toString().replace(".db", ""));
                         mainController.getModel().setDataAccessProvider(dataAccessProvider);
+
                     } catch (Exception e) {
                         new StdError("Error", "Wrong file", "Not a valid Database", Alert.AlertType.ERROR);
                         return false;
@@ -229,6 +238,7 @@ public class DatabaseController {
      */
     public void close() {
         mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
+        mainController.getModel().refresh();
         settingsController.setProperties(this.properties);
         stage.close();
         settingsController.setCanClose(true);

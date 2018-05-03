@@ -213,7 +213,7 @@ public class Controller {
             stage.initOwner(this.stage);
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
-            controller.setStageAndSetupListeners(stage, model,this);
+            controller.setStageAndSetupListeners(stage, model, this);
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();

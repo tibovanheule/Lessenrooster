@@ -44,7 +44,7 @@ public class AboutController {
                 "\nPrivate repo, send an email with github username for access!" +
                 "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn") +
                 "\nWeather icons from:\n" + properties.getProperty("layout.weather.icons") +
-                "\nLatest compiled jar with all libraries available on " +
+                "\nDocumentatie" +
                 "\n" + properties.getProperty("programmer.site") + "/artifacts/"
         );
     }
@@ -53,7 +53,6 @@ public class AboutController {
      * Close the stage
      */
     public void close() {
-        //afsluiten stage
         stage.close();
     }
 }

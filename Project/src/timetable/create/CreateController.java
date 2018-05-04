@@ -122,7 +122,15 @@ public class CreateController {
             daos.put("student", dac.getStudentsDAO());
             daos.put("teacher", dac.getTeacherDAO());
             daos.put("location", dac.getLocationDAO());
-            table.getItems().add(daos.get(ui).create(ui));
+            Integer i = 2;
+            if (daos.get(ui).nameExists(ui)) {
+                while (daos.get(ui).nameExists(ui+ "("+i+")")) {
+                    i++;
+                }
+                table.getItems().add(daos.get(ui).create(ui+ "("+i+")"));
+            }else {
+                table.getItems().add(daos.get(ui).create(ui));
+            }
             model.changeItems(model.getStandardSchedule());
         } catch (Exception e) {
             e.printStackTrace();

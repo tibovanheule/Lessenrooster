@@ -64,15 +64,15 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
      * create a teacher
      */
     @Override
-    public Item create(String item) throws DataAccessException {
+    public Item create(String name) throws DataAccessException {
         String insert = "INSERT INTO teacher (id,name) VALUES (?,?)";
         Item returnItem = null;
         try (PreparedStatement statement = prepare(insert)) {
-            statement.setString(2, item);
+            statement.setString(2, name);
             statement.executeUpdate();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    returnItem = new Item("teacher", "teacher", generatedKeys.getInt(1));
+                    returnItem = new Item("teacher", name, generatedKeys.getInt(1));
                 }
             } catch (Exception e) {
                 throw new DataAccessException("could not get inserted id", e);
@@ -124,7 +124,7 @@ public class SqliteTeacherDAO extends SqliteAbstractDOA implements TeacherDAO {
      */
     @Override
     public Boolean nameExists(String name) throws DataAccessException {
-        name = name.replace(" ", "");
+        name = name.trim();
         String search = "SELECT name FROM teacher WHERE name=? LIMIT 1";
         try (PreparedStatement statement = prepare(search)) {
             statement.setString(1, name);

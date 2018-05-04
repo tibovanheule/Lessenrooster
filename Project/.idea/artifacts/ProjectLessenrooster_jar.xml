@@ -4,7 +4,6 @@
     <root id="archive" name="ProjectLessenrooster.jar">
       <element id="module-output" name="ProjectLessenrooster" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/sqlite-jdbc-3.21.0.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/mysql-connector-java-5.1.46.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/json-20180130.jar" path-in-jar="/" />
     </root>
   </artifact>

@@ -75,7 +75,7 @@
   
   
   
-  <property name="compiler.args.projectlessenrooster" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  <property name="compiler.args.projectlessenrooster" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
   
   <property name="projectlessenrooster.output.dir" value="${module.projectlessenrooster.basedir}/../JAR/production/ProjectLessenrooster"/>
   <property name="projectlessenrooster.testoutput.dir" value="${module.projectlessenrooster.basedir}/../JAR/test/ProjectLessenrooster"/>
@@ -176,7 +176,6 @@
     <jar destfile="${temp.jar.path.ProjectLessenrooster.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
       <zipfileset dir="${projectlessenrooster.output.dir}"/>
       <zipfileset src="${basedir}/src/sqlite-jdbc-3.21.0.jar"/>
-      <zipfileset src="${basedir}/src/mysql-connector-java-5.1.46.jar"/>
       <zipfileset src="${basedir}/src/json-20180130.jar"/>
     </jar>
     <copy file="${temp.jar.path.ProjectLessenrooster.jar}" tofile="${artifact.temp.output.projectlessenrooster:jar}/ProjectLessenrooster.jar"/>

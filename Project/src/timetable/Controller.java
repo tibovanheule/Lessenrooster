@@ -90,18 +90,10 @@ public class Controller {
         Config config = new Config();
         Properties properties = config.getproperties();
 
-        //als de property true is gebruik dan mysql (voorlopig constant false)
-        if (Boolean.parseBoolean(properties.getProperty("DB.use"))) {
-            /*model.setDataAccessProvider(new MysqlDataAccessProvider());*/
-        } else {
-            //in elk ander geval, valt het terug op sqlite
-            model.setDataAccessProvider(new SqliteDataAccessProvider());
-        }
+        model.setDataAccessProvider(new SqliteDataAccessProvider());
         model.setStandardSchedule(properties.getProperty("standard.schedule"));
         model.changeItems(model.getStandardSchedule());
-
         dbName.setText("Lessenrooster (offline)");
-
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -122,10 +114,6 @@ public class Controller {
             }
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
-
-        //ophalen van het weerbericht gebeurd in een thread
-        //voordeel: programma moet niet wachten achter de ophaling
-        //nadeel: met zeer goede verbinding zal deze manier iets trager zijn
 
         Platform.runLater(this::getWeather);
 

@@ -14,10 +14,12 @@
                 text="New location"/>
         <Button layoutX="84.0" layoutY="388.0" mnemonicParsing="false" onAction="#close" text="Close"/>
         <Button layoutX="368.0" layoutY="120.0" mnemonicParsing="false" onAction="#menu" text="Menu"/>
-        <TableView fx:id="table" layoutX="16.0" layoutY="158.0" prefHeight="213.0" prefWidth="400.0">
+        <TableView fx:id="table" layoutX="16.0" layoutY="158.0" prefHeight="213.0" prefWidth="400.0" editable="true">
             <columns>
-                <TableColumn fx:id="name" maxWidth="-1.0" minWidth="300.0" prefWidth="-1.0" text="location"/>
-                <TableColumn fx:id="delete" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="delete"/>
+                <TableColumn fx:id="name" maxWidth="-1.0" minWidth="300.0" prefWidth="-1.0" text="location"
+                             editable="true"/>
+                <TableColumn fx:id="delete" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="delete"
+                             editable="false"/>
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

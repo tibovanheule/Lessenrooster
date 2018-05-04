@@ -81,7 +81,7 @@ public class CreateLecture {
     public void saveAndClose() {
         if (!name.getText().isEmpty()) {
             try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-                /*Objects are made to have */
+
                 Item studentItem = students.getSelectionModel().getSelectedItem();
                 Item teacherItem = teacher.getSelectionModel().getSelectedItem();
                 Item locationItem = loc.getSelectionModel().getSelectedItem();
@@ -89,10 +89,10 @@ public class CreateLecture {
                 Integer durationInt = duration.getSelectionModel().getSelectedItem();
                 Period period2 = period.getSelectionModel().getSelectedItem();
                 String course = name.getText();
+                /* I could have place all above variables directly in the new lecture but thought that would be even more confusing*/
                 Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
                         locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
                         period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
-
 
                 try {
                     if (!dac.getLectureDoa().conflict(newLecture)) {

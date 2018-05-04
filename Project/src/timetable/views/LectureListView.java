@@ -85,8 +85,12 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
     public void invalidated(Observable o) {
 
         if (model.getLecturesChanged()) {
-            getItems().clear();
-            getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
+            try {
+                getItems().clear();
+                getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
+            } catch (NullPointerException e) {
+
+            }
         }
 
     }

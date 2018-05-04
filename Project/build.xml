@@ -68,39 +68,39 @@
   
   <!-- Modules -->
   
-  <import file="${basedir}/module_project_lessenrooster.xml"/>
+  <import file="${basedir}/module_projectlessenrooster.xml"/>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
   
-  <target name="clean" depends="clean.module.project_lessenrooster" description="cleanup all"/>
+  <target name="clean" depends="clean.module.projectlessenrooster" description="cleanup all"/>
   
-  <target name="build.modules" depends="init, clean, compile.module.project_lessenrooster" description="build all modules"/>
+  <target name="build.modules" depends="init, clean, compile.module.projectlessenrooster" description="build all modules"/>
   
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.project_lessenrooster.jar" value="${basedir}/../JAR/artifacts/Project_lessenrooster_jar"/>
+    <property name="artifact.output.projectlessenrooster:jar" value="${basedir}/../JAR/artifacts/ProjectLessenrooster_jar"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.Project lessenrooster.jar" value="${artifacts.temp.dir}/Project lessenrooster.jar"/>
+    <property name="temp.jar.path.ProjectLessenrooster.jar" value="${artifacts.temp.dir}/ProjectLessenrooster.jar"/>
   </target>
   
-  <target name="artifact.project_lessenrooster.jar" depends="init.artifacts, compile.module.project_lessenrooster" description="Build &#39;Project lessenrooster.jar&#39; artifact">
-    <property name="artifact.temp.output.project_lessenrooster.jar" value="${artifacts.temp.dir}/Project_lessenrooster_jar"/>
-    <mkdir dir="${artifact.temp.output.project_lessenrooster.jar}"/>
-    <jar destfile="${temp.jar.path.Project lessenrooster.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset dir="${project_lessenrooster.output.dir}"/>
+  <target name="artifact.projectlessenrooster:jar" depends="init.artifacts, compile.module.projectlessenrooster" description="Build &#39;ProjectLessenrooster:jar&#39; artifact">
+    <property name="artifact.temp.output.projectlessenrooster:jar" value="${artifacts.temp.dir}/ProjectLessenrooster_jar"/>
+    <mkdir dir="${artifact.temp.output.projectlessenrooster:jar}"/>
+    <jar destfile="${temp.jar.path.ProjectLessenrooster.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${projectlessenrooster.output.dir}"/>
       <zipfileset src="${basedir}/src/sqlite-jdbc-3.21.0.jar"/>
       <zipfileset src="${basedir}/src/mysql-connector-java-5.1.46.jar"/>
       <zipfileset src="${basedir}/src/json-20180130.jar"/>
     </jar>
-    <copy file="${temp.jar.path.Project lessenrooster.jar}" tofile="${artifact.temp.output.project_lessenrooster.jar}/Project lessenrooster.jar"/>
+    <copy file="${temp.jar.path.ProjectLessenrooster.jar}" tofile="${artifact.temp.output.projectlessenrooster:jar}/ProjectLessenrooster.jar"/>
   </target>
   
-  <target name="build.all.artifacts" depends="artifact.project_lessenrooster.jar" description="Build all artifacts">
-    <mkdir dir="${artifact.output.project_lessenrooster.jar}"/>
-    <copy todir="${artifact.output.project_lessenrooster.jar}">
-      <fileset dir="${artifact.temp.output.project_lessenrooster.jar}"/>
+  <target name="build.all.artifacts" depends="artifact.projectlessenrooster:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.projectlessenrooster:jar}"/>
+    <copy todir="${artifact.output.projectlessenrooster:jar}">
+      <fileset dir="${artifact.temp.output.projectlessenrooster:jar}"/>
     </copy>
     
     <!-- Delete temporary files -->

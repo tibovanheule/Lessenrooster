@@ -3,7 +3,6 @@ package timetable.create;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -45,7 +44,7 @@ public class CreateController {
     @FXML
     private Button student, teacher, loc, lecture, create;
     private Boolean canClose = true;
-    private String ui;
+    private String sort;
     private MainModel model;
 
 
@@ -71,40 +70,27 @@ public class CreateController {
     /**
      * Function that loads correct Fxml and sets up the table and fill the table
      */
-    private void page(String ui) {
+    private void page(String sort) {
         /*dynamisch laden van fxml*/
         try {
-            this.ui = ui;
-            FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(ui + ".fxml"));
+            this.sort = sort;
+            FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(sort + ".fxml"));
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().setAll(pane);
 
             name.setCellValueFactory(new PropertyValueFactory<>("name"));
-            name.setCellFactory(column -> {
-                TableCell<Item, String> cell = new TextFieldTableCell<>(new DefaultStringConverter());
-                cell.setAlignment(Pos.CENTER);
-                return cell;
-            });
-            table.setEditable(true);
-            name.setEditable(true);
-            delete.setEditable(false);
-            delete.setCellFactory(column -> {
-                ButtonCellItem cell = new ButtonCellItem(table, this);
-                cell.setAlignment(Pos.CENTER);
-                return cell;
-            });
-            name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue(), event));
+            name.setCellFactory(column -> new TextFieldTableCell<>(new DefaultStringConverter()));
+            delete.setCellFactory(column -> new ButtonCellItem(table, this));
+            name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue()));
 
             try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
                 HashMap<String, DAO> daos = new HashMap<>();
                 daos.put("student", dac.getStudentsDAO());
                 daos.put("teacher", dac.getTeacherDAO());
                 daos.put("location", dac.getLocationDAO());
-                DAO dao = daos.get(ui);
-                for (Item item : dao.get()) {
-                    table.getItems().addAll(item);
-                }
+                DAO dao = daos.get(sort);
+                dao.get().forEach((item) -> table.getItems().add(item));
             } catch (DataAccessException e) {
                 e.printStackTrace();
             }
@@ -123,13 +109,13 @@ public class CreateController {
             daos.put("teacher", dac.getTeacherDAO());
             daos.put("location", dac.getLocationDAO());
             Integer i = 2;
-            if (daos.get(ui).nameExists(ui)) {
-                while (daos.get(ui).nameExists(ui+ "("+i+")")) {
+            if (daos.get(sort).nameExists(sort)) {
+                while (daos.get(sort).nameExists(sort + "(" + i + ")")) {
                     i++;
                 }
-                table.getItems().add(daos.get(ui).create(ui+ "("+i+")"));
-            }else {
-                table.getItems().add(daos.get(ui).create(ui));
+                table.getItems().add(daos.get(sort).create(sort + "(" + i + ")"));
+            } else {
+                table.getItems().add(daos.get(sort).create(sort));
             }
             model.changeItems(model.getStandardSchedule());
         } catch (Exception e) {
@@ -164,12 +150,12 @@ public class CreateController {
      * Display an alert, then if user pressed ok, delete the selected teacher, location or student
      */
     public void delete(Item item) {
-        /*don't close windows when alert is displayed (alert causes to shift the focus wich closes the stage)*/
+        /*don't close window when alert is displayed (alert causes to shift the focus wich closes the stage)*/
         canClose = false;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Are you sure");
-        alert.setContentText("If a " + ui + " is used in a lecture,\nthen that lecture gets deleted too ");
+        alert.setContentText("If a " + sort + " is used in a lecture,\nthen that lecture gets deleted too ");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // user chose OK, Delete
@@ -178,7 +164,7 @@ public class CreateController {
                 daos.put("student", dac.getStudentsDAO());
                 daos.put("teacher", dac.getTeacherDAO());
                 daos.put("location", dac.getLocationDAO());
-                DAO dao = daos.get(ui);
+                DAO dao = daos.get(sort);
                 dao.delete(item);
                 mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
                 table.getItems().remove(item);
@@ -192,14 +178,14 @@ public class CreateController {
     /**
      * Function update a name of a location student or teacher when a editCommit happens.
      */
-    private void updateName(Item item, String name, TableColumn.CellEditEvent editEvent) {
+    private void updateName(Item item, String name) {
 
         try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             HashMap<String, DAO> daos = new HashMap<>();
             daos.put("student", dac.getStudentsDAO());
             daos.put("teacher", dac.getTeacherDAO());
             daos.put("location", dac.getLocationDAO());
-            DAO dao = daos.get(ui);
+            DAO dao = daos.get(sort);
             if (!dao.nameExists(name)) {
                 item.setName(name);
                 dao.updateName(item);
@@ -210,9 +196,7 @@ public class CreateController {
                 canClose = true;
             }
             table.getItems().clear();
-            for (Item item1 : dao.get()) {
-                table.getItems().add(item1);
-            }
+            dao.get().forEach((item2) -> table.getItems().add(item2));
 
         } catch (DataAccessException e) {
             e.printStackTrace();

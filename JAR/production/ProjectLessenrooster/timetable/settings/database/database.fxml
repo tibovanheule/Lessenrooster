@@ -13,7 +13,7 @@
         <Label layoutX="54.0" layoutY="34.0" text="DATABASE SETTINGS"/>
 
     </AnchorPane>
-    <CheckBox fx:id="mysql" layoutX="57.0" layoutY="142.0" mnemonicParsing="false" onAction="#mysql" text="Use Mysql?"/>
+    <CheckBox fx:id="mysql" layoutX="57.0" layoutY="142.0" mnemonicParsing="false" text="Use Mysql?"/>
     <ImageView fx:id="drag" fitHeight="177.0" fitWidth="384.0" layoutX="73.0" layoutY="222.0" onMouseClicked="#chooseDB"
                pickOnBounds="true" preserveRatio="true">
 

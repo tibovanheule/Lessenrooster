@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_projectlessenrooster" default="compile.module.projectlessenrooster">
+  <dirname property="module.projectlessenrooster.basedir" file="${ant.file.module_projectlessenrooster}"/>
+  
+  
+  <property name="compiler.args.projectlessenrooster" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="projectlessenrooster.output.dir" value="${module.projectlessenrooster.basedir}/../JAR/production/ProjectLessenrooster"/>
+  <property name="projectlessenrooster.testoutput.dir" value="${module.projectlessenrooster.basedir}/../JAR/test/ProjectLessenrooster"/>
+  
+  <path id="projectlessenrooster.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="projectlessenrooster.module.production.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="projectlessenrooster.runtime.production.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${projectlessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="projectlessenrooster.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${projectlessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  <path id="projectlessenrooster.runtime.module.classpath">
+    <path refid="library.sqlite-jdbc-3.21.0_(1).classpath"/>
+    <path refid="library.mysql-connector-java-5.1.46.classpath"/>
+    <pathelement location="${projectlessenrooster.testoutput.dir}"/>
+    <pathelement location="${projectlessenrooster.output.dir}"/>
+    <path refid="library.json-20180130.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.projectlessenrooster">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.projectlessenrooster">
+    <patternset refid="excluded.from.module.projectlessenrooster"/>
+  </patternset>
+  
+  <path id="projectlessenrooster.module.sourcepath">
+    <dirset dir="${module.projectlessenrooster.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.projectlessenrooster" depends="compile.module.projectlessenrooster.production,compile.module.projectlessenrooster.tests" description="Compile module ProjectLessenrooster"/>
+  
+  <target name="compile.module.projectlessenrooster.production" description="Compile module ProjectLessenrooster; production classes">
+    <mkdir dir="${projectlessenrooster.output.dir}"/>
+    <javac destdir="${projectlessenrooster.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.projectlessenrooster}"/>
+      <bootclasspath refid="projectlessenrooster.module.bootclasspath"/>
+      <classpath refid="projectlessenrooster.module.production.classpath"/>
+      <src refid="projectlessenrooster.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.projectlessenrooster"/>
+    </javac>
+    
+    <copy todir="${projectlessenrooster.output.dir}">
+      <fileset dir="${module.projectlessenrooster.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.projectlessenrooster.tests" depends="compile.module.projectlessenrooster.production" description="compile module ProjectLessenrooster; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.projectlessenrooster" description="cleanup module">
+    <delete dir="${projectlessenrooster.output.dir}"/>
+    <delete dir="${projectlessenrooster.testoutput.dir}"/>
+  </target>
+</project>

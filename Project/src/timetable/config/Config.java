@@ -1,6 +1,9 @@
 //Tibo Vanheule
 package timetable.config;
 
+import javafx.scene.control.Alert;
+import timetable.StdError;
+
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,32 +21,26 @@ public class Config {
      * function to read the properties.
      */
     public Properties getproperties() {
-        //initialisatie
         Reader reader = null;
         Properties properties = new Properties();
 
-        //probeer het bestand in te lezen
         try {
             reader = new FileReader("schedule.out.properties");
-            //inladen
             properties.load(reader);
         } catch (IOException e) {
-            //System.out.println(e);
+            /*No warning needed*/
         } finally {
             if (reader != null) {
-                //als de reader niet null is, sluit die
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    //System.out.println(e);
                 }
-                //anders als reader null is dan bestaat het bestand niet of is niet leesbaar
             } else {
                 try {
-                    //open standaard properties
+                    /* open standard properties*/
                     properties.load(Config.class.getResourceAsStream("schedule.properties"));
                 } catch (IOException e) {
-                    //System.out.println(e);
+                    new StdError("Error", "Config", "Couldn't read the config file", Alert.AlertType.ERROR);
                 }
             }
         }

@@ -59,7 +59,7 @@ public class DatabaseController {
 
     public void initialize() {
         mysql.setDisable(true);
-        mysql.setText("Use Mysql? (disabled not compiled with mysql lib)");
+        mysql.setText("Use Mysql? (See about section for Mysql version)");
     }
 
     /**
@@ -72,20 +72,6 @@ public class DatabaseController {
         this.properties = properties;
         drag.setOnDragOver(this::dragOver);
         drag.setOnDragDropped(this::dragDropped);
-        /*mysql.setSelected(Boolean.parseBoolean(properties.getProperty("DB.use")));*/
-    }
-
-    /**
-     * change to mysql
-     */
-    public void mysql() {
-        if (mysql.isSelected()) {
-            properties.setProperty("DB.use", "true");
-            //nieuwe data provider
-            /*mainController.model.setDataAccessProvider(new MysqlDataAccessProvider());*/
-            mainController.setDbName("Online");
-            close();
-        }
     }
 
     /**
@@ -93,9 +79,8 @@ public class DatabaseController {
      */
     public void sqlite() {
         properties.setProperty("DB.use", "false");
-        mysql.setSelected(false);
         mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
-        mainController.setDbName("Lessenrooster(offline)");
+        mainController.setDbName("schedule (offline)");
         close();
     }
 

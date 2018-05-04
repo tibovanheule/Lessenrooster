@@ -44,7 +44,7 @@ public class AboutController {
                 "\nPrivate repo, send an email with github username for access!" +
                 "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn") +
                 "\nWeather icons from:\n" + properties.getProperty("layout.weather.icons") +
-                "\nDocumentatie" +
+                "\n\nDocumentation and manual: " +
                 "\n" + properties.getProperty("programmer.site") + "/artifacts/"
         );
     }

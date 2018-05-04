@@ -1,6 +1,7 @@
 /*Tibo Vanheule*/
 package timetable.create;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -20,6 +21,7 @@ class ButtonCellItem extends TableCell<Item, Boolean> {
     ButtonCellItem(TableView<Item> table, CreateController createController) {
         cellButton.setText("Delete");
         cellButton.setOnAction((event) -> delete(table, createController));
+        cellButton.setAlignment(Pos.CENTER);
     }
 
     @Override
@@ -32,6 +34,7 @@ class ButtonCellItem extends TableCell<Item, Boolean> {
         }
         if (!empty) {
             setGraphic(cellButton);
+            setAlignment(Pos.CENTER);
         }
     }
 

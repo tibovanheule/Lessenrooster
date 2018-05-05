@@ -1,10 +1,8 @@
 package timetable;
 
-import javafx.css.Style;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

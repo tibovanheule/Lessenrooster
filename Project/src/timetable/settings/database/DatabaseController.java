@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
@@ -93,12 +92,9 @@ public class DatabaseController {
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().addAll(pane);
-
-            delete.setCellFactory(column -> {
-                return new PeriodButtonCell(table, this);
-            });
-            hour.setup(mainController, new PropertyValueFactory<>("hour"));
-            minute.setup(mainController, new PropertyValueFactory<>("minute"));
+            delete.setCellFactory(column -> new PeriodButtonCell(table, this));
+            hour.setup(mainController, "hour",24);
+            minute.setup(mainController, "minute",60);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -192,6 +188,9 @@ public class DatabaseController {
                         /*check sqlite, if error occurs , then the file is not an sqlite DB*/
                         DataAccessProvider dataAccessProvider = new SqliteDataAccessProvider(url);
                         dataAccessProvider.getDataAccessContext().getStudentsDAO().nameExists("test");
+                        dataAccessProvider.getDataAccessContext().getLocationDAO().get();
+                        dataAccessProvider.getDataAccessContext().getTeacherDAO().get();
+                        dataAccessProvider.getDataAccessContext().getLectureDoa().get();
                         dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
                         dataAccessProvider.getDataAccessContext().close();
                         /*set db file and dataAccessProvoider*/

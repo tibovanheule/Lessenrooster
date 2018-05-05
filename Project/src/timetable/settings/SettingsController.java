@@ -26,7 +26,7 @@ public class SettingsController {
     /**
      * lists for the settings
      */
-    private static final String[] defaultList = {"students", "teacher", "location"}, cities = {"koksijde", "oostende", "gent", "brugge", "brussel", "leuven", "Antwerpen"};
+    private static final String[] defaultList = {"students", "teacher", "location", "course"}, cities = {"koksijde", "oostende", "gent", "brugge", "brussel", "leuven", "Antwerpen"};
     @FXML
     private CheckBox windowSize;
     @FXML

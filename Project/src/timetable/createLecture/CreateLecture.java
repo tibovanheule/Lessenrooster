@@ -13,9 +13,7 @@ import timetable.comboboxes.ItemCombobox;
 import timetable.comboboxes.PeriodsCombobox;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
-import timetable.objects.Item;
 import timetable.objects.Lecture;
-import timetable.objects.Period;
 
 /**
  * class to let the user create an lecture.
@@ -79,33 +77,33 @@ public class CreateLecture {
      * close and create lecture
      */
     public void saveAndClose() {
-        if (!name.getText().isEmpty()) {
+        if (!name.getText().trim().isEmpty()) {
             try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-
-                Item studentItem = students.getSelectionModel().getSelectedItem();
-                Item teacherItem = teacher.getSelectionModel().getSelectedItem();
-                Item locationItem = loc.getSelectionModel().getSelectedItem();
-                Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
-                Integer durationInt = duration.getSelectionModel().getSelectedItem();
-                Period period2 = period.getSelectionModel().getSelectedItem();
-                String course = name.getText();
-                /* I could have place all above variables directly in the new lecture but thought that would be even more confusing*/
-                Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
-                        locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
-                        period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
-
+                Lecture newLecture = new Lecture(students.getSelectionModel().getSelectedItem().getName(),
+                        teacher.getSelectionModel().getSelectedItem().getName(),
+                        loc.getSelectionModel().getSelectedItem().getName(),
+                        name.getText(),
+                        day.getSelectionModel().getSelectedIndex() + 1,
+                        period.getSelectionModel().getSelectedItem().getId(),
+                        duration.getSelectionModel().getSelectedItem(),
+                        period.getSelectionModel().getSelectedItem().getHour(),
+                        period.getSelectionModel().getSelectedItem().getMinute(),
+                        students.getSelectionModel().getSelectedItem().getId(),
+                        teacher.getSelectionModel().getSelectedItem().getId(),
+                        loc.getSelectionModel().getSelectedItem().getId()
+                );
                 try {
                     if (!dac.getLectureDoa().conflict(newLecture)) {
                         dac.getLectureDoa().create(newLecture);
                         model.refresh();
                     } else {
-                        new StdError("Error", "Conflict", "The lesson that you are trying to create, \n would conflict with another lesson.", Alert.AlertType.ERROR);
+                        new StdError("Error", "Conflict", "The lesson that you are trying to create, \nit would conflict with another lesson.", Alert.AlertType.ERROR);
                     }
                 } catch (NullPointerException e) {
                     new StdError("Error", "Empty field", "There are empty fields, couldn't create new lecture", Alert.AlertType.ERROR);
-                    close();
+                }catch (DataAccessException e){
+                    e.printStackTrace();
                 }
-
             } catch (DataAccessException e) {
                 e.printStackTrace();
             }
@@ -115,7 +113,6 @@ public class CreateLecture {
             new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
             canClose = true;
         }
-
     }
 
     public void close() {

@@ -1,8 +1,6 @@
 package timetable.settings.database.table;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -13,6 +11,8 @@ import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
 import timetable.objects.Period;
 
+import java.util.HashMap;
+
 /**
  * Custom table column, cellfactory
  *
@@ -20,12 +20,13 @@ import timetable.objects.Period;
  */
 public class CustomTableColumn extends TableColumn<Period, Integer> {
     private Controller controller;
+    private Integer limit = 24;
 
     /**
      * constructor, sets cellfactory and on edit
      */
     public CustomTableColumn() {
-        StringConverter<Integer> stringConverter = new StringConverter<Integer>() {
+        StringConverter<Integer> checker = new StringConverter<Integer>() {
             @Override
             public String toString(Integer object) {
                 if (object == null) {
@@ -37,31 +38,36 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
             @Override
             public Integer fromString(String string) {
                 try {
-                    return Integer.parseInt(string);
+                    Integer integer = Integer.parseInt(string);
+                    if (integer < limit) {
+                        return integer;
+                    } else {
+                        new StdError("Error", "Number to big", "You typed a too big number! >60", Alert.AlertType.ERROR);
+                        return 0;
+                    }
+
                 } catch (NumberFormatException e) {
                     new StdError("Error", "not a number!", "You haven't typed a number!", Alert.AlertType.ERROR);
                     return 0;
                 }
             }
         };
-        setCellFactory(column -> {
-            TableCell<Period, Integer> cell = new TextFieldTableCell<Period, Integer>(stringConverter);
-            cell.setAlignment(Pos.CENTER);
-            return cell;
-        });
-        try {
-            setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute()));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        setCellFactory(column -> new TextFieldTableCell<Period, Integer>(checker));
+
+
     }
 
     /**
      * sets propertyValue factory and field controller
      */
-    public void setup(Controller controller, PropertyValueFactory<Period, Integer> propertyValueFactory) {
+    public void setup(Controller controller, String property, Integer limit) {
         this.controller = controller;
-        setCellValueFactory(propertyValueFactory);
+        setCellValueFactory(new PropertyValueFactory<>(property));
+        this.limit = limit;
+        HashMap<String,Runnable> editsCommits = new HashMap<>();
+        editsCommits.put("hour",() -> setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute())));
+        editsCommits.put("minute",() -> setOnEditCommit(event -> update(event.getRowValue(), event.getRowValue().getHour(), event.getNewValue())));
+        editsCommits.get(property).run();
 
     }
 

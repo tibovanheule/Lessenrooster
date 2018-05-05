@@ -1,6 +1,7 @@
 //Tibo Vanheule
 package timetable.about;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -13,10 +14,11 @@ import java.util.Properties;
  *
  * @author Tibo Vanheule
  */
-public class AboutController {
+public class AboutController extends Application {
     @FXML
     private Label text;
     private Stage stage;
+    private Properties properties;
 
     /**
      * get stage to use later
@@ -32,19 +34,16 @@ public class AboutController {
     public void initialize() {
 
         Config config = new Config();
-        Properties properties = config.getproperties();
+        this.properties = config.getproperties();
         //bewust alle tekst in 1 veld gestoken
         //kleinere fxml en tekst staat dan ook altijd mooi onder elkaar, dankzij de new-line
         text.setText("Version: " + properties.getProperty("program.version") +
                 "\nCopyright: " + properties.getProperty("programmer.name") +
-                "\nMade by: " + properties.getProperty("programmer.name") +
                 "\nEmail: " + properties.getProperty("programmer.email") +
                 "\nWebsite: " + properties.getProperty("programmer.site") +
-                "\nProjects github: " + properties.getProperty("program.github") +
-                "\nPrivate repo, send an email with github username for access!" +
                 "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn") +
                 "\nWeather icons from:\n" + properties.getProperty("layout.weather.icons") +
-                "\n\nDocumentation and manual: " +
+                "\n\nDocumentation,manual and a mysql-version can be found here: " +
                 "\n" + properties.getProperty("programmer.site") + "/artifacts/"
         );
     }
@@ -54,5 +53,26 @@ public class AboutController {
      */
     public void close() {
         stage.close();
+    }
+
+    /**
+     * Show the manual in browser
+     */
+    public void manual() {
+        getHostServices().showDocument("http://www.tibovanheule.space/artifacts/");
+    }
+
+    public void github(){
+        String url = properties.getProperty("program.github");
+        System.out.println(url);
+        getHostServices().showDocument(url);
+    }
+
+    /**
+     * Just so we can extend Application and use it in other methods
+     */
+    @Override
+    public void start(Stage primaryStage) {
+
     }
 }

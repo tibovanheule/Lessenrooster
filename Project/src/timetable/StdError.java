@@ -1,6 +1,10 @@
 package timetable;
 
+import javafx.css.Style;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -32,6 +36,8 @@ public class StdError {
         alert.setTitle(tilte);
         alert.setHeaderText(head);
         alert.setContentText(error);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(Main.class.getResource("resources/images/icon.png").toString()));
         alert.showAndWait();
     }
 

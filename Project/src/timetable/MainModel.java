@@ -2,6 +2,7 @@ package timetable;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.scene.control.Alert;
 import timetable.db.DAO;
 import timetable.db.DataAccessContext;
 import timetable.db.DataAccessException;
@@ -129,7 +130,7 @@ public class MainModel implements Observable {
             lists.put("students", dac.getStudentsDAO());
             lists.put("teacher", dac.getTeacherDAO());
             lists.put("location", dac.getLocationDAO());
-            lists.put("lecture", dac.getLectureDoa());
+            lists.put("course", dac.getLectureDoa());
 
             for (Item item : lists.get(whatList).get()) {
                 items.add(item);
@@ -137,6 +138,8 @@ public class MainModel implements Observable {
 
         } catch (DataAccessException e) {
             e.printStackTrace();
+        } catch (NullPointerException e){
+            new StdError("error","Invalid config","There is something wrong with your\nconfig file, please fix it!\ninvalid standard schedule set!",Alert.AlertType.ERROR);
         }
         fireInvalidationEvent();
     }

@@ -49,6 +49,7 @@ public class Main extends Application {
         try {
             arg.get(args.length).run();
         } catch (Exception e) {
+            e.printStackTrace();
             new StdError("Invalid! please don't give more than 3 arguments! :) \n");
             Platform.exit();
             System.exit(2);
@@ -80,7 +81,6 @@ public class Main extends Application {
         });
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
         primaryStage.setScene(scene);
-        primaryStage.setTitle(properties.getProperty("program.name"));
         primaryStage.setMaximized(Boolean.parseBoolean(properties.getProperty("startMaximized")));
         controller.setStageAndSetupListeners(primaryStage);
 

@@ -19,4 +19,6 @@ public interface DAO {
     Iterable<Item> getFiltered(String searchWord) throws DataAccessException;
 
     Boolean nameExists(String name) throws DataAccessException;
+
+
 }

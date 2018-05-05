@@ -40,10 +40,9 @@ public class AboutController extends Application {
         text.setText("Version: " + properties.getProperty("program.version") +
                 "\nCopyright: " + properties.getProperty("programmer.name") +
                 "\nEmail: " + properties.getProperty("programmer.email") +
-                "\nWebsite: " + properties.getProperty("programmer.site") +
                 "\nLayout (Collorpallet) based on: \n" + properties.getProperty("layout.basedOn") +
                 "\nWeather icons from:\n" + properties.getProperty("layout.weather.icons") +
-                "\n\nDocumentation,manual and a mysql-version can be found here: " +
+                "\nDocumentation,manual and a mysql-version can be found here: " +
                 "\n" + properties.getProperty("programmer.site") + "/artifacts/"
         );
     }
@@ -62,10 +61,18 @@ public class AboutController extends Application {
         getHostServices().showDocument("http://www.tibovanheule.space/artifacts/");
     }
 
-    public void github(){
-        String url = properties.getProperty("program.github");
-        System.out.println(url);
-        getHostServices().showDocument(url);
+    /**
+     * Opens the javadoc in browser
+     */
+    public void javadoc() {
+        getHostServices().showDocument("http://www.tibovanheule.space/artifacts/javadoc");
+    }
+
+    /**
+     * opens github project in browser
+     */
+    public void github() {
+        getHostServices().showDocument(properties.getProperty("program.github"));
     }
 
     /**

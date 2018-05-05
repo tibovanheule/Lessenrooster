@@ -18,8 +18,8 @@
     </AnchorPane>
     <Button contentDisplay="CENTER" ellipsisString="" layoutX="201.0" layoutY="411.0" mnemonicParsing="false" onAction="#close" text="Close" textOverrun="CLIP" />
    <Button layoutX="255.0" layoutY="219.0" mnemonicParsing="false" onAction="#manual" text="Online manual" />
-   <Button layoutX="360.0" layoutY="219.0" mnemonicParsing="false" text="Github" />
-   <Button layoutX="193.0" layoutY="219.0" mnemonicParsing="false" text="Button" />
+   <Button layoutX="360.0" layoutY="219.0" mnemonicParsing="false" onAction="#github" text="Github" />
+   <Button layoutX="183.0" layoutY="219.0" mnemonicParsing="false" onAction="#javadoc" text="Javadoc" />
    <ImageView fitHeight="51.0" fitWidth="67.0" layoutX="270.0" layoutY="166.0" onMouseClicked="#manual" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../resources/images/manual.png" />
@@ -28,6 +28,11 @@
    <ImageView fitHeight="51.0" fitWidth="66.0" layoutX="364.0" layoutY="166.0" onMouseClicked="#github" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../resources/images/GitHub-Mark-120px-plus.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="51.0" fitWidth="97.0" layoutX="194.0" layoutY="166.0" onMouseClicked="#javadoc" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../resources/images/javadoc.png" />
       </image>
    </ImageView>
 </AnchorPane>

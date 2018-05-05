@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="ProjectLessenrooster:jar" />
@@ -9,7 +12,138 @@
     <bookmark url="file://$PROJECT_DIR$/src/timetable/db/DataAccessContext.java" line="10" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-20.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/Controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/Controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/MainModel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/MainModel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/StdError.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/StdError.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/StdoutList.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/StdoutList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/about/AboutController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/about/AboutController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/about/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/about/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/about/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/about/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/about/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/about/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/comboboxes/ItemCombobox.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/comboboxes/ItemCombobox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/comboboxes/PeriodsCombobox.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/comboboxes/PeriodsCombobox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/comboboxes/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/config/Config.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/config/Config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/config/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/config/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/config/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/config/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/config/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/config/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/create/ButtonCellItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/create/ButtonCellItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/create/CreateController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/create/CreateController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/create/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/create/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/create/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/create/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/create/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/create/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/createLecture/CreateLecture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/createLecture/CreateLecture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/createLecture/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/DAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/DAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessContext.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessContext.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/DataAccessProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/DbConnect.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/DbConnect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/LectureDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/LectureDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/LocationDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/LocationDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/PeriodDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/PeriodDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/StudentsDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/StudentsDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/TeacherDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/TeacherDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteAbstractDOA.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteAbstractDOA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteDataAccessContext.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteDataAccessContext.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteDataAccessProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteDataAccessProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteLectureDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteLectureDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteLocationDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteLocationDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqlitePeriodDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqlitePeriodDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteStudentsDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteStudentsDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteTeacherDAO.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/SqliteTeacherDAO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/db/sqlite/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/ConflictsListview.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/ConflictsListview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/LectureController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/LectureController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/EditLecture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/EditLecture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/editLecture/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/lecture/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/lecture/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/Item.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/Item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/Lecture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/Lecture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/Period.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/Period.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/Weather.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/Weather.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/objects/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/objects/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/SettingsController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/SettingsController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/DatabaseController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/DatabaseController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/CustomTableColumn.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/CustomTableColumn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/PeriodButtonCell.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/PeriodButtonCell.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/database/table/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/settings/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/settings/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/AboutButton.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/AboutButton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/ItemsListView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/ItemsListView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/LectureListView.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/LectureListView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/SearchTextBox.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/SearchTextBox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/SortButtons.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/SortButtons.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/views/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/views/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/weather/WeatherController.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/weather/WeatherController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/weather/WeatherScraper.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/weather/WeatherScraper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/weather/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/weather/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/weather/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/weather/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/timetable/weather/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/timetable/weather/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule.out.properties" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.out.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timetable/about/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/timetable/about/AboutController.java" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -107,7 +241,21 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AboutController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/timetable/about/AboutController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+              <folding>
+                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#1829#1830#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -141,11 +289,11 @@
       <find>drawerClose</find>
       <find>focus</find>
       <find>my</find>
-      <find />
+      <find>could not create lecture</find>
       <find>con</find>
     </findStrings>
     <dirStrings>
-      <dir />
+      <dir>C:\Users\seven\Desktop\Project lessenrooster\Project\src\timetable\views</dir>
     </dirStrings>
   </component>
   <component name="FindManager">
@@ -206,10 +354,10 @@
         <option value="$PROJECT_DIR$/src/timetable/MainModel.java" />
         <option value="$PROJECT_DIR$/src/timetable/main.fxml" />
         <option value="$PROJECT_DIR$/src/timetable/config/schedule.properties" />
-        <option value="$PROJECT_DIR$/src/timetable/about/AboutController.java" />
         <option value="$PROJECT_DIR$/src/timetable/StdError.java" />
         <option value="$PROJECT_DIR$/src/timetable/Controller.java" />
         <option value="$PROJECT_DIR$/src/timetable/views/LectureListView.java" />
+        <option value="$PROJECT_DIR$/src/timetable/about/AboutController.java" />
       </list>
     </option>
   </component>
@@ -223,7 +371,7 @@
     <packageJsonPaths />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -549,12 +697,12 @@
       <workItem from="1525369199397" duration="15914000" />
       <workItem from="1525425100824" duration="6648000" />
       <workItem from="1525444085236" duration="6039000" />
-      <workItem from="1525523103494" duration="14952000" />
+      <workItem from="1525523103494" duration="16418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="710683000" />
+    <option name="totallyTimeSpent" value="712149000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -578,12 +726,13 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49479166" visible="true" weight="0.32689655" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49479166" weight="0.32689655" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23046875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23046875" />
       <window_info anchor="right" id="Database" order="5" weight="0.42643228" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49934897" weight="0.32965517" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -595,7 +744,6 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.32965517" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49934897" weight="0.32965517" />
       <window_info anchor="bottom" id="Changes" order="7" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Profiler" order="9" />
@@ -663,7 +811,7 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="38" />
+      <option name="time" value="39" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -956,23 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/timetable/about/AboutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-          <folding>
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1880#1881#0" expanded="true" />
-            <element signature="e#1788#1789#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-            <element signature="e#1905#1906#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#1945#1946#0" expanded="true" />
-            <element signature="e#2033#2034#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/timetable/StdError.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -1001,6 +1132,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
           <caret line="120" column="1" lean-forward="true" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/timetable/about/AboutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+          <folding>
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1829#1830#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

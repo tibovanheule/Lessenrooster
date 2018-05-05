@@ -58,7 +58,7 @@ public class AboutController extends Application {
      * Show the manual in browser
      */
     public void manual() {
-        getHostServices().showDocument("http://www.tibovanheule.space/artifacts/");
+        getHostServices().showDocument("http://www.tibovanheule.space/artifacts/manual.pdf");
     }
 
     /**

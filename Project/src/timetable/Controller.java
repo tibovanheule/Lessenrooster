@@ -133,8 +133,8 @@ public class Controller {
             try {
                 Image image = new Image(getClass().getResourceAsStream("resources/images/weather/" + weather.getIcon() + ".png"));
                 weatherIcon.setImage(image);
-            } catch (Exception e) {
-                /*e.printStackTrace();*/
+            } catch (NullPointerException e) {
+                /*No internet*/
             }
         }
     }
@@ -162,7 +162,6 @@ public class Controller {
             stage.getIcons().add(new Image(Main.class.getResourceAsStream("resources/images/icon.png")));
             stage.setTitle("weather");
             stage.show();
-
             stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();

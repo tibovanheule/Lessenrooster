@@ -89,7 +89,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                 getItems().clear();
                 getItems().addAll(model.getSchedule(Integer.parseInt(getUserData().toString())));
             } catch (NullPointerException e) {
-
+                /*no schedule selected*/
             }
         }
 
@@ -113,7 +113,7 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
             stage.setTitle("Lecture");
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
-            /*stage.focusedProperty().addListener(o -> controller.close());*/
+            stage.focusedProperty().addListener(o -> controller.close());
         } catch (Exception e) {
             e.printStackTrace();
         }

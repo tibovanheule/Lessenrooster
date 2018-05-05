@@ -12,7 +12,8 @@ env:
   - 'SFTP_USER=artifacts'
   - 'SFTP_PASSWORD=ugent'
 after_success:
-- cd ../JAR/artifacts/Projectlessenrooster_jar
+- cd ../JAR/artifacts/
+- ls
 - ls
 - curl --ftp-create-dirs
        -T "Project lessenrooster.jar" ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61

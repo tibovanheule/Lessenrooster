@@ -15,6 +15,6 @@ after_success:
 - cd ../JAR/artifacts/ProjectLessenrooster_jar
 - ls
 - curl --ftp-create-dirs
-       -T "Project lessenrooster.jar" ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61
+       -T "ProjectLessenrooster.jar" ftp://${SFTP_USER}:${SFTP_PASSWORD}@46.101.81.61
 - cd ../../../Project/javadoc
 - find . -type f -exec curl -u ${SFTP_USER}:${SFTP_PASSWORD} --ftp-create-dirs -T {} ftp://46.101.81.61/javadoc/{} \;

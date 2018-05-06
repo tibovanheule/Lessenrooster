@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import timetable.Main;
+import timetable.StdError;
 import timetable.objects.Weather;
 
 /**
@@ -16,7 +17,7 @@ import timetable.objects.Weather;
  */
 public class WeatherController {
     @FXML
-    private Label temp, humid, condition, windSpeed;
+    private Label temp, humid, condition, windSpeed, city;
     @FXML
     private ImageView weatherIcon, arrow;
     private Stage stage;
@@ -26,7 +27,6 @@ public class WeatherController {
      * function to set the stage, it it can be used in close function
      */
     public void setStageAndSetupListeners(Stage stage) {
-        //krijgen van de stage
         this.stage = stage;
     }
 
@@ -44,10 +44,10 @@ public class WeatherController {
             temp.setText(weather.getTemp() + "°");
             humid.setText(weather.getHumidity());
             windSpeed.setText("Windspeed: " + weather.getWindSpeed() + "kph");
+            city.setText(weather.getCity());
 
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(weather.getConnection());
+            new StdError("couldn't get weather data");
         }
 
     }
@@ -56,7 +56,6 @@ public class WeatherController {
      * close the stage
      */
     public void close() {
-        //afsluiten stage
         stage.close();
     }
 }

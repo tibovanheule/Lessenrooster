@@ -46,18 +46,18 @@ public class SqliteDataAccessProvider implements DataAccessProvider {
      * Makes a connection to the database
      */
     private Connection getConnection() throws SQLException {
-        Connection conn;
         Config config = new Config();
         Properties properties = config.getproperties();
 
         SQLiteDataSource datasource = new SQLiteDataSource();
-        if (url == null) {
+        try{
+            /*test will give null pointer if null*/
+            datasource.setUrl(url.toString());
+        }catch (NullPointerException e){
             datasource.setUrl(properties.getProperty("DB.sqlite.url"));
-        } else {
-            datasource.setUrl(url);
         }
-        conn = datasource.getConnection();
 
-        return conn;
+        return datasource.getConnection();
+
     }
 }

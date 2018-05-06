@@ -52,7 +52,6 @@ public class CreateController {
      * Setup of stage maincontrooler and model fields. So it can be used in the whole class
      */
     public void setStageAndSetupListeners(Stage stage, Controller mainController) {
-        //krijgen van de stage
         this.stage = stage;
         this.mainController = mainController;
         this.model = mainController.getModel();
@@ -68,10 +67,9 @@ public class CreateController {
     }
 
     /**
-     * Function that loads correct Fxml and sets up the table and fill the table
+     * Function that loads correct Fxml and sets up the table and fill it
      */
     private void page(String sort) {
-        /*dynamisch laden van fxml*/
         try {
             this.sort = sort;
             FXMLLoader loader = new FXMLLoader(CreateController.class.getResource(sort + ".fxml"));
@@ -81,8 +79,8 @@ public class CreateController {
 
             name.setCellValueFactory(new PropertyValueFactory<>("name"));
             name.setCellFactory(column -> new TextFieldTableCell<>(new DefaultStringConverter()));
-            delete.setCellFactory(column -> new ButtonCellItem(table, this));
             name.setOnEditCommit(event -> updateName(event.getRowValue(), event.getNewValue()));
+            delete.setCellFactory(column -> new ButtonCellItem(table, this));
 
             try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
                 HashMap<String, DAO> daos = new HashMap<>();
@@ -110,10 +108,10 @@ public class CreateController {
             daos.put("location", dac.getLocationDAO());
             Integer i = 2;
             if (daos.get(sort).nameExists(sort)) {
-                while (daos.get(sort).nameExists(sort + "(" + i + ")")) {
+                while (daos.get(sort).nameExists(sort + " (" + i + ")")) {
                     i++;
                 }
-                table.getItems().add(daos.get(sort).create(sort + "(" + i + ")"));
+                table.getItems().add(daos.get(sort).create(sort + " (" + i + ")"));
             } else {
                 table.getItems().add(daos.get(sort).create(sort));
             }
@@ -164,8 +162,7 @@ public class CreateController {
                 daos.put("student", dac.getStudentsDAO());
                 daos.put("teacher", dac.getTeacherDAO());
                 daos.put("location", dac.getLocationDAO());
-                DAO dao = daos.get(sort);
-                dao.delete(item);
+                daos.get(sort).delete(item);
                 mainController.getModel().changeItems(mainController.getModel().getStandardSchedule());
                 table.getItems().remove(item);
             } catch (Exception e) {

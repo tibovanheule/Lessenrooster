@@ -77,42 +77,44 @@ public class CreateLecture {
      * close and create lecture
      */
     public void saveAndClose() {
-        if (!name.getText().trim().isEmpty()) {
-            try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-                Lecture newLecture = new Lecture(students.getSelectionModel().getSelectedItem().getName(),
-                        teacher.getSelectionModel().getSelectedItem().getName(),
-                        loc.getSelectionModel().getSelectedItem().getName(),
-                        name.getText(),
-                        day.getSelectionModel().getSelectedIndex() + 1,
-                        period.getSelectionModel().getSelectedItem().getId(),
-                        duration.getSelectionModel().getSelectedItem(),
-                        period.getSelectionModel().getSelectedItem().getHour(),
-                        period.getSelectionModel().getSelectedItem().getMinute(),
-                        students.getSelectionModel().getSelectedItem().getId(),
-                        teacher.getSelectionModel().getSelectedItem().getId(),
-                        loc.getSelectionModel().getSelectedItem().getId()
-                );
-                try {
-                    if (!dac.getLectureDoa().conflict(newLecture)) {
-                        dac.getLectureDoa().create(newLecture);
-                        model.refresh();
-                    } else {
-                        new StdError("Error", "Conflict", "The lesson that you are trying to create, \nit would conflict with another lesson.", Alert.AlertType.ERROR);
-                    }
-                } catch (NullPointerException e) {
-                    new StdError("Error", "Empty field", "There are empty fields, couldn't create new lecture", Alert.AlertType.ERROR);
-                }catch (DataAccessException e){
-                    e.printStackTrace();
+
+        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
+            if (name.getText().trim().isEmpty()) {
+                new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
+                throw new IllegalArgumentException("the name is empty");
+            }
+            Lecture newLecture = new Lecture(students.getSelectionModel().getSelectedItem().getName(),
+                    teacher.getSelectionModel().getSelectedItem().getName(),
+                    loc.getSelectionModel().getSelectedItem().getName(),
+                    name.getText(),
+                    day.getSelectionModel().getSelectedIndex() + 1,
+                    period.getSelectionModel().getSelectedItem().getId(),
+                    duration.getSelectionModel().getSelectedItem(),
+                    period.getSelectionModel().getSelectedItem().getHour(),
+                    period.getSelectionModel().getSelectedItem().getMinute(),
+                    students.getSelectionModel().getSelectedItem().getId(),
+                    teacher.getSelectionModel().getSelectedItem().getId(),
+                    loc.getSelectionModel().getSelectedItem().getId()
+            );
+            try {
+                if (!dac.getLectureDoa().conflict(newLecture)) {
+                    dac.getLectureDoa().create(newLecture);
+                    model.refresh();
+                } else {
+                    new StdError("Error", "Conflict", "The lesson that you are trying to create, \nhappens at the same time as another lesson", Alert.AlertType.ERROR);
                 }
+            } catch (NullPointerException e) {
+                new StdError("Error", "Empty field", "There are empty fields, couldn't create new lecture", Alert.AlertType.ERROR);
             } catch (DataAccessException e) {
                 e.printStackTrace();
             }
-            stage.close();
-        } else {
-            canClose = false;
-            new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
-            canClose = true;
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }catch (IllegalArgumentException e){
+            /*empty name don't worry*/
         }
+        stage.close();
+
     }
 
     public void close() {

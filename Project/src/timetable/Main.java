@@ -84,7 +84,7 @@ public class Main extends Application {
         primaryStage.setMaximized(Boolean.parseBoolean(properties.getProperty("startMaximized")));
         controller.setStageAndSetupListeners(primaryStage);
 
-        /*Could have done this with a if-statement too, but some prefer a if-statement-less program*/
+        /*Could have done this with a if-statement too, but some prefer a if-statement-less program */
         HashMap<Integer, Runnable> args = new HashMap<>();
         args.put(0, primaryStage::show);
         args.put(2, () -> {
@@ -104,12 +104,12 @@ public class Main extends Application {
     private void loadSchedule(Controller controller) {
         try {
             Runnable runnable = new Thread(() -> {
-                controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null));
+                controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1)));
                 controller.getDraw().setVisible(false);
             });
             Platform.runLater(runnable);
         } catch (Exception e) {
-            /*e.printStackTrace();*/
+
         }
     }
 
@@ -121,14 +121,14 @@ public class Main extends Application {
             controller.getTime().setText(getParameters().getRaw().get(1));
             controller.getDay().setVisible(false);
             controller.getDate().setVisible(false);
-            controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1), null));
+            controller.getModel().setSchedule(new Item(getParameters().getRaw().get(0), getParameters().getRaw().get(1)));
             controller.getDraw().setVisible(false);
             SnapshotParameters snapshotParameters = new SnapshotParameters();
             snapshotParameters.setTransform(new Scale(2, 2));
             WritableImage image = root.snapshot(snapshotParameters, null);
 
             File file;
-            /*controleer als met .png eindigt*/
+            /*check if ends with .png*/
             if (getParameters().getRaw().get(2).endsWith(".png")) {
                 file = new File(getParameters().getRaw().get(2));
             } else {
@@ -137,13 +137,12 @@ public class Main extends Application {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {
-                new StdError(e.getMessage());
+                new StdError(e.getMessage()+"\n");
                 Platform.exit();
                 System.exit(2);
             }
         } catch (Exception e) {
-            /*e.printStackTrace();*/
-            new StdError("Invalid! Please, check your arguments ,sir! They are trump-shit-arguments ;) \n");
+            new StdError("Invalid! Please, check your arguments!\n");
         }
         Platform.exit();
         System.exit(0);

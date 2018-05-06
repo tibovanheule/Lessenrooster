@@ -16,6 +16,13 @@ public class Item {
         this.id = id;
     }
 
+    public Item(String sort, String name) {
+        this.name = name;
+        this.sort = sort;
+    }
+
+
+
     public Integer getId() {
         return id;
     }

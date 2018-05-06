@@ -249,10 +249,7 @@ public class Controller {
         drawerOpen.setToX(0);
         TranslateTransition drawerClose = new TranslateTransition(new Duration(300), draw);
 
-        //alle children's opacity property verbinden met die van de drawer
-        for (Node node : draw.getChildren()) {
-            node.opacityProperty().bind(draw.opacityProperty());
-        }
+        draw.getChildren().forEach(node -> node.opacityProperty().bind(draw.opacityProperty()));
 
         if (draw.isVisible()) {
             ft.setFromValue(1.0);

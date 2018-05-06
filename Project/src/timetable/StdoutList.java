@@ -37,13 +37,11 @@ class StdoutList {
                     group.flush();
                 }
             } catch (DataAccessException e) {
-                /*e.printStackTrace();*/
                 new StdError("Couldn't read the database.\n");
             } catch (NullPointerException e) {
                 new StdError("Check your arguments\n");
             }
         } catch (IOException e) {
-            /*e.printStackTrace();*/
             new StdError("Error while trying to output the result! \n");
 
         }

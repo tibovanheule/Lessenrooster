@@ -111,14 +111,12 @@ public class Lecture implements Comparator<Lecture> {
     public int compare(Lecture o1, Lecture o2) {
         if (o1.getTime().compareTo(o2.getTime()) == 0) {
             return 0;
-        } else if (o1.getHour() < o2.getHour() && o2.getHour() < o1.getHour() + o1.getDuration()) {
+        } else if ((o1.getHour() < o2.getHour() && o2.getHour() < o1.getHour() + o1.getDuration())
+                || (o2.getHour() < o1.getHour() && o1.getHour() < o2.getHour() + o2.getDuration())
+                || (o1.getHour() + o1.getDuration() == o2.getHour() && o1.getMinute() > o2.getMinute())
+                ) {
             return -1;
-        } else if (o2.getHour() < o1.getHour() && o1.getHour() < o2.getHour() + o2.getDuration()) {
-            return -1;
-        }
-        if (o1.getHour() + o1.getDuration() == o2.getHour() && o1.getMinute() > o2.getMinute()){
-            return -1;
-        }else{
+        } else {
             return 1;
         }
     }

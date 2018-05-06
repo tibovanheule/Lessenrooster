@@ -62,7 +62,6 @@ public class WeatherScraper {
     public Weather getWeather() {
         try {
             ArrayList<String> jsonString = getData();
-            //deze if voor als het ophalen niet gelukt is dan wordt er geen extra error opgegooid
             if (weather == null) {
                 /*
                  * Hoe ik het normaal zou gedaan hebben

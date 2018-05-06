@@ -21,7 +21,6 @@ class ButtonCellItem extends TableCell<Item, Boolean> {
     ButtonCellItem(TableView<Item> table, CreateController createController) {
         cellButton.setText("Delete");
         cellButton.setOnAction((event) -> delete(table, createController));
-        cellButton.setAlignment(Pos.CENTER);
     }
 
     @Override

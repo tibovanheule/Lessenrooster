@@ -24,7 +24,6 @@ public class SearchTextBox extends TextField implements InvalidationListener, Ev
         setOnKeyTyped(this::handle);
     }
 
-    // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {
         return model;
     }

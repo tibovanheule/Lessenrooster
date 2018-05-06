@@ -77,7 +77,6 @@ public class DatabaseController {
      * change to standard sqlite database
      */
     public void sqlite() {
-        properties.setProperty("DB.use", "false");
         mainController.getModel().setDataAccessProvider(new SqliteDataAccessProvider());
         mainController.setDbName("schedule (offline)");
         close();
@@ -87,21 +86,19 @@ public class DatabaseController {
      * show the periods table
      */
     public void period() {
-        try {
+        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
             FXMLLoader loader = new FXMLLoader(DatabaseController.class.getResource("periods.fxml"));
             loader.setController(this);
             AnchorPane pane = loader.load();
             rootPane.getChildren().addAll(pane);
             delete.setCellFactory(column -> new PeriodButtonCell(table, this));
-            hour.setup(mainController, "hour",24);
-            minute.setup(mainController, "minute",60);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try (DataAccessContext dac = mainController.getModel().getDataAccessProvider().getDataAccessContext()) {
+            hour.setup(mainController, "hour", 24);
+            minute.setup(mainController, "minute", 60);
             table.getItems().addAll(dac.getPeriodDAO().getPeriods());
         } catch (DataAccessException e) {
             e.printStackTrace();
+        }catch (IOException e){
+            new StdError("Fatal error","error","Couldn't open periods window!",Alert.AlertType.ERROR);
         }
     }
 
@@ -118,7 +115,6 @@ public class DatabaseController {
      * makes a new DB
      */
     public void newDb() {
-        /*lege db met lege tabellen zit al in de prog, dus gewoon een kopie maken*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
         FileChooser.ExtensionFilter db = new FileChooser.ExtensionFilter("Database files (*.db)", "*.db");
@@ -179,7 +175,6 @@ public class DatabaseController {
      * check if is sqlite database
      */
     private boolean setDatabase(Path file) {
-        /*http://fileformats.archiveteam.org/wiki/DB_(SQLite) <- mime type gevonden*/
         try {
             if (file != null) {
                 if (Files.isReadable(file) && Files.isWritable(file)) {
@@ -194,7 +189,6 @@ public class DatabaseController {
                         dataAccessProvider.getDataAccessContext().getPeriodDAO().getPeriods();
                         dataAccessProvider.getDataAccessContext().close();
                         /*set db file and dataAccessProvoider*/
-                        properties.setProperty("DB.use", "false");
                         mainController.setDbName(file.getFileName().toString().replace(".db", ""));
                         mainController.getModel().setDataAccessProvider(dataAccessProvider);
 

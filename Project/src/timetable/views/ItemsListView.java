@@ -22,11 +22,8 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
         setCellFactory(new Callback<ListView<Item>, ListCell<Item>>() {
             @Override
             public ListCell<Item> call(ListView<Item> myObjectListView) {
-                ListCell<Item> cell = new ListCell<Item>() {
+                return new ListCell<Item>() {
                     {
-                        //gevonden fix voor de wrap text
-                        /*enkel setWraptext(true) werkt niet (geen idee waarom, bug mss) hieronder is een gevonden workaround
-                         * in feite de breedte van de cell even groot maken als de Listview door die te koppellen aan elkaar (via bind) */
                         prefWidthProperty().bind(this.widthProperty().subtract(20));
                     }
 
@@ -42,7 +39,6 @@ public class ItemsListView extends ListView<Item> implements InvalidationListene
                         }
                     }
                 };
-                return cell;
             }
         });
 

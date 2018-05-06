@@ -18,11 +18,7 @@ public class PeriodButtonCell extends TableCell<Period, Boolean> {
     public PeriodButtonCell(TableView<Period> table, DatabaseController databaseController) {
         cellButton.setText("Delete");
         cellButton.setAlignment(Pos.CENTER);
-        cellButton.setOnAction((event) -> {
-            int selectdIndex = getTableRow().getIndex();
-            Period selectedRecord = table.getItems().get(selectdIndex);
-            databaseController.delete(selectedRecord);
-        });
+        cellButton.setOnAction((event) -> databaseController.delete(table.getItems().get(getTableRow().getIndex())));
     }
 
     @Override

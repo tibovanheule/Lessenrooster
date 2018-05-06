@@ -73,45 +73,45 @@ public class EditLecture {
     public void initialize() {
         day.getItems().addAll(days);
         duration.getItems().addAll(1, 2, 3, 4);
-
-
     }
 
     /**
      * close and save the updated lecture
      */
     public void saveClose() {
-        if (!name.getText().isEmpty()) {
-            try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
-                /*Objects are made to have */
-                Item studentItem = students.getSelectionModel().getSelectedItem();
-                Item teacherItem = teacher.getSelectionModel().getSelectedItem();
-                Item locationItem = loc.getSelectionModel().getSelectedItem();
-                String course = name.getText();
-                Integer dayInt = day.getSelectionModel().getSelectedIndex() + 1;
-                Integer durationInt = duration.getSelectionModel().getSelectedItem();
-                Period period2 = period.getSelectionModel().getSelectedItem();
-
-                Lecture newLecture = new Lecture(studentItem.getName(), teacherItem.getName(),
-                        locationItem.getName(), course, dayInt, period2.getId(), durationInt, period2.getHour(),
-                        period2.getMinute(), studentItem.getId(), teacherItem.getId(), locationItem.getId());
-                for (Lecture lecture : lecture.getConflicts()) {
-                    newLecture.addConflict(lecture);
-                }
-                dac.getLectureDoa().update(newLecture, lecture);
-                controller.setLecture(newLecture);
-                model.refresh();
-            } catch (DataAccessException e) {
-                e.printStackTrace();
+        try (DataAccessContext dac = model.getDataAccessProvider().getDataAccessContext()) {
+            if (name.getText().trim().isEmpty()) {
+                new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
+                throw new IllegalArgumentException("the name is empty");
             }
-            stage.close();
-            controller.setCanClose(true);
-        } else {
-            canClose = false;
-            new StdError("Error", "Empty name", "Pls, add a name for the course!", Alert.AlertType.ERROR);
-            canClose = true;
 
+            Lecture newLecture = new Lecture(
+                    students.getSelectionModel().getSelectedItem().getName(),
+                    teacher.getSelectionModel().getSelectedItem().getName(),
+                    loc.getSelectionModel().getSelectedItem().getName(),
+                    name.getText(),
+                    day.getSelectionModel().getSelectedIndex() + 1,
+                    period.getSelectionModel().getSelectedItem().getId(),
+                    duration.getSelectionModel().getSelectedItem(),
+                    period.getSelectionModel().getSelectedItem().getHour(),
+                    period.getSelectionModel().getSelectedItem().getMinute(),
+                    students.getSelectionModel().getSelectedItem().getId(),
+                    teacher.getSelectionModel().getSelectedItem().getId(),
+                    loc.getSelectionModel().getSelectedItem().getId()
+            );
+
+            lecture.getConflicts().forEach((lecture) ->newLecture.addConflict(lecture));
+            dac.getLectureDoa().update(newLecture, lecture);
+            controller.setLecture(newLecture);
+            model.refresh();
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+                /*empty name*/
         }
+        stage.close();
+        controller.setCanClose(true);
+
     }
 
     /**

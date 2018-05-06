@@ -73,8 +73,6 @@ public class MainModel implements Observable {
         for (InvalidationListener listener : listenerList) {
             listener.invalidated(this);
         }
-        /* For debugging purposes
-        System.out.println("FIREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");*/
     }
 
     /**
@@ -92,16 +90,12 @@ public class MainModel implements Observable {
     public void setSchedule(Item selected) {
         currentItem = selected;
         lecturesChanged = true;
-        try {
-            if (selected != null) {
-                try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
-                    schedule = dac.getLectureDoa().getWeek(currentItem);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        if (selected != null) {
+            try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
+                schedule = dac.getLectureDoa().getWeek(currentItem);
+            } catch (DataAccessException e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            /*e.printStackTrace();*/
         }
         fireInvalidationEvent();
     }
@@ -138,8 +132,8 @@ public class MainModel implements Observable {
 
         } catch (DataAccessException e) {
             e.printStackTrace();
-        } catch (NullPointerException e){
-            new StdError("error","Invalid config","There is something wrong with your\nconfig file, please fix it!\ninvalid standard schedule set!",Alert.AlertType.ERROR);
+        } catch (NullPointerException e) {
+            new StdError("error", "Invalid config", "There is something wrong with your\nconfig file, please fix it!\ninvalid standard schedule set!", Alert.AlertType.ERROR);
         }
         fireInvalidationEvent();
     }
@@ -152,10 +146,8 @@ public class MainModel implements Observable {
         clearText = false;
         items.clear();
         if (searchText.isEmpty()) {
-            //als textfield leeg is keer dan terug naar de standaard lijst
             changeItems(standardSchedule);
         } else {
-            // zo niet haal de gefilterde lijst op
             try (DataAccessContext dac = dataAccessProvider.getDataAccessContext()) {
                 ArrayList<DAO> daos = new ArrayList<>();
                 daos.add(dac.getLocationDAO());

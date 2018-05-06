@@ -82,14 +82,13 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
     @Override
     public Iterable<Item> get() throws DataAccessException {
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         String selection = "select distinct course as name from lecture";
         //https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
         try (Statement statement = create()) {
             ResultSet resultSet = statement.executeQuery(selection);
             while (resultSet.next()) {
-                /*sinds dat vakken niet gedeleted worden a.d.h.v. het id en die ook geen hebben geven we null eraan mee*/
-                items.add(new Item("lecture", resultSet.getString("name"), null));
+                items.add(new Item("lecture", resultSet.getString("name")));
             }
             resultSet.close();
         } catch (Exception e) {
@@ -100,17 +99,17 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
 
     @Override
     public Iterable<Item> getFiltered(String searchText) throws DataAccessException {
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         String sql = "SELECT DISTINCT course FROM lecture where course like ?";
         try (PreparedStatement statement = prepare(sql)) {
             statement.setString(1, "%" + searchText + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                items.add(new Item("lecture", resultSet.getString("course"), null));
+                items.add(new Item("lecture", resultSet.getString("course")));
             }
         } catch (Exception e) {
             //foutmelding weergeven in de lijst.
-            throw new DataAccessException("could not retrieve items", e);
+            throw new DataAccessException("could not retrieve filtered lectures items", e);
         }
         return items;
     }
@@ -168,25 +167,25 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     }
 
     @Override
-    public int update(Lecture lecture, Lecture old) throws DataAccessException {
+    public int update(Lecture newLecture, Lecture oldLecture) throws DataAccessException {
         String insert = "UPDATE lecture SET course=?,first_block=?,students_id=?,location_id=?,teacher_id=?,day=?,duration=? " +
                 "WHERE course=? AND first_block=? AND students_id=? AND location_id=? AND teacher_id=? AND day=? AND duration=?";
         try (PreparedStatement statement = prepare(insert)) {
-            statement.setString(1, lecture.getCourse());
-            statement.setInt(2, lecture.getBlock());
-            statement.setInt(3, lecture.getStudentId());
-            statement.setInt(4, lecture.getLocationId());
-            statement.setInt(5, lecture.getTeacherId());
-            statement.setInt(6, lecture.getDay());
-            statement.setInt(7, lecture.getDuration());
+            statement.setString(1, newLecture.getCourse());
+            statement.setInt(2, newLecture.getBlock());
+            statement.setInt(3, newLecture.getStudentId());
+            statement.setInt(4, newLecture.getLocationId());
+            statement.setInt(5, newLecture.getTeacherId());
+            statement.setInt(6, newLecture.getDay());
+            statement.setInt(7, newLecture.getDuration());
 
-            statement.setString(8, old.getCourse());
-            statement.setInt(9, old.getBlock());
-            statement.setInt(10, old.getStudentId());
-            statement.setInt(11, old.getLocationId());
-            statement.setInt(12, old.getTeacherId());
-            statement.setInt(13, old.getDay());
-            statement.setInt(14, old.getDuration());
+            statement.setString(8, oldLecture.getCourse());
+            statement.setInt(9, oldLecture.getBlock());
+            statement.setInt(10, oldLecture.getStudentId());
+            statement.setInt(11, oldLecture.getLocationId());
+            statement.setInt(12, oldLecture.getTeacherId());
+            statement.setInt(13, oldLecture.getDay());
+            statement.setInt(14, oldLecture.getDuration());
             statement.executeUpdate();
         } catch (Exception e) {
             throw new DataAccessException("could not update lecture", e);
@@ -206,9 +205,13 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
      */
     @Override
     public Boolean nameExists(String name) {
-        return true;
+        return false;
     }
 
+    // TODO: 6/05/2018 expand to all
+    /**
+     * to check if there is a lesson at the same time
+     * */
     @Override
     public Boolean conflict(Lecture lecture) throws DataAccessException {
         String search = "SELECT course FROM lecture WHERE first_block=? AND day=? LIMIT 1";

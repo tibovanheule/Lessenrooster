@@ -23,16 +23,17 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
     private Integer limit = 24;
 
     /**
-     * constructor, sets cellfactory and on edit
+     * constructor, sets cellfactory and also makes a new StringConverter that checks if string is a number and smaller than e given limit
      */
     public CustomTableColumn() {
-        StringConverter<Integer> checker = new StringConverter<Integer>() {
+        StringConverter<Integer> checker = new StringConverter<>() {
             @Override
             public String toString(Integer object) {
-                if (object == null) {
+                try {
+                    return object.toString();
+                }catch (NullPointerException e){
                     return null;
                 }
-                return object.toString();
             }
 
             @Override
@@ -45,7 +46,6 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
                         new StdError("Error", "Number to big", "You typed a too big number! >60", Alert.AlertType.ERROR);
                         return 0;
                     }
-
                 } catch (NumberFormatException e) {
                     new StdError("Error", "not a number!", "You haven't typed a number!", Alert.AlertType.ERROR);
                     return 0;

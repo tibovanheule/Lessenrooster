@@ -1,7 +1,6 @@
 /*Tibo Vanheule*/
 package timetable.lecture;
 
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +22,6 @@ import timetable.objects.Lecture;
  */
 public class LectureController {
 
-    ChangeListener listener;
 
     @FXML
     private Label text, course;
@@ -48,7 +46,6 @@ public class LectureController {
      */
     public void setLecture(Lecture lecture) {
         try {
-            this.lecture = lecture;
             String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday"};
             course.setText(lecture.getCourse());
             text.setText(days[lecture.getDay() - 1] + "\n"
@@ -58,12 +55,19 @@ public class LectureController {
                     + "Teacher: " + lecture.getTeacher() + "\n"
                     + "Location: " + lecture.getLocation() + "\n"
             );
-            conflicts.getSelectionModel();
-            conflicts.getItems().clear();
-            conflicts.getItems().addAll(lecture.getConflicts());
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            if(lecture.getConflict()) {
+                conflicts.getItems().clear();
+                conflicts.getItems().addAll(lecture.getConflicts());
+            }else {
+                conflictText.setText("There are no conflicts.");
+                conflicts.setVisible(false);
+            }
+
+            this.lecture = lecture;
+
+        } catch (NullPointerException e) {
+            /*ignore empty lecture*/
         }
     }
 
@@ -73,12 +77,7 @@ public class LectureController {
     public void setStageAndSetupListeners(Stage stage, MainModel model) {
         this.stage = stage;
         this.model = model;
-
-        conflicts.setOnMouseClicked(o -> {
-            if (conflicts.getSelectionModel().getSelectedItem() != null) {
-                setLecture(conflicts.getSelectionModel().getSelectedItem());
-            }
-        });
+        conflicts.setOnMouseClicked(o -> setLecture(conflicts.getSelectionModel().getSelectedItem()));
     }
 
     /**
@@ -109,13 +108,6 @@ public class LectureController {
         if (canClose) {
             stage.close();
         }
-    }
-
-    /**
-     * sets listener to Listview selection model
-     */
-    public void initialize() {
-
     }
 
     /**

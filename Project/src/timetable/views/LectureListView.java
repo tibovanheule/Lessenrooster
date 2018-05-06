@@ -19,6 +19,8 @@ import timetable.MainModel;
 import timetable.lecture.LectureController;
 import timetable.objects.Lecture;
 
+import javax.swing.*;
+
 /**
  * @author Tibo Vanheule
  */
@@ -30,11 +32,9 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
         setCellFactory(new Callback<ListView<Lecture>, ListCell<Lecture>>() {
             @Override
             public ListCell<Lecture> call(ListView<Lecture> myObjectListView) {
-                ListCell<Lecture> cell = new ListCell<Lecture>() {
+                return new ListCell<Lecture>() {
                     {
-                        //gevonden fix voor de wrap text
                         prefWidthProperty().bind(this.widthProperty());
-                        minWidthProperty().bind(this.widthProperty());
                     }
 
                     @Override
@@ -61,12 +61,10 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
                          * wanneer iets geselecteerd wordt. namelijk dat de text wit werd met een blauwe achtergrond*/
                     }
                 };
-                return cell;
             }
         });
     }
 
-    // getter is nodig om het attribuut 'model' te kunnen gebruiken in ButtonsSeven.fxml
     public MainModel getModel() {
         return model;
 
@@ -100,7 +98,6 @@ public class LectureListView extends ListView<Lecture> implements InvalidationLi
      */
     @Override
     public void handle(MouseEvent event) {
-        /*functie om de aangeklikte les weer te geven */
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("lecture/lecture.fxml"));
             Parent root = loader.load();

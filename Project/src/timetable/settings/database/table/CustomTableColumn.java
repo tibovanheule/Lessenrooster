@@ -26,7 +26,7 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
      * constructor, sets cellfactory and also makes a new StringConverter that checks if string is a number and smaller than e given limit
      */
     public CustomTableColumn() {
-        StringConverter<Integer> checker = new StringConverter<>() {
+        StringConverter<Integer> checker = new StringConverter<Integer>() {
             @Override
             public String toString(Integer object) {
                 try {

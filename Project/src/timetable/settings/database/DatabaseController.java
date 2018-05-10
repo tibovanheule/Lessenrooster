@@ -97,8 +97,8 @@ public class DatabaseController {
             table.getItems().addAll(dac.getPeriodDAO().getPeriods());
         } catch (DataAccessException e) {
             e.printStackTrace();
-        }catch (IOException e){
-            new StdError("Fatal error","error","Couldn't open periods window!",Alert.AlertType.ERROR);
+        } catch (IOException e) {
+            new StdError("Fatal error", "error", "Couldn't open periods window!", Alert.AlertType.ERROR);
         }
     }
 

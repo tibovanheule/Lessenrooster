@@ -19,8 +19,6 @@ import timetable.MainModel;
 import timetable.lecture.LectureController;
 import timetable.objects.Lecture;
 
-import javax.swing.*;
-
 /**
  * @author Tibo Vanheule
  */

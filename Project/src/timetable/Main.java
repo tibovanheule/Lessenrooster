@@ -137,7 +137,7 @@ public class Main extends Application {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {
-                new StdError(e.getMessage()+"\n");
+                new StdError(e.getMessage() + "\n");
                 Platform.exit();
                 System.exit(2);
             }

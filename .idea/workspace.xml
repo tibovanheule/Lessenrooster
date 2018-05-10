@@ -70,20 +70,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="lectures mysql.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lectures mysql.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+            <state relative-caret-position="630">
+              <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lectures.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lectures.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3129">
+            <state relative-caret-position="578">
               <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding />
             </state>
@@ -93,8 +93,8 @@
       <file leaf-file-name="lectures.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="84">
+              <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -121,10 +121,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql" />
         <option value="$PROJECT_DIR$/Hulpbestanden/lectures.sql" />
         <option value="$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/empty.sql" />
         <option value="$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql" />
+        <option value="$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql" />
       </list>
     </option>
   </component>
@@ -135,9 +135,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="221" />
-    <option name="y" value="80" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="232" />
+    <option name="y" value="-22" />
     <option name="width" value="1613" />
     <option name="height" value="877" />
   </component>
@@ -304,7 +304,7 @@
     <option name="totallyTimeSpent" value="1947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -348,6 +348,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3129">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -356,14 +380,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/empty.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/empty.sql" />
     <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -401,34 +418,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql">
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/empty.sql" />
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        <state relative-caret-position="578">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="84">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/empty.sql">
+    <entry file="file://$PROJECT_DIR$/Hulpbestanden/lectures mysql.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hulpbestanden/sqlite-tools-win32-x86-3220000/lectures.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3129">
-          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="630">
+          <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
           <folding />
         </state>
       </provider>

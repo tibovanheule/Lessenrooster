@@ -56,10 +56,10 @@ public class LectureController {
                     + "Location: " + lecture.getLocation() + "\n"
             );
 
-            if(lecture.getConflict()) {
+            if (lecture.getConflict()) {
                 conflicts.getItems().clear();
                 conflicts.getItems().addAll(lecture.getConflicts());
-            }else {
+            } else {
                 conflictText.setText("There are no conflicts.");
                 conflicts.setVisible(false);
             }

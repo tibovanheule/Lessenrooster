@@ -50,10 +50,10 @@ public class SqliteDataAccessProvider implements DataAccessProvider {
         Properties properties = config.getproperties();
 
         SQLiteDataSource datasource = new SQLiteDataSource();
-        try{
+        try {
             /*test will give null pointer if null*/
             datasource.setUrl(url.toString());
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             datasource.setUrl(properties.getProperty("DB.sqlite.url"));
         }
 

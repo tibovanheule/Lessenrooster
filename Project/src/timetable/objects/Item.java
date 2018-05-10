@@ -22,7 +22,6 @@ public class Item {
     }
 
 
-
     public Integer getId() {
         return id;
     }

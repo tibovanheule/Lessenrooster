@@ -31,7 +31,7 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
             public String toString(Integer object) {
                 try {
                     return object.toString();
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     return null;
                 }
             }
@@ -64,9 +64,9 @@ public class CustomTableColumn extends TableColumn<Period, Integer> {
         this.controller = controller;
         setCellValueFactory(new PropertyValueFactory<>(property));
         this.limit = limit;
-        HashMap<String,Runnable> editsCommits = new HashMap<>();
-        editsCommits.put("hour",() -> setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute())));
-        editsCommits.put("minute",() -> setOnEditCommit(event -> update(event.getRowValue(), event.getRowValue().getHour(), event.getNewValue())));
+        HashMap<String, Runnable> editsCommits = new HashMap<>();
+        editsCommits.put("hour", () -> setOnEditCommit(event -> update(event.getRowValue(), event.getNewValue(), event.getRowValue().getMinute())));
+        editsCommits.put("minute", () -> setOnEditCommit(event -> update(event.getRowValue(), event.getRowValue().getHour(), event.getNewValue())));
         editsCommits.get(property).run();
 
     }

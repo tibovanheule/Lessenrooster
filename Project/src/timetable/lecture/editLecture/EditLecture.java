@@ -100,14 +100,14 @@ public class EditLecture {
                     loc.getSelectionModel().getSelectedItem().getId()
             );
 
-            lecture.getConflicts().forEach((lecture) ->newLecture.addConflict(lecture));
+            lecture.getConflicts().forEach((lecture) -> newLecture.addConflict(lecture));
             dac.getLectureDoa().update(newLecture, lecture);
             controller.setLecture(newLecture);
             model.refresh();
         } catch (DataAccessException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-                /*empty name*/
+            /*empty name*/
         }
         stage.close();
         controller.setCanClose(true);

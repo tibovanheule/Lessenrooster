@@ -110,7 +110,7 @@ public class CreateLecture {
             }
         } catch (DataAccessException e) {
             e.printStackTrace();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             /*empty name don't worry*/
         }
         stage.close();

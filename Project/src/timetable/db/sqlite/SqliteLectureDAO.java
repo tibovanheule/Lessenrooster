@@ -209,9 +209,10 @@ public class SqliteLectureDAO extends SqliteAbstractDOA implements LectureDAO {
     }
 
     // TODO: 6/05/2018 expand to all
+
     /**
      * to check if there is a lesson at the same time
-     * */
+     */
     @Override
     public Boolean conflict(Lecture lecture) throws DataAccessException {
         String search = "SELECT course FROM lecture WHERE first_block=? AND day=? LIMIT 1";
